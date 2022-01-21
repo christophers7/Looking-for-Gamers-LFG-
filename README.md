@@ -29,11 +29,25 @@ $ git switch newBranchName
 
 $ git add .
 $ git commit -m "message related to what you did"
-$ git merge main
+$ git switch devBranch
+$ git pull origin devBranch
+
+// Deal with any new remote commits and conflicts that could arise
+
+$ git merge newBranch
+
+// Deal with any new conflicts if they arise
+// On success, push to remote dev branch
+
+$ git push origin devBranch
+
+// Don't push your feature branch on your local repo unless you are sharing it with someone else
 ```
 
 
 - **NEVER** work on main directly
 - Commit at the minimum daily
 - Whenever there is an update to the main, pull and resolve conflicts on local machines
+  - Pull from origin main, merge with dev branch, and continue to work with devBranch
+  - This will reduce overall merge conflicts
 
