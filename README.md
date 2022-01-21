@@ -46,7 +46,12 @@ $ git push origin devBranch
 
 
 - **NEVER** work on main directly
+
+
 - Commit at the minimum daily
+  - **Ensure** you have useful messages with them
+
+
 - Whenever there is an update to the main, pull and resolve conflicts on local machines
   - Pull from origin main, merge with dev branch, and continue to work with devBranch
   - This will reduce overall merge conflicts
