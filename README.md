@@ -1,5 +1,5 @@
-# P2_LFG
-Project 2 - Looking for Gamers
+# P2_LFGG
+Project 2 - Looking for Good Gamers
 
 ###Conventions
 ___
