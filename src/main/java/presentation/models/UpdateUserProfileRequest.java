@@ -2,30 +2,24 @@ package presentation.models;
 
 import java.util.Objects;
 
-public class NewUserProfileRequest {
+public class UpdateUserProfileRequest {
 
-    private int userId;
     private String firstName;
     private String lastName;
     private String email;
     private String gameUsername;
 
-    public NewUserProfileRequest(int userId, String firstName, String lastName, String email, String gameUsername) {
-        this.userId = userId;
+    public UpdateUserProfileRequest(String firstName, String lastName, String email, String gameUsername) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.gameUsername = gameUsername;
     }
 
-    public NewUserProfileRequest() {
-    }
-
     @Override
     public String toString() {
-        return "{\"NewUserProfileRequest\":{"
-                + "\"userId\":\"" + userId + "\""
-                + ", \"firstName\":\"" + firstName + "\""
+        return "{\"UpdateUserProfileRequest\":{"
+                + "\"firstName\":\"" + firstName + "\""
                 + ", \"lastName\":\"" + lastName + "\""
                 + ", \"email\":\"" + email + "\""
                 + ", \"gameUsername\":\"" + gameUsername + "\""
@@ -35,22 +29,14 @@ public class NewUserProfileRequest {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof NewUserProfileRequest)) return false;
-        NewUserProfileRequest that = (NewUserProfileRequest) o;
-        return getUserId() == that.getUserId() && Objects.equals(getFirstName(), that.getFirstName()) && Objects.equals(getLastName(), that.getLastName()) && Objects.equals(getEmail(), that.getEmail()) && Objects.equals(getGameUsername(), that.getGameUsername());
+        if (!(o instanceof UpdateUserProfileRequest)) return false;
+        UpdateUserProfileRequest that = (UpdateUserProfileRequest) o;
+        return Objects.equals(getFirstName(), that.getFirstName()) && Objects.equals(getLastName(), that.getLastName()) && Objects.equals(getEmail(), that.getEmail()) && Objects.equals(getGameUsername(), that.getGameUsername());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getUserId(), getFirstName(), getLastName(), getEmail(), getGameUsername());
-    }
-
-    public int getUserId() {
-        return userId;
-    }
-
-    public void setUserId(int userId) {
-        this.userId = userId;
+        return Objects.hash(getFirstName(), getLastName(), getEmail(), getGameUsername());
     }
 
     public String getFirstName() {

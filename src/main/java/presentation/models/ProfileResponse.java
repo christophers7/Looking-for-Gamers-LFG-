@@ -4,7 +4,6 @@ import java.util.Objects;
 
 public class ProfileResponse {
 
-    private int userId;
     private String username;
     private String firstName;
     private String lastName;
@@ -12,8 +11,7 @@ public class ProfileResponse {
     private String gameUsername;
     private String JWT;
 
-    public ProfileResponse(int userId, String username, String firstName, String lastName, String email, String gameUsername, String JWT) {
-        this.userId = userId;
+    public ProfileResponse(String username, String firstName, String lastName, String email, String gameUsername, String JWT) {
         this.username = username;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -28,8 +26,7 @@ public class ProfileResponse {
     @Override
     public String toString() {
         return "{\"ProfileResponse\":{"
-                + "\"userId\":\"" + userId + "\""
-                + ", \"username\":\"" + username + "\""
+                + "\"username\":\"" + username + "\""
                 + ", \"firstName\":\"" + firstName + "\""
                 + ", \"lastName\":\"" + lastName + "\""
                 + ", \"email\":\"" + email + "\""
@@ -43,20 +40,12 @@ public class ProfileResponse {
         if (this == o) return true;
         if (!(o instanceof ProfileResponse)) return false;
         ProfileResponse that = (ProfileResponse) o;
-        return getUserId() == that.getUserId() && Objects.equals(getUsername(), that.getUsername()) && Objects.equals(getFirstName(), that.getFirstName()) && Objects.equals(getLastName(), that.getLastName()) && Objects.equals(getEmail(), that.getEmail()) && Objects.equals(getGameUsername(), that.getGameUsername()) && Objects.equals(getJWT(), that.getJWT());
+        return Objects.equals(getUsername(), that.getUsername()) && Objects.equals(getFirstName(), that.getFirstName()) && Objects.equals(getLastName(), that.getLastName()) && Objects.equals(getEmail(), that.getEmail()) && Objects.equals(getGameUsername(), that.getGameUsername()) && Objects.equals(getJWT(), that.getJWT());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getUserId(), getUsername(), getFirstName(), getLastName(), getEmail(), getGameUsername(), getJWT());
-    }
-
-    public int getUserId() {
-        return userId;
-    }
-
-    public void setUserId(int userId) {
-        this.userId = userId;
+        return Objects.hash(getUsername(), getFirstName(), getLastName(), getEmail(), getGameUsername(), getJWT());
     }
 
     public String getUsername() {
