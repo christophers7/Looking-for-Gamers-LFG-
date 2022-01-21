@@ -11,7 +11,7 @@
 
     <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <!-- Specify the location of the file you're logging to -->
-        <file>heroPayDebugging.log</file>
+        <file>LFG_debug.log</file>
 
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
             <!-- daily rollover -->
@@ -31,7 +31,7 @@
 
     <appender name="FILE2" class="ch.qos.logback.core.FileAppender">
         <!-- Specify the location of the file you're logging to -->
-        <file>heroPayTransaction.log</file>
+        <file>LFG_info.log</file>
 
         <!-- This encoder is determining what the format of our logging messages will be. -->
         <encoder>
@@ -41,7 +41,7 @@
 
 
 
-    <logger name="tLog" level ="INFO">
+    <logger name="iLog" level ="INFO">
         <appender-ref ref="FILE2"/>
     </logger>
 
