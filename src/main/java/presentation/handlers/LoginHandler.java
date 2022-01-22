@@ -4,7 +4,6 @@ import io.javalin.http.Handler;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import presentation.models.LoginRequest;
-import presentation.models.ProfileResponse;
 import repository.DAO.implementation.UserCredentialsDao;
 import service.login.classes.LoginService;
 import service.profile.classes.ProfileService;

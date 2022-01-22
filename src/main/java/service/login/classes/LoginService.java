@@ -12,7 +12,7 @@ public class LoginService {
     private final Logger iLog = LoggerFactory.getLogger("iLog");
     private final Logger dLog = LoggerFactory.getLogger("dLog");
 
-    private UserCredentialsDao userCredDao;
+    private final UserCredentialsDao userCredDao;
 
     public LoginService(UserCredentialsDao userCredDao) {
         this.userCredDao = userCredDao;
@@ -20,6 +20,12 @@ public class LoginService {
 
     public UserCredential getUserCredential(LoginRequest loginRequest) {
         dLog.debug("Validating user login attempt: " + loginRequest);
-        return userCredDao.getUser(new UserCredential(0, loginRequest.getUsername(), loginRequest.getPassword(), new UserProfile(), new PublicDetails()));
+        return userCredDao.getUser(
+                new UserCredential(
+                        0,
+                        loginRequest.getUsername(),
+                        loginRequest.getPassword(),
+                        new UserProfile(),
+                        new PublicDetails()));
     }
 }

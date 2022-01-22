@@ -6,6 +6,7 @@ import presentation.models.ProfileResponse;
 import repository.DAO.implementation.UserProfileDao;
 import repository.entities.UserCredential;
 import service.profile.interfaces.ProfileServiceable;
+import utility.JWTUtility;
 
 public class ProfileService implements ProfileServiceable {
 
@@ -20,7 +21,19 @@ public class ProfileService implements ProfileServiceable {
 
     @Override
     public ProfileResponse getProfileResponse(UserCredential userCredential) {
-//        dLog.debug("Getting Profile Response with User Credentials: " + userCredential);
-        return null;
+        dLog.debug("Getting Profile Response with User Credentials: " + userCredential);
+        return convertUserCredentialToProfileResponse(userCredential);
+    }
+
+    public ProfileResponse convertUserCredentialToProfileResponse(UserCredential userCredential) {
+        String JWT = JWTUtility.generateJWT(userCredential);
+        return new ProfileResponse(
+                userCredential.getUserLogin(),
+                userCredential.getUserProfile().getFirstName(),
+                userCredential.getUserProfile().getLastName(),
+                userCredential.getUserProfile().getEmail(),
+                userCredential.getPublicDetails().getGamerTag(),
+                JWT
+        );
     }
 }
