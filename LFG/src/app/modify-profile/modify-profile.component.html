@@ -1,0 +1,18 @@
+<div id='modifyProfileBox'>
+    <form id='modifyProfileForm'> <!-- Add action to function for http req, if good proceed-->
+        <div id='modifyProfileGroup'>
+            <label for="username"><b>Username:</b></label>
+            <input type="text" placeholder="Enter username" name="username"/><br> <!-- Null check first, then add required-->
+            <br>
+            <label for="password"><b>Password: </b></label>
+            <input type="password" placeholder="Enter password" name="password"><br> <!-- Null check first, then add required-->
+            <br>
+            <label for="email"><b>Email Address:</b></label>
+            <input type="text" placeholder="Enter email address" name="email"/> <!-- Null check first, then add required-->
+        </div>
+        <br>
+        <button id='modifyProfileButton' type="submit">Update Profile</button>
+    </form>
+    <br>
+    <button (click)="goToProfile()" id='profileBackButton'>Cancel</button> 
+</div> 
