@@ -1,4 +1,4 @@
-package service.validation;
+package service.login.validation;
 
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -41,7 +41,7 @@ class LoginValidationTest {
 
     @ParameterizedTest
     @NullAndEmptySource
-    @ValueSource(strings = {"  ", "\t", "\n"})
+    @ValueSource(strings = {"  ", "\t", "\n", "asdklfhjasodhfjoasenf;aiosnefionas;eifnao;wisefoiansefonas;dlkfasdfjaskldfhaskljdfaklshdaklshjdfasdf"})
     void validateNewUserCredentialsInvalidUsernamesTest(String input) {
         newUserCredentialsRequest.setUsername(input);
         newUserCredentialsRequest.setPassword("validPassword");
@@ -51,7 +51,7 @@ class LoginValidationTest {
 
     @ParameterizedTest
     @NullAndEmptySource
-    @ValueSource(strings = {"  ", "\t", "\n"})
+    @ValueSource(strings = {"  ", "\t", "\n", "asdklfhjasodhfjoasenf;aiosnefionas;eifnao;wisefoiansefonas;dlkfasdfjaskldfhaskljdfaklshdaklshjdfasdf"})
     void validateNewUserCredentialsInvalidPasswordsTest(String input) {
         newUserCredentialsRequest.setUsername("validUsername");
         newUserCredentialsRequest.setPassword(input);
@@ -61,7 +61,7 @@ class LoginValidationTest {
 
     @ParameterizedTest
     @NullAndEmptySource
-    @ValueSource(strings = {"  ", "\t", "\n"})
+    @ValueSource(strings = {"  ", "\t", "\n","asdklfhjasodhfjoasenf;aiosnefionas;eifnao;wisefoiansefonas;dlkfasdfjaskldfhaskljdfaklshdaklshjdfasdf"})
     void validateNewUserCredentialsEmptyEmailTest(String input) {
         newUserCredentialsRequest.setUsername("validUsername");
         newUserCredentialsRequest.setPassword("validPassword");
@@ -71,7 +71,7 @@ class LoginValidationTest {
 
     @ParameterizedTest
     @NullAndEmptySource
-    @ValueSource(strings = {"", "username.@domain.com", ".user.name@domain.com", "user-name@domain.com.", "username@.com", "  ", "\t", "\n"})
+    @ValueSource(strings = {"", "username.@domain.com", ".user.name@domain.com", "user-name@domain.com.", "username@.com", "  ", "\t", "\n", "asdklfhjasodhfjoasenf;aiosnefionas;eifnao;wisefoiansefonas;dlkfasdfjaskldfhaskljdfaklshdaklshjdfasdf"})
     void validateNewUserCredentialsInvalidEmailsTest(String input) {
         newUserCredentialsRequest.setUsername("validUsername");
         newUserCredentialsRequest.setPassword("validPassword");

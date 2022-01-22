@@ -1,6 +1,7 @@
 package service.profile.interfaces;
 
 import presentation.models.ProfileResponse;
+import presentation.models.UpdateUserProfileRequest;
 import repository.entities.UserCredential;
 import repository.entities.UserProfile;
 
@@ -43,4 +44,14 @@ public interface ProfileServiceable {
      * Null is returned if an exception is thrown or method fails to process.
      */
     UserProfile newUserProfile(UserCredential newUserCredential, String email);
+
+    /**
+     * This method is used to update the users profile from the handler level. It is clear in its use for the handler,
+     * and is made up of other methods within the class. Do not use this or edit this for anything other than updating
+     * the profile and getting a response back.
+     * @param updateUserProfileRequest The model mapping the front end request to update a users profile
+     * @param storedUserProfile The stored user profile entity from the database to be updated
+     * @return ProfileResponse as a direct return to a JSON object
+     */
+    ProfileResponse updateProfileWithRequest(UpdateUserProfileRequest updateUserProfileRequest, UserProfile storedUserProfile);
 }

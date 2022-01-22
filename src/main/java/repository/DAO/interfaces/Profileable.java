@@ -1,5 +1,6 @@
 package repository.DAO.interfaces;
 
+import repository.entities.UserCredential;
 import repository.entities.UserProfile;
 
 public interface Profileable {
@@ -11,4 +12,6 @@ public interface Profileable {
     void updateUserProfile(UserProfile profile);
 
     void deleteUserProfile(UserProfile profile);
+
+    UserProfile getUserProfileWithUserCredentials(UserCredential userCredential);
 }

@@ -1,8 +1,8 @@
 package service.login.interfaces;
 
-import presentation.models.LoginRequest;
-import presentation.models.NewUserCredentialsRequest;
+import presentation.models.*;
 import repository.entities.UserCredential;
+import utility.JWTInfo;
 
 public interface LoginServiceable {
 
@@ -13,7 +13,7 @@ public interface LoginServiceable {
      * @return UserCredential An entity associated with the UserCredential database Table.
      * Null is returned if an exception is thrown or method fails to process.
      */
-    UserCredential getUserCredential(LoginRequest loginRequest);
+    UserCredential getUserCredentialFromLogin(LoginRequest loginRequest);
 
     /**
      * Method used to create a new UserCredential row through the conversion of a
@@ -36,4 +36,13 @@ public interface LoginServiceable {
      * Null is returned if an exception is thrown or method fails to process.
      */
     UserCredential newAccount(NewUserCredentialsRequest newUserAccountRequest);
+
+
+    boolean updateUserCredentialUsername(UpdateUsernameRequest updateUserCredentialRequest, JWTInfo parsedJWT);
+
+    boolean resetPassword(ResetPasswordRequest bodyAsClass);
+
+    UserCredential getUserWithUserID(int userId);
+
+    boolean updateUserCredentialPassword(UpdatePasswordRequest updateUserCredentialRequest, JWTInfo parsedJWT);
 }

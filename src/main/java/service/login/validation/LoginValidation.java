@@ -1,4 +1,4 @@
-package service.validation;
+package service.login.validation;
 
 import presentation.models.NewUserCredentialsRequest;
 import service.login.exceptions.InvalidInputException;
@@ -20,7 +20,8 @@ public class LoginValidation {
 
     public static void validateUsername(String username) throws InvalidInputException {
         if(username.contentEquals("")) throw new InvalidInputException("Empty new username input");
-        if(username.length() < 4) throw new InvalidInputException("Too Short new username input");
+        if(username.trim().length() < 4) throw new InvalidInputException("Too Short new username input");
+        if(username.trim().length() > 25) throw new InvalidInputException("Too Long new username input");
     }
 
     public static void validatePassword(String password) throws InvalidInputException {

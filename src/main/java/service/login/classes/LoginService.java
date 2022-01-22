@@ -2,13 +2,16 @@ package service.login.classes;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import presentation.models.LoginRequest;
-import presentation.models.NewUserCredentialsRequest;
+import presentation.models.*;
 import repository.DAO.implementation.UserCredentialsDao;
 import repository.entities.UserCredential;
 import service.login.exceptions.InvalidInputException;
 import service.login.interfaces.LoginServiceable;
-import service.validation.LoginValidation;
+import service.login.validation.LoginValidation;
+import utility.JWTInfo;
+
+import java.nio.charset.StandardCharsets;
+import java.util.Random;
 
 public class LoginService implements LoginServiceable {
     private final Logger iLog = LoggerFactory.getLogger("iLog");
@@ -20,9 +23,9 @@ public class LoginService implements LoginServiceable {
         this.userCredDao = userCredDao;
     }
 
-    public UserCredential getUserCredential(LoginRequest loginRequest) {
+    public UserCredential getUserCredentialFromLogin(LoginRequest loginRequest) {
         dLog.debug("Validating user login attempt: " + loginRequest);
-        return userCredDao.getUser(
+        return userCredDao.getUserWithUsername(
                 new UserCredential(
                         0,
                         loginRequest.getUsername(),
@@ -58,8 +61,61 @@ public class LoginService implements LoginServiceable {
             dLog.error(e.getMessage(), e);
             return -1;
         }
+    }
+
+    @Override
+    public boolean updateUserCredentialUsername(UpdateUsernameRequest updateUserCredentialRequest, JWTInfo parsedJWT) {
+        dLog.debug("Attempting to update User name: " + updateUserCredentialRequest);
+        try{
+            LoginValidation.validateUsername(updateUserCredentialRequest.getUsername());
+            UserCredential storedUser = getUserWithUserID(parsedJWT.getUserId());
+            storedUser.setUserLogin(updateUserCredentialRequest.getUsername());
+            userCredDao.updateUser(storedUser);
+            iLog.info("Updated username, userID: " + parsedJWT.getUserId());
+            return true;
+        } catch (InvalidInputException e) {
+            dLog.error(e.getMessage(), e);
+            return false;
+        }
+    }
+
+    public UserCredential getUserWithUserID(int userId) {
+        dLog.debug("Getting stored UserCredentials with userCredential ID: " + userId);
+        return userCredDao.getUser(new UserCredential(userId, "", ""));
+    }
+
+    @Override
+    public boolean resetPassword(ResetPasswordRequest resetPasswordRequest) {
+        dLog.debug("Attempting to reset UserPassword: " + resetPasswordRequest);
+        try{
+            byte[] array = new byte[7]; // length is bounded by 7
+            new Random().nextBytes(array);
+            String generatedString = new String(array, StandardCharsets.UTF_8);
+            UserCredential storedUserCredential = getUserCredentialFromLogin(new LoginRequest(resetPasswordRequest.getUsername(), ""));
+            storedUserCredential.setUserPass(generatedString);
+            userCredDao.updateUser(storedUserCredential);
+            iLog.info("Reset password for user: " + resetPasswordRequest);
+            return true;
+        }catch (Exception e){
+            dLog.error(e.getMessage(), e);
+            return false;
+        }
 
     }
 
-
+    @Override
+    public boolean updateUserCredentialPassword(UpdatePasswordRequest updateUserCredentialRequest, JWTInfo parsedJWT) {
+        dLog.debug("Attempting to update password: " + updateUserCredentialRequest);
+        try{
+            LoginValidation.validatePassword(updateUserCredentialRequest.getPassword());
+            UserCredential storedUser = getUserWithUserID(parsedJWT.getUserId());
+            storedUser.setUserPass(updateUserCredentialRequest.getPassword());
+            userCredDao.updateUser(storedUser);
+            iLog.info("Updated password, userID: " + parsedJWT.getUserId());
+            return true;
+        } catch (InvalidInputException e) {
+            dLog.error(e.getMessage(), e);
+            return false;
+        }
+    }
 }
