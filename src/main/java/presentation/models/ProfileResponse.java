@@ -8,44 +8,17 @@ public class ProfileResponse {
     private String firstName;
     private String lastName;
     private String email;
-    private String gameUsername;
     private String JWT;
 
-    public ProfileResponse(String username, String firstName, String lastName, String email, String gameUsername, String JWT) {
+    public ProfileResponse(String username, String firstName, String lastName, String email, String JWT) {
         this.username = username;
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
-        this.gameUsername = gameUsername;
         this.JWT = JWT;
     }
 
     public ProfileResponse() {
-    }
-
-    @Override
-    public String toString() {
-        return "{\"ProfileResponse\":{"
-                + "\"username\":\"" + username + "\""
-                + ", \"firstName\":\"" + firstName + "\""
-                + ", \"lastName\":\"" + lastName + "\""
-                + ", \"email\":\"" + email + "\""
-                + ", \"gameUsername\":\"" + gameUsername + "\""
-                + ", \"JWT\":\"" + JWT + "\""
-                + "}}";
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof ProfileResponse)) return false;
-        ProfileResponse that = (ProfileResponse) o;
-        return Objects.equals(getUsername(), that.getUsername()) && Objects.equals(getFirstName(), that.getFirstName()) && Objects.equals(getLastName(), that.getLastName()) && Objects.equals(getEmail(), that.getEmail()) && Objects.equals(getGameUsername(), that.getGameUsername()) && Objects.equals(getJWT(), that.getJWT());
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(getUsername(), getFirstName(), getLastName(), getEmail(), getGameUsername(), getJWT());
     }
 
     public String getUsername() {
@@ -80,19 +53,35 @@ public class ProfileResponse {
         this.email = email;
     }
 
-    public String getGameUsername() {
-        return gameUsername;
-    }
-
-    public void setGameUsername(String gameUsername) {
-        this.gameUsername = gameUsername;
-    }
-
     public String getJWT() {
         return JWT;
     }
 
     public void setJWT(String JWT) {
         this.JWT = JWT;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof ProfileResponse)) return false;
+        ProfileResponse that = (ProfileResponse) o;
+        return Objects.equals(username, that.username) && Objects.equals(firstName, that.firstName) && Objects.equals(lastName, that.lastName) && Objects.equals(email, that.email) && Objects.equals(JWT, that.JWT);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(username, firstName, lastName, email, JWT);
+    }
+
+    @Override
+    public String toString() {
+        return "{\"ProfileResponse\":{"
+                + "\"username\":\"" + username + "\""
+                + ", \"firstName\":\"" + firstName + "\""
+                + ", \"lastName\":\"" + lastName + "\""
+                + ", \"email\":\"" + email + "\""
+                + ", \"JWT\":\"" + JWT + "\""
+                + "}}";
     }
 }

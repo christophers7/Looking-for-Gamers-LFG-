@@ -15,12 +15,12 @@ public class JWTUtility {
 
     private static final byte[] secret = Base64.getDecoder().decode("V1FrSlZd1CDC7XBh2f+sJaG6OW5gxC0LlTQestx8/wk");
 
-    public static String generateJWT(UserCredential userCredential) {
+    public static String generateJWT(UserProfile userProfile) {
         return Jwts.builder()
-                .claim("firstName", userCredential.getUserProfile().getFirstName())
-                .claim("lastName", userCredential.getUserProfile().getLastName())
-                .claim("username", userCredential.getUserLogin())
-                .claim("userId", userCredential.getUserID())
+                .claim("firstName", userProfile.getFirstName())
+                .claim("lastName", userProfile.getLastName())
+                .claim("username", userProfile.getUserID().getUserLogin())
+                .claim("userId", userProfile.getUserID().getUserID())
                 .claim("account", true)
                 .signWith(Keys.hmacShaKeyFor(secret))
                 .compact();

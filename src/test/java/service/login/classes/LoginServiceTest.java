@@ -3,10 +3,14 @@ package service.login.classes;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.NullAndEmptySource;
+import org.junit.jupiter.params.provider.ValueSource;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 import presentation.models.LoginRequest;
+import presentation.models.NewUserCredentialsRequest;
 import repository.DAO.implementation.UserCredentialsDao;
 import repository.entities.Games;
 import repository.entities.PublicDetails;
@@ -28,6 +32,10 @@ class LoginServiceTest {
     private UserCredential userCredRequest;
     private UserCredential storedUserCredential;
 
+    private NewUserCredentialsRequest newUserCredentialRequested;
+    private UserCredential newUserCredential;
+    private UserCredential requestedUserCredential;
+
     private UserProfile storedUserProfile;
     private PublicDetails storedPublicDetails;
 
@@ -40,11 +48,11 @@ class LoginServiceTest {
     );
 
     userCredRequest = new UserCredential(
-            0, loginRequest.getUsername(), loginRequest.getPassword(), new UserProfile(), new PublicDetails()
+            0, loginRequest.getUsername(), loginRequest.getPassword()
     );
 
     storedUserProfile = new UserProfile(
-            1, "firstName", "lastName", "email"
+            1, storedUserCredential, "firstName", "lastName", "email"
     );
 
     storedPublicDetails = new PublicDetails(
@@ -52,36 +60,72 @@ class LoginServiceTest {
     );
 
     storedUserCredential = new UserCredential(
-            1, loginRequest.getUsername(), loginRequest.getPassword(), storedUserProfile, storedPublicDetails
+            1, loginRequest.getUsername(), loginRequest.getPassword()
+    );
+
+    newUserCredentialRequested = new NewUserCredentialsRequest(
+            "newUser", "newPass", "newEmail@email.com"
+    );
+
+    requestedUserCredential = new UserCredential(
+            0,
+            newUserCredentialRequested.getUsername(),
+            newUserCredentialRequested.getPassword()
+    );
+
+    newUserCredential = new UserCredential(
+            2, newUserCredentialRequested.getUsername(), newUserCredentialRequested.getPassword()
     );
 
     Mockito.when(userCredDao.getUser(userCredRequest)).thenReturn(storedUserCredential);
+    Mockito.when(userCredDao.getUser(new UserCredential(newUserCredential.getUserID(), "", ""))).thenReturn(newUserCredential);
+    Mockito.when(userCredDao.createUser(requestedUserCredential)).thenReturn(2);
 
     loginService = new LoginService(userCredDao);
    }
 
-    @Test
-    void getUserCredentialTest() {
+
+    void getUserCredentialSuccessTest(String input) {
        assertEquals(storedUserCredential, loginService.getUserCredential(loginRequest));
     }
 
-    @Test
-    void invalidUsernameTest() {
-       assertNull(loginService.getUserCredential(new LoginRequest("wrong", "pass")));
+    @ParameterizedTest
+    @NullAndEmptySource
+    @ValueSource(strings = {"   ", "\n", "\t"})
+    void invalidInputsUsernameTest(String input) {
+       assertNull(loginService.getUserCredential(new LoginRequest(input, "pass")));
+    }
+
+    @ParameterizedTest
+    @NullAndEmptySource
+    @ValueSource(strings = {"   ", "\n", "\t"})
+    void invalidInputsPasswordTest(String input) {
+        assertNull(loginService.getUserCredential(new LoginRequest("user", input)));
     }
 
     @Test
-    void invalidPasswordTest() {
-        assertNull(loginService.getUserCredential(new LoginRequest("user", "wrong")));
+    void newUserCredentialTest() {
+       assertEquals(2, loginService.newUserCredential(newUserCredentialRequested));
+    }
+
+    @ParameterizedTest
+    @NullAndEmptySource
+    @ValueSource(strings = {"   ", "\n", "\t"})
+    void invalidUserCredentialReturnNegativeTest(String input){
+        assertEquals(-1, loginService.newUserCredential(new NewUserCredentialsRequest(input, input, input)));
     }
 
     @Test
-    void emptyInputTest() {
-        assertNull(loginService.getUserCredential(new LoginRequest("", "")));
+    void newAccountTest() {
+       assertEquals(newUserCredential, loginService.newAccount(newUserCredentialRequested));
     }
 
-    @Test
-    void emptyConstructorTest() {
-        assertNull(loginService.getUserCredential(new LoginRequest()));
+    @ParameterizedTest
+    @NullAndEmptySource
+    @ValueSource(strings = {"   ", "\n", "\t"})
+    void newAccountNullInvalidTest(String input) {
+        assertNull(loginService.newAccount(new NewUserCredentialsRequest(input, input, input)));
     }
+
+
 }

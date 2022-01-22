@@ -19,7 +19,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 class ProfileServiceTest {
 
     @Mock
-    private UserProfileDao UserProfileDao;
+    private UserProfileDao userProfileDao;
+
     private ProfileService profileService;
 
     //Variables
@@ -30,6 +31,9 @@ class ProfileServiceTest {
 
     private ProfileResponse profileResponse;
 
+    private UserProfile storedNewProfile;
+    private UserCredential storedNewUserCredentials;
+    private String newEmail;
 
     @BeforeAll
     void setUp(){
@@ -43,32 +47,58 @@ class ProfileServiceTest {
         String gamerTag = "gamerTag";
         String JWT = "eyJhbGciOiJIUzI1NiJ9.eyJmaXJzdE5hbWUiOiJmaXJzdE5hbWUiLCJsYXN0TmFtZSI6Imxhc3ROYW1lIiwidXNlcm5hbWUiOiJ1c2VybmFtZSIsInVzZXJJZCI6MSwiYWNjb3VudCI6dHJ1ZX0.OBsS9C--r2fqUGdhoy_yK8ER4WzSX5eUdKJ5is_p7_c";
 
+        int newUserProfileColumnId = 2;
+        newEmail = "newEmail@email.com";
+
+        storedUserCredential = new UserCredential(
+                1, username, password
+        );
+
         storedUserProfile = new UserProfile(
-                1, firstName, lastName, email
+                1, storedUserCredential, firstName, lastName, email
         );
 
         storedPublicDetails = new PublicDetails(
                 1, storedUserCredential, new Games(), gamerTag
         );
 
-        storedUserCredential = new UserCredential(
-                1, username, password, storedUserProfile, storedPublicDetails
-        );
-
         profileResponse = new ProfileResponse(
-                storedUserCredential.getUserLogin(),
-                storedUserCredential.getUserProfile().getFirstName(),
-                storedUserCredential.getUserProfile().getLastName(),
-                storedUserCredential.getUserProfile().getEmail(),
-                storedUserCredential.getPublicDetails().getGamerTag(),
+                storedUserProfile.getUserID().getUserLogin(),
+                storedUserProfile.getFirstName(),
+                storedUserProfile.getLastName(),
+                storedUserProfile.getEmail(),
                 JWT
         );
 
-        profileService = new ProfileService();
+        storedNewUserCredentials = new UserCredential(
+                2, "newUsername", "newPassword"
+        );
+
+        UserProfile userProfileRequest = new UserProfile(
+                0, new UserCredential(storedUserCredential.getUserID(), "", ""), "", "", ""
+        );
+
+        UserProfile userProfileNewRequest = new UserProfile(
+            0, new UserCredential(storedNewUserCredentials.getUserID(), "", ""), "", "", "");
+
+        storedNewProfile = new UserProfile(
+                newUserProfileColumnId, storedNewUserCredentials, "", "", newEmail
+        );
+
+        Mockito.when(userProfileDao.getUserProfile(userProfileRequest)).thenReturn(storedUserProfile);
+        Mockito.when(userProfileDao.createProfile(new UserProfile(0,storedNewUserCredentials, "", "", newEmail))).thenReturn(newUserProfileColumnId);
+        Mockito.when(userProfileDao.getUserProfile(userProfileNewRequest)).thenReturn(storedNewProfile);
+        profileService = new ProfileService(userProfileDao);
     }
 
     @Test
-    void getProfileResponse() {
+    void getProfileResponseTest() {
         assertEquals(profileResponse, profileService.getProfileResponse(storedUserCredential));
     }
+
+    @Test
+    void newUserProfileTest(){
+        assertEquals(storedNewProfile, profileService.newUserProfile(storedNewUserCredentials, newEmail));
+    }
+
 }

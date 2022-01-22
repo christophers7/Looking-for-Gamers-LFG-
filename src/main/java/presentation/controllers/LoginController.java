@@ -19,6 +19,10 @@ public class LoginController {
                     post(loginHandler.checkLogin);
                 });
 
+                path("/new", () -> {
+                   post(loginHandler.newLogin);
+                });
+
             });
 
 

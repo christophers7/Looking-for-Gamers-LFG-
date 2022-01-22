@@ -5,6 +5,7 @@ import org.slf4j.LoggerFactory;
 import presentation.models.ProfileResponse;
 import repository.DAO.implementation.UserProfileDao;
 import repository.entities.UserCredential;
+import repository.entities.UserProfile;
 import service.profile.interfaces.ProfileServiceable;
 import utility.JWTUtility;
 
@@ -13,27 +14,47 @@ public class ProfileService implements ProfileServiceable {
     private final Logger iLog = LoggerFactory.getLogger("iLog");
     private final Logger dLog = LoggerFactory.getLogger("dLog");
 
-    private UserProfileDao userProfDao;
+    private final UserProfileDao userProfDao;
 
-    public ProfileService() {
-        this.userProfDao = new UserProfileDao();
+    public ProfileService(UserProfileDao userProfDao) {
+        this.userProfDao = userProfDao;
     }
 
     @Override
     public ProfileResponse getProfileResponse(UserCredential userCredential) {
         dLog.debug("Getting Profile Response with User Credentials: " + userCredential);
-        return convertUserCredentialToProfileResponse(userCredential);
+        return convertUserProfileToProfileResponse(getUserProfile(userCredential.getUserID()));
     }
 
-    public ProfileResponse convertUserCredentialToProfileResponse(UserCredential userCredential) {
-        String JWT = JWTUtility.generateJWT(userCredential);
+    public UserProfile getUserProfile(int userId) {
+        dLog.debug("Getting User Profile: " + userId);
+        return userProfDao.getUserProfile(
+                new UserProfile(
+                        0,
+                        new UserCredential(userId, "", ""),
+                        "",
+                        "",
+                        ""
+                )
+        );
+    }
+
+    @Override
+    public ProfileResponse convertUserProfileToProfileResponse(UserProfile userProfile) {
+        dLog.debug("Converting User profile into profile Response: " + userProfile);
+        String JWT = JWTUtility.generateJWT(userProfile);
         return new ProfileResponse(
-                userCredential.getUserLogin(),
-                userCredential.getUserProfile().getFirstName(),
-                userCredential.getUserProfile().getLastName(),
-                userCredential.getUserProfile().getEmail(),
-                userCredential.getPublicDetails().getGamerTag(),
+                userProfile.getUserID().getUserLogin(),
+                userProfile.getFirstName(),
+                userProfile.getLastName(),
+                userProfile.getEmail(),
                 JWT
         );
+    }
+
+    @Override
+    public UserProfile newUserProfile(UserCredential newUserCredential, String email) {
+        dLog.debug("Creating new UserProfile: " + newUserCredential + " " + email);
+        return getUserProfile(userProfDao.createProfile(new UserProfile(0,newUserCredential,"","",email)));
     }
 }

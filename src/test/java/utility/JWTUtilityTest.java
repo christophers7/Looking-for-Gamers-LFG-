@@ -3,6 +3,8 @@ package utility;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 import repository.entities.PublicDetails;
 import repository.entities.UserCredential;
 import repository.entities.UserProfile;
@@ -13,6 +15,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class JWTUtilityTest {
 
     private UserCredential mockCredential;
+    private UserProfile mockProfile;
     private JWTInfo jsonToken;
     private String JWT;
 
@@ -21,12 +24,15 @@ class JWTUtilityTest {
         mockCredential = new UserCredential(
                 1,
                 "username",
-                "password",
-                new UserProfile(
-                        1,
-                        "firstName",
-                        "lastName",
-                        "email"), new PublicDetails()
+                "password"
+        );
+
+        mockProfile = new UserProfile(
+                1,
+                mockCredential,
+                "firstName",
+                "lastName",
+                "email"
         );
 
         jsonToken = new JWTInfo(
@@ -41,7 +47,7 @@ class JWTUtilityTest {
 
     @Test
     void generateJWTTest() {
-        assertEquals(JWT, JWTUtility.generateJWT(mockCredential));
+        assertEquals(JWT, JWTUtility.generateJWT(mockProfile));
     }
 
     @Test
@@ -49,13 +55,8 @@ class JWTUtilityTest {
         assertEquals(jsonToken, JWTUtility.verifyUser(JWT));
     }
 
-    @Test
-    void malformedJWTVerifyTest(){
-        assertNull(JWTUtility.verifyUser("lol"));
-    }
-
-    @Test
-    void invalidJWTVerifyTest(){
-        assertNull(JWTUtility.verifyUser("lol.ol.lol"));
-    }
-}
+    @ParameterizedTest
+    @ValueSource(strings = {"lol", "lol.sdf.sdf", "asdfasdfga3.aw34rtaw3e3.arsdavw34", "eyJhbGciOiJIUzI1NiJ9.eyJmaXJzdE5hbWUiOiJmaXJzdE5hbWUiLCJsYXN0TmFtZSI6Imxhc3ROYW1lIiwidXNlcm5hbWUiOiJ1c2VybmFtZSIsInVzZXJJZCI6MSwiYWNjb3VudCI6ZmFsc2V9.I3bRmKW07BDA3ix307Y5Mhiu_45kLo4DlDRvRtRzxU8"})
+    void InvalidJWTVerifyTest(String input){
+        assertNull(JWTUtility.verifyUser(input));
+    }};

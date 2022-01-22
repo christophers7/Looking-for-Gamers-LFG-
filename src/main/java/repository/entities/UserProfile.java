@@ -1,14 +1,20 @@
 package repository.entities;
 
 import javax.persistence.*;
+import java.util.Objects;
 
 @Entity
 @Table(schema = "project_two",name = "lfg_user_profile")
 public class UserProfile {
     @Id
-    @Column(name = "profileID")
-    @GeneratedValue(generator = "auto_increment", strategy = GenerationType.IDENTITY)
-    private int profileID;
+    @Column(name ="columnID")
+    @GeneratedValue(generator = "auto_increment",strategy = GenerationType.IDENTITY)
+    @SequenceGenerator(allocationSize = 1,name = "lfg_user_profile_columnid_seq",
+            sequenceName = "lfg_user_profile_columnid_seq")
+    private int columnID;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "publicID",referencedColumnName = "userID")
+    private UserCredential userID;
     @Column
     private String firstName;
     @Column
@@ -19,51 +25,28 @@ public class UserProfile {
     public UserProfile() {
     }
 
-    public UserProfile(int profileID, String firstName, String lastName, String email) {
-        this.profileID = profileID;
+    public UserProfile(int columnID, UserCredential userID, String firstName, String lastName, String email) {
+        this.columnID = columnID;
+        this.userID = userID;
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        UserProfile that = (UserProfile) o;
-
-        if (profileID != that.profileID) return false;
-        if (firstName != null ? !firstName.equals(that.firstName) : that.firstName != null) return false;
-        if (lastName != null ? !lastName.equals(that.lastName) : that.lastName != null) return false;
-        return email != null ? email.equals(that.email) : that.email == null;
+    public int getColumnID() {
+        return columnID;
     }
 
-    @Override
-    public int hashCode() {
-        int result = profileID;
-        result = 31 * result + (firstName != null ? firstName.hashCode() : 0);
-        result = 31 * result + (lastName != null ? lastName.hashCode() : 0);
-        result = 31 * result + (email != null ? email.hashCode() : 0);
-        return result;
+    public void setColumnID(int columnID) {
+        this.columnID = columnID;
     }
 
-    @Override
-    public String toString() {
-        return "UserProfile{" +
-                "profileID=" + profileID +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", email='" + email + '\'' +
-                '}';
+    public UserCredential getUserID() {
+        return userID;
     }
 
-    public int getProfileID() {
-        return profileID;
-    }
-
-    public void setProfileID(int profileID) {
-        this.profileID = profileID;
+    public void setUserID(UserCredential userID) {
+        this.userID = userID;
     }
 
     public String getFirstName() {
@@ -88,5 +71,29 @@ public class UserProfile {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof UserProfile)) return false;
+        UserProfile that = (UserProfile) o;
+        return columnID == that.columnID && Objects.equals(userID, that.userID) && Objects.equals(firstName, that.firstName) && Objects.equals(lastName, that.lastName) && Objects.equals(email, that.email);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(columnID, userID, firstName, lastName, email);
+    }
+
+    @Override
+    public String toString() {
+        return "{\"UserProfile\":{"
+                + "\"columnID\":\"" + columnID + "\""
+                + ", \"userID\":" + userID
+                + ", \"firstName\":\"" + firstName + "\""
+                + ", \"lastName\":\"" + lastName + "\""
+                + ", \"email\":\"" + email + "\""
+                + "}}";
     }
 }
