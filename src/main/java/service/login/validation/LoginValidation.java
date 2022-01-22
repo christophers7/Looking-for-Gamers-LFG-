@@ -27,6 +27,7 @@ public class LoginValidation {
     public static void validatePassword(String password) throws InvalidInputException {
         if(password.trim().contentEquals("")) throw new InvalidInputException("Empty new Password input");
         if(password.length() < 4) throw new InvalidInputException("Too Short new Password input");
+        if(password.trim().length() > 25) throw new InvalidInputException("Too Long new Password input");
     }
 
     public static void validateEmail(String email) throws InvalidInputException {
