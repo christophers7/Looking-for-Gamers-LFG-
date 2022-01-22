@@ -1,6 +1,5 @@
 package repository.DAO.interfaces;
 
-import repository.entities.UserCredential;
 import repository.entities.UserProfile;
 
 public interface Profileable {
