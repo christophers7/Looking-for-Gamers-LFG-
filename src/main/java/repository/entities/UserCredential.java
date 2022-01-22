@@ -66,4 +66,44 @@ private int userID;
                 ", publicDetails=" + publicDetails +
                 '}';
     }
+
+    public int getUserID() {
+        return userID;
+    }
+
+    public void setUserID(int userID) {
+        this.userID = userID;
+    }
+
+    public String getUserLogin() {
+        return userLogin;
+    }
+
+    public void setUserLogin(String userLogin) {
+        this.userLogin = userLogin;
+    }
+
+    public String getUserPass() {
+        return userPass;
+    }
+
+    public void setUserPass(String userPass) {
+        this.userPass = userPass;
+    }
+
+    public UserProfile getUserProfile() {
+        return userProfile;
+    }
+
+    public void setUserProfile(UserProfile userProfile) {
+        this.userProfile = userProfile;
+    }
+
+    public PublicDetails getPublicDetails() {
+        return publicDetails;
+    }
+
+    public void setPublicDetails(PublicDetails publicDetails) {
+        this.publicDetails = publicDetails;
+    }
 }

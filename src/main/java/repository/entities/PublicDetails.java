@@ -61,4 +61,36 @@ public class PublicDetails {
                 ", gamerTag='" + gamerTag + '\'' +
                 '}';
     }
+
+    public int getColumnID() {
+        return columnID;
+    }
+
+    public void setColumnID(int columnID) {
+        this.columnID = columnID;
+    }
+
+    public UserCredential getUserID() {
+        return userID;
+    }
+
+    public void setUserID(UserCredential userID) {
+        this.userID = userID;
+    }
+
+    public Games getGameID() {
+        return gameID;
+    }
+
+    public void setGameID(Games gameID) {
+        this.gameID = gameID;
+    }
+
+    public String getGamerTag() {
+        return gamerTag;
+    }
+
+    public void setGamerTag(String gamerTag) {
+        this.gamerTag = gamerTag;
+    }
 }

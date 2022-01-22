@@ -45,4 +45,20 @@ public class Socials {
                 ", platform='" + platform + '\'' +
                 '}';
     }
+
+    public int getSocialID() {
+        return socialID;
+    }
+
+    public void setSocialID(int socialID) {
+        this.socialID = socialID;
+    }
+
+    public String getPlatform() {
+        return platform;
+    }
+
+    public void setPlatform(String platform) {
+        this.platform = platform;
+    }
 }
