@@ -12,7 +12,7 @@ public class PublicDetails {
             sequenceName = "lfg_public_details_columnid_seq")
     private int columnID;
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "userID",referencedColumnName = "userID")
+    @JoinColumn(name = "columnID",referencedColumnName = "userID")
     private UserCredential userID;
     @OneToOne
     @JoinColumn(name = "gameID", referencedColumnName = "gameID")
