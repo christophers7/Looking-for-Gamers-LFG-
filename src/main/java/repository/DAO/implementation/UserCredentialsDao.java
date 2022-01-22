@@ -23,7 +23,7 @@ public class UserCredentialsDao implements Loginable {
         try{
         	session = HibernateSessionFactory.getSession();
         	transaction = session.beginTransaction();
-        	session.save(userCredential);
+        	userID = (Integer) session.save(userCredential);
         	transaction.commit();
         }catch(HibernateException e){
         	 if(transaction != null)
@@ -49,7 +49,6 @@ public class UserCredentialsDao implements Loginable {
 			userCredential = session.get(UserCredential.class, userCredential.getUserID());
 			transaction.commit();
 		}catch(HibernateException e) {
-			
 			 if(transaction != null)
                  if(!transaction.isActive()) transaction.rollback();
              dLog.error(e.getMessage(), e);
@@ -70,7 +69,6 @@ public class UserCredentialsDao implements Loginable {
 			session.update(userCredential);
 			transaction.commit();
 		}catch(HibernateException e) {
-			
 			if(transaction != null)
                 if(!transaction.isActive()) transaction.rollback();
             dLog.error(e.getMessage(), e);

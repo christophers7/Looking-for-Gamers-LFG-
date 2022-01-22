@@ -86,21 +86,21 @@ class LoginServiceTest {
 
 
     void getUserCredentialSuccessTest(String input) {
-       assertEquals(storedUserCredential, loginService.getUserCredential(loginRequest));
+       assertEquals(storedUserCredential, loginService.getUserCredentialFromLogin(loginRequest));
     }
 
     @ParameterizedTest
     @NullAndEmptySource
     @ValueSource(strings = {"   ", "\n", "\t"})
     void invalidInputsUsernameTest(String input) {
-       assertNull(loginService.getUserCredential(new LoginRequest(input, "pass")));
+       assertNull(loginService.getUserCredentialFromLogin(new LoginRequest(input, "pass")));
     }
 
     @ParameterizedTest
     @NullAndEmptySource
     @ValueSource(strings = {"   ", "\n", "\t"})
     void invalidInputsPasswordTest(String input) {
-        assertNull(loginService.getUserCredential(new LoginRequest("user", input)));
+        assertNull(loginService.getUserCredentialFromLogin(new LoginRequest("user", input)));
     }
 
     @Test

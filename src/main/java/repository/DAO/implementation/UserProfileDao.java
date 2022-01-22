@@ -93,4 +93,9 @@ public class UserProfileDao implements Profileable {
             dLog.error(e.getMessage(), e);
        }
     }
+
+    @Override
+    public UserProfile getUserProfileWithUserCredentials(UserCredential userCredential) {
+        return null;
+    }
 }

@@ -3,19 +3,19 @@ package presentation.handlers;
 import io.javalin.http.Handler;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import presentation.models.LoginRequest;
-import presentation.models.NewUserCredentialsRequest;
+import presentation.models.*;
 import repository.DAO.implementation.UserCredentialsDao;
 import repository.DAO.implementation.UserProfileDao;
 import repository.entities.UserCredential;
 import service.login.classes.LoginService;
 import service.profile.classes.ProfileService;
+import utility.JWTInfo;
+import utility.JWTUtility;
 
 public class LoginHandler {
 
     private final Logger iLog = LoggerFactory.getLogger("iLog");
     private final Logger dLog = LoggerFactory.getLogger("dLog");
-
 
     private LoginService loginService;
     private ProfileService profileService;
@@ -29,7 +29,7 @@ public class LoginHandler {
             dLog.debug("Checking user login: " + ctx.body());
             try{
                 LoginRequest loginRequest = ctx.bodyAsClass(LoginRequest.class);
-                ctx.json(profileService.getProfileResponse(loginService.getUserCredential(loginRequest)));
+                ctx.json(profileService.getProfileResponse(loginService.getUserCredentialFromLogin(loginRequest)));
             }catch(Exception e){
                 dLog.error(e.getMessage(), e);
                 ctx.status(406);
@@ -37,7 +37,7 @@ public class LoginHandler {
     };
 
     public Handler newLogin = ctx -> {
-        dLog.debug("Creating new user login: " + ctx.body());
+        dLog.debug("Attempting to create a new user login: " + ctx.body());
         try{
             NewUserCredentialsRequest newUser = ctx.bodyAsClass(NewUserCredentialsRequest.class);
             UserCredential userCredential = loginService.newAccount(newUser);
@@ -50,7 +50,48 @@ public class LoginHandler {
                 else ctx.status(406);
         }catch(Exception e){
             dLog.error(e.getMessage(), e);
-            ctx.status(406);
+        }
+    };
+
+    public Handler updateUsername = ctx -> {
+        dLog.debug("Attempting to update user login: " + ctx.body());
+        try{
+            JWTInfo parsedJWT = JWTUtility.verifyUser(ctx.header("Authorization"));
+            if(parsedJWT == null) {
+                dLog.debug("User not validated with JWT Token");
+                ctx.status(403);
+                return;
+            }
+            ctx.json(loginService.updateUserCredentialUsername(ctx.bodyAsClass(UpdateUsernameRequest.class), parsedJWT));
+            ctx.status(205);
+        }catch(Exception e){
+            dLog.error(e.getMessage(), e);
+        }
+    };
+
+    public Handler resetPassword = ctx -> {
+        dLog.debug("Attempting to reset password: " + ctx.body());
+        try{
+            ctx.json(loginService.resetPassword(ctx.bodyAsClass(ResetPasswordRequest.class)));
+            ctx.status(205);
+        }catch(Exception e){
+            dLog.error(e.getMessage(), e);
+        }
+    };
+
+    public Handler updatePassword = ctx -> {
+        dLog.debug("Attempting to update password: " + ctx.body());
+        try{
+            JWTInfo parsedJWT = JWTUtility.verifyUser(ctx.header("Authorization"));
+            if(parsedJWT == null) {
+                dLog.debug("User not validated with JWT Token");
+                ctx.status(403);
+                return;
+            }
+            ctx.json(loginService.updateUserCredentialPassword(ctx.bodyAsClass(UpdatePasswordRequest.class), parsedJWT));
+            ctx.status(205);
+        }catch(Exception e){
+            dLog.error(e.getMessage(), e);
         }
     };
 

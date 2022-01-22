@@ -23,6 +23,18 @@ public class LoginController {
                    post(loginHandler.newLogin);
                 });
 
+                path("/update-username", () -> {
+                   patch(loginHandler.updateUsername);
+                });
+
+                path("/update-password", () -> {
+                   patch(loginHandler.updatePassword);
+                });
+
+                path("/reset", () -> {
+                    patch(loginHandler.resetPassword);
+                });
+
             });
 
 

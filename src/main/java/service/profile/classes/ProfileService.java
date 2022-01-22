@@ -3,10 +3,14 @@ package service.profile.classes;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import presentation.models.ProfileResponse;
+import presentation.models.UpdateUserProfileRequest;
 import repository.DAO.implementation.UserProfileDao;
 import repository.entities.UserCredential;
 import repository.entities.UserProfile;
+import service.login.exceptions.InvalidInputException;
 import service.profile.interfaces.ProfileServiceable;
+import service.profile.validation.ProfileValidation;
+import utility.JWTInfo;
 import utility.JWTUtility;
 
 public class ProfileService implements ProfileServiceable {
@@ -23,15 +27,15 @@ public class ProfileService implements ProfileServiceable {
     @Override
     public ProfileResponse getProfileResponse(UserCredential userCredential) {
         dLog.debug("Getting Profile Response with User Credentials: " + userCredential);
-        return convertUserProfileToProfileResponse(getUserProfile(userCredential.getUserID()));
+        return convertUserProfileToProfileResponse(userProfDao.getUserProfileWithUserCredentials(userCredential));
     }
 
-    public UserProfile getUserProfile(int userId) {
-        dLog.debug("Getting User Profile: " + userId);
+    public UserProfile getUserProfile(int columnId) {
+        dLog.debug("Getting User Profile: " + columnId);
         return userProfDao.getUserProfile(
                 new UserProfile(
-                        0,
-                        new UserCredential(userId, "", ""),
+                        columnId,
+                        new UserCredential(),
                         "",
                         "",
                         ""
@@ -56,5 +60,22 @@ public class ProfileService implements ProfileServiceable {
     public UserProfile newUserProfile(UserCredential newUserCredential, String email) {
         dLog.debug("Creating new UserProfile: " + newUserCredential + " " + email);
         return getUserProfile(userProfDao.createProfile(new UserProfile(0,newUserCredential,"","",email)));
+    }
+
+    @Override
+    public ProfileResponse updateProfileWithRequest(UpdateUserProfileRequest updateUserProfileRequest, UserProfile storedUserProfile) {
+        dLog.debug("Updating user profile with Request: " + updateUserProfileRequest + "\nStored Profile: " + storedUserProfile);
+        try {
+            ProfileValidation.validateUpdateProfile(updateUserProfileRequest);
+            storedUserProfile.setFirstName(updateUserProfileRequest.getFirstName());
+            storedUserProfile.setLastName(updateUserProfileRequest.getLastName());
+            storedUserProfile.setEmail(updateUserProfileRequest.getEmail());
+            userProfDao.updateUserProfile(storedUserProfile);
+            return convertUserProfileToProfileResponse(userProfDao.getUserProfile(storedUserProfile));
+        } catch (InvalidInputException e) {
+            dLog.debug("Invalid Input for Updating User Profile: " + updateUserProfileRequest);
+            dLog.error(e.getMessage(), e);
+            return null;
+        }
     }
 }
