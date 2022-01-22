@@ -95,4 +95,9 @@ public class UserCredentialsDao implements Loginable {
        }
 		
     }
+
+    @Override
+    public UserCredential getUserWithUsername(UserCredential userCredential) {
+        return null;
+    }
 }
