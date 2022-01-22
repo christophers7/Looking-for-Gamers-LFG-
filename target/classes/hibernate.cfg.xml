@@ -8,9 +8,9 @@
         <property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
         <property name="hibernate.dialect">org.hibernate.dialect.PostgresPlusDialect</property>
 
-        <property name="hibernate.connection.url"></property>
-        <property name="hibernate.connection.username"></property>
-        <property name="hibernate.connection.password"></property>
+        <property name="hibernate.connection.url"/>
+        <property name="hibernate.connection.username"/>
+        <property name="hibernate.connection.password"/>
 
         <property name="show_sql">true</property>
         <property name="hibernate.connection.pool_size">5</property>
@@ -18,12 +18,11 @@
 
         <property name="hibernate.hbm2ddl.auto">validate</property>
 
-        <mapping class="com.revature.repository.DTO.RequestTypeEntity"/>
-        <mapping class="com.revature.repository.DTO.EmployeeRoleEntity"/>
-        <mapping class="com.revature.repository.DTO.EmployeeAccountEntity"/>
-        <mapping class="com.revature.repository.DTO.LoginInfoEntity"/>
-        <mapping class="com.revature.repository.DTO.PendingRequestEntity"/>
-        <mapping class="com.revature.repository.DTO.CompletedRequestEntity"/>
+        <mapping class="repository.entities.UserCredential"/>
+        <mapping class="repository.entities.UserProfile"/>
+        <mapping class="repository.entities.Socials"/>
+        <mapping class="repository.entities.PublicDetails"/>
+        <mapping class="repository.entities.Games"/>
 
     </session-factory>
 </hibernate-configuration>
