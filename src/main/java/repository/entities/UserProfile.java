@@ -14,7 +14,7 @@ public class UserProfile {
     private int columnID;
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "userID",referencedColumnName = "userID")
-    private UserCredential userID;
+    private UserCredential userCredential;
     @Column
     private String firstName;
     @Column
@@ -25,9 +25,9 @@ public class UserProfile {
     public UserProfile() {
     }
 
-    public UserProfile(int columnID, UserCredential userID, String firstName, String lastName, String email) {
+    public UserProfile(int columnID, UserCredential userCredential, String firstName, String lastName, String email) {
         this.columnID = columnID;
-        this.userID = userID;
+        this.userCredential = userCredential;
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
@@ -41,12 +41,12 @@ public class UserProfile {
         this.columnID = columnID;
     }
 
-    public UserCredential getUserID() {
-        return userID;
+    public UserCredential getUserCredential() {
+        return userCredential;
     }
 
-    public void setUserID(UserCredential userID) {
-        this.userID = userID;
+    public void setUserCredential(UserCredential userCredential) {
+        this.userCredential = userCredential;
     }
 
     public String getFirstName() {
@@ -78,19 +78,19 @@ public class UserProfile {
         if (this == o) return true;
         if (!(o instanceof UserProfile)) return false;
         UserProfile that = (UserProfile) o;
-        return columnID == that.columnID && Objects.equals(userID, that.userID) && Objects.equals(firstName, that.firstName) && Objects.equals(lastName, that.lastName) && Objects.equals(email, that.email);
+        return columnID == that.columnID && Objects.equals(userCredential, that.userCredential) && Objects.equals(firstName, that.firstName) && Objects.equals(lastName, that.lastName) && Objects.equals(email, that.email);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(columnID, userID, firstName, lastName, email);
+        return Objects.hash(columnID, userCredential, firstName, lastName, email);
     }
 
     @Override
     public String toString() {
         return "{\"UserProfile\":{"
                 + "\"columnID\":\"" + columnID + "\""
-                + ", \"userID\":" + userID
+                + ", \"userID\":" + userCredential
                 + ", \"firstName\":\"" + firstName + "\""
                 + ", \"lastName\":\"" + lastName + "\""
                 + ", \"email\":\"" + email + "\""

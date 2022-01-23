@@ -10,7 +10,6 @@ import repository.entities.UserProfile;
 import service.login.exceptions.InvalidInputException;
 import service.profile.interfaces.ProfileServiceable;
 import service.profile.validation.ProfileValidation;
-import utility.JWTInfo;
 import utility.JWTUtility;
 
 public class ProfileService implements ProfileServiceable {
@@ -48,7 +47,7 @@ public class ProfileService implements ProfileServiceable {
         dLog.debug("Converting User profile into profile Response: " + userProfile);
         String JWT = JWTUtility.generateJWT(userProfile);
         return new ProfileResponse(
-                userProfile.getUserID().getUserLogin(),
+                userProfile.getUserCredential().getUserLogin(),
                 userProfile.getFirstName(),
                 userProfile.getLastName(),
                 userProfile.getEmail(),
