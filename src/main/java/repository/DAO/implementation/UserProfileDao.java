@@ -47,7 +47,7 @@ public class UserProfileDao implements Profileable {
 
     @Override
     public UserProfile getUserProfile(UserProfile profile) {
-    	
+    	dLog.debug("Attempting to Retrieve User in Database: " + profile);
     	Session session = null;
 		Transaction transaction = null;
 		try {
@@ -66,7 +66,7 @@ public class UserProfileDao implements Profileable {
 
     @Override
     public void updateUserProfile(UserProfile profile) {
-
+    	dLog.debug("Attempting to Update User in Database: " + profile);
     	Session session = null;
 		Transaction transaction = null;
 		
@@ -84,7 +84,7 @@ public class UserProfileDao implements Profileable {
 
     @Override
     public void deleteUserProfile(UserProfile profile) {
-    	
+    	dLog.debug("Attemtping to delete User in Database: " + profile);
     	Session session = null;
 		Transaction transaction = null;
 		

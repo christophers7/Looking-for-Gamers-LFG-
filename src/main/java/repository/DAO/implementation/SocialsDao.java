@@ -17,6 +17,7 @@ public class SocialsDao implements Sociable{
     
 	@Override
 	public Socials findPlatform(Socials platform) {
+		dLog.debug("Searching for Platforms: " + platform);
 		Session session = null;
 		Transaction transaction = null;
 		try {
