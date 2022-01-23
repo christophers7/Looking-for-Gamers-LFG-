@@ -1,8 +1,13 @@
 package repository.DAO.implementation;
 
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
+
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.query.Query;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import repository.DAO.interfaces.Profileable;
@@ -79,6 +84,7 @@ public class UserProfileDao implements Profileable {
 
     @Override
     public void deleteUserProfile(UserProfile profile) {
+    	
     	Session session = null;
 		Transaction transaction = null;
 		
@@ -96,6 +102,26 @@ public class UserProfileDao implements Profileable {
 
     @Override
     public UserProfile getUserProfileWithUserCredentials(UserCredential userCredential) {
-        return null;
+    	dLog.debug("Searching for Profile in Database: " + userCredential);
+    	UserProfile profile = null;
+    	Session session = null;
+		Transaction transaction = null;
+		try {
+			session = HibernateSessionFactory.getSession();
+			transaction = session.beginTransaction();
+			CriteriaBuilder cb = session.getCriteriaBuilder();
+			CriteriaQuery<UserProfile> cq = cb.createQuery(UserProfile.class);
+			Root<UserProfile> root = cq.from(UserProfile.class);
+			cq.select(root).where(cb.equal(root.get("Username"), userCredential.getUserID()));
+			Query<UserProfile> query = session.createQuery(cq);
+			profile = query.getSingleResult();
+			transaction.commit();
+    	
+    }catch(HibernateException e) {
+		if(transaction != null)
+            if(!transaction.isActive()) transaction.rollback();
+        dLog.error(e.getMessage(), e);
+	} 
+		return profile;
     }
 }
