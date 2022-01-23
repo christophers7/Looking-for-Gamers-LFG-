@@ -398,3 +398,22 @@ Caused by: org.hibernate.QueryException: could not resolve property: userID of: 
 21:24:28.673 [JettyServerThreadPool-28] DEBUG dLog - Getting Profile Response with User Credentials: {"UserCredential":{"userID":"1", "userLogin":"sweatyboi", "userPass":"password1"}}
 21:24:28.673 [JettyServerThreadPool-28] DEBUG dLog - Searching for Profile in Database: {"UserCredential":{"userID":"1", "userLogin":"sweatyboi", "userPass":"password1"}}
 21:24:28.785 [JettyServerThreadPool-28] DEBUG dLog - Converting User profile into profile Response: {"UserProfile":{"columnID":"2", "userID":{"UserCredential":{"userID":"1", "userLogin":"sweatyboi", "userPass":"password1"}}, "firstName":"Jon", "lastName":"Jones", "email":"bestp4p@gmail.com"}}
+21:15:54.605 [JettyServerThreadPool-40] DEBUG dLog - Checking user login: {
+    "username":"sweatyboi",
+    "password":"password1"
+}
+21:15:54.870 [JettyServerThreadPool-40] DEBUG dLog - Validating user login attempt: {"LoginRequest":{"username":"sweatyboi", "password":"password1"}}
+21:15:54.870 [JettyServerThreadPool-40] DEBUG dLog - Searching for User in Database: {"UserCredential":{"userID":"0", "userLogin":"sweatyboi", "userPass":"password1"}}
+21:15:55.108 [JettyServerThreadPool-40] DEBUG dLog - Getting Profile Response with User Credentials: {"UserCredential":{"userID":"1", "userLogin":"sweatyboi", "userPass":"password1"}}
+21:15:55.108 [JettyServerThreadPool-40] DEBUG dLog - Searching for Profile in Database: {"UserCredential":{"userID":"1", "userLogin":"sweatyboi", "userPass":"password1"}}
+21:15:55.241 [JettyServerThreadPool-40] DEBUG dLog - Converting User profile into profile Response: {"UserProfile":{"columnID":"1", "userID":{"UserCredential":{"userID":"1", "userLogin":"sweatyboi", "userPass":"password1"}}, "firstName":"Jon", "lastName":"Jones", "email":"bestp4p@gmail.com"}}
+22:08:47.113 [JettyServerThreadPool-40] DEBUG dLog - Attempting to get user profile: 
+22:08:47.282 [JettyServerThreadPool-40] DEBUG dLog - User not validated with JWT Token
+22:09:27.666 [JettyServerThreadPool-25] DEBUG dLog - Attempting to get user profile: 
+22:09:27.670 [JettyServerThreadPool-25] DEBUG dLog - User not validated with JWT Token
+22:10:05.705 [JettyServerThreadPool-27] DEBUG dLog - Attempting to get user profile: 
+22:10:05.707 [JettyServerThreadPool-27] DEBUG dLog - User not validated with JWT Token
+22:10:57.183 [JettyServerThreadPool-21] DEBUG dLog - Attempting to get user profile: 
+22:10:57.185 [JettyServerThreadPool-21] DEBUG dLog - User not validated with JWT Token
+22:17:05.175 [JettyServerThreadPool-40] DEBUG dLog - Attempting to get user profile: 
+22:17:05.452 [JettyServerThreadPool-40] DEBUG dLog - Getting User Profile: 1

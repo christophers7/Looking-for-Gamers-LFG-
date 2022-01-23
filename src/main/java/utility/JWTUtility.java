@@ -26,11 +26,12 @@ public class JWTUtility {
         ObjectMapper objectMapper = new ObjectMapper();
         Jws<Claims> jws;
         try{
+            String updateToken = token.replace("Bearer ", "");
              jws = Jwts.parserBuilder()
                      .require("account", true)
                     .setSigningKey(Keys.hmacShaKeyFor(secret))
                     .build()
-                    .parseClaimsJws(token);
+                    .parseClaimsJws(updateToken);
             return objectMapper.convertValue(jws.getBody(), JWTInfo.class);
         }catch(JwtException e){
             e.printStackTrace();
