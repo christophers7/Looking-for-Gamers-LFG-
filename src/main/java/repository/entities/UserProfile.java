@@ -13,7 +13,7 @@ public class UserProfile {
             sequenceName = "lfg_user_profile_columnid_seq")
     private int columnID;
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "columnID",referencedColumnName = "userID")
+    @JoinColumn(name = "userID",referencedColumnName = "userID")
     private UserCredential userID;
     @Column
     private String firstName;
