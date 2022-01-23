@@ -1,8 +1,13 @@
 package repository.DAO.implementation;
 
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
+
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.query.Query;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import repository.DAO.interfaces.Loginable;
@@ -40,7 +45,7 @@ public class UserCredentialsDao implements Loginable {
 
     @Override
     public UserCredential getUser(UserCredential userCredential) {
-    	
+    	dLog.debug("Getting User in Database: " + userCredential);
     	Session session = null;
 		Transaction transaction = null;
 		try {
@@ -59,7 +64,7 @@ public class UserCredentialsDao implements Loginable {
 
     @Override
     public void updateUser(UserCredential userCredential) {
-    	
+    	dLog.debug("Updating User in Database: " + userCredential);
     	Session session = null;
 		Transaction transaction = null;
 		
@@ -79,7 +84,7 @@ public class UserCredentialsDao implements Loginable {
 
     @Override
     public void deleteUser(UserCredential userCredential) {
-
+    	dLog.debug("Deleting User from Database: " + userCredential);
     	Session session = null;
 		Transaction transaction = null;
 		
@@ -98,6 +103,26 @@ public class UserCredentialsDao implements Loginable {
 
     @Override
     public UserCredential getUserWithUsername(UserCredential userCredential) {
-        return null;
+    	dLog.debug("Searching for User in Database: " + userCredential);
+    	UserCredential username = null;
+    	Session session = null;
+		Transaction transaction = null;
+		try {
+			session = HibernateSessionFactory.getSession();
+			transaction = session.beginTransaction();
+			CriteriaBuilder cb = session.getCriteriaBuilder();
+			CriteriaQuery<UserCredential> cq = cb.createQuery(UserCredential.class);
+			Root<UserCredential> root = cq.from(UserCredential.class);
+			cq.select(root).where(cb.equal(root.get("Username"), userCredential.getUserLogin()));
+			Query<UserCredential> query = session.createQuery(cq);
+			userCredential = query.getSingleResult();
+			transaction.commit();
+    	
+    }catch(HibernateException e) {
+		if(transaction != null)
+            if(!transaction.isActive()) transaction.rollback();
+        dLog.error(e.getMessage(), e);
+	} 
+		return username;
     }
 }
