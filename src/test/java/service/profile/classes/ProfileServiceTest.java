@@ -16,7 +16,6 @@ import repository.entities.Games;
 import repository.entities.PublicDetails;
 import repository.entities.UserCredential;
 import repository.entities.UserProfile;
-import service.login.exceptions.InvalidInputException;
 import utility.JWTInfo;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -79,7 +78,7 @@ class ProfileServiceTest {
         );
 
         profileResponse = new ProfileResponse(
-                storedUserProfile.getUserID().getUserLogin(),
+                storedUserProfile.getUserCredential().getUserLogin(),
                 storedUserProfile.getFirstName(),
                 storedUserProfile.getLastName(),
                 storedUserProfile.getEmail(),
@@ -119,7 +118,7 @@ class ProfileServiceTest {
         );
 
         newProfileResponse = new ProfileResponse(
-                updatedUserProfile.getUserID().getUserLogin(),
+                updatedUserProfile.getUserCredential().getUserLogin(),
                 updatedUserProfile.getFirstName(),
                 updatedUserProfile.getLastName(),
                 updatedUserProfile.getEmail(),

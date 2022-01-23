@@ -1,0 +1,47 @@
+set search_path to project_two;
+
+drop table lfg_user_profile ;
+create table lfg_user_profile(
+columnID serial primary key,
+userID integer unique not null references lfg_user_creds(userID),
+firstName text ,
+lastName text,
+email varchar unique not null
+);
+select * from lfg_user_profile lup ;
+insert into lfg_user_profile values (default, 1, 'Jon','Jones','bestp4p@gmail.com');
+
+drop table lfg_user_creds cascade;
+create table lfg_user_creds (
+userID serial primary key,
+userLogin varchar unique not null,
+userPass varchar not null
+);
+select * from lfg_user_creds luc ;
+insert into lfg_user_creds values (default,'sweatyboi','password1');
+
+drop table lfg_socials cascade;
+create table lfg_socials (
+socialID serial primary key,
+platform varchar unique not null
+);
+insert into lfg values
+select * from lfg_socials ls ;
+
+drop table lfg_games cascade;
+create table lfg_games(
+gameID serial primary key,
+gameTitle varchar unique not null,
+imgLink varchar
+);
+select * from lfg_games lg ;
+
+
+drop table lfg_public_details cascade;
+create table lfg_public_details (
+columnID serial primary key,
+userID integer references lfg_user_creds(userID),
+gameID integer references lfg_games(gameID),
+gamerTag varchar unique not null
+);
+select * from lfg_public_details lpd ;
