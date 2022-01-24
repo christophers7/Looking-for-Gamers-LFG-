@@ -13,7 +13,6 @@ import presentation.models.ProfileResponse;
 import presentation.models.UpdateUserProfileRequest;
 import repository.DAO.implementation.UserProfileDao;
 import repository.entities.Games;
-import repository.entities.PublicDetails;
 import repository.entities.UserCredential;
 import repository.entities.UserProfile;
 import utility.JWTInfo;

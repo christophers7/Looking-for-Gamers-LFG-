@@ -13,7 +13,6 @@ import presentation.models.LoginRequest;
 import presentation.models.NewUserCredentialsRequest;
 import repository.DAO.implementation.UserCredentialsDao;
 import repository.entities.Games;
-import repository.entities.PublicDetails;
 import repository.entities.UserCredential;
 import repository.entities.UserProfile;
 
