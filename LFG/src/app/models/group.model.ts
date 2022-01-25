@@ -5,6 +5,12 @@ export class Group {
     private _groupID: number;
     private _groupMembers: Array<GroupUser>;
 
+    //groupId;
+    //gameId;
+    //max users;
+    //description;
+    //groupMembers:
+
     constructor (groupId: number, groupMemembers: Array<GroupUser>) {
         this._groupID = groupId;
         this._groupMembers = groupMemembers;
