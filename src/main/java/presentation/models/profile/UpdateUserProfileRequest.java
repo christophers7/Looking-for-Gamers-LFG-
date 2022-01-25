@@ -1,4 +1,4 @@
-package presentation.models;
+package presentation.models.profile;
 
 import java.util.Objects;
 

@@ -1,6 +1,6 @@
 package service.profile.validation;
 
-import presentation.models.UpdateUserProfileRequest;
+import presentation.models.profile.UpdateUserProfileRequest;
 import service.login.exceptions.InvalidInputException;
 
 import java.util.regex.Pattern;

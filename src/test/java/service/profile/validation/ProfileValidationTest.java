@@ -4,9 +4,8 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.NullAndEmptySource;
 import org.junit.jupiter.params.provider.ValueSource;
-import presentation.models.UpdateUserProfileRequest;
+import presentation.models.profile.UpdateUserProfileRequest;
 import service.login.exceptions.InvalidInputException;
-import service.login.validation.LoginValidation;
 
 import static org.junit.jupiter.api.Assertions.*;
 

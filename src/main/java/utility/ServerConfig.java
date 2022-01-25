@@ -2,6 +2,7 @@ package utility;
 
 import io.javalin.Javalin;
 import presentation.controllers.LoginController;
+import presentation.controllers.SessionController;
 import presentation.controllers.UserController;
 
 public class ServerConfig {
@@ -18,7 +19,9 @@ public class ServerConfig {
     public static void setEndpoints(Javalin app) {
         LoginController loginController = new LoginController();
         UserController userController = new UserController();
+        SessionController sessionController = new SessionController();
         loginController.setEndpoints(app);
         userController.setEndpoints(app);
+        sessionController.setEndpoints(app);
     }
 }

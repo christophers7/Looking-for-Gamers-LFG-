@@ -1,5 +1,5 @@
 drop table tag_bridge_table;
-drop table lfg_tags;
+drop table lfg_tags cascade;
 drop table lfg_user_profile;
 drop table lfg_group_information cascade;
 drop table lfg_group_sessions cascade;

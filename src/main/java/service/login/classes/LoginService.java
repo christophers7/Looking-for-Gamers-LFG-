@@ -2,7 +2,7 @@ package service.login.classes;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import presentation.models.*;
+import presentation.models.login.*;
 import repository.DAO.implementation.UserCredentialsDao;
 import repository.entities.UserCredential;
 import service.login.exceptions.InvalidInputException;

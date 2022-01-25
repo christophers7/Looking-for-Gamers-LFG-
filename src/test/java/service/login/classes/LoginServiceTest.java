@@ -9,11 +9,9 @@ import org.junit.jupiter.params.provider.ValueSource;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
-import presentation.models.LoginRequest;
-import presentation.models.NewUserCredentialsRequest;
+import presentation.models.login.LoginRequest;
+import presentation.models.login.NewUserCredentialsRequest;
 import repository.DAO.implementation.UserCredentialsDao;
-import repository.entities.Games;
-import repository.entities.Socials;
 import repository.entities.UserCredential;
 import repository.entities.UserProfile;
 

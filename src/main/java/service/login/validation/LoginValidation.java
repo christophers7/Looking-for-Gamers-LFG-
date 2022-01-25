@@ -1,6 +1,6 @@
 package service.login.validation;
 
-import presentation.models.NewUserCredentialsRequest;
+import presentation.models.login.NewUserCredentialsRequest;
 import service.login.exceptions.InvalidInputException;
 
 import java.util.regex.Pattern;

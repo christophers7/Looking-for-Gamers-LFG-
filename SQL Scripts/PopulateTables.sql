@@ -41,3 +41,9 @@ values
 	(4, 2, 'lolGamer4'),
 	(5, 2, 'lolGamer5');
 	
+insert into tag_bridge_table 
+values
+	(1, 3),
+	(2, 1),
+	(2, 4);
+
