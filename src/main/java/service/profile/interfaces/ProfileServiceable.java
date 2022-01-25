@@ -1,7 +1,7 @@
 package service.profile.interfaces;
 
-import presentation.models.ProfileResponse;
-import presentation.models.UpdateUserProfileRequest;
+import presentation.models.profile.ProfileResponse;
+import presentation.models.profile.UpdateUserProfileRequest;
 import repository.entities.UserCredential;
 import repository.entities.UserProfile;
 

@@ -1,6 +1,6 @@
 package service.login.interfaces;
 
-import presentation.models.*;
+import presentation.models.login.*;
 import repository.entities.UserCredential;
 import utility.JWTInfo;
 

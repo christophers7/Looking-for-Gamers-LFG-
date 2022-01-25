@@ -1,6 +1,7 @@
 package repository.entities;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
@@ -15,7 +16,7 @@ public class Tag {
     private String tagValue;
 
     @ManyToMany(mappedBy = "tags")
-    Set<SessionDetails> taggedSession;
+    private Set<SessionDetails> taggedSession = new HashSet<>();
 
     public Tag() {
     }

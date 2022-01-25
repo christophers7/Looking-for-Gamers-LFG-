@@ -1,4 +1,4 @@
-package presentation.models;
+package presentation.models.login;
 
 import java.util.Objects;
 

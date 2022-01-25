@@ -1,6 +1,7 @@
 package repository.entities;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
@@ -26,17 +27,43 @@ public class SessionDetails {
             name = "tag_bridge_table",
             joinColumns = @JoinColumn(name = "groupID"),
             inverseJoinColumns = @JoinColumn(name = "tagID"))
-    Set<Tag> tags;
+    Set<Tag> tags = new HashSet<>();
 
     public SessionDetails() {
     }
 
-    public SessionDetails(int groupId, Games game, int maxUsers, int currentUsers, String description) {
+    public SessionDetails(int groupId, Games game, int maxUsers, int currentUsers, String description, Set<Tag> tags) {
         this.groupId = groupId;
         this.game = game;
         this.maxUsers = maxUsers;
         this.currentUsers = currentUsers;
         this.description = description;
+        this.tags = tags;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof SessionDetails)) return false;
+        SessionDetails that = (SessionDetails) o;
+        return getGroupId() == that.getGroupId() && getMaxUsers() == that.getMaxUsers() && getCurrentUsers() == that.getCurrentUsers() && Objects.equals(getGame(), that.getGame()) && Objects.equals(getDescription(), that.getDescription()) && Objects.equals(getTags(), that.getTags());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getGroupId(), getGame(), getMaxUsers(), getCurrentUsers(), getDescription(), getTags());
+    }
+
+    @Override
+    public String toString() {
+        return "{\"SessionDetails\":{"
+                + "\"groupId\":\"" + groupId + "\""
+                + ", \"game\":" + game
+                + ", \"maxUsers\":\"" + maxUsers + "\""
+                + ", \"currentUsers\":\"" + currentUsers + "\""
+                + ", \"description\":\"" + description + "\""
+                + ", \"tags\":" + tags
+                + "}}";
     }
 
     public int getGroupId() {
@@ -79,27 +106,11 @@ public class SessionDetails {
         this.description = description;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof SessionDetails)) return false;
-        SessionDetails that = (SessionDetails) o;
-        return groupId == that.groupId && maxUsers == that.maxUsers && currentUsers == that.currentUsers && Objects.equals(game, that.game) && Objects.equals(description, that.description);
+    public Set<Tag> getTags() {
+        return tags;
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(groupId, game, maxUsers, currentUsers, description);
-    }
-
-    @Override
-    public String toString() {
-        return "{\"SessionDetails\":{"
-                + "\"groupId\":\"" + groupId + "\""
-                + ", \"game\":" + game
-                + ", \"maxUsers\":\"" + maxUsers + "\""
-                + ", \"currentUsers\":\"" + currentUsers + "\""
-                + ", \"description\":\"" + description + "\""
-                + "}}";
+    public void setTags(Set<Tag> tags) {
+        this.tags = tags;
     }
 }
