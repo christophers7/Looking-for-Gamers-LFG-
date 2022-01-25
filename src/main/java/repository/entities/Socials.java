@@ -1,64 +1,62 @@
 package repository.entities;
 
+import repository.entities.compositeKeys.SocialId;
+
 import javax.persistence.*;
+import java.util.Objects;
 
 @Entity
+@IdClass(SocialId.class)
 @Table(schema = "project_two",name = "lfg_socials")
 public class Socials {
     @Id
-    @Column (name = "socialID")
-    @GeneratedValue(generator = "auto_increment", strategy = GenerationType.IDENTITY)
-    private int socialID;
-    @Column
-    private String platform;
+    @Column (name = "userid")
+    private int userID;
+    @Id
+    @Column (name = "gameid")
+    private int gameID;
+    @Column (name = "gamertag")
+    private String gamerTag;
+
+    public Socials(int userID, int gameID, String gamerTag) {
+        this.userID = userID;
+        this.gameID = gameID;
+        this.gamerTag = gamerTag;
+    }
 
     public Socials() {
     }
 
-    public Socials(int socialID, String platform) {
-        this.socialID = socialID;
-        this.platform = platform;
+    public int getUserID() {
+        return userID;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        Socials socials = (Socials) o;
-
-        if (socialID != socials.socialID) return false;
-        return platform != null ? platform.equals(socials.platform) : socials.platform == null;
+    public void setUserID(int userID) {
+        this.userID = userID;
     }
 
-    @Override
-    public int hashCode() {
-        int result = socialID;
-        result = 31 * result + (platform != null ? platform.hashCode() : 0);
-        return result;
+    public int getGameID() {
+        return gameID;
+    }
+
+    public void setGameID(int gameID) {
+        this.gameID = gameID;
+    }
+
+    public String getGamerTag() {
+        return gamerTag;
+    }
+
+    public void setGamerTag(String gamerTag) {
+        this.gamerTag = gamerTag;
     }
 
     @Override
     public String toString() {
-        return "Socials{" +
-                "socialID=" + socialID +
-                ", platform='" + platform + '\'' +
-                '}';
-    }
-
-    public int getSocialID() {
-        return socialID;
-    }
-
-    public void setSocialID(int socialID) {
-        this.socialID = socialID;
-    }
-
-    public String getPlatform() {
-        return platform;
-    }
-
-    public void setPlatform(String platform) {
-        this.platform = platform;
+        return "{\"Socials\":{"
+                + "\"userID\":\"" + userID + "\""
+                + ", \"gameID\":\"" + gameID + "\""
+                + ", \"gamerTag\":\"" + gamerTag + "\""
+                + "}}";
     }
 }

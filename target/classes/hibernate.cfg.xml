@@ -21,8 +21,13 @@
         <mapping class="repository.entities.UserCredential"/>
         <mapping class="repository.entities.UserProfile"/>
         <mapping class="repository.entities.Socials"/>
-        <mapping class="repository.entities.PublicDetails"/>
         <mapping class="repository.entities.Games"/>
+        <mapping class="repository.entities.Tag"/>
+        <mapping class="repository.entities.SessionDetails"/>
+        <mapping class="repository.entities.Session"/>
+        <mapping class="repository.entities.compositeKeys.GroupSessionId"/>
+        <mapping class="repository.entities.compositeKeys.SocialId"/>
+
 
     </session-factory>
 </hibernate-configuration>

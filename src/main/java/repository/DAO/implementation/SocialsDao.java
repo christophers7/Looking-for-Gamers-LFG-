@@ -23,7 +23,7 @@ public class SocialsDao implements Sociable{
 		try {
 			session = HibernateSessionFactory.getSession();
 			transaction = session.beginTransaction();
-			platform = session.get(Socials.class, platform.getPlatform());
+			platform = session.get(Socials.class, platform.getGamerTag());
 			transaction.commit();
 		}catch(HibernateException e) {
 			 if(transaction != null)

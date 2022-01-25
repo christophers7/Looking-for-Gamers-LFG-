@@ -8,7 +8,7 @@ import java.util.Objects;
 public class UserProfile {
     @Id
     @Column(name ="columnID")
-    @GeneratedValue(generator = "auto_increment",strategy = GenerationType.IDENTITY)
+    @GeneratedValue(generator = "lfg_user_profile_columnid_seq",strategy = GenerationType.AUTO)
     @SequenceGenerator(allocationSize = 1,name = "lfg_user_profile_columnid_seq",
             sequenceName = "lfg_user_profile_columnid_seq")
     private int columnID;

@@ -8,7 +8,7 @@ import java.util.Objects;
 public class UserCredential {
     @Id
     @Column(name = "userID")
-    @GeneratedValue(generator = "auto_increment", strategy = GenerationType.IDENTITY)
+    @GeneratedValue(generator = "lfg_user_creds_user_id_seq", strategy = GenerationType.AUTO)
     @SequenceGenerator(allocationSize = 1, name = "lfg_user_creds_user_id_seq", sequenceName = "lfg_user_creds_user_id_seq")
     private int userID;
     @Column

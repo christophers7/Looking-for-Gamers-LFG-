@@ -31,7 +31,6 @@ class ProfileServiceTest {
     private UserCredential storedUserCredential;
 
     private UserProfile storedUserProfile;
-    private PublicDetails storedPublicDetails;
 
     private ProfileResponse profileResponse;
 
@@ -72,9 +71,6 @@ class ProfileServiceTest {
                 1, storedUserCredential, firstName, lastName, email
         );
 
-        storedPublicDetails = new PublicDetails(
-                1, storedUserCredential, new Games(), gamerTag
-        );
 
         profileResponse = new ProfileResponse(
                 storedUserProfile.getUserCredential().getUserLogin(),

@@ -13,6 +13,7 @@ import presentation.models.LoginRequest;
 import presentation.models.NewUserCredentialsRequest;
 import repository.DAO.implementation.UserCredentialsDao;
 import repository.entities.Games;
+import repository.entities.Socials;
 import repository.entities.UserCredential;
 import repository.entities.UserProfile;
 
@@ -36,7 +37,7 @@ class LoginServiceTest {
     private UserCredential requestedUserCredential;
 
     private UserProfile storedUserProfile;
-    private PublicDetails storedPublicDetails;
+
 
    @BeforeAll
    void setUp() {
@@ -54,9 +55,6 @@ class LoginServiceTest {
             1, storedUserCredential, "firstName", "lastName", "email"
     );
 
-    storedPublicDetails = new PublicDetails(
-            1, storedUserCredential, new Games(), "gamerTag"
-    );
 
     storedUserCredential = new UserCredential(
             1, loginRequest.getUsername(), loginRequest.getPassword()
