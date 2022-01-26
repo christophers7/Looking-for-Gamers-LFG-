@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { ApiViewComponent } from './components/api-view/api-view.component';
 import { GameDisplayComponent } from './components/game-select/game-display/game-display.component';
 import { ViewGameGroupsComponent } from './components/group/view-game-groups/view-game-groups.component';
 import { LFGMainComponent } from './components/lfgmain/lfgmain.component';
@@ -36,6 +37,10 @@ const routes: Routes = [
   {
     component: ViewGameGroupsComponent,
     path: 'game/:id'
+  },
+  {
+    component: ApiViewComponent,
+    path: 'test/api'
   }
 ];
 

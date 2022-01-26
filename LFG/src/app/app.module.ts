@@ -17,6 +17,7 @@ import { GameDisplayComponent } from './components/game-select/game-display/game
 import { GameCardComponent } from './components/game-select/game-card/game-card.component';
 import { ViewGameGroupsComponent } from './components/group/view-game-groups/view-game-groups.component';
 import { GroupCardComponent } from './components/group/group-card/group-card.component';
+import { ApiViewComponent } from './components/api-view/api-view.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { GroupCardComponent } from './components/group/group-card/group-card.com
     GameDisplayComponent,
     GameCardComponent,
     ViewGameGroupsComponent,
-    GroupCardComponent
+    GroupCardComponent,
+    ApiViewComponent
   ],
   imports: [
     BrowserModule,
