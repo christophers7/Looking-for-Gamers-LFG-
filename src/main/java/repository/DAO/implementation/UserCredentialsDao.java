@@ -110,12 +110,14 @@ public class UserCredentialsDao implements Loginable {
 		try {
 			session = HibernateSessionFactory.getSession();
 			transaction = session.beginTransaction();
-			CriteriaBuilder cb = session.getCriteriaBuilder();
-			CriteriaQuery<UserCredential> cq = cb.createQuery(UserCredential.class);
-			Root<UserCredential> root = cq.from(UserCredential.class);
-			cq.select(root).where(cb.equal(root.get("Username"), userCredential.getUserLogin()));
-			Query<UserCredential> query = session.createQuery(cq);
-			userCredential = query.getSingleResult();
+//			CriteriaBuilder cb = session.getCriteriaBuilder();
+//			CriteriaQuery<UserCredential> cq = cb.createQuery(UserCredential.class);
+//			Root<UserCredential> root = cq.from(UserCredential.class);
+//			cq.select(root).where(cb.equal(root.get("Username"), userCredential.getUserLogin()));
+//			Query<UserCredential> query = session.createQuery(cq);
+//			userCredential = query.getSingleResult();
+			username = session.createQuery("FROM UserCredential u WHERE u.userLogin = :username",UserCredential.class)
+							.setParameter("username", userCredential.getUserLogin()).getSingleResult();
 			transaction.commit();
     	
     }catch(HibernateException e) {

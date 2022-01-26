@@ -3,6 +3,12 @@ export class GroupUser {
     private _stats: string = "";
     private _inGroup: boolean = false;
     
+    //username
+    //groupId
+    //social object
+    //stats
+    //insideSession
+
     constructor (private _id: number, private _username: string, ) {
         this._id = _id;
         this._username = _username;;

@@ -47,7 +47,7 @@ public class UserProfileDao implements Profileable {
 
     @Override
     public UserProfile getUserProfile(UserProfile profile) {
-    	
+    	dLog.debug("Attempting to Retrieve User in Database: " + profile);
     	Session session = null;
 		Transaction transaction = null;
 		try {
@@ -66,7 +66,7 @@ public class UserProfileDao implements Profileable {
 
     @Override
     public void updateUserProfile(UserProfile profile) {
-
+    	dLog.debug("Attempting to Update User in Database: " + profile);
     	Session session = null;
 		Transaction transaction = null;
 		
@@ -84,7 +84,7 @@ public class UserProfileDao implements Profileable {
 
     @Override
     public void deleteUserProfile(UserProfile profile) {
-    	
+    	dLog.debug("Attemtping to delete User in Database: " + profile);
     	Session session = null;
 		Transaction transaction = null;
 		
@@ -109,12 +109,15 @@ public class UserProfileDao implements Profileable {
 		try {
 			session = HibernateSessionFactory.getSession();
 			transaction = session.beginTransaction();
-			CriteriaBuilder cb = session.getCriteriaBuilder();
-			CriteriaQuery<UserProfile> cq = cb.createQuery(UserProfile.class);
-			Root<UserProfile> root = cq.from(UserProfile.class);
-			cq.select(root).where(cb.equal(root.get("Username"), userCredential.getUserID()));
-			Query<UserProfile> query = session.createQuery(cq);
-			profile = query.getSingleResult();
+//			CriteriaBuilder cb = session.getCriteriaBuilder();
+//			CriteriaQuery<UserProfile> cq = cb.createQuery(UserProfile.class);
+//			Root<UserProfile> root = cq.from(UserProfile.class);
+//			cq.select(root).where(cb.equal(root.get("Username"), userCredential.getUserID()));
+//			Query<UserProfile> query = session.createQuery(cq);
+//			profile = query.getSingleResult();
+			profile = session.createQuery("FROM UserProfile u WHERE u.userCredential.userID = :user",UserProfile.class)
+							.setParameter("user", userCredential.getUserID()).getSingleResult();
+
 			transaction.commit();
     	
     }catch(HibernateException e) {

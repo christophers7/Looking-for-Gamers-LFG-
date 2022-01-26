@@ -6,13 +6,18 @@ export class Group {
 
     private _groupMembers: GroupUser[] = [];
 
+    //groupId;
+    //gameId;
+    //max users;
+    //description;
+    //groupMembers:
+
     constructor (private _groupId: number, private _gameId: number, private _maxUsers: number, private _description: string) {
         this._groupId = _groupId;
         this._gameId = _gameId;
         this._maxUsers = _maxUsers;
         this._description = _description;
     }
-
 
     public get groupID(): number {
         return this._groupId;

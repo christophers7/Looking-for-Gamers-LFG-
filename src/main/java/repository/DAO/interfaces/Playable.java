@@ -13,5 +13,7 @@ public interface Playable {
 	List<Games> findGamesByGenre(Games game);
 	
 	List<Games> findGamesByCurrentlyPlaying(Games game);
+	
+	List<Games> findAllGames();
 
 }
