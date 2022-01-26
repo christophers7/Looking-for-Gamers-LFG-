@@ -23,9 +23,11 @@ export class ViewGameGroupsComponent implements OnInit {
     this.getGroupSessions();
   }
 
+  id!:number;
+
   getGroupSessions(){
-    const id = Number(this.route.snapshot.paramMap.get('id'));
-    this.gameGroupService.getGroups(id)
+    this.id = Number(this.route.snapshot.paramMap.get('id'));
+    this.gameGroupService.getGroups(this.id)
       .subscribe(
         (data) => {
           this.groupSessions = data;

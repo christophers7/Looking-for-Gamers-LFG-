@@ -1,3 +1,4 @@
 <div *ngIf="groupSessions">
-    <h2>{{groupSessions.}}</h2>
+    <button (click)="goBack()">back</button>
+    <app-group-card [groupSessions] = "groupSessions" [gameId]="id"></app-group-card>
 </div>
