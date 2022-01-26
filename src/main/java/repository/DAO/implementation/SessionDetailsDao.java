@@ -10,4 +10,14 @@ public class SessionDetailsDao implements SessionDetailable {
     public List<SessionDetails> getSessionByGameId(int gameID) {
         return null;
     }
+
+    @Override
+    public Integer createGroupSession(SessionDetails sessionDetails) {
+        return null;
+    }
+
+    @Override
+    public SessionDetails getSessionDetails(SessionDetails sessionDetails) {
+        return null;
+    }
 }

@@ -6,6 +6,7 @@ import repository.DAO.implementation.GamesDao;
 import repository.DAO.implementation.SessionDetailsDao;
 import repository.entities.Games;
 import repository.entities.SessionDetails;
+import service.game.dto.GameSelectInfo;
 import service.game.interfaces.GameServiceable;
 
 import java.util.ArrayList;
