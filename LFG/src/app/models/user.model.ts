@@ -2,30 +2,20 @@ import { Group } from "./group.model"
 
 export class User {
 
-    private _id: number;
-    private _username: string;
-    private _firstName: string;
-    private _lastName: string; 
-    private _email: string;
-    private _stats: string;
+    private _firstName: string = "";
+    private _lastName: string = ""; 
+    private _stats: string = "";
     
-    private _appCount: number;
-    private _inGroup: boolean;
+    private _appCount: number = 0;
+    private _inGroup: boolean = false;
     
-    private _group: Group;
+    private _group!: Group;
     
 
-    constructor(id: number, username: string, firstName: string, lastName: string, email: string, 
-            stats: string, appCount: number, inGroup: boolean, group: Group){
-        this._id = id;
-        this._username =username;
-        this._firstName = firstName;
-        this._lastName = lastName;
-        this._email = email;
-        this._stats = stats;
-        this._appCount = appCount;
-        this._inGroup = inGroup;
-        this._group = group;
+    constructor(private _id: number,private _username: string, private _email: string){
+        this._id = _id;
+        this._username = _username;
+        this._email = _email;
     }
 
     public get id(): number {

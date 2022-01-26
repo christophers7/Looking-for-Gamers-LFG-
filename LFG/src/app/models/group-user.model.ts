@@ -1,13 +1,11 @@
 export class GroupUser {
 
-    private _id: number;
-    private _username: string;
-    private _stats: string;
-
-    constructor (id: number, username: string, stats: string) {
-        this._id = id;
-        this._username = username;
-        this._stats = stats;
+    private _stats: string = "";
+    private _inGroup: boolean = false;
+    
+    constructor (private _id: number, private _username: string, ) {
+        this._id = _id;
+        this._username = _username;;
     }
     
     public get id(): number {
@@ -29,5 +27,12 @@ export class GroupUser {
     }
     public set stats(value: string) {
         this._stats = value;
+    }
+
+    public get inGroup(): boolean {
+        return this._inGroup;
+    }
+    public set inGroup(value: boolean) {
+        this._inGroup = value;
     }
 }
