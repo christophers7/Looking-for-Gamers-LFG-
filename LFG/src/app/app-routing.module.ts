@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { GameDisplayComponent } from './components/game-select/game-display/game-display.component';
+import { ViewGameGroupsComponent } from './components/group/view-game-groups/view-game-groups.component';
 import { LFGMainComponent } from './components/lfgmain/lfgmain.component';
 import { LoginComponent } from './components/login/login.component';
 import { ModifyProfileComponent } from './components/modify-profile/modify-profile.component';
@@ -26,6 +28,14 @@ const routes: Routes = [
   {
     component: ModifyProfileComponent,
     path: 'profile/modify'
+  },
+  {
+    component: GameDisplayComponent,
+    path: 'main/games'
+  },
+  {
+    component: ViewGameGroupsComponent,
+    path: 'group/view'
   }
 ];
 
