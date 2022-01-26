@@ -17,4 +17,8 @@ export class LFGMainComponent implements OnInit {
     const navigationDetails: string[] = ['/profile'];
     this.router.navigate(navigationDetails);
   }
+
+  viewGameList(): void{
+    this.router.navigate(['/main/games'])
+  }
 }

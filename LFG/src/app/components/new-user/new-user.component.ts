@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import Validation from 'src/app/utils/validation';
+import { AuthService } from 'src/app/_services/auth.service';
 
 @Component({
   selector: 'app-new-user',
@@ -19,8 +20,9 @@ export class NewUserComponent implements OnInit {
     confirmPassword: new FormControl('')
   });
   submitted = false;
+  posts : any;
 
-  constructor(private router: Router, private formBuilder: FormBuilder) { }
+  constructor(private router: Router, private formBuilder: FormBuilder, private authService: AuthService) { }
 
   ngOnInit(): void {
     this.form = this.formBuilder.group(
@@ -95,6 +97,15 @@ export class NewUserComponent implements OnInit {
     }
 
     console.log(JSON.stringify(this.form.value, null, 2));
+
+    let userN = this.form.get('username')?.value
+    let email = this.form.get('username')?.value
+    let passW = this.form.get('password')?.value
+    if(userN != null && passW != null) {
+      this.authService.register(userN, email, passW).subscribe(
+        (response) => {this.posts = response;},
+        (error) => {console.log(error);}) 
+    }
   }
 
   onReset(): void {
