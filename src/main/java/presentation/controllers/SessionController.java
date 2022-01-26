@@ -31,7 +31,7 @@ public class SessionController {
                 path("/host", () -> {
                     post(sessionHandler.createGroupSession);
                 });
-
+                
 
             });
 

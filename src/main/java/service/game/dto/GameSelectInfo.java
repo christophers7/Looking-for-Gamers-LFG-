@@ -1,4 +1,4 @@
-package service.game.classes;
+package service.game.dto;
 
 import java.util.Objects;
 

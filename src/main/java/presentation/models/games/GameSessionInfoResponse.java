@@ -1,6 +1,6 @@
 package presentation.models.games;
 
-import service.game.classes.GameSelectInfo;
+import service.game.dto.GameSelectInfo;
 
 import java.util.List;
 import java.util.Objects;

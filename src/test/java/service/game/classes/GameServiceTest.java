@@ -13,6 +13,7 @@ import repository.DAO.implementation.SessionDetailsDao;
 import repository.entities.Games;
 import repository.entities.SessionDetails;
 import repository.entities.Tag;
+import service.game.dto.GameSelectInfo;
 
 import java.util.*;
 

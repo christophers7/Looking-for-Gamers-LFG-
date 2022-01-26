@@ -10,7 +10,7 @@ export class Group {
     //gameId;
     //max users;
     //description;
-    //groupMembers:
+    //groupMembers: 
 
     constructor (private _groupId: number, private _gameId: number, private _maxUsers: number, private _description: string) {
         this._groupId = _groupId;

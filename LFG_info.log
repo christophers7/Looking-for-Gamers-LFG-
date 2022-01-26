@@ -1,0 +1,2 @@
+00:59:17.052 [main] INFO  iLog - New Group Session created and stored in database: {"SessionDetails":{"groupId":"1", "game":Games{gameID=1, gameTitle='gameTitle', imgLink='link'}, "maxUsers":"3", "currentUsers":"1", "description":"this is a description", "tags":[]}}
+00:59:17.053 [main] INFO  iLog - Successful entry of a user to a session: {"GroupSessionId":{"userId":"1", "hostId":"1"}}
