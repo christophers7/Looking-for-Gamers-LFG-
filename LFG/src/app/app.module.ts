@@ -16,6 +16,7 @@ import { authInterceptorProviders } from '../_helpers/auth.interceptor';
 import { GameDisplayComponent } from './components/game-select/game-display/game-display.component';
 import { GameCardComponent } from './components/game-select/game-card/game-card.component';
 import { ViewGameGroupsComponent } from './components/group/view-game-groups/view-game-groups.component';
+import { GroupCardComponent } from './components/group/group-card/group-card.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { ViewGameGroupsComponent } from './components/group/view-game-groups/vie
     ModifyProfileComponent,
     GameDisplayComponent,
     GameCardComponent,
-    ViewGameGroupsComponent
+    ViewGameGroupsComponent,
+    GroupCardComponent
   ],
   imports: [
     BrowserModule,
