@@ -1,45 +1,31 @@
 package com.revature.p2_lfg.presentation.controllers;
 
-import com.revature.p2_lfg.presentation.handlers.GameHandler;
-import com.revature.p2_lfg.presentation.handlers.SessionHandler;
-import io.javalin.Javalin;
+import com.revature.p2_lfg.presentation.models.session.CreateGroupSessionRequest;
+import com.revature.p2_lfg.presentation.models.session.CreatedGroupSessionResponse;
+import com.revature.p2_lfg.service.session.classes.SessionService;
+import com.revature.p2_lfg.utility.JWTInfo;
+import com.revature.p2_lfg.utility.JWTUtility;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.*;
 
-import static io.javalin.apibuilder.ApiBuilder.*;
-
-@Controller("sessionController")
+@RestController("sessionController")
+@RequestMapping("/group")
 public class SessionController {
 
+    private final Logger iLog = LoggerFactory.getLogger("iLog");
+    private final Logger dLog = LoggerFactory.getLogger("dLog");
+
     @Autowired
-    private SessionHandler sessionHandler;
-    @Autowired
-    private GameHandler gameHandler;
+    private SessionService sessionService;
 
-    public void setEndpoints(Javalin app) {
-        app.routes(() -> {
-
-            path("/game", () -> {
-
-              path("/available", () ->{
-                  get(gameHandler.getGameSessionsList);
-              });
-
-              path("/select", () -> {
-                 get(gameHandler.getGameGroupSessions);
-              });
-
-            });
-
-            path("/group", () -> {
-
-                path("/host", () -> {
-                    post(sessionHandler.createGroupSession);
-                });
-                
-
-            });
-
-        });
+    @PostMapping("/host")
+    public CreatedGroupSessionResponse hostGroupSession(@RequestHeader("Authorization") String token, @RequestBody CreateGroupSessionRequest groupSession){
+        dLog.debug("Creating a group session: " + groupSession);
+        JWTInfo parsedJWT = JWTUtility.verifyUser(token);
+        if(parsedJWT != null) return sessionService.createGroupSession(groupSession, parsedJWT);
+        else return null;
     }
+
 }

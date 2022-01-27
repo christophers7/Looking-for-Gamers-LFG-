@@ -1,5 +1,6 @@
 package com.revature.p2_lfg.service.login.classes;
 
+import com.revature.p2_lfg.presentation.models.profile.ProfileResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import com.revature.p2_lfg.presentation.models.login.*;
@@ -118,4 +119,5 @@ public class LoginService implements LoginServiceable {
             return false;
         }
     }
+
 }

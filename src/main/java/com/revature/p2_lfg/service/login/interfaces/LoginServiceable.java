@@ -1,6 +1,7 @@
 package com.revature.p2_lfg.service.login.interfaces;
 
 import com.revature.p2_lfg.presentation.models.login.*;
+import com.revature.p2_lfg.presentation.models.profile.ProfileResponse;
 import com.revature.p2_lfg.repository.entities.UserCredential;
 import com.revature.p2_lfg.utility.JWTInfo;
 
@@ -45,4 +46,5 @@ public interface LoginServiceable {
     UserCredential getUserWithUserID(int userId);
 
     boolean updateUserCredentialPassword(UpdatePasswordRequest updateUserCredentialRequest, JWTInfo parsedJWT);
+
 }

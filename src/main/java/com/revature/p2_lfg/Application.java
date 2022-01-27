@@ -4,9 +4,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class P2SpringLfgApplication {
-	public static void main(String[] args) {
+public class Application {
 
-		SpringApplication.run(P2SpringLfgApplication.class, args);
+	public static void main(String[] args) {
+		SpringApplication.run(Application.class, args);
 	}
+
 }

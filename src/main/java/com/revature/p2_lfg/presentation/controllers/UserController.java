@@ -1,34 +1,45 @@
 package com.revature.p2_lfg.presentation.controllers;
 
-import com.revature.p2_lfg.presentation.handlers.UserHandler;
-import io.javalin.Javalin;
+import com.revature.p2_lfg.presentation.models.profile.ProfileResponse;
+import com.revature.p2_lfg.presentation.models.profile.UpdateUserProfileRequest;
+import com.revature.p2_lfg.repository.entities.UserProfile;
+import com.revature.p2_lfg.service.login.classes.LoginService;
+import com.revature.p2_lfg.service.profile.classes.ProfileService;
+import com.revature.p2_lfg.utility.JWTInfo;
+import com.revature.p2_lfg.utility.JWTUtility;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.*;
 
-import static io.javalin.apibuilder.ApiBuilder.*;
-
-@Controller("userController")
+@RestController("userController")
+@RequestMapping("/user")
 public class UserController {
 
+    private final Logger iLog = LoggerFactory.getLogger("iLog");
+    private final Logger dLog = LoggerFactory.getLogger("dLog");
+
     @Autowired
-    private UserHandler userHandler;
+    private ProfileService profileService;
+    @Autowired
+    private LoginService loginService;
 
-    public void setEndpoints(Javalin app) {
+    @PatchMapping("/update")
+    public ProfileResponse updateProfile(
+            @RequestHeader("Authorization") String token,
+            @RequestBody UpdateUserProfileRequest profile){
+        dLog.debug("Attempting to update user profile: "  + profile);
+        JWTInfo parsedJWT = JWTUtility.verifyUser(token);
+        if(parsedJWT != null) return profileService.updateProfileWithRequest(profile, profileService.getUserProfile(parsedJWT.getUserId()));
+        else return null;
+    }
 
-        app.routes(() -> {
-
-            path("/user", () -> {
-
-                path("new-profile", () -> {
-                    patch(userHandler.updateProfile);
-                });
-
-                path("profile", () -> {
-                   get(userHandler.getUserProfile);
-                });
-
-            });
-
-        });
+    @GetMapping("/profile")
+    public UserProfile getUserProfile(@RequestHeader("Authorization") String token){
+        dLog.debug("Attempting to get user profile");
+        JWTInfo parsedJWT = JWTUtility.verifyUser(token);
+        if(parsedJWT != null) profileService.getUserProfile(parsedJWT.getUserId());
+        else return null;
+        return null;
     }
 }

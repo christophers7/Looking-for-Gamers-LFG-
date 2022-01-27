@@ -1,47 +1,67 @@
 package com.revature.p2_lfg.presentation.controllers;
 
-import com.revature.p2_lfg.presentation.handlers.LoginHandler;
-import io.javalin.Javalin;
+import com.revature.p2_lfg.presentation.models.login.*;
+import com.revature.p2_lfg.presentation.models.profile.ProfileResponse;
+import com.revature.p2_lfg.repository.entities.UserCredential;
+import com.revature.p2_lfg.service.login.classes.LoginService;
+import com.revature.p2_lfg.service.profile.classes.ProfileService;
+import com.revature.p2_lfg.utility.JWTInfo;
+import com.revature.p2_lfg.utility.JWTUtility;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.*;
 
-import static io.javalin.apibuilder.ApiBuilder.*;
-
-@Controller("loginController")
+@RestController("loginController")
+@RequestMapping("/login")
 public class LoginController {
 
+    private final Logger iLog = LoggerFactory.getLogger("iLog");
+    private final Logger dLog = LoggerFactory.getLogger("dLog");
+
     @Autowired
-    private LoginHandler loginHandler;
+    private LoginService loginService;
 
-    public void setEndpoints(Javalin app) {
+    @Autowired
+    private ProfileService profileService;
 
-        app.routes(() -> {
+    @PostMapping("/check")
+    public ProfileResponse checkLogin(@RequestBody LoginRequest loginRequest){
+        return profileService.getProfileResponse(loginService.getUserCredentialFromLogin(loginRequest));
+    }
 
-            path("/login", () -> {
+    @PostMapping("/new")
+    public boolean newLogin(@RequestBody NewUserCredentialsRequest newUser){
+        UserCredential userCredential = loginService.newAccount(newUser);
+        if(userCredential != null)
+            if(profileService.newUserProfile(userCredential, newUser.getEmail()) != null) {
+                iLog.info("Successful creation of an account: " + newUser + "\n" + userCredential);
+                return true;
+            }
+        dLog.debug("Failed to create new login" + newUser);
+        return false;
+    }
 
-                path("/check", () -> {
-                    post(loginHandler.checkLogin);
-                });
+    @PatchMapping("/update-password")
+    public boolean updatePassword(@RequestHeader("Authorization") String token , @RequestBody UpdatePasswordRequest newPassword){
+        dLog.debug("Attempting to update password: " + newPassword);
+        JWTInfo parsedJWT = JWTUtility.verifyUser(token);
+        if(parsedJWT != null) return loginService.updateUserCredentialPassword(newPassword, parsedJWT);
+        else return false;
 
-                path("/new", () -> {
-                   post(loginHandler.newLogin);
-                });
+    }
 
-                path("/update-username", () -> {
-                   patch(loginHandler.updateUsername);
-                });
+    @PatchMapping("/update-username")
+    public boolean updateUsername(@RequestHeader("Authorization") String token, @RequestBody UpdateUsernameRequest newUsername){
+        dLog.debug("Attempting to update user login: " + newUsername);
+        JWTInfo parsedJWT = JWTUtility.verifyUser(token);
+        if(parsedJWT != null) return loginService.updateUserCredentialUsername(newUsername, parsedJWT);
+        else return false;
+    }
 
-                path("/update-password", () -> {
-                   patch(loginHandler.updatePassword);
-                });
-
-                path("/reset", () -> {
-                    patch(loginHandler.resetPassword);
-                });
-
-            });
-
-
-        });
+    @PatchMapping("/reset-password")
+    public boolean resetPassword(@RequestBody ResetPasswordRequest resetPassword){
+        dLog.debug("Attempting to reset password: " + resetPassword);
+        return loginService.resetPassword(resetPassword);
     }
 }
