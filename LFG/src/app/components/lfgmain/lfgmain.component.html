@@ -1,7 +1,9 @@
 <p>lfgmain works!</p>
 <div id="mainBox" class="mainGroup">
     <div id="mainDisplayBox" class='mainGroup'>
-
+        <div>
+            <button id="viewGameList" (click) = "viewGameList()">View Games</button>
+        </div>
     </div>
     
     <div id="infoDisplayBox" class="mainGroup">
@@ -10,7 +12,7 @@
 
     <div id="profileDisplayBox" class="mainGroup">
         <div id="iconHolder" class="profileDisplayGroup">
-
+            <h2>{{currentUser.username}}</h2>
         </div>
         <button id="profileDisplayButton" class="profileDisplayGroup" (click)="goToProfile()">View Profile</button>
     </div>
@@ -20,8 +22,6 @@
     </div>
 
     <div id="modeSelectBox" class="mainGroup">
-        <div>
-            <button id="viewGameList" (click) = "viewGameList()">View Games</button>
-        </div>
+        
     </div>
 </div>

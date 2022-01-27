@@ -7,6 +7,7 @@
                 type="text"
                 formControlName="username"
                 class="form-control"
+                value={{currentUser.username}}
                 [ngClass]="{ 'is-invalid': submitted && f['username'].errors }"
             />
         <div *ngIf="submitted && f['username'].errors" class="invalid-feedback">
@@ -26,6 +27,7 @@
           type="text"
           formControlName="firstname"
           class="form-control"
+          value={{currentUser.firstName}}
           [ngClass]="{ 'is-invalid': submitted && f['firstname'].errors }"
         />
         <div *ngIf="submitted && f['firstname'].errors" class="invalid-feedback">
@@ -42,6 +44,7 @@
           type="text"
           formControlName="lastname"
           class="form-control"
+          value={{currentUser.lastName}}
           [ngClass]="{ 'is-invalid': submitted && f['lastname'].errors }"
         />
         <div *ngIf="submitted && f['lastname'].errors" class="invalid-feedback">
@@ -58,6 +61,7 @@
           type="text"
           formControlName="email"
           class="form-control"
+          value={{currentUser.email}}
           [ngClass]="{ 'is-invalid': submitted && f['email'].errors }"
         />
         <div *ngIf="submitted && f['email'].errors" class="invalid-feedback">
@@ -126,4 +130,6 @@
         </button>
       </div>
     </form>
+    <br>
+    <button name="backToProfileButton" (click)="goToProfile()">Back to Profile</button>
 </div> 

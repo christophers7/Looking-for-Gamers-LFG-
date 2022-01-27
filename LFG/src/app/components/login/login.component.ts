@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/_services/auth.service';
+import { TokenStorageService} from 'src/app/_services/token-storage.service';
 
 @Component({
   selector: 'app-login',
@@ -15,9 +16,12 @@ export class LoginComponent implements OnInit {
     password: new FormControl(''),
   });
   submitted = false;
+  errorMessage = '';
+  isLoginFailed = false;
   posts : any;
 
-  constructor(private router: Router, private formBuilder: FormBuilder, private authService: AuthService) { }
+  constructor(private router: Router, private formBuilder: FormBuilder, private authService: AuthService, 
+    private tokenStorage: TokenStorageService) { }
 
   ngOnInit(): void {
     this.form = this.formBuilder.group(
@@ -56,9 +60,19 @@ export class LoginComponent implements OnInit {
     let userN = this.form.get('username')?.value
     let passW = this.form.get('password')?.value
     if(userN != null && passW != null) {
-      this.authService.login(userN, passW).subscribe(
-        (response) => {this.posts = response;},
-        (error) => {console.log(error);}) 
+      this.authService.login(userN, passW).subscribe({
+        next: data => {
+          this.isLoginFailed = false;
+          this.tokenStorage.saveToken(data.jwt);
+          this.tokenStorage.saveUser(data)
+
+          
+        },
+        error: err => {
+          this.errorMessage = err.error.message;
+          this.isLoginFailed = true;
+        }
+      });        
     }
   }
 

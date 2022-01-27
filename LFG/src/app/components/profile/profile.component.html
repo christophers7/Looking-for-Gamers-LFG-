@@ -1,16 +1,17 @@
 <div id="profileInfoBox">
     <div id="profileInfo" class="displayProfile">
         <label>Username: </label><br/>
+        <h2>{{currentUser.username}}</h2><br><br>
+
         <label>First Name: </label><br/>
+        <h2>{{currentUser.firstName}}</h2><br><br>
+
         <label>Last Name: </label><br/>
+        <h2>{{currentUser.lastName}}</h2><br><br>
+
         <label>Email Address: </label><br/>
-        <label>Statistics: </label> <!-- placeholder for now, not sure what info will go here or how to label it--><br/>
-
-
-
-
+        <h2>{{currentUser.email}}</h2><br><br>
     </div>
-    <p>There will be user info here</p>
 </div>
 <button id="profileModifyButton" (click)="modifyProfile()">Edit Profile</button>
 <br><br>

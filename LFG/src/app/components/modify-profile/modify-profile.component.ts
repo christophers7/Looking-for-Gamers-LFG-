@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import Validation from 'src/app/utils/validation';
+import { TokenStorageService } from 'src/app/_services/token-storage.service';
 
 @Component({
   selector: 'app-modify-profile',
@@ -19,10 +20,12 @@ export class ModifyProfileComponent implements OnInit {
     confirmPassword: new FormControl('')
   });
   submitted = false;
+  currentUser: any;
 
-  constructor(private router: Router, private formBuilder: FormBuilder) { }
+  constructor(private router: Router, private formBuilder: FormBuilder, private tokenStorage: TokenStorageService) { }
 
   ngOnInit(): void {
+    this.currentUser = this.tokenStorage.getUser;
     this.form = this.formBuilder.group(
       {   
         username: [
@@ -79,7 +82,7 @@ export class ModifyProfileComponent implements OnInit {
   }
 
   goToProfile(): void {
-    const navigationDetails: string[] = ['/profile'];
+    const navigationDetails: string[] = ['/main/profile'];
     this.router.navigate(navigationDetails);
   }
 
