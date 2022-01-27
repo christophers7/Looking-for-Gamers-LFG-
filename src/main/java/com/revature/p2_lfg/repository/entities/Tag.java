@@ -1,4 +1,4 @@
-package repository.entities;
+package com.revature.p2_lfg.repository.entities;
 
 import javax.persistence.*;
 import java.util.HashSet;

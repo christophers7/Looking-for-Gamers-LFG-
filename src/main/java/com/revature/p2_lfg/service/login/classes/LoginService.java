@@ -1,14 +1,14 @@
-package service.login.classes;
+package com.revature.p2_lfg.service.login.classes;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import presentation.models.login.*;
-import repository.DAO.implementation.UserCredentialsDao;
-import repository.entities.UserCredential;
-import service.login.exceptions.InvalidInputException;
-import service.login.interfaces.LoginServiceable;
-import service.login.validation.LoginValidation;
-import utility.JWTInfo;
+import com.revature.p2_lfg.presentation.models.login.*;
+import com.revature.p2_lfg.repository.DAO.implementation.UserCredentialsDao;
+import com.revature.p2_lfg.repository.entities.UserCredential;
+import com.revature.p2_lfg.service.login.exceptions.InvalidInputException;
+import com.revature.p2_lfg.service.login.interfaces.LoginServiceable;
+import com.revature.p2_lfg.service.login.validation.LoginValidation;
+import com.revature.p2_lfg.utility.JWTInfo;
 
 import java.nio.charset.StandardCharsets;
 import java.util.Random;

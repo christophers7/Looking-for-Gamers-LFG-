@@ -1,6 +1,6 @@
 package service.session.dto;
 
-import repository.entities.Socials;
+import com.revature.p2_lfg.repository.entities.Socials;
 
 import java.util.Objects;
 

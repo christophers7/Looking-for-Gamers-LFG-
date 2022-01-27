@@ -1,4 +1,4 @@
-package repository.DAO.implementation;
+package com.revature.p2_lfg.repository.DAO.implementation;
 
 import java.util.List;
 
@@ -7,6 +7,9 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 
 
+import com.revature.p2_lfg.repository.DAO.interfaces.Playable;
+import com.revature.p2_lfg.repository.DAO.util.HibernateSessionFactory;
+import com.revature.p2_lfg.repository.entities.Games;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -14,11 +17,11 @@ import org.hibernate.query.Query;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import repository.DAO.interfaces.Playable;
-import repository.DAO.util.HibernateSessionFactory;
-import repository.entities.Games;
+import com.revature.p2_lfg.repository.DAO.interfaces.Playable;
+import com.revature.p2_lfg.repository.DAO.util.HibernateSessionFactory;
+import com.revature.p2_lfg.repository.entities.Games;
 
-public class GamesDao implements Playable{
+public class GamesDao implements Playable {
 	
 	private final Logger iLog = LoggerFactory.getLogger("iLog");
     private final Logger dLog = LoggerFactory.getLogger("dLog");

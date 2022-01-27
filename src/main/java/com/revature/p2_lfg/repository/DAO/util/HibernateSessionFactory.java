@@ -1,4 +1,4 @@
-package repository.DAO.util;
+package com.revature.p2_lfg.repository.DAO.util;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;

@@ -1,7 +1,7 @@
-package service.login.validation;
+package com.revature.p2_lfg.service.login.validation;
 
-import presentation.models.login.NewUserCredentialsRequest;
-import service.login.exceptions.InvalidInputException;
+import com.revature.p2_lfg.presentation.models.login.NewUserCredentialsRequest;
+import com.revature.p2_lfg.service.login.exceptions.InvalidInputException;
 
 import java.util.regex.Pattern;
 

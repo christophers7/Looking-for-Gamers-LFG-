@@ -1,4 +1,4 @@
-package presentation.models.profile;
+package com.revature.p2_lfg.presentation.models.profile;
 
 import java.util.Objects;
 

@@ -18,15 +18,15 @@
 
         <property name="hibernate.hbm2ddl.auto">validate</property>
 
-        <mapping class="repository.entities.UserCredential"/>
-        <mapping class="repository.entities.UserProfile"/>
-        <mapping class="repository.entities.Socials"/>
-        <mapping class="repository.entities.Games"/>
-        <mapping class="repository.entities.Tag"/>
-        <mapping class="repository.entities.SessionDetails"/>
-        <mapping class="repository.entities.Session"/>
-        <mapping class="repository.entities.compositeKeys.GroupSessionId"/>
-        <mapping class="repository.entities.compositeKeys.SocialId"/>
+        <mapping class="com.revature.p2_lfg.repository.entities.UserCredential"/>
+        <mapping class="com.revature.p2_lfg.repository.entities.UserProfile"/>
+        <mapping class="com.revature.p2_lfg.repository.entities.Socials"/>
+        <mapping class="com.revature.p2_lfg.repository.entities.Games"/>
+        <mapping class="com.revature.p2_lfg.repository.entities.Tag"/>
+        <mapping class="com.revature.p2_lfg.repository.entities.SessionDetails"/>
+        <mapping class="com.revature.p2_lfg.repository.entities.Session"/>
+        <mapping class="com.revature.p2_lfg.repository.entities.compositeKeys.GroupSessionId"/>
+        <mapping class="com.revature.p2_lfg.repository.entities.compositeKeys.SocialId"/>
 
 
     </session-factory>

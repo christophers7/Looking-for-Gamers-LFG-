@@ -1,8 +1,8 @@
-package presentation.controllers;
+package com.revature.p2_lfg.presentation.controllers;
 
 import io.javalin.Javalin;
-import presentation.handlers.GameHandler;
-import presentation.handlers.SessionHandler;
+import com.revature.p2_lfg.presentation.handlers.GameHandler;
+import com.revature.p2_lfg.presentation.handlers.SessionHandler;
 import static io.javalin.apibuilder.ApiBuilder.*;
 
 

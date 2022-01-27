@@ -1,23 +1,30 @@
-package service.game.classes;
+package com.revature.p2_lfg.service.game.classes;
 
+import com.revature.p2_lfg.repository.DAO.implementation.GamesDao;
+import com.revature.p2_lfg.repository.DAO.implementation.SessionDetailsDao;
+import com.revature.p2_lfg.repository.entities.Games;
+import com.revature.p2_lfg.repository.entities.SessionDetails;
+import com.revature.p2_lfg.repository.entities.Tag;
+import com.revature.p2_lfg.service.game.classes.GameService;
+import com.revature.p2_lfg.service.game.dto.GameSelectInfo;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
-import presentation.models.games.GameSessionInfoResponse;
-import presentation.models.games.SelectedGameAvailableGroupsResponse;
-import repository.DAO.implementation.GamesDao;
-import repository.DAO.implementation.SessionDetailsDao;
-import repository.entities.Games;
-import repository.entities.SessionDetails;
-import repository.entities.Tag;
-import service.game.dto.GameSelectInfo;
+import com.revature.p2_lfg.presentation.models.games.GameSessionInfoResponse;
+import com.revature.p2_lfg.presentation.models.games.SelectedGameAvailableGroupsResponse;
+import com.revature.p2_lfg.repository.DAO.implementation.GamesDao;
+import com.revature.p2_lfg.repository.DAO.implementation.SessionDetailsDao;
+import com.revature.p2_lfg.repository.entities.Games;
+import com.revature.p2_lfg.repository.entities.SessionDetails;
+import com.revature.p2_lfg.repository.entities.Tag;
+import com.revature.p2_lfg.service.game.dto.GameSelectInfo;
 
 import java.util.*;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 class GameServiceTest {
@@ -65,6 +72,8 @@ class GameServiceTest {
         );
 
         selectedGameAvailableGroupsResponse = new SelectedGameAvailableGroupsResponse(1, game1Sessions);
+        List<Games> gameList = new ArrayList<>();
+
         Mockito.when(gameDao.findAllGames()).thenReturn(Arrays.asList(game1, game2));
         Mockito.when(sessionDetailsDao.getSessionByGameId(1)).thenReturn(game1Sessions);
         Mockito.when(sessionDetailsDao.getSessionByGameId(2)).thenReturn(game2Sessions);

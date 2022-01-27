@@ -1,4 +1,4 @@
-package repository.DAO.implementation;
+package com.revature.p2_lfg.repository.DAO.implementation;
 
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
@@ -6,9 +6,9 @@ import org.hibernate.Transaction;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import repository.DAO.interfaces.Sociable;
-import repository.DAO.util.HibernateSessionFactory;
-import repository.entities.Socials;
+import com.revature.p2_lfg.repository.DAO.interfaces.Sociable;
+import com.revature.p2_lfg.repository.DAO.util.HibernateSessionFactory;
+import com.revature.p2_lfg.repository.entities.Socials;
 
 public class SocialsDao implements Sociable{
 	

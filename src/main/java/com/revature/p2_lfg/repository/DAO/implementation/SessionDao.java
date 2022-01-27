@@ -1,8 +1,9 @@
-package repository.DAO.implementation;
+package com.revature.p2_lfg.repository.DAO.implementation;
 
-import repository.DAO.interfaces.Sessionable;
-import repository.entities.Session;
-import repository.entities.compositeKeys.GroupSessionId;
+import com.revature.p2_lfg.repository.DAO.interfaces.Sessionable;
+import com.revature.p2_lfg.repository.DAO.interfaces.Sessionable;
+import com.revature.p2_lfg.repository.entities.Session;
+import com.revature.p2_lfg.repository.entities.compositeKeys.GroupSessionId;
 import service.session.dto.GroupUser;
 
 import java.util.List;

@@ -1,6 +1,6 @@
-package presentation.models.games;
+package com.revature.p2_lfg.presentation.models.games;
 
-import repository.entities.SessionDetails;
+import com.revature.p2_lfg.repository.entities.SessionDetails;
 
 import java.util.List;
 import java.util.Objects;

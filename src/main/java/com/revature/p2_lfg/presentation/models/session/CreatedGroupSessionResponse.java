@@ -1,4 +1,4 @@
-package presentation.models.session;
+package com.revature.p2_lfg.presentation.models.session;
 
 import service.session.dto.GroupUser;
 

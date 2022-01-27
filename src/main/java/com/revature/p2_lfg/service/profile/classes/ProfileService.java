@@ -1,16 +1,16 @@
-package service.profile.classes;
+package com.revature.p2_lfg.service.profile.classes;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import presentation.models.profile.ProfileResponse;
-import presentation.models.profile.UpdateUserProfileRequest;
-import repository.DAO.implementation.UserProfileDao;
-import repository.entities.UserCredential;
-import repository.entities.UserProfile;
-import service.login.exceptions.InvalidInputException;
-import service.profile.interfaces.ProfileServiceable;
-import service.profile.validation.ProfileValidation;
-import utility.JWTUtility;
+import com.revature.p2_lfg.presentation.models.profile.ProfileResponse;
+import com.revature.p2_lfg.presentation.models.profile.UpdateUserProfileRequest;
+import com.revature.p2_lfg.repository.DAO.implementation.UserProfileDao;
+import com.revature.p2_lfg.repository.entities.UserCredential;
+import com.revature.p2_lfg.repository.entities.UserProfile;
+import com.revature.p2_lfg.service.login.exceptions.InvalidInputException;
+import com.revature.p2_lfg.service.profile.interfaces.ProfileServiceable;
+import com.revature.p2_lfg.service.profile.validation.ProfileValidation;
+import com.revature.p2_lfg.utility.JWTUtility;
 
 public class ProfileService implements ProfileServiceable {
 

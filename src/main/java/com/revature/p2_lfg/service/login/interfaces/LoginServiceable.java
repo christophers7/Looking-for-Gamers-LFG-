@@ -1,8 +1,8 @@
-package service.login.interfaces;
+package com.revature.p2_lfg.service.login.interfaces;
 
-import presentation.models.login.*;
-import repository.entities.UserCredential;
-import utility.JWTInfo;
+import com.revature.p2_lfg.presentation.models.login.*;
+import com.revature.p2_lfg.repository.entities.UserCredential;
+import com.revature.p2_lfg.utility.JWTInfo;
 
 public interface LoginServiceable {
 

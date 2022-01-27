@@ -1,6 +1,6 @@
-package repository.DAO.implementation;
+package com.revature.p2_lfg.repository.DAO.implementation;
 
-import repository.DAO.interfaces.Publicizable;
+import com.revature.p2_lfg.repository.DAO.interfaces.Publicizable;
 
 public class PublicDetailsDao implements Publicizable{
 

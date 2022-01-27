@@ -1,4 +1,4 @@
-package repository.entities;
+package com.revature.p2_lfg.repository.entities;
 
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
@@ -6,7 +6,7 @@ import org.hibernate.Transaction;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import repository.DAO.util.HibernateSessionFactory;
+import com.revature.p2_lfg.repository.DAO.util.HibernateSessionFactory;
 
 import static org.junit.jupiter.api.Assertions.*;
 

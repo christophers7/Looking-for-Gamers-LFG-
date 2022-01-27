@@ -1,13 +1,13 @@
-package presentation.handlers;
+package com.revature.p2_lfg.presentation.handlers;
 
 import io.javalin.http.Handler;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import repository.DAO.implementation.GamesDao;
-import repository.DAO.implementation.SessionDetailsDao;
-import service.game.classes.GameService;
-import utility.JWTInfo;
-import utility.JWTUtility;
+import com.revature.p2_lfg.repository.DAO.implementation.GamesDao;
+import com.revature.p2_lfg.repository.DAO.implementation.SessionDetailsDao;
+import com.revature.p2_lfg.service.game.classes.GameService;
+import com.revature.p2_lfg.utility.JWTInfo;
+import com.revature.p2_lfg.utility.JWTUtility;
 
 public class GameHandler {
 

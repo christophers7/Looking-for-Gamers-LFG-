@@ -1,7 +1,7 @@
-package repository.DAO.interfaces;
+package com.revature.p2_lfg.repository.DAO.interfaces;
 
-import repository.entities.UserCredential;
-import repository.entities.UserProfile;
+import com.revature.p2_lfg.repository.entities.UserCredential;
+import com.revature.p2_lfg.repository.entities.UserProfile;
 
 public interface Profileable {
 

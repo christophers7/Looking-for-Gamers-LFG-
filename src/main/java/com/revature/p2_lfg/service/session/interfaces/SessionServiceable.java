@@ -1,8 +1,8 @@
-package service.session.interfaces;
+package com.revature.p2_lfg.service.session.interfaces;
 
-import presentation.models.session.CreateGroupSessionRequest;
-import presentation.models.session.CreatedGroupSessionResponse;
-import utility.JWTInfo;
+import com.revature.p2_lfg.presentation.models.session.CreateGroupSessionRequest;
+import com.revature.p2_lfg.presentation.models.session.CreatedGroupSessionResponse;
+import com.revature.p2_lfg.utility.JWTInfo;
 
 public interface SessionServiceable {
 

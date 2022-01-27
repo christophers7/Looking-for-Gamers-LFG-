@@ -1,4 +1,4 @@
-package service.login.validation;
+package com.revature.p2_lfg.service.login.validation;
 
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -6,8 +6,8 @@ import org.junit.jupiter.api.TestInstance;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.NullAndEmptySource;
 import org.junit.jupiter.params.provider.ValueSource;
-import presentation.models.login.NewUserCredentialsRequest;
-import service.login.exceptions.InvalidInputException;
+import com.revature.p2_lfg.presentation.models.login.NewUserCredentialsRequest;
+import com.revature.p2_lfg.service.login.exceptions.InvalidInputException;
 
 import static org.junit.jupiter.api.Assertions.*;
 

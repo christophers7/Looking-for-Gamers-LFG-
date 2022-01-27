@@ -1,4 +1,4 @@
-package utility;
+package com.revature.p2_lfg.utility;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 

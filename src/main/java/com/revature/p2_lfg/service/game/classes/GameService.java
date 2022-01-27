@@ -1,13 +1,13 @@
-package service.game.classes;
+package com.revature.p2_lfg.service.game.classes;
 
-import presentation.models.games.GameSessionInfoResponse;
-import presentation.models.games.SelectedGameAvailableGroupsResponse;
-import repository.DAO.implementation.GamesDao;
-import repository.DAO.implementation.SessionDetailsDao;
-import repository.entities.Games;
-import repository.entities.SessionDetails;
-import service.game.dto.GameSelectInfo;
-import service.game.interfaces.GameServiceable;
+import com.revature.p2_lfg.presentation.models.games.GameSessionInfoResponse;
+import com.revature.p2_lfg.presentation.models.games.SelectedGameAvailableGroupsResponse;
+import com.revature.p2_lfg.repository.DAO.implementation.GamesDao;
+import com.revature.p2_lfg.repository.DAO.implementation.SessionDetailsDao;
+import com.revature.p2_lfg.repository.entities.Games;
+import com.revature.p2_lfg.repository.entities.SessionDetails;
+import com.revature.p2_lfg.service.game.dto.GameSelectInfo;
+import com.revature.p2_lfg.service.game.interfaces.GameServiceable;
 
 import java.util.ArrayList;
 import java.util.List;

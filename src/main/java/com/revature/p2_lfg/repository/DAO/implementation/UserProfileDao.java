@@ -1,4 +1,4 @@
-package repository.DAO.implementation;
+package com.revature.p2_lfg.repository.DAO.implementation;
 
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
@@ -10,10 +10,10 @@ import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import repository.DAO.interfaces.Profileable;
-import repository.DAO.util.HibernateSessionFactory;
-import repository.entities.UserCredential;
-import repository.entities.UserProfile;
+import com.revature.p2_lfg.repository.DAO.interfaces.Profileable;
+import com.revature.p2_lfg.repository.DAO.util.HibernateSessionFactory;
+import com.revature.p2_lfg.repository.entities.UserCredential;
+import com.revature.p2_lfg.repository.entities.UserProfile;
 
 public class UserProfileDao implements Profileable {
 

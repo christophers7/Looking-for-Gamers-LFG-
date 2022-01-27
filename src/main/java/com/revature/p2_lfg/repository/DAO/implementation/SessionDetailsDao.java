@@ -1,7 +1,7 @@
-package repository.DAO.implementation;
+package com.revature.p2_lfg.repository.DAO.implementation;
 
-import repository.DAO.interfaces.SessionDetailable;
-import repository.entities.SessionDetails;
+import com.revature.p2_lfg.repository.DAO.interfaces.SessionDetailable;
+import com.revature.p2_lfg.repository.entities.SessionDetails;
 
 import java.util.List;
 

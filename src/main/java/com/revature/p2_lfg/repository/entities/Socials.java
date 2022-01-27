@@ -1,6 +1,6 @@
-package repository.entities;
+package com.revature.p2_lfg.repository.entities;
 
-import repository.entities.compositeKeys.SocialId;
+import com.revature.p2_lfg.repository.entities.compositeKeys.SocialId;
 
 import javax.persistence.*;
 import java.util.Objects;

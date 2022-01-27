@@ -1,4 +1,4 @@
-package repository.entities.compositeKeys;
+package com.revature.p2_lfg.repository.entities.compositeKeys;
 
 import java.io.Serializable;
 import java.util.Objects;

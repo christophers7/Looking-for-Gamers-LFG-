@@ -1,7 +1,7 @@
-package service.profile.validation;
+package com.revature.p2_lfg.service.profile.validation;
 
-import presentation.models.profile.UpdateUserProfileRequest;
-import service.login.exceptions.InvalidInputException;
+import com.revature.p2_lfg.presentation.models.profile.UpdateUserProfileRequest;
+import com.revature.p2_lfg.service.login.exceptions.InvalidInputException;
 
 import java.util.regex.Pattern;
 

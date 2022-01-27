@@ -1,9 +1,9 @@
-package service.profile.interfaces;
+package com.revature.p2_lfg.service.profile.interfaces;
 
-import presentation.models.profile.ProfileResponse;
-import presentation.models.profile.UpdateUserProfileRequest;
-import repository.entities.UserCredential;
-import repository.entities.UserProfile;
+import com.revature.p2_lfg.presentation.models.profile.ProfileResponse;
+import com.revature.p2_lfg.presentation.models.profile.UpdateUserProfileRequest;
+import com.revature.p2_lfg.repository.entities.UserCredential;
+import com.revature.p2_lfg.repository.entities.UserProfile;
 
 public interface ProfileServiceable {
 

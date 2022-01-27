@@ -1,5 +1,6 @@
 package service.login.classes;
 
+import com.revature.p2_lfg.service.login.classes.LoginService;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
@@ -9,11 +10,11 @@ import org.junit.jupiter.params.provider.ValueSource;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
-import presentation.models.login.LoginRequest;
-import presentation.models.login.NewUserCredentialsRequest;
-import repository.DAO.implementation.UserCredentialsDao;
-import repository.entities.UserCredential;
-import repository.entities.UserProfile;
+import com.revature.p2_lfg.presentation.models.login.LoginRequest;
+import com.revature.p2_lfg.presentation.models.login.NewUserCredentialsRequest;
+import com.revature.p2_lfg.repository.DAO.implementation.UserCredentialsDao;
+import com.revature.p2_lfg.repository.entities.UserCredential;
+import com.revature.p2_lfg.repository.entities.UserProfile;
 
 import static org.junit.jupiter.api.Assertions.*;
 

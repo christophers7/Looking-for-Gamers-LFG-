@@ -1,4 +1,4 @@
-package service.game.dto;
+package com.revature.p2_lfg.service.game.dto;
 
 import java.util.Objects;
 

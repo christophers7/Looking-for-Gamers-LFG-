@@ -1,7 +1,7 @@
-package service.game.interfaces;
+package com.revature.p2_lfg.service.game.interfaces;
 
-import presentation.models.games.GameSessionInfoResponse;
-import presentation.models.games.SelectedGameAvailableGroupsResponse;
+import com.revature.p2_lfg.presentation.models.games.GameSessionInfoResponse;
+import com.revature.p2_lfg.presentation.models.games.SelectedGameAvailableGroupsResponse;
 
 public interface GameServiceable {
 

@@ -1,19 +1,20 @@
-package service.session.classes;
+package com.revature.p2_lfg.service.session.classes;
 
+import com.revature.p2_lfg.presentation.models.session.CreateGroupSessionRequest;
+import com.revature.p2_lfg.presentation.models.session.CreatedGroupSessionResponse;
+import com.revature.p2_lfg.repository.DAO.implementation.SessionDao;
+import com.revature.p2_lfg.repository.DAO.implementation.SessionDetailsDao;
+import com.revature.p2_lfg.repository.entities.Games;
+import com.revature.p2_lfg.repository.entities.Session;
+import com.revature.p2_lfg.repository.entities.SessionDetails;
+import com.revature.p2_lfg.repository.entities.Tag;
+import com.revature.p2_lfg.repository.entities.compositeKeys.GroupSessionId;
+import com.revature.p2_lfg.service.session.interfaces.SessionServiceable;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import presentation.models.session.CreateGroupSessionRequest;
-import presentation.models.session.CreatedGroupSessionResponse;
-import repository.DAO.implementation.SessionDao;
-import repository.DAO.implementation.SessionDetailsDao;
-import repository.entities.Games;
-import repository.entities.Session;
-import repository.entities.SessionDetails;
-import repository.entities.Tag;
-import repository.entities.compositeKeys.GroupSessionId;
+import com.revature.p2_lfg.utility.JWTInfo;
+
 import service.session.dto.GroupUser;
-import service.session.interfaces.SessionServiceable;
-import utility.JWTInfo;
 
 import java.util.HashSet;
 import java.util.List;
@@ -100,4 +101,5 @@ public class SessionService implements SessionServiceable {
                         description,
                         tags));
     }
+
 }

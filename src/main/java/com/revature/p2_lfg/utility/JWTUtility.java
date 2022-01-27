@@ -1,9 +1,9 @@
-package utility;
+package com.revature.p2_lfg.utility;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.jsonwebtoken.*;
 import io.jsonwebtoken.security.Keys;
-import repository.entities.UserProfile;
+import com.revature.p2_lfg.repository.entities.UserProfile;
 
 import java.util.Base64;
 

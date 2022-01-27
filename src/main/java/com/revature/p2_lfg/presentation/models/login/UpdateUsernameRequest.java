@@ -1,4 +1,4 @@
-package presentation.models.login;
+package com.revature.p2_lfg.presentation.models.login;
 
 
 import java.util.Objects;

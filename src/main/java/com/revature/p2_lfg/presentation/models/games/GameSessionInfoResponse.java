@@ -1,6 +1,6 @@
-package presentation.models.games;
+package com.revature.p2_lfg.presentation.models.games;
 
-import service.game.dto.GameSelectInfo;
+import com.revature.p2_lfg.service.game.dto.GameSelectInfo;
 
 import java.util.List;
 import java.util.Objects;

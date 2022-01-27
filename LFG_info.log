@@ -1,2 +1,6 @@
 00:59:17.052 [main] INFO  iLog - New Group Session created and stored in database: {"SessionDetails":{"groupId":"1", "game":Games{gameID=1, gameTitle='gameTitle', imgLink='link'}, "maxUsers":"3", "currentUsers":"1", "description":"this is a description", "tags":[]}}
 00:59:17.053 [main] INFO  iLog - Successful entry of a user to a session: {"GroupSessionId":{"userId":"1", "hostId":"1"}}
+15:17:34.459 [main] INFO  iLog - New Group Session created and stored in database: {"SessionDetails":{"groupId":"1", "game":Games{gameID=1, gameTitle='gameTitle', imgLink='link'}, "maxUsers":"3", "currentUsers":"1", "description":"this is a description", "tags":[]}}
+15:17:34.460 [main] INFO  iLog - Successful entry of a user to a session: {"GroupSessionId":{"userId":"1", "hostId":"1"}}
+20:09:58.841 [main] INFO  iLog - New Group Session created and stored in database: {"SessionDetails":{"groupId":"1", "game":Games{gameID=1, gameTitle='gameTitle', imgLink='link'}, "maxUsers":"3", "currentUsers":"1", "description":"this is a description", "tags":[]}}
+20:09:58.842 [main] INFO  iLog - Successful entry of a user to a session: {"GroupSessionId":{"userId":"1", "hostId":"1"}}

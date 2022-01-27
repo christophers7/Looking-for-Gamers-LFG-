@@ -1,12 +1,11 @@
-package utility;
+package com.revature.p2_lfg.utility;
 
 import io.javalin.Javalin;
-import presentation.controllers.LoginController;
-import presentation.controllers.SessionController;
-import presentation.controllers.UserController;
+import com.revature.p2_lfg.presentation.controllers.LoginController;
+import com.revature.p2_lfg.presentation.controllers.SessionController;
+import com.revature.p2_lfg.presentation.controllers.UserController;
 
 public class ServerConfig {
-
 
     public static void configureServerProperties(Javalin app){
         prefer405(app);

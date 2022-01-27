@@ -1,4 +1,4 @@
-package repository.entities.compositeKeys;
+package com.revature.p2_lfg.repository.entities.compositeKeys;
 
 import javax.persistence.Column;
 import javax.persistence.Table;

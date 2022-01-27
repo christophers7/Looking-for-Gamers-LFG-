@@ -1,14 +1,14 @@
-package presentation.handlers;
+package com.revature.p2_lfg.presentation.handlers;
 
 import io.javalin.http.Handler;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import presentation.models.session.CreateGroupSessionRequest;
-import repository.DAO.implementation.SessionDao;
-import repository.DAO.implementation.SessionDetailsDao;
-import service.session.classes.SessionService;
-import utility.JWTInfo;
-import utility.JWTUtility;
+import com.revature.p2_lfg.presentation.models.session.CreateGroupSessionRequest;
+import com.revature.p2_lfg.repository.DAO.implementation.SessionDao;
+import com.revature.p2_lfg.repository.DAO.implementation.SessionDetailsDao;
+import com.revature.p2_lfg.service.session.classes.SessionService;
+import com.revature.p2_lfg.utility.JWTInfo;
+import com.revature.p2_lfg.utility.JWTUtility;
 
 public class SessionHandler {
 

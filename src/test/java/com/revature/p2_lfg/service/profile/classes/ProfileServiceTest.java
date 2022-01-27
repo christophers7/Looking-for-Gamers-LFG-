@@ -1,5 +1,6 @@
 package service.profile.classes;
 
+import com.revature.p2_lfg.service.profile.classes.ProfileService;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
@@ -9,12 +10,12 @@ import org.junit.jupiter.params.provider.ValueSource;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
-import presentation.models.profile.ProfileResponse;
-import presentation.models.profile.UpdateUserProfileRequest;
-import repository.DAO.implementation.UserProfileDao;
-import repository.entities.UserCredential;
-import repository.entities.UserProfile;
-import utility.JWTInfo;
+import com.revature.p2_lfg.presentation.models.profile.ProfileResponse;
+import com.revature.p2_lfg.presentation.models.profile.UpdateUserProfileRequest;
+import com.revature.p2_lfg.repository.DAO.implementation.UserProfileDao;
+import com.revature.p2_lfg.repository.entities.UserCredential;
+import com.revature.p2_lfg.repository.entities.UserProfile;
+import com.revature.p2_lfg.utility.JWTInfo;
 
 import static org.junit.jupiter.api.Assertions.*;
 

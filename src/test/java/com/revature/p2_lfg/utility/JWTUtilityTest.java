@@ -1,12 +1,12 @@
-package utility;
+package com.revature.p2_lfg.utility;
 
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
-import repository.entities.UserCredential;
-import repository.entities.UserProfile;
+import com.revature.p2_lfg.repository.entities.UserCredential;
+import com.revature.p2_lfg.repository.entities.UserProfile;
 
 import static org.junit.jupiter.api.Assertions.*;
 

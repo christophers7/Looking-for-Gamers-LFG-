@@ -1,7 +1,7 @@
-package presentation.controllers;
+package com.revature.p2_lfg.presentation.controllers;
 
 import io.javalin.Javalin;
-import presentation.handlers.LoginHandler;
+import com.revature.p2_lfg.presentation.handlers.LoginHandler;
 
 import static io.javalin.apibuilder.ApiBuilder.*;
 

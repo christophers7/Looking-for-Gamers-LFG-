@@ -1,26 +1,32 @@
-package service.session.classes;
+package com.revature.p2_lfg.service.session.classes;
 
+import com.revature.p2_lfg.repository.DAO.implementation.SessionDao;
+import com.revature.p2_lfg.repository.DAO.implementation.SessionDetailsDao;
+import com.revature.p2_lfg.repository.entities.*;
+import com.revature.p2_lfg.repository.entities.compositeKeys.GroupSessionId;
+import com.revature.p2_lfg.service.session.classes.SessionService;
+import com.revature.p2_lfg.utility.JWTInfo;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
-import presentation.models.session.CreateGroupSessionRequest;
-import presentation.models.session.CreatedGroupSessionResponse;
-import repository.DAO.implementation.SessionDao;
-import repository.DAO.implementation.SessionDetailsDao;
-import repository.entities.*;
-import repository.entities.compositeKeys.GroupSessionId;
+import com.revature.p2_lfg.presentation.models.session.CreateGroupSessionRequest;
+import com.revature.p2_lfg.presentation.models.session.CreatedGroupSessionResponse;
+import com.revature.p2_lfg.repository.DAO.implementation.SessionDao;
+import com.revature.p2_lfg.repository.DAO.implementation.SessionDetailsDao;
+import com.revature.p2_lfg.repository.entities.*;
+import com.revature.p2_lfg.repository.entities.compositeKeys.GroupSessionId;
 import service.session.dto.GroupUser;
-import utility.JWTInfo;
+import com.revature.p2_lfg.utility.JWTInfo;
 
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 class SessionServiceTest {
