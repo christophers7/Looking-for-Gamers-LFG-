@@ -1,7 +1,5 @@
 package com.revature.p2_lfg.repository.entities.compositeKeys;
 
-import javax.persistence.Column;
-import javax.persistence.Table;
 import java.io.Serializable;
 import java.util.Objects;
 

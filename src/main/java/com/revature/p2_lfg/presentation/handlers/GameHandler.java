@@ -1,25 +1,22 @@
 package com.revature.p2_lfg.presentation.handlers;
 
-import io.javalin.http.Handler;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import com.revature.p2_lfg.repository.DAO.implementation.GamesDao;
-import com.revature.p2_lfg.repository.DAO.implementation.SessionDetailsDao;
 import com.revature.p2_lfg.service.game.classes.GameService;
 import com.revature.p2_lfg.utility.JWTInfo;
 import com.revature.p2_lfg.utility.JWTUtility;
+import io.javalin.http.Handler;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
+@Component("gameHandler")
 public class GameHandler {
 
     private final Logger iLog = LoggerFactory.getLogger("iLog");
     private final Logger dLog = LoggerFactory.getLogger("dLog");
 
-
+    @Autowired
     private GameService gameService;
-
-    public GameHandler(){
-        this.gameService = new GameService(new GamesDao(), new SessionDetailsDao());
-    }
 
     public Handler getGameSessionsList = ctx -> {
         dLog.debug("Getting game sessions select list");

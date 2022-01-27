@@ -1,13 +1,17 @@
 package com.revature.p2_lfg.presentation.controllers;
 
-import io.javalin.Javalin;
 import com.revature.p2_lfg.presentation.handlers.LoginHandler;
+import io.javalin.Javalin;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 
 import static io.javalin.apibuilder.ApiBuilder.*;
 
+@Controller("loginController")
 public class LoginController {
 
-    private final LoginHandler loginHandler = new LoginHandler();
+    @Autowired
+    private LoginHandler loginHandler;
 
     public void setEndpoints(Javalin app) {
 

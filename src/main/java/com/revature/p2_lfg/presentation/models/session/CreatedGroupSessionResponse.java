@@ -1,6 +1,6 @@
 package com.revature.p2_lfg.presentation.models.session;
 
-import service.session.dto.GroupUser;
+import com.revature.p2_lfg.service.session.dto.GroupUser;
 
 import java.util.List;
 import java.util.Objects;

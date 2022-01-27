@@ -1,7 +1,6 @@
 package com.revature.p2_lfg.repository.DAO.interfaces;
 
 import com.revature.p2_lfg.repository.entities.SessionDetails;
-import com.revature.p2_lfg.repository.entities.SessionDetails;
 
 import java.util.List;
 

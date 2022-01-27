@@ -1,13 +1,14 @@
 package com.revature.p2_lfg.repository.DAO.implementation;
 
 import com.revature.p2_lfg.repository.DAO.interfaces.Sessionable;
-import com.revature.p2_lfg.repository.DAO.interfaces.Sessionable;
 import com.revature.p2_lfg.repository.entities.Session;
 import com.revature.p2_lfg.repository.entities.compositeKeys.GroupSessionId;
-import service.session.dto.GroupUser;
+import org.springframework.stereotype.Repository;
+import com.revature.p2_lfg.service.session.dto.GroupUser;
 
 import java.util.List;
 
+@Repository("sessionDao")
 public class SessionDao implements Sessionable {
     @Override
     public GroupSessionId createUserSessionEntry(Session session) {

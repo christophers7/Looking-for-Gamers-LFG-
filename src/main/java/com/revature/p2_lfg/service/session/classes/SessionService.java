@@ -14,25 +14,24 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import com.revature.p2_lfg.utility.JWTInfo;
 
-import service.session.dto.GroupUser;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import com.revature.p2_lfg.service.session.dto.GroupUser;
 
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+@Service("sessionService")
 public class SessionService implements SessionServiceable {
 
     private final Logger iLog = LoggerFactory.getLogger("iLog");
     private final Logger dLog = LoggerFactory.getLogger("dLog");
 
-    private final SessionDetailsDao sessionDetailsDao;
-    private final SessionDao sessionDao;
-
-    public SessionService(SessionDetailsDao sessionDetailsDao, SessionDao sessionDao) {
-        this.sessionDetailsDao = sessionDetailsDao;
-        this.sessionDao = sessionDao;
-    }
-
+    @Autowired
+    private SessionDetailsDao sessionDetailsDao;
+    @Autowired
+    private SessionDao sessionDao;
 
     public CreatedGroupSessionResponse createGroupSession(CreateGroupSessionRequest createGroup, JWTInfo parsedJWT) {
         dLog.debug("Creating group session response from group create request: " + createGroup);

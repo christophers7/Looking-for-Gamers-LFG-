@@ -8,19 +8,19 @@ import com.revature.p2_lfg.repository.entities.Games;
 import com.revature.p2_lfg.repository.entities.SessionDetails;
 import com.revature.p2_lfg.service.game.dto.GameSelectInfo;
 import com.revature.p2_lfg.service.game.interfaces.GameServiceable;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Service("gameService")
 public class GameService implements GameServiceable {
 
-    private GamesDao gameDao;
+    @Autowired
+    private GamesDao gamesDao;
+    @Autowired
     private SessionDetailsDao sessionDetailsDao;
-
-    public GameService(GamesDao gameDao, SessionDetailsDao sessionDetailsDao) {
-        this.gameDao = gameDao;
-        this.sessionDetailsDao = sessionDetailsDao;
-    }
 
     public GameSessionInfoResponse getCurrentGameSessionList() {
         return new GameSessionInfoResponse(getGameSelectInfoList(getGames()));
@@ -32,7 +32,7 @@ public class GameService implements GameServiceable {
     }
 
     public List<Games> getGames(){
-        return gameDao.findAllGames();
+        return gamesDao.findAllGames();
     }
 
     public List<GameSelectInfo> getGameSelectInfoList(List<Games> gamesList){

@@ -1,4 +1,4 @@
-package service.session.dto;
+package com.revature.p2_lfg.service.session.dto;
 
 import com.revature.p2_lfg.repository.entities.Socials;
 

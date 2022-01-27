@@ -1,13 +1,17 @@
 package com.revature.p2_lfg.presentation.controllers;
 
-import io.javalin.Javalin;
 import com.revature.p2_lfg.presentation.handlers.UserHandler;
+import io.javalin.Javalin;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 
 import static io.javalin.apibuilder.ApiBuilder.*;
 
+@Controller("userController")
 public class UserController {
 
-    private final UserHandler userHandler = new UserHandler();
+    @Autowired
+    private UserHandler userHandler;
 
     public void setEndpoints(Javalin app) {
 

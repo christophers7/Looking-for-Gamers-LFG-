@@ -1,15 +1,20 @@
 package com.revature.p2_lfg.presentation.controllers;
 
-import io.javalin.Javalin;
 import com.revature.p2_lfg.presentation.handlers.GameHandler;
 import com.revature.p2_lfg.presentation.handlers.SessionHandler;
+import io.javalin.Javalin;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+
 import static io.javalin.apibuilder.ApiBuilder.*;
 
-
+@Controller("sessionController")
 public class SessionController {
 
-    private final SessionHandler sessionHandler = new SessionHandler();
-    private final GameHandler gameHandler = new GameHandler();
+    @Autowired
+    private SessionHandler sessionHandler;
+    @Autowired
+    private GameHandler gameHandler;
 
     public void setEndpoints(Javalin app) {
         app.routes(() -> {

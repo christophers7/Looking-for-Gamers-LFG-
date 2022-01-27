@@ -11,27 +11,28 @@ import com.revature.p2_lfg.service.login.exceptions.InvalidInputException;
 import com.revature.p2_lfg.service.profile.interfaces.ProfileServiceable;
 import com.revature.p2_lfg.service.profile.validation.ProfileValidation;
 import com.revature.p2_lfg.utility.JWTUtility;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+@Service("profileService")
 public class ProfileService implements ProfileServiceable {
 
     private final Logger iLog = LoggerFactory.getLogger("iLog");
     private final Logger dLog = LoggerFactory.getLogger("dLog");
 
-    private final UserProfileDao userProfDao;
+    @Autowired
+    private UserProfileDao userProfileDao;
 
-    public ProfileService(UserProfileDao userProfDao) {
-        this.userProfDao = userProfDao;
-    }
 
     @Override
     public ProfileResponse getProfileResponse(UserCredential userCredential) {
         dLog.debug("Getting Profile Response with User Credentials: " + userCredential);
-        return convertUserProfileToProfileResponse(userProfDao.getUserProfileWithUserCredentials(userCredential));
+        return convertUserProfileToProfileResponse(userProfileDao.getUserProfileWithUserCredentials(userCredential));
     }
 
     public UserProfile getUserProfile(int columnId) {
         dLog.debug("Getting User Profile: " + columnId);
-        return userProfDao.getUserProfile(
+        return userProfileDao.getUserProfile(
                 new UserProfile(
                         columnId,
                         new UserCredential(),
@@ -58,7 +59,7 @@ public class ProfileService implements ProfileServiceable {
     @Override
     public UserProfile newUserProfile(UserCredential newUserCredential, String email) {
         dLog.debug("Creating new UserProfile: " + newUserCredential + " " + email);
-        return getUserProfile(userProfDao.createProfile(new UserProfile(0,newUserCredential,"","",email)));
+        return getUserProfile(userProfileDao.createProfile(new UserProfile(0,newUserCredential,"","",email)));
     }
 
     @Override
@@ -69,8 +70,8 @@ public class ProfileService implements ProfileServiceable {
             storedUserProfile.setFirstName(updateUserProfileRequest.getFirstName());
             storedUserProfile.setLastName(updateUserProfileRequest.getLastName());
             storedUserProfile.setEmail(updateUserProfileRequest.getEmail());
-            userProfDao.updateUserProfile(storedUserProfile);
-            return convertUserProfileToProfileResponse(userProfDao.getUserProfile(storedUserProfile));
+            userProfileDao.updateUserProfile(storedUserProfile);
+            return convertUserProfileToProfileResponse(userProfileDao.getUserProfile(storedUserProfile));
         } catch (InvalidInputException e) {
             dLog.debug("Invalid Input for Updating User Profile: " + updateUserProfileRequest);
             dLog.error(e.getMessage(), e);

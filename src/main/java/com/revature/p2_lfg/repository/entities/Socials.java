@@ -3,7 +3,6 @@ package com.revature.p2_lfg.repository.entities;
 import com.revature.p2_lfg.repository.entities.compositeKeys.SocialId;
 
 import javax.persistence.*;
-import java.util.Objects;
 
 @Entity
 @IdClass(SocialId.class)

@@ -1,9 +1,8 @@
 package com.revature.p2_lfg.repository.DAO.interfaces;
 
-import java.util.List;
+import com.revature.p2_lfg.repository.entities.Games;
 
-import com.revature.p2_lfg.repository.entities.Games;
-import com.revature.p2_lfg.repository.entities.Games;
+import java.util.List;
 
 public interface Playable {
 	

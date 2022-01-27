@@ -9,23 +9,23 @@ import com.revature.p2_lfg.service.login.exceptions.InvalidInputException;
 import com.revature.p2_lfg.service.login.interfaces.LoginServiceable;
 import com.revature.p2_lfg.service.login.validation.LoginValidation;
 import com.revature.p2_lfg.utility.JWTInfo;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.nio.charset.StandardCharsets;
 import java.util.Random;
 
+@Service("loginService")
 public class LoginService implements LoginServiceable {
     private final Logger iLog = LoggerFactory.getLogger("iLog");
     private final Logger dLog = LoggerFactory.getLogger("dLog");
 
-    private final UserCredentialsDao userCredDao;
-
-    public LoginService(UserCredentialsDao userCredDao) {
-        this.userCredDao = userCredDao;
-    }
+    @Autowired
+    private UserCredentialsDao userCredentialsDao;
 
     public UserCredential getUserCredentialFromLogin(LoginRequest loginRequest) {
         dLog.debug("Validating user login attempt: " + loginRequest);
-        return userCredDao.getUserWithUsername(
+        return userCredentialsDao.getUserWithUsername(
                 new UserCredential(
                         0,
                         loginRequest.getUsername(),
@@ -35,7 +35,7 @@ public class LoginService implements LoginServiceable {
     @Override
     public UserCredential newAccount(NewUserCredentialsRequest newUserAccountRequest) {
         dLog.debug("Creating new Account, generating new User Credential: " + newUserAccountRequest);
-        return userCredDao.getUser(
+        return userCredentialsDao.getUser(
                 new UserCredential(
                         newUserCredential(newUserAccountRequest),
                         "",
@@ -47,7 +47,7 @@ public class LoginService implements LoginServiceable {
         dLog.debug("Creating new userCredentials through database: " + newUserCredentialsRequest);
         try {
             LoginValidation.validateNewUserCredentials(newUserCredentialsRequest);
-            return userCredDao.createUser(new UserCredential(
+            return userCredentialsDao.createUser(new UserCredential(
                     0,
                     newUserCredentialsRequest.getUsername(),
                     newUserCredentialsRequest.getPassword()
@@ -70,7 +70,7 @@ public class LoginService implements LoginServiceable {
             LoginValidation.validateUsername(updateUserCredentialRequest.getUsername());
             UserCredential storedUser = getUserWithUserID(parsedJWT.getUserId());
             storedUser.setUserLogin(updateUserCredentialRequest.getUsername());
-            userCredDao.updateUser(storedUser);
+            userCredentialsDao.updateUser(storedUser);
             iLog.info("Updated username, userID: " + parsedJWT.getUserId());
             return true;
         } catch (InvalidInputException e) {
@@ -81,7 +81,7 @@ public class LoginService implements LoginServiceable {
 
     public UserCredential getUserWithUserID(int userId) {
         dLog.debug("Getting stored UserCredentials with userCredential ID: " + userId);
-        return userCredDao.getUser(new UserCredential(userId, "", ""));
+        return userCredentialsDao.getUser(new UserCredential(userId, "", ""));
     }
 
     @Override
@@ -93,7 +93,7 @@ public class LoginService implements LoginServiceable {
             String generatedString = new String(array, StandardCharsets.UTF_8);
             UserCredential storedUserCredential = getUserCredentialFromLogin(new LoginRequest(resetPasswordRequest.getUsername(), ""));
             storedUserCredential.setUserPass(generatedString);
-            userCredDao.updateUser(storedUserCredential);
+            userCredentialsDao.updateUser(storedUserCredential);
             iLog.info("Reset password for user: " + resetPasswordRequest);
             return true;
         }catch (Exception e){
@@ -110,7 +110,7 @@ public class LoginService implements LoginServiceable {
             LoginValidation.validatePassword(updateUserCredentialRequest.getPassword());
             UserCredential storedUser = getUserWithUserID(parsedJWT.getUserId());
             storedUser.setUserPass(updateUserCredentialRequest.getPassword());
-            userCredDao.updateUser(storedUser);
+            userCredentialsDao.updateUser(storedUser);
             iLog.info("Updated password, userID: " + parsedJWT.getUserId());
             return true;
         } catch (InvalidInputException e) {
