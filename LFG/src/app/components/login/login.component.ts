@@ -62,11 +62,32 @@ export class LoginComponent implements OnInit {
     if(userN != null && passW != null) {
       this.authService.login(userN, passW).subscribe({
         next: data => {
-          this.isLoginFailed = false;
-          this.tokenStorage.saveToken(data.jwt);
-          this.tokenStorage.saveUser(data)
-
           
+          /**
+           *  For testing till backend is done!!!!!
+           */
+          const user = data.find((a:any)=>{
+            return a.username === userN && a.password === passW;
+          });
+          if(user){
+            this.isLoginFailed = false;
+            this.tokenStorage.saveToken(user.jwt);
+            this.tokenStorage.saveUser(user)
+            this.router.navigate(['main'])
+          }
+          else {
+            this.errorMessage = "Username or password incorrect";
+            console.log("Username or password incorrect")
+            this.isLoginFailed = true;
+          }
+          /**
+           *  For testing till backend is done!!!!!
+           */
+
+//          this.isLoginFailed = false;
+//          this.tokenStorage.saveToken(data.jwt);
+//          this.tokenStorage.saveUser(data)
+//          this.router.navigate(['main'])   
         },
         error: err => {
           this.errorMessage = err.error.message;

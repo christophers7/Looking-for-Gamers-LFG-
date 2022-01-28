@@ -1,8 +1,11 @@
-<p>lfgmain works!</p>
 <div id="mainBox" class="mainGroup">
     <div id="mainDisplayBox" class='mainGroup'>
-        <div>
-            <button id="viewGameList" (click) = "viewGameList()">View Games</button>
+        <div [ngSwitch]="panelNumber">
+            <div>
+                <div *ngSwitchCase="1"><app-game-display (emitter)="send($event)"></app-game-display></div>
+                <div *ngSwitchCase="2"><app-view-game-groups (panelNumberChange)="changePanel($event)" [gameId]="gameId"></app-view-game-groups></div>
+                <div *ngSwitchDefault><app-game-display (emitter)="send($event)"></app-game-display></div>
+            </div>
         </div>
     </div>
     
@@ -15,6 +18,7 @@
             <h2>{{currentUser.username}}</h2>
         </div>
         <button id="profileDisplayButton" class="profileDisplayGroup" (click)="goToProfile()">View Profile</button>
+        <button id="logOutButton" class="profileDisplayGroup" (click)="logOut()">Log Out</button>
     </div>
 
     <div id="groupAppCounterBox" class="mainGroup">

@@ -25,7 +25,7 @@ export class ModifyProfileComponent implements OnInit {
   constructor(private router: Router, private formBuilder: FormBuilder, private tokenStorage: TokenStorageService) { }
 
   ngOnInit(): void {
-    this.currentUser = this.tokenStorage.getUser;
+    this.currentUser = this.tokenStorage.getUser();
     this.form = this.formBuilder.group(
       {   
         username: [
@@ -79,6 +79,14 @@ export class ModifyProfileComponent implements OnInit {
         validators: [Validation.match('password', 'confirmPassword')]
       }
     );
+    this.form.controls["username"].patchValue(this.currentUser.username);
+    if(this.currentUser.firstName){
+    this.form.controls["firstName"].patchValue(this.currentUser.firstName);
+    }
+    if(this.currentUser.lastName) {
+      this.form.controls["lastName"].patchValue(this.currentUser.lastName);
+    }
+    this.form.controls["email"].patchValue(this.currentUser.email);
   }
 
   goToProfile(): void {
