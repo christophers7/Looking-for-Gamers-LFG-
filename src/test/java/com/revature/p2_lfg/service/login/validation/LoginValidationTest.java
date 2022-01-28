@@ -8,19 +8,17 @@ import org.junit.jupiter.params.provider.NullAndEmptySource;
 import org.junit.jupiter.params.provider.ValueSource;
 import com.revature.p2_lfg.presentation.models.login.NewUserCredentialsRequest;
 import com.revature.p2_lfg.service.login.exceptions.InvalidInputException;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+@SpringBootTest
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 class LoginValidationTest {
 
-    private NewUserCredentialsRequest newUserCredentialsRequest;
+    private final NewUserCredentialsRequest newUserCredentialsRequest = new NewUserCredentialsRequest();
 
-
-    @BeforeAll
-    void setUp() {
-        newUserCredentialsRequest = new NewUserCredentialsRequest();
-    }
 
     @Test
     void validateNewUserCredentialsSuccessTest() {

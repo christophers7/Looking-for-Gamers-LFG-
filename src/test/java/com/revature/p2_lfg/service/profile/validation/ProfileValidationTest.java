@@ -1,14 +1,18 @@
 package com.revature.p2_lfg.service.profile.validation;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestInstance;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.NullAndEmptySource;
 import org.junit.jupiter.params.provider.ValueSource;
 import com.revature.p2_lfg.presentation.models.profile.UpdateUserProfileRequest;
 import com.revature.p2_lfg.service.login.exceptions.InvalidInputException;
+import org.springframework.boot.test.context.SpringBootTest;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+@SpringBootTest
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 class ProfileValidationTest {
 
     private String validFirstName = "validFirstName";
