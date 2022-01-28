@@ -27,7 +27,11 @@
         <mapping class="com.revature.p2_lfg.repository.entities.Session"/>
         <mapping class="com.revature.p2_lfg.repository.entities.compositeKeys.GroupSessionId"/>
         <mapping class="com.revature.p2_lfg.repository.entities.compositeKeys.SocialId"/>
-
+        <mapping class = "com.revature.p2_lfg.repository.entities.UserReports"/>
+        <mapping class ="com.revature.p2_lfg.repository.entities.ReportTagTable" />
+        <mapping class ="com.revature.p2_lfg.repository.entities.CommendTagTable" />
+        <mapping class ="com.revature.p2_lfg.repository.entities.UserCommends" />
+        <mapping class ="com.revature.p2_lfg.repository.entities.UserScore" />
 
     </session-factory>
 </hibernate-configuration>
