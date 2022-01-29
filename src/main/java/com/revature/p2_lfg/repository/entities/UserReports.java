@@ -17,8 +17,8 @@ import java.sql.Date;
 @Table(schema = "project_one", name = "user_reports ")
 
 public class UserReports {
-    @Column(name = "reportID ")
     @Id
+    @Column(name = "reportID ")
     @GeneratedValue(generator = "auto_increment ", strategy = GenerationType.IDENTITY)
     @SequenceGenerator(allocationSize = 1, name = "user_reports_reportid_seq ", sequenceName = "user_reports_reportid_seq ")
     int reportID;

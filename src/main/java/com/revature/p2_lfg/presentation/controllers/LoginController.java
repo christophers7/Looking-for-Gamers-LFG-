@@ -3,10 +3,8 @@ package com.revature.p2_lfg.presentation.controllers;
 import com.revature.p2_lfg.presentation.models.login.*;
 import com.revature.p2_lfg.presentation.models.profile.ProfileResponse;
 import com.revature.p2_lfg.repository.entities.UserCredential;
-import com.revature.p2_lfg.repository.entities.UserProfile;
 import com.revature.p2_lfg.service.login.classes.LoginService;
 import com.revature.p2_lfg.service.profile.classes.ProfileService;
-import com.revature.p2_lfg.utility.JWTInfo;
 import com.revature.p2_lfg.utility.JWTUtility;
 import lombok.NonNull;
 import org.slf4j.Logger;
@@ -35,25 +33,24 @@ public class LoginController {
     }
 
     @PostMapping("/new")
-    @NonNull
-    public UserProfile newLogin(@NonNull @RequestBody NewUserCredentialsRequest newUser) {
+    public ProfileResponse newLogin(@NonNull @RequestBody NewUserCredentialsRequest newUser) {
         UserCredential userCredential = loginService.newAccount(newUser);
         return profileService.newUserProfile(userCredential, newUser.getEmail());
     }
 
-    @PatchMapping("/update-password")
+    @PutMapping("/update-password")
     public boolean updatePassword(@NonNull @RequestHeader("Authorization") String token , @NonNull @RequestBody UpdatePasswordRequest newPassword){
         dLog.debug("Attempting to update password: " + newPassword);
         return loginService.updateUserCredentialPassword(newPassword, Objects.requireNonNull(JWTUtility.verifyUser(token)));
     }
 
-    @PatchMapping("/update-username")
+    @PutMapping("/update-username")
     public boolean updateUsername(@NonNull @RequestHeader("Authorization") String token,@NonNull @RequestBody UpdateUsernameRequest newUsername){
         dLog.debug("Attempting to update user login: " + newUsername);
         return loginService.updateUserCredentialUsername(newUsername, Objects.requireNonNull(JWTUtility.verifyUser(token)));
     }
 
-    @PatchMapping("/reset-password")
+    @PutMapping("/reset-password")
     public boolean resetPassword(@NonNull @RequestBody ResetPasswordRequest resetPassword){
         dLog.debug("Attempting to reset password: " + resetPassword);
         return loginService.resetPassword(resetPassword);

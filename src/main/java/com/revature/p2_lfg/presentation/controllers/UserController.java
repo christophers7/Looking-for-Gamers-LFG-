@@ -24,7 +24,7 @@ public class UserController {
     @Autowired
     private LoginService loginService;
 
-    @PatchMapping("/update")
+    @PostMapping("/update")
     public ProfileResponse updateProfile(
             @RequestHeader("Authorization") String token,
             @RequestBody UpdateUserProfileRequest profile){
@@ -35,11 +35,10 @@ public class UserController {
     }
 
     @GetMapping("/profile")
-    public UserProfile getUserProfile(@RequestHeader("Authorization") String token){
+    public ProfileResponse getUserProfile(@RequestHeader("Authorization") String token){
         dLog.debug("Attempting to get user profile");
         JWTInfo parsedJWT = JWTUtility.verifyUser(token);
-        if(parsedJWT != null) profileService.getUserProfile(parsedJWT.getUserId());
+        if(parsedJWT != null) return profileService.convertUserProfileToProfileResponse(profileService.getUserProfile(parsedJWT.getUserId()));
         else return null;
-        return null;
     }
 }

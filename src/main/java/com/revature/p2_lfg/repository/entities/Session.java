@@ -20,15 +20,15 @@ import javax.persistence.*;
 public class Session {
     @Id
     @Column(name = "userId")
-    private int userId;
+    int userId;
     @Id
     @Column(name = "hostId")
-    private int hostId;
+    int hostId;
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "groupID")
-    private SessionDetails groupSession;
+    SessionDetails groupSession;
     @Column(name = "inSession")
-    private boolean inSession;
+    boolean inSession;
 
 }
 

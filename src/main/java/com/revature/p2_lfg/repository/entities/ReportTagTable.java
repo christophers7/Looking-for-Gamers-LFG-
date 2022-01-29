@@ -17,9 +17,8 @@ import javax.persistence.Table;
 @Table(schema = "project_two", name = "report_tag_table")
 @Entity
 public class ReportTagTable {
- @Column
+    @Column
     int reportTagID;
- @Column
- String value;
-
+    @Column
+    String value;
 }

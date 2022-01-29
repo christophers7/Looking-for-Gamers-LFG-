@@ -28,9 +28,9 @@ public class GameController {
     }
 
     @GetMapping("/select")
-    public SelectedGameAvailableGroupsResponse getSelectedGameGroups(@RequestParam("gameId") String id){
+    public SelectedGameAvailableGroupsResponse getSelectedGameGroups(@RequestParam("gameId") int id){
         dLog.debug("Getting game group sessions by gameName: " + id);
-        return gameService.getSelectedGameGroups(Integer.parseInt(id));
+        return gameService.getSelectedGameGroups(id);
     }
 
 }

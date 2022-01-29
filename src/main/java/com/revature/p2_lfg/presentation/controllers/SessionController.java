@@ -2,6 +2,8 @@ package com.revature.p2_lfg.presentation.controllers;
 
 import com.revature.p2_lfg.presentation.models.session.CreateGroupSessionRequest;
 import com.revature.p2_lfg.presentation.models.session.CreatedGroupSessionResponse;
+import com.revature.p2_lfg.presentation.models.session.JoinGroupSessionRequest;
+import com.revature.p2_lfg.presentation.models.session.JoinGroupSessionResponse;
 import com.revature.p2_lfg.service.session.classes.SessionService;
 import com.revature.p2_lfg.utility.JWTInfo;
 import com.revature.p2_lfg.utility.JWTUtility;
@@ -25,6 +27,14 @@ public class SessionController {
         dLog.debug("Creating a group session: " + groupSession);
         JWTInfo parsedJWT = JWTUtility.verifyUser(token);
         if(parsedJWT != null) return sessionService.createGroupSession(groupSession, parsedJWT);
+        else return null;
+    }
+
+    @PostMapping("/join")
+    public JoinGroupSessionResponse joinGroupSession(@RequestHeader("Authorization") String token, @RequestBody JoinGroupSessionRequest joinSession){
+        dLog.debug("Joining a group session: " + joinSession);
+        JWTInfo parsedJWT = JWTUtility.verifyUser(token);
+        if(parsedJWT != null) return sessionService.joinGroupSession(joinSession, parsedJWT);
         else return null;
     }
 

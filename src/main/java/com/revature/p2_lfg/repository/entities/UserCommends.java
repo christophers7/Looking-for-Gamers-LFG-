@@ -17,8 +17,8 @@ import java.sql.Date;
 @Entity
 public class UserCommends {
 
-    @Column(name = "commendID")
     @Id
+    @Column(name = "commendID")
     @GeneratedValue(generator = "auto_increment ", strategy = GenerationType.IDENTITY)
     @SequenceGenerator(allocationSize = 1, name = "user_commends_commendid_seq", sequenceName = "user_commends_commendid_seq")
     int commendID;

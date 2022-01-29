@@ -2,6 +2,8 @@ package com.revature.p2_lfg.service.session.classes;
 
 import com.revature.p2_lfg.presentation.models.session.CreateGroupSessionRequest;
 import com.revature.p2_lfg.presentation.models.session.CreatedGroupSessionResponse;
+import com.revature.p2_lfg.presentation.models.session.JoinGroupSessionRequest;
+import com.revature.p2_lfg.presentation.models.session.JoinGroupSessionResponse;
 import com.revature.p2_lfg.repository.DAO.implementation.SessionDao;
 import com.revature.p2_lfg.repository.DAO.implementation.SessionDetailsDao;
 import com.revature.p2_lfg.repository.entities.Games;
@@ -59,9 +61,27 @@ public class SessionService implements SessionServiceable {
         return null;
     }
 
+    @Override
+    public JoinGroupSessionResponse joinGroupSession(JoinGroupSessionRequest joinSession, JWTInfo parsedJWT) {
+        dLog.debug("Joining group session response from group join request: " + joinSession);
+        SessionDetails sessionDetails = getSessionDetailsByGroupId(joinSession.getGroupId());
+        if(sessionDetails != null){
+            iLog.info("Joining group session: " + sessionDetails);
+            Session session = new Session(parsedJWT.getUserId(), joinSession.getHostId(), sessionDetails, false);
+            GroupSessionId sessionId = sessionDao.createUserSessionEntry(session);
+            return new JoinGroupSessionResponse(
+                    sessionId,
+                    joinSession.getUsername(),
+                    joinSession.getGameId(),
+                    sessionDetails.getGroupId(),
+                    joinSession.getHostId()
+            );
+        }
+        return null;
+    }
+
     private List<GroupUser> getGroupMembersOfSession(int groupId) {
-        dLog.debug("Getting group users associated by group Id: " + groupId);
-        return sessionDao.getGroupMembersByGroupId(groupId);
+        
     }
 
     private GroupSessionId createUserSession(SessionDetails sessionDetails, JWTInfo parsedJWT) {
