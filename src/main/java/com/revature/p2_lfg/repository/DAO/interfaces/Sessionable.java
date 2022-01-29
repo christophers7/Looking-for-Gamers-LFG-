@@ -18,4 +18,6 @@ public interface Sessionable {
     void save(Session session);
 
     void delete(Session session);
+
+    void deleteAllWithGroupId(int groupId);
 }

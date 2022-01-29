@@ -15,4 +15,6 @@ public interface SessionServiceable {
     WaitingRoomResponse respondToUserSession(JWTInfo parsedJWT, WaitingRoomRequest roomRequest);
 
     CancelGroupResponse cancelSession(JWTInfo parsedJWT, CancelGroupRequest cancelGroup);
+
+    LeaveGroupResponse leaveSession(JWTInfo parsedJWT, int groupId, int gameId);
 }

@@ -63,8 +63,7 @@ public class SessionController {
     public LeaveGroupResponse leaveGroupSession(@RequestParam int groupId, @RequestParam int gameId, @RequestHeader("Authorization") String token){
         dLog.debug("Joining a group session: " + groupId);
         JWTInfo parsedJWT = JWTUtility.verifyUser(token);
-        if(parsedJWT != null)
-        return null;
+        if(parsedJWT != null) return sessionService.leaveSession(parsedJWT, groupId, gameId);
         return null;
     }
 

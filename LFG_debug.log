@@ -21550,3 +21550,25 @@ com.revature.p2_lfg.service.login.exceptions.InvalidInputException: null
 20:46:04.380 [main] DEBUG dLog - Checking session status: 1 + userId: 2
 20:46:44.937 [main] DEBUG dLog - Checking session status: 1 + userId: 2
 20:47:16.164 [main] DEBUG dLog - Checking session status: 1 + userId: 2
+21:53:35.859 [main] DEBUG dLog - Responding to user in session: WaitingRoomRequest(groupId=1, gameId=1, waitingUsername=user2, success=true)
+21:55:06.963 [main] DEBUG dLog - Responding to user in session: WaitingRoomRequest(groupId=1, gameId=1, waitingUsername=user2, success=true)
+21:58:57.553 [main] DEBUG dLog - Responding to user in session: WaitingRoomRequest(groupId=1, gameId=1, waitingUsername=user2, success=true)
+22:00:55.548 [main] DEBUG dLog - Responding to user in session: WaitingRoomRequest(groupId=1, gameId=1, waitingUsername=user2, success=true)
+22:02:27.103 [main] DEBUG dLog - Responding to user in session: WaitingRoomRequest(groupId=1, gameId=1, waitingUsername=user2, success=true)
+22:02:34.468 [main] DEBUG dLog - Responding to user in session: WaitingRoomRequest(groupId=1, gameId=1, waitingUsername=user2, success=false)
+22:03:21.343 [main] DEBUG dLog - Responding to user in session: WaitingRoomRequest(groupId=1, gameId=1, waitingUsername=user2, success=false)
+22:13:05.137 [main] DEBUG dLog - Canceling group session: CancelGroupRequest(groupId=1, gameId=1, groupMembers=[GroupUser(username=user2, groupId=1, stats=, insideSession=false)])
+22:28:13.990 [main] DEBUG dLog - Attempting to leave Group Session: 1
+22:28:26.923 [main] DEBUG dLog - Joining group session response from group join request: 1
+22:28:26.923 [main] DEBUG dLog - Getting session details by group ID: 1
+22:28:26.926 [main] DEBUG dLog - Creating user Session for a group: SessionDetails(groupId=1, game=Games(gameID=1, gameTitle=gameTitle, imgLink=link), maxUsers=3, currentUsers=1, description=this is a description, tags=[])
+22:28:26.953 [main] DEBUG dLog - Responding to user in session: WaitingRoomRequest(groupId=1, gameId=1, waitingUsername=user2, success=true)
+22:28:26.964 [main] DEBUG dLog - Attempting to leave Group Session: 1
+22:28:26.974 [main] DEBUG dLog - Checking session status: 1 + userId: 2
+22:28:26.985 [main] DEBUG dLog - Responding to user in session: WaitingRoomRequest(groupId=1, gameId=1, waitingUsername=user2, success=false)
+22:28:26.995 [main] DEBUG dLog - Canceling group session: CancelGroupRequest(groupId=1, gameId=1, groupMembers=[GroupUser(username=user2, groupId=1, stats=, insideSession=false)])
+22:28:27.003 [main] DEBUG dLog - Creating group session response from group create request: CreateGroupSessionRequest(gameId=1, maxUsers=3, description=this is a description)
+22:28:27.003 [main] DEBUG dLog - Creating a group session: GameId - 1 maxUsers - 3 Description: this is a description
+22:28:27.004 [main] DEBUG dLog - Getting session details by group ID: 0
+22:28:27.004 [main] DEBUG dLog - Creating user Session for a group: SessionDetails(groupId=1, game=Games(gameID=1, gameTitle=gameTitle, imgLink=link), maxUsers=3, currentUsers=1, description=this is a description, tags=[])
+22:28:27.004 [main] DEBUG dLog - Getting group users associated by group Id: 1

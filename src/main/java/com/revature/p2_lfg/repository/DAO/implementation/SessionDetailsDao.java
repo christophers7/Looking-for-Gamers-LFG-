@@ -22,4 +22,14 @@ public class SessionDetailsDao implements SessionDetailable {
     public SessionDetails getSessionDetails(SessionDetails sessionDetails) {
         return null;
     }
+
+    @Override
+    public SessionDetails getSessionDetailsWithId(int groupId) {
+        return null;
+    }
+
+    @Override
+    public void delete(SessionDetails sessionDetailsWithId) {
+
+    }
 }

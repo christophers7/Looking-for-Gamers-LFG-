@@ -98,7 +98,12 @@ public class UserCredentialsDao implements Loginable {
 		
     }
 
-    @Override
+	@Override
+	public UserCredential getUserWithUsername(String waitingUsername) {
+		return null;
+	}
+
+	//    @Override
     public UserCredential getUserWithUsername(UserCredential userCredential) {
     	dLog.debug("Searching for User in Database: " + userCredential);
     	UserCredential username = null;

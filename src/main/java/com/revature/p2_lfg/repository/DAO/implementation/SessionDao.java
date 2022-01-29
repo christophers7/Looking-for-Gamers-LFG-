@@ -39,4 +39,9 @@ public class SessionDao implements Sessionable {
     public void delete(Session session) {
 
     }
+
+    @Override
+    public void deleteAllWithGroupId(int groupId) {
+
+    }
 }

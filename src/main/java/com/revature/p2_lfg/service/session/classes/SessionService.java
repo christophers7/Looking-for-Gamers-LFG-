@@ -154,7 +154,7 @@ import java.util.Set;
             sessionDao.save(session);
             return new WaitingRoomResponse(
                     true,
-                    new GroupUser(roomRequest.getWaitingUsername(), roomRequest.getGroupId(), new Socials(), "", true )
+                    new GroupUser(roomRequest.getWaitingUsername(), roomRequest.getGroupId(), "", true )
             );
         }else{
             sessionDao.delete(session);
@@ -167,6 +167,29 @@ import java.util.Set;
     @Override
     public CancelGroupResponse cancelSession(JWTInfo parsedJWT, CancelGroupRequest cancelGroup) {
         dLog.debug("Canceling group session: " + cancelGroup);
-        return null;
+        try{
+            sessionDao.deleteAllWithGroupId(cancelGroup.getGroupId());
+            sessionDetailsDao.delete(sessionDetailsDao.getSessionDetailsWithId(cancelGroup.getGroupId()));
+            return new CancelGroupResponse(
+                    true
+            );
+
+        }catch(Exception e){
+            dLog.debug(e.getMessage(), e);
+            return new CancelGroupResponse(false);
+        }
+
+    }
+
+    @Override
+    public LeaveGroupResponse leaveSession(JWTInfo parsedJWT, int groupId, int gameId) {
+        dLog.debug("Attempting to leave Group Session: " + groupId);
+        try{
+            sessionDao.delete(sessionDao.getUserSession(parsedJWT.getUserId(), groupId));
+            return new LeaveGroupResponse(true);
+        }catch(Exception e){
+            dLog.error(e.getMessage(), e);
+            return new LeaveGroupResponse(false);
+        }
     }
 }
