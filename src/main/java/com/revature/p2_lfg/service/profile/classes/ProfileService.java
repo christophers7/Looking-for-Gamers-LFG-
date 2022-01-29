@@ -23,7 +23,6 @@ public class ProfileService implements ProfileServiceable {
     @Autowired
     private UserProfileDao userProfileDao;
 
-
     @Override
     public ProfileResponse getProfileResponse(UserCredential userCredential) {
         dLog.debug("Getting Profile Response with User Credentials: " + userCredential);
@@ -57,9 +56,9 @@ public class ProfileService implements ProfileServiceable {
     }
 
     @Override
-    public UserProfile newUserProfile(UserCredential newUserCredential, String email) {
+    public ProfileResponse newUserProfile(UserCredential newUserCredential, String email) {
         dLog.debug("Creating new UserProfile: " + newUserCredential + " " + email);
-        return getUserProfile(userProfileDao.createProfile(new UserProfile(0,newUserCredential,"","",email)));
+        return convertUserProfileToProfileResponse(getUserProfile(userProfileDao.createProfile(new UserProfile(0,newUserCredential,"","",email))));
     }
 
     @Override

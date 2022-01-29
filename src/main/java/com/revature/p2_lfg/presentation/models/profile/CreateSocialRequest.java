@@ -6,15 +6,11 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.FieldDefaults;
 
-import java.util.Objects;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class UpdateUserProfileRequest {
-
-    String firstName;
-    String lastName;
-    String email;
-
+public class CreateSocialRequest {
+    int gameId;
+    String social;
 }

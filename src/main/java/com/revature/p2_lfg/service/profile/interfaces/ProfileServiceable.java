@@ -43,7 +43,7 @@ public interface ProfileServiceable {
      * @return UserProfile An entity associated with the newly created UserProfile in the database.
      * Null is returned if an exception is thrown or method fails to process.
      */
-    UserProfile newUserProfile(UserCredential newUserCredential, String email);
+    ProfileResponse newUserProfile(UserCredential newUserCredential, String email);
 
     /**
      * This method is used to update the users profile from the handler level. It is clear in its use for the handler,

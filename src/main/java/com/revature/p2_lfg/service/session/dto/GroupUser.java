@@ -16,7 +16,6 @@ import java.util.Objects;
 public class GroupUser {
     String username;
     int groupId;
-    Socials social;
     String stats;
     boolean insideSession;
 }

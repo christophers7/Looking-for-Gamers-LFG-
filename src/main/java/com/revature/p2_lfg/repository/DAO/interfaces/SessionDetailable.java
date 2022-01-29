@@ -10,4 +10,8 @@ public interface SessionDetailable {
     Integer createGroupSession(SessionDetails sessionDetails);
 
     SessionDetails getSessionDetails(SessionDetails sessionDetails);
+
+    SessionDetails getSessionDetailsWithId(int groupId);
+
+    void delete(SessionDetails sessionDetailsWithId);
 }

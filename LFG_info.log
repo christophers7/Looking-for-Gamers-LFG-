@@ -14,3 +14,22 @@
 00:10:03.826 [main] INFO  iLog - Successful entry of a user to a session: {"GroupSessionId":{"userId":"1", "hostId":"1"}}
 00:11:09.246 [main] INFO  iLog - New Group Session created and stored in database: {"SessionDetails":{"groupId":"1", "game":Games{gameID=1, gameTitle='gameTitle', imgLink='link'}, "maxUsers":"3", "currentUsers":"1", "description":"this is a description", "tags":[]}}
 00:11:09.247 [main] INFO  iLog - Successful entry of a user to a session: {"GroupSessionId":{"userId":"1", "hostId":"1"}}
+00:17:58.513 [main] INFO  iLog - New Group Session created and stored in database: SessionDetails(groupId=1, game=Games(gameID=1, gameTitle=gameTitle, imgLink=link), maxUsers=3, currentUsers=1, description=this is a description, tags=[])
+00:17:58.514 [main] INFO  iLog - Successful entry of a user to a session: GroupSessionId(userId=1, hostId=1)
+00:47:50.709 [main] INFO  iLog - New Group Session created and stored in database: SessionDetails(groupId=1, game=Games(gameID=1, gameTitle=gameTitle, imgLink=link), maxUsers=3, currentUsers=1, description=this is a description, tags=[])
+00:47:50.710 [main] INFO  iLog - Successful entry of a user to a session: GroupSessionId(userId=1, hostId=1)
+15:23:14.543 [main] INFO  iLog - New Group Session created and stored in database: SessionDetails(groupId=1, game=Games(gameID=1, gameTitle=gameTitle, imgLink=link), maxUsers=3, currentUsers=1, description=this is a description, tags=[])
+15:23:14.543 [main] INFO  iLog - Successful entry of a user to a session: GroupSessionId(userId=1, hostId=1)
+16:43:32.017 [main] INFO  iLog - Joining group session: SessionDetails(groupId=1, game=Games(gameID=1, gameTitle=gameTitle, imgLink=link), maxUsers=3, currentUsers=1, description=this is a description, tags=[])
+16:49:59.397 [main] INFO  iLog - Joining group session: SessionDetails(groupId=1, game=Games(gameID=1, gameTitle=gameTitle, imgLink=link), maxUsers=3, currentUsers=1, description=this is a description, tags=[])
+16:52:17.952 [main] INFO  iLog - Joining group session: SessionDetails(groupId=1, game=Games(gameID=1, gameTitle=gameTitle, imgLink=link), maxUsers=3, currentUsers=1, description=this is a description, tags=[])
+18:32:12.565 [main] INFO  iLog - Joining group session: SessionDetails(groupId=1, game=Games(gameID=1, gameTitle=gameTitle, imgLink=link), maxUsers=3, currentUsers=1, description=this is a description, tags=[])
+18:33:12.237 [main] INFO  iLog - Joining group session: SessionDetails(groupId=1, game=Games(gameID=1, gameTitle=gameTitle, imgLink=link), maxUsers=3, currentUsers=1, description=this is a description, tags=[])
+18:43:41.607 [main] INFO  iLog - Joining group session: SessionDetails(groupId=1, game=Games(gameID=1, gameTitle=gameTitle, imgLink=link), maxUsers=3, currentUsers=1, description=this is a description, tags=[])
+18:45:53.090 [main] INFO  iLog - Joining group session: SessionDetails(groupId=1, game=Games(gameID=1, gameTitle=gameTitle, imgLink=link), maxUsers=3, currentUsers=1, description=this is a description, tags=[])
+20:27:23.634 [main] INFO  iLog - New Group Session created and stored in database: SessionDetails(groupId=1, game=Games(gameID=1, gameTitle=gameTitle, imgLink=link), maxUsers=3, currentUsers=1, description=this is a description, tags=[])
+20:27:23.634 [main] INFO  iLog - Successful entry of a user to a session: GroupSessionId(userId=1, hostId=1)
+20:27:23.657 [main] INFO  iLog - Joining group session: SessionDetails(groupId=1, game=Games(gameID=1, gameTitle=gameTitle, imgLink=link), maxUsers=3, currentUsers=1, description=this is a description, tags=[])
+22:28:26.926 [main] INFO  iLog - Joining group session: SessionDetails(groupId=1, game=Games(gameID=1, gameTitle=gameTitle, imgLink=link), maxUsers=3, currentUsers=1, description=this is a description, tags=[])
+22:28:27.004 [main] INFO  iLog - New Group Session created and stored in database: SessionDetails(groupId=1, game=Games(gameID=1, gameTitle=gameTitle, imgLink=link), maxUsers=3, currentUsers=1, description=this is a description, tags=[])
+22:28:27.004 [main] INFO  iLog - Successful entry of a user to a session: GroupSessionId(userId=1, hostId=1)

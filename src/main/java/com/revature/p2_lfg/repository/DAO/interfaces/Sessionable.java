@@ -10,4 +10,14 @@ public interface Sessionable {
     GroupSessionId createUserSessionEntry(Session session);
 
     List<GroupUser> getGroupMembersByGroupId(int groupId);
+
+    int getHostId(int groupId);
+
+    Session getUserSession(int userId, int groupId);
+
+    void save(Session session);
+
+    void delete(Session session);
+
+    void deleteAllWithGroupId(int groupId);
 }

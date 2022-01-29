@@ -1,7 +1,6 @@
 package com.revature.p2_lfg.presentation.controllers;
 
-import com.revature.p2_lfg.presentation.models.session.CreateGroupSessionRequest;
-import com.revature.p2_lfg.presentation.models.session.CreatedGroupSessionResponse;
+import com.revature.p2_lfg.presentation.models.session.*;
 import com.revature.p2_lfg.service.session.classes.SessionService;
 import com.revature.p2_lfg.utility.JWTInfo;
 import com.revature.p2_lfg.utility.JWTUtility;
@@ -26,6 +25,46 @@ public class SessionController {
         JWTInfo parsedJWT = JWTUtility.verifyUser(token);
         if(parsedJWT != null) return sessionService.createGroupSession(groupSession, parsedJWT);
         else return null;
+    }
+
+    @PostMapping("/join")
+    public JoinGroupSessionResponse joinGroupSession(@RequestParam int groupId, @RequestParam int gameId, @RequestHeader("Authorization") String token){
+        dLog.debug("Joining a group session: " + groupId);
+        JWTInfo parsedJWT = JWTUtility.verifyUser(token);
+        if(parsedJWT != null) return sessionService.joinGroupSession(parsedJWT, groupId, gameId);
+        else return null;
+    }
+
+    @PostMapping("/check")
+    public CheckWaitingRoomResponse waitingRoomResponse(@RequestHeader("Authorization") String token, @RequestParam int groupId){
+        dLog.debug("Checking session status: " + groupId);
+        JWTInfo parsedJWT = JWTUtility.verifyUser(token);
+        if(parsedJWT != null) return sessionService.checkSessionStatus(parsedJWT, groupId);
+        else return null;
+    }
+
+    @PostMapping("/respond")
+    public WaitingRoomResponse respondToUser(@RequestHeader("Authorization") String token, @RequestBody WaitingRoomRequest roomRequest){
+        dLog.debug("Responding to user in with session status false: " + roomRequest);
+        JWTInfo parsedJWT = JWTUtility.verifyUser(token);
+        if(parsedJWT != null) return sessionService.respondToUserSession(parsedJWT, roomRequest);
+        return null;
+    }
+
+    @DeleteMapping("/cancel")
+    public CancelGroupResponse cancelGroup(@RequestHeader("Authorization") String token, @RequestBody CancelGroupRequest cancelGroup){
+        dLog.debug("Cancelling an active group session: " + cancelGroup);
+        JWTInfo parsedJWT = JWTUtility.verifyUser(token);
+        if(parsedJWT != null) return sessionService.cancelSession(parsedJWT, cancelGroup);
+        return null;
+    }
+
+    @DeleteMapping("/leave")
+    public LeaveGroupResponse leaveGroupSession(@RequestParam int groupId, @RequestParam int gameId, @RequestHeader("Authorization") String token){
+        dLog.debug("Joining a group session: " + groupId);
+        JWTInfo parsedJWT = JWTUtility.verifyUser(token);
+        if(parsedJWT != null) return sessionService.leaveSession(parsedJWT, groupId, gameId);
+        return null;
     }
 
 }
