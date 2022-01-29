@@ -8,7 +8,6 @@ import com.revature.p2_lfg.service.session.dto.GroupUser;
 
 import java.util.List;
 
-@Repository("sessionDao")
 public class SessionDao implements Sessionable {
     @Override
     public GroupSessionId createUserSessionEntry(Session session) {

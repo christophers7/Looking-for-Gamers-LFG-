@@ -12,7 +12,6 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-@Repository("gamesDao")
 public class GamesDao implements Playable {
 	
 	private final Logger iLog = LoggerFactory.getLogger("iLog");

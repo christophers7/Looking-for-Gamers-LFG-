@@ -11,7 +11,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
 
-@Repository("userProfileDao")
 public class UserProfileDao implements Profileable {
 
     private final Logger iLog = LoggerFactory.getLogger("iLog");

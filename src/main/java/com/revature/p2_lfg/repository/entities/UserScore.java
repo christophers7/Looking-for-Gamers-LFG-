@@ -15,7 +15,8 @@ import javax.persistence.*;
 @Table(schema = "project_two", name = "user_score")
 @Entity
 public class UserScore {
-    @Column
+    @Id
+    @Column(name = "scoreID")
     int scoreID;
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "userID", referencedColumnName = "userID")

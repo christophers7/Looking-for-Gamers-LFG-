@@ -17,8 +17,8 @@ import java.sql.Date;
 @Table(schema = "project_one", name = "user_reports ")
 
 public class UserReports {
-    @Column(name = "reportID ")
     @Id
+    @Column(name = "reportID ")
     @GeneratedValue(generator = "auto_increment ", strategy = GenerationType.IDENTITY)
     @SequenceGenerator(allocationSize = 1, name = "user_reports_reportid_seq ", sequenceName = "user_reports_reportid_seq ")
     int reportID;
@@ -26,8 +26,8 @@ public class UserReports {
     @JoinColumn(name = "reportingUser", referencedColumnName = "userID")
     int reportingUser;
    @OneToOne(cascade = CascadeType.ALL)
-   @JoinColumn(name = "reportedUser",referencedColumnName = "userID")
-    int reportedUser;
+   @JoinColumn(name = "reportTag",referencedColumnName = "userID")
+    private  ReportTagTable reportTagTable;
     @Column
     int reportTag;
     @Column

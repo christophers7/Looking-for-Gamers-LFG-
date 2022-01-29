@@ -15,7 +15,8 @@ import javax.persistence.*;
 @Table(schema = "project_two", name = "commend_tag_table")
 @Entity
 public class CommendTagTable {
-    @Column
+   @Id
+    @Column(name ="commendTagID")
     int commendTagID;
     @Column
     String value;

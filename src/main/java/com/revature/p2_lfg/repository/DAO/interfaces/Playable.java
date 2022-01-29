@@ -7,13 +7,13 @@ import java.util.List;
 public interface Playable {
 	
 	public void addGame(Games game);
-	
+
 	List<Games> findGamesByTitle(Games game);
-	
+
 	List<Games> findGamesByGenre(Games game);
-	
+
 	List<Games> findGamesByCurrentlyPlaying(Games game);
-	
+
 	List<Games> findAllGames();
 
 }

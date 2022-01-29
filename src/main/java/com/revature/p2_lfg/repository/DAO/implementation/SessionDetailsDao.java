@@ -6,7 +6,6 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-@Repository("sessionDetailsDao")
 public class SessionDetailsDao implements SessionDetailable {
     @Override
     public List<SessionDetails> getSessionByGameId(int gameID) {

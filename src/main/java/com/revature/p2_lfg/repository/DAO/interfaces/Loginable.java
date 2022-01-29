@@ -2,6 +2,7 @@ package com.revature.p2_lfg.repository.DAO.interfaces;
 
 import com.revature.p2_lfg.repository.entities.UserCredential;
 
+
 public interface Loginable {
 
     int createUser(UserCredential userCredential);
