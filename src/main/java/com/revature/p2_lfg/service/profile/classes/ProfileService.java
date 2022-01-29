@@ -23,7 +23,6 @@ public class ProfileService implements ProfileServiceable {
     @Autowired
     private UserProfileDao userProfileDao;
 
-
     @Override
     public ProfileResponse getProfileResponse(UserCredential userCredential) {
         dLog.debug("Getting Profile Response with User Credentials: " + userCredential);

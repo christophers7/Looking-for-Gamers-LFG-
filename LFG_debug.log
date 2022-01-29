@@ -21534,3 +21534,19 @@ com.revature.p2_lfg.service.login.exceptions.InvalidInputException: null
 18:32:12.562 [main] DEBUG dLog - Getting session details by group ID: 1
 18:33:12.233 [main] DEBUG dLog - Joining group session response from group join request: JoinGroupSessionRequest(groupId=1, hostId=1, gameId=1, username=user2)
 18:33:12.234 [main] DEBUG dLog - Getting session details by group ID: 1
+18:43:41.603 [main] DEBUG dLog - Joining group session response from group join request: JoinGroupSessionRequest(groupId=1, gameId=1, username=user2)
+18:43:41.604 [main] DEBUG dLog - Getting session details by group ID: 1
+18:45:53.087 [main] DEBUG dLog - Joining group session response from group join request: JoinGroupSessionRequest(groupId=1, gameId=1, username=user2)
+18:45:53.087 [main] DEBUG dLog - Getting session details by group ID: 1
+20:27:23.631 [main] DEBUG dLog - Creating group session response from group create request: CreateGroupSessionRequest(gameId=1, maxUsers=3, description=this is a description)
+20:27:23.631 [main] DEBUG dLog - Creating a group session: GameId - 1 maxUsers - 3 Description: this is a description
+20:27:23.631 [main] DEBUG dLog - Getting session details by group ID: 0
+20:27:23.634 [main] DEBUG dLog - Creating user Session for a group: SessionDetails(groupId=1, game=Games(gameID=1, gameTitle=gameTitle, imgLink=link), maxUsers=3, currentUsers=1, description=this is a description, tags=[])
+20:27:23.634 [main] DEBUG dLog - Getting group users associated by group Id: 1
+20:27:23.657 [main] DEBUG dLog - Joining group session response from group join request: 1
+20:27:23.657 [main] DEBUG dLog - Getting session details by group ID: 1
+20:27:23.657 [main] DEBUG dLog - Creating user Session for a group: SessionDetails(groupId=1, game=Games(gameID=1, gameTitle=gameTitle, imgLink=link), maxUsers=3, currentUsers=1, description=this is a description, tags=[])
+20:45:32.958 [main] DEBUG dLog - Checking session status: 1 + userId: 2
+20:46:04.380 [main] DEBUG dLog - Checking session status: 1 + userId: 2
+20:46:44.937 [main] DEBUG dLog - Checking session status: 1 + userId: 2
+20:47:16.164 [main] DEBUG dLog - Checking session status: 1 + userId: 2

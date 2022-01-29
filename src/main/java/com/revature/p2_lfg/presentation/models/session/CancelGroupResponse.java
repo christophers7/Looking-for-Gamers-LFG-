@@ -10,8 +10,6 @@ import lombok.experimental.FieldDefaults;
 @NoArgsConstructor
 @AllArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class JoinGroupSessionRequest {
-    int groupId;
-    int gameId;
-    String username;
+public class CancelGroupResponse {
+    boolean success;
 }

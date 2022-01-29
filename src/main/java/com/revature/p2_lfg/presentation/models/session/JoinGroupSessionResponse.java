@@ -13,8 +13,6 @@ import lombok.experimental.FieldDefaults;
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class JoinGroupSessionResponse {
     GroupSessionId sessionId;
-    String username;
     int gameId;
     int groupId;
-    int hostId;
 }

@@ -13,4 +13,6 @@ public interface Loginable {
     void deleteUser(UserCredential userCredential);
 
     UserCredential getUserWithUsername(UserCredential userCredential);
+
+    UserCredential getUserWithUsername(String waitingUsername);
 }

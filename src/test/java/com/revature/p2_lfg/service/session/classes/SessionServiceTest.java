@@ -1,7 +1,6 @@
 package com.revature.p2_lfg.service.session.classes;
 
-import com.revature.p2_lfg.presentation.models.session.JoinGroupSessionRequest;
-import com.revature.p2_lfg.presentation.models.session.JoinGroupSessionResponse;
+import com.revature.p2_lfg.presentation.models.session.*;
 import com.revature.p2_lfg.repository.DAO.implementation.SessionDao;
 import com.revature.p2_lfg.repository.DAO.implementation.SessionDetailsDao;
 import com.revature.p2_lfg.repository.entities.*;
@@ -13,8 +12,6 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
-import com.revature.p2_lfg.presentation.models.session.CreateGroupSessionRequest;
-import com.revature.p2_lfg.presentation.models.session.CreatedGroupSessionResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
@@ -54,6 +51,8 @@ class SessionServiceTest {
     private JoinGroupSessionResponse joinGroupSessionResponse;
 
     private JWTInfo parsedJWT2;
+    private CheckWaitingRoomResponse checkWaitingRoomResponse;
+    private Session user2Session;
 
     @BeforeEach
     void setUp(){
@@ -118,29 +117,38 @@ class SessionServiceTest {
 
         joinGroupSessionRequest = new JoinGroupSessionRequest(
                 createdSessionDetails.getGroupId(),
-                storedSession.getHostId(),
                 createdSessionDetails.getGame().getGameID(),
                 user2.getUsername());
 
-        GroupSessionId sessionId2 = new GroupSessionId(2, joinGroupSessionRequest.getHostId());
+        GroupSessionId sessionId2 = new GroupSessionId(2, storedSession.getHostId());
 
         joinGroupSessionResponse = new JoinGroupSessionResponse(
                 sessionId2,
-                user2.getUsername(),
                 createdSessionDetails.getGame().getGameID(),
-                createdSessionDetails.getGroupId(),
-                storedSession.getHostId()
+                createdSessionDetails.getGroupId()
         );
 
         parsedJWT2 = new JWTInfo(
                 "name", "name", "user2", 2
         );
 
+        user2Session = new Session(
+                2, 1, createdSessionDetails, false
+        );
+
+        checkWaitingRoomResponse = new CheckWaitingRoomResponse(
+                user2Session.isInSession(),
+                1,
+                mockSessionDetail.getGame().getGameID()
+        );
+
         Mockito.when(sessionDetailDao.createGroupSession(mockSessionDetail)).thenReturn(createdSessionDetails.getGroupId());
         Mockito.when(sessionDetailDao.getSessionDetails(sessionDetailJustForId)).thenReturn(createdSessionDetails);
         Mockito.when(sessionDao.createUserSessionEntry(mockSession)).thenReturn(sessionId);
         Mockito.when(sessionDao.getGroupMembersByGroupId(createdSessionDetails.getGroupId())).thenReturn(groupMembers);
-        Mockito.when(sessionDao.createUserSessionEntry(new Session(parsedJWT2.getUserId(), joinGroupSessionRequest.getHostId(), createdSessionDetails, false))).thenReturn(sessionId2);
+        Mockito.when(sessionDao.getHostId(joinGroupSessionRequest.getGroupId())).thenReturn(sessionId.getHostId());
+        Mockito.when(sessionDao.createUserSessionEntry(new Session(parsedJWT2.getUserId(), sessionId.getHostId(), createdSessionDetails, false))).thenReturn(sessionId2);
+        Mockito.when(sessionDao.getUserSession(parsedJWT2.getUserId(), createdSessionDetails.getGroupId())).thenReturn(user2Session);
     }
 
     @Test
@@ -150,6 +158,19 @@ class SessionServiceTest {
 
     @Test
     void joinGroupSession() {
-        assertEquals(joinGroupSessionResponse, sessionService.joinGroupSession(joinGroupSessionRequest, parsedJWT2));
+        assertEquals(joinGroupSessionResponse, sessionService.joinGroupSession(parsedJWT2, 1, 1));
+    }
+
+    @Test
+    void checkSessionStatus() {
+        assertEquals(checkWaitingRoomResponse, sessionService.checkSessionStatus(parsedJWT2, 1));
+    }
+
+    @Test
+    void respondToUserSession() {
+    }
+
+    @Test
+    void cancelSession() {
     }
 }

@@ -19,4 +19,24 @@ public class SessionDao implements Sessionable {
     public List<GroupUser> getGroupMembersByGroupId(int groupId) {
         return null;
     }
+
+    @Override
+    public int getHostId(int groupId) {
+        return 0;
+    }
+
+    @Override
+    public Session getUserSession(int userId, int groupId) {
+        return null;
+    }
+
+    @Override
+    public void save(Session session) {
+
+    }
+
+    @Override
+    public void delete(Session session) {
+
+    }
 }
