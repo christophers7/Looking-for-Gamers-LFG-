@@ -3,6 +3,7 @@ import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/_services/auth.service';
 import { TokenStorageService} from 'src/app/_services/token-storage.service';
+import BuildUser from 'src/app/utils/build-user';
 
 @Component({
   selector: 'app-login',
@@ -72,7 +73,8 @@ export class LoginComponent implements OnInit {
           if(user){
             this.isLoginFailed = false;
             this.tokenStorage.saveToken(user.jwt);
-            this.tokenStorage.saveUser(user)
+            let builtUser = BuildUser.userBuilder(user);
+            this.tokenStorage.saveUser(builtUser)
             this.router.navigate(['main'])
           }
           else {

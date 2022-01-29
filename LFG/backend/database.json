@@ -3,24 +3,19 @@
     {
       "id": "1",
       "username": "ChrisS",
+      "email": "myemail@email.com",
+      "firstName": "Chris",
+      "lastName": "Scullin",
       "password": "pass123",
-      "email": "myemail@email.com"
+      "stats": "",
+      "appCount": 0,
+      "inGroup": false
     },
     {
       "username": "jojojo",
       "email": "jojojo",
       "password": "pass123",
       "id": "W-UnOo9"
-    },
-    {
-      "username": "ChrisS",
-      "password": "passs123",
-      "id": "_8SJ9R_"
-    },
-    {
-      "username": "ChrisS",
-      "password": "pass123",
-      "id": "WTI7Lf7"
     }
   ]
 }
