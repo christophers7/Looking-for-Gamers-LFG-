@@ -81,7 +81,8 @@ public class SessionService implements SessionServiceable {
     }
 
     private List<GroupUser> getGroupMembersOfSession(int groupId) {
-        
+        dLog.debug("Getting group users associated by group Id: " + groupId);
+        return sessionDao.getGroupMembersByGroupId(groupId);
     }
 
     private GroupSessionId createUserSession(SessionDetails sessionDetails, JWTInfo parsedJWT) {

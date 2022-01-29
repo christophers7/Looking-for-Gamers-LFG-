@@ -23,3 +23,5 @@
 16:43:32.017 [main] INFO  iLog - Joining group session: SessionDetails(groupId=1, game=Games(gameID=1, gameTitle=gameTitle, imgLink=link), maxUsers=3, currentUsers=1, description=this is a description, tags=[])
 16:49:59.397 [main] INFO  iLog - Joining group session: SessionDetails(groupId=1, game=Games(gameID=1, gameTitle=gameTitle, imgLink=link), maxUsers=3, currentUsers=1, description=this is a description, tags=[])
 16:52:17.952 [main] INFO  iLog - Joining group session: SessionDetails(groupId=1, game=Games(gameID=1, gameTitle=gameTitle, imgLink=link), maxUsers=3, currentUsers=1, description=this is a description, tags=[])
+18:32:12.565 [main] INFO  iLog - Joining group session: SessionDetails(groupId=1, game=Games(gameID=1, gameTitle=gameTitle, imgLink=link), maxUsers=3, currentUsers=1, description=this is a description, tags=[])
+18:33:12.237 [main] INFO  iLog - Joining group session: SessionDetails(groupId=1, game=Games(gameID=1, gameTitle=gameTitle, imgLink=link), maxUsers=3, currentUsers=1, description=this is a description, tags=[])

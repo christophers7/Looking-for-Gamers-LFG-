@@ -53,6 +53,8 @@ class SessionServiceTest {
     private JoinGroupSessionRequest joinGroupSessionRequest;
     private JoinGroupSessionResponse joinGroupSessionResponse;
 
+    private JWTInfo parsedJWT2;
+
     @BeforeEach
     void setUp(){
         MockitoAnnotations.openMocks(this);
@@ -130,7 +132,7 @@ class SessionServiceTest {
                 storedSession.getHostId()
         );
 
-        JWTInfo parsedJWT2 = new JWTInfo(
+        parsedJWT2 = new JWTInfo(
                 "name", "name", "user2", 2
         );
 
@@ -148,6 +150,6 @@ class SessionServiceTest {
 
     @Test
     void joinGroupSession() {
-        assertEquals(joinGroupSessionResponse, sessionService.joinGroupSession(joinGroupSessionRequest, parsedJWT));
+        assertEquals(joinGroupSessionResponse, sessionService.joinGroupSession(joinGroupSessionRequest, parsedJWT2));
     }
 }
