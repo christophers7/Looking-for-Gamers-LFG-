@@ -2,7 +2,7 @@ package com.revature.p2_lfg.presentation.controllers;
 
 import com.revature.p2_lfg.presentation.models.login.*;
 import com.revature.p2_lfg.presentation.models.profile.ProfileResponse;
-import com.revature.p2_lfg.repository.entities.UserCredential;
+import com.revature.p2_lfg.repository.entities.user.UserCredential;
 import com.revature.p2_lfg.service.login.classes.LoginService;
 import com.revature.p2_lfg.service.profile.classes.ProfileService;
 import com.revature.p2_lfg.utility.JWTUtility;

@@ -1,4 +1,4 @@
-package com.revature.p2_lfg.repository.entities;
+package com.revature.p2_lfg.repository.entities.session;
 
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
@@ -19,7 +19,7 @@ public class Games {
     @Column(name = "gameID")
     @GeneratedValue(generator = "auto_increment", strategy = GenerationType.IDENTITY)
     @SequenceGenerator(allocationSize = 1, name = "lfg_games_gameid_seq", sequenceName = "lfg_games_gameid_seq")
-    int gameID;
+    int gameId;
     @Column
     String gameTitle;
     @Column

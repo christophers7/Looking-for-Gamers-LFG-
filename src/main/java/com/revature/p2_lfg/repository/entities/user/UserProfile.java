@@ -1,4 +1,4 @@
-package com.revature.p2_lfg.repository.entities;
+package com.revature.p2_lfg.repository.entities.user;
 
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;

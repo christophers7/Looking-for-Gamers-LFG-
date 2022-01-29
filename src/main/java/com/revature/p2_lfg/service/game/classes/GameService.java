@@ -2,10 +2,10 @@ package com.revature.p2_lfg.service.game.classes;
 
 import com.revature.p2_lfg.presentation.models.games.GameSessionInfoResponse;
 import com.revature.p2_lfg.presentation.models.games.SelectedGameAvailableGroupsResponse;
-import com.revature.p2_lfg.repository.DAO.implementation.GamesDao;
-import com.revature.p2_lfg.repository.DAO.implementation.SessionDetailsDao;
-import com.revature.p2_lfg.repository.entities.Games;
-import com.revature.p2_lfg.repository.entities.SessionDetails;
+import com.revature.p2_lfg.repository.interfaces.GamesRepository;
+import com.revature.p2_lfg.repository.interfaces.SessionDetailsRepository;
+import com.revature.p2_lfg.repository.entities.session.Games;
+import com.revature.p2_lfg.repository.entities.session.SessionDetails;
 import com.revature.p2_lfg.service.game.dto.GameSelectInfo;
 import com.revature.p2_lfg.service.game.interfaces.GameServiceable;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,9 +18,9 @@ import java.util.List;
 public class GameService implements GameServiceable {
 
     @Autowired
-    private GamesDao gamesDao;
+    private GamesRepository gamesRepository;
     @Autowired
-    private SessionDetailsDao sessionDetailsDao;
+    private SessionDetailsRepository sessionDetailsRepository;
 
     public GameSessionInfoResponse getCurrentGameSessionList() {
         return new GameSessionInfoResponse(getGameSelectInfoList(getGames()));
@@ -28,18 +28,18 @@ public class GameService implements GameServiceable {
 
     @Override
     public SelectedGameAvailableGroupsResponse getSelectedGameGroups(int gameId) {
-        return new SelectedGameAvailableGroupsResponse(gameId, sessionDetailsDao.getSessionByGameId(gameId));
+        return new SelectedGameAvailableGroupsResponse(gameId, sessionDetailsRepository.findAllByGameId(gameId));
     }
 
     public List<Games> getGames(){
-        return gamesDao.findAllGames();
+        return gamesRepository.findAll();
     }
 
     public List<GameSelectInfo> getGameSelectInfoList(List<Games> gamesList){
         List<GameSelectInfo> gameSelectInfoList = new ArrayList<>(gamesList.size());
         for (Games games : gamesList) {
-            List<SessionDetails> sessionForGame = sessionDetailsDao.getSessionByGameId(games.getGameID());
-            gameSelectInfoList.add(new GameSelectInfo(games.getGameID(), games.getGameTitle(), games.getImgLink(), sessionForGame.size()));
+            List<SessionDetails> sessionForGame = sessionDetailsRepository.findAllByGameId(games.getGameId());
+            gameSelectInfoList.add(new GameSelectInfo(games.getGameId(), games.getGameTitle(), games.getImgLink(), sessionForGame.size()));
         }
         return gameSelectInfoList;
     }

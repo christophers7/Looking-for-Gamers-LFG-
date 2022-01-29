@@ -2,7 +2,6 @@ package com.revature.p2_lfg.presentation.controllers;
 
 import com.revature.p2_lfg.presentation.models.profile.ProfileResponse;
 import com.revature.p2_lfg.presentation.models.profile.UpdateUserProfileRequest;
-import com.revature.p2_lfg.repository.entities.UserProfile;
 import com.revature.p2_lfg.service.login.classes.LoginService;
 import com.revature.p2_lfg.service.profile.classes.ProfileService;
 import com.revature.p2_lfg.utility.JWTInfo;

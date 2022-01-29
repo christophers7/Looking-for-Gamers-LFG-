@@ -1,13 +1,10 @@
 package com.revature.p2_lfg.service.session.dto;
 
-import com.revature.p2_lfg.repository.entities.Socials;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.FieldDefaults;
-
-import java.util.Objects;
 
 @Data
 @NoArgsConstructor
@@ -16,6 +13,5 @@ import java.util.Objects;
 public class GroupUser {
     String username;
     int groupId;
-    String stats;
     boolean insideSession;
 }

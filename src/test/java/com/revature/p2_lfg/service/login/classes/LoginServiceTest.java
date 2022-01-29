@@ -1,21 +1,19 @@
 package com.revature.p2_lfg.service.login.classes;
 
-import com.revature.p2_lfg.service.login.classes.LoginService;
-import org.junit.jupiter.api.BeforeAll;
+import com.revature.p2_lfg.repository.interfaces.LoginRepository;
+import com.revature.p2_lfg.service.login.exceptions.InvalidInputException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.NullAndEmptySource;
 import org.junit.jupiter.params.provider.ValueSource;
-import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 import com.revature.p2_lfg.presentation.models.login.LoginRequest;
 import com.revature.p2_lfg.presentation.models.login.NewUserCredentialsRequest;
-import com.revature.p2_lfg.repository.DAO.implementation.UserCredentialsDao;
-import com.revature.p2_lfg.repository.entities.UserCredential;
-import com.revature.p2_lfg.repository.entities.UserProfile;
+import com.revature.p2_lfg.repository.entities.user.UserCredential;
+import com.revature.p2_lfg.repository.entities.user.UserProfile;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
@@ -26,7 +24,7 @@ import static org.junit.jupiter.api.Assertions.*;
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 class LoginServiceTest {
     @MockBean
-    private UserCredentialsDao userCredDao;
+    private LoginRepository loginRepository;
 
     @Autowired
     private LoginService loginService;
@@ -79,9 +77,9 @@ class LoginServiceTest {
             2, newUserCredentialRequested.getUsername(), newUserCredentialRequested.getPassword()
     );
 
-    Mockito.when(userCredDao.getUser(userCredRequest)).thenReturn(storedUserCredential);
-    Mockito.when(userCredDao.getUser(new UserCredential(newUserCredential.getUserID(), "", ""))).thenReturn(newUserCredential);
-    Mockito.when(userCredDao.createUser(requestedUserCredential)).thenReturn(2);
+    Mockito.when(loginRepository.findByUsername(userCredRequest.getUsername())).thenReturn(storedUserCredential);
+    Mockito.when(loginRepository.findById(newUserCredential.getUserId())).thenReturn(java.util.Optional.ofNullable(newUserCredential));
+    Mockito.when(loginRepository.save(requestedUserCredential)).thenReturn(newUserCredential);
 
    }
 
@@ -104,17 +102,6 @@ class LoginServiceTest {
         assertNull(loginService.getUserCredentialFromLogin(new LoginRequest("user", input)));
     }
 
-    @Test
-    void newUserCredentialTest() {
-       assertEquals(2, loginService.newUserCredential(newUserCredentialRequested));
-    }
-
-    @ParameterizedTest
-    @NullAndEmptySource
-    @ValueSource(strings = {"   ", "\n", "\t"})
-    void invalidUserCredentialReturnNegativeTest(String input){
-        assertEquals(-1, loginService.newUserCredential(new NewUserCredentialsRequest(input, input, input)));
-    }
 
     @Test
     void newAccountTest() {
@@ -125,7 +112,7 @@ class LoginServiceTest {
     @NullAndEmptySource
     @ValueSource(strings = {"   ", "\n", "\t"})
     void newAccountNullInvalidTest(String input) {
-        assertNull(loginService.newAccount(new NewUserCredentialsRequest(input, input, input)));
+        assertThrows(InvalidInputException.class, () -> loginService.newAccount(new NewUserCredentialsRequest(input, input, input)));
     }
 
 

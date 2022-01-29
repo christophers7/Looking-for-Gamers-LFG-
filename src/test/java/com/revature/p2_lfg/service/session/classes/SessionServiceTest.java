@@ -1,11 +1,15 @@
 package com.revature.p2_lfg.service.session.classes;
 
 import com.revature.p2_lfg.presentation.models.session.*;
-import com.revature.p2_lfg.repository.DAO.implementation.SessionDao;
-import com.revature.p2_lfg.repository.DAO.implementation.SessionDetailsDao;
-import com.revature.p2_lfg.repository.DAO.implementation.UserCredentialsDao;
-import com.revature.p2_lfg.repository.entities.*;
+import com.revature.p2_lfg.repository.interfaces.LoginRepository;
+import com.revature.p2_lfg.repository.interfaces.SessionDetailsRepository;
+import com.revature.p2_lfg.repository.interfaces.SessionRepository;
 import com.revature.p2_lfg.repository.entities.compositeKeys.GroupSessionId;
+import com.revature.p2_lfg.repository.entities.session.Games;
+import com.revature.p2_lfg.repository.entities.session.Session;
+import com.revature.p2_lfg.repository.entities.session.SessionDetails;
+import com.revature.p2_lfg.repository.entities.session.Tag;
+import com.revature.p2_lfg.repository.entities.user.UserCredential;
 import com.revature.p2_lfg.service.session.dto.GroupUser;
 import com.revature.p2_lfg.utility.JWTInfo;
 import org.junit.jupiter.api.BeforeEach;
@@ -26,10 +30,10 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 class SessionServiceTest {
 
     @MockBean
-    private SessionDetailsDao sessionDetailDao;
+    private SessionDetailsRepository sessionDetailsRepository;
 
     @MockBean
-    private SessionDao sessionDao;
+    private SessionRepository sessionRepository;
 
     @Autowired
     private SessionService sessionService;
@@ -57,7 +61,7 @@ class SessionServiceTest {
     private WaitingRoomResponse successWaitingRoomResponse;
     private WaitingRoomResponse rejectWaitingRoomResponse;
     @MockBean
-    private UserCredentialsDao userCredentialsDao;
+    private LoginRepository loginRepository;
 
     private CancelGroupRequest cancelGroupRequest;
     private CancelGroupResponse cancelGroupResponse;
@@ -76,15 +80,17 @@ class SessionServiceTest {
         );
 
         GroupUser user1 = new GroupUser(
-                "user1", 1, "", true
+                "user1", 1, true
         );
 
         GroupUser user2 = new GroupUser(
-                "user2", 1, "", false
+                "user2", 1, false
         );
 
         groupMembers = new ArrayList<>();
         groupMembers.add(user1);
+
+
 
         parsedJWT = new JWTInfo(
                 "oldFirstName", "oldLastName", "username", 3
@@ -103,12 +109,12 @@ class SessionServiceTest {
         );
 
         SessionDetails mockSessionDetail =  new SessionDetails(
-                        0,
-                        new Games(1, "", ""),
-                        maxUsers,
-                        1,
-                        description,
-                        tags);
+                0,
+                new Games(1, "", ""),
+                maxUsers,
+                1,
+                description,
+                tags);
 
         Session mockSession = new Session(
                 parsedJWT.getUserId(), parsedJWT.getUserId(), createdSessionDetails, true
@@ -126,14 +132,14 @@ class SessionServiceTest {
 
         joinGroupSessionRequest = new JoinGroupSessionRequest(
                 createdSessionDetails.getGroupId(),
-                createdSessionDetails.getGame().getGameID(),
+                createdSessionDetails.getGame().getGameId(),
                 user2.getUsername());
 
         GroupSessionId sessionId2 = new GroupSessionId(2, storedSession.getHostId());
 
         joinGroupSessionResponse = new JoinGroupSessionResponse(
                 sessionId2,
-                createdSessionDetails.getGame().getGameID(),
+                createdSessionDetails.getGame().getGameId(),
                 createdSessionDetails.getGroupId()
         );
 
@@ -148,25 +154,25 @@ class SessionServiceTest {
         checkWaitingRoomResponse = new CheckWaitingRoomResponse(
                 user2Session.isInSession(),
                 1,
-                mockSessionDetail.getGame().getGameID()
+                mockSessionDetail.getGame().getGameId()
         );
 
         roomRequestSuccess = new WaitingRoomRequest(
                 createdSessionDetails.getGroupId(),
-                createdSessionDetails.getGame().getGameID(),
+                createdSessionDetails.getGame().getGameId(),
                 parsedJWT2.getUsername(),
                 true
         );
         roomRequestReject = new WaitingRoomRequest(
                 createdSessionDetails.getGroupId(),
-                createdSessionDetails.getGame().getGameID(),
+                createdSessionDetails.getGame().getGameId(),
                 parsedJWT2.getUsername(),
                 false
         );
 
         successWaitingRoomResponse = new WaitingRoomResponse(
                 true,
-               new GroupUser("user2", 1, "", true)
+               new GroupUser("user2", 1, true)
         );
 
         rejectWaitingRoomResponse = new WaitingRoomResponse(
@@ -174,19 +180,25 @@ class SessionServiceTest {
                 new GroupUser()
         );
 
-        cancelGroupRequest = new CancelGroupRequest(createdSessionDetails.getGroupId(), createdSessionDetails.getGame().getGameID(), Collections.singletonList(user2));
+        cancelGroupRequest = new CancelGroupRequest(createdSessionDetails.getGroupId(), createdSessionDetails.getGame().getGameId(), Collections.singletonList(user2));
 
         cancelGroupResponse = new CancelGroupResponse(true);
 
         leaveGroupResponse = new LeaveGroupResponse(true);
-        Mockito.when(sessionDetailDao.createGroupSession(mockSessionDetail)).thenReturn(createdSessionDetails.getGroupId());
-        Mockito.when(sessionDetailDao.getSessionDetails(sessionDetailJustForId)).thenReturn(createdSessionDetails);
-        Mockito.when(sessionDao.createUserSessionEntry(mockSession)).thenReturn(sessionId);
-        Mockito.when(sessionDao.getGroupMembersByGroupId(createdSessionDetails.getGroupId())).thenReturn(groupMembers);
-        Mockito.when(sessionDao.getHostId(joinGroupSessionRequest.getGroupId())).thenReturn(sessionId.getHostId());
-        Mockito.when(sessionDao.createUserSessionEntry(new Session(parsedJWT2.getUserId(), sessionId.getHostId(), createdSessionDetails, false))).thenReturn(sessionId2);
-        Mockito.when(sessionDao.getUserSession(parsedJWT2.getUserId(), createdSessionDetails.getGroupId())).thenReturn(user2Session);
-        Mockito.when(userCredentialsDao.getUserWithUsername("user2")).thenReturn(new UserCredential(2, "user2", "pass2"));
+
+        List<Session> groupMembersSession = new ArrayList<>();
+        groupMembersSession.add(storedSession);
+
+        Session session2 = new Session(2, sessionId.getHostId(), createdSessionDetails, false);
+
+        Mockito.when(sessionDetailsRepository.save(mockSessionDetail)).thenReturn(createdSessionDetails);
+        Mockito.when(sessionDetailsRepository.findById(sessionDetailJustForId.getGroupId())).thenReturn(Optional.ofNullable(createdSessionDetails));
+        Mockito.when(sessionRepository.save(mockSession)).thenReturn(storedSession);
+        Mockito.when(sessionRepository.findAllByGroupId(createdSessionDetails.getGroupId())).thenReturn(groupMembersSession);
+        Mockito.when(sessionRepository.findFirst1HostIdByGroupSession(new SessionDetails(joinGroupSessionRequest.getGroupId(), new Games(), 0, 0, "", new HashSet<>()))).thenReturn(sessionId.getHostId());
+        Mockito.when(sessionRepository.save(new Session(parsedJWT2.getUserId(), sessionId.getHostId(), createdSessionDetails, false))).thenReturn(session2);
+        Mockito.when(sessionRepository.findByUserIdAndGroupId(parsedJWT2.getUserId(), createdSessionDetails.getGroupId())).thenReturn(user2Session);
+        Mockito.when(loginRepository.findByUsername("user2")).thenReturn(new UserCredential(2, "user2", "pass2"));
     }
 
     @Test

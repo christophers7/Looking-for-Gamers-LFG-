@@ -3,7 +3,7 @@ package com.revature.p2_lfg.utility;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.jsonwebtoken.*;
 import io.jsonwebtoken.security.Keys;
-import com.revature.p2_lfg.repository.entities.UserProfile;
+import com.revature.p2_lfg.repository.entities.user.UserProfile;
 
 import java.util.Base64;
 
@@ -15,8 +15,8 @@ public class JWTUtility {
         return Jwts.builder()
                 .claim("firstName", userProfile.getFirstName())
                 .claim("lastName", userProfile.getLastName())
-                .claim("username", userProfile.getUserCredential().getUserLogin())
-                .claim("userId", userProfile.getUserCredential().getUserID())
+                .claim("username", userProfile.getUserCredential().getUsername())
+                .claim("userId", userProfile.getUserCredential().getUserId())
                 .claim("account", true)
                 .signWith(Keys.hmacShaKeyFor(secret))
                 .compact();

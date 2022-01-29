@@ -1,5 +1,7 @@
 package com.revature.p2_lfg.service.profile.classes;
 
+import com.revature.p2_lfg.repository.interfaces.LoginRepository;
+import com.revature.p2_lfg.repository.interfaces.UserProfileRepository;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.NullAndEmptySource;
@@ -8,15 +10,14 @@ import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 import com.revature.p2_lfg.presentation.models.profile.ProfileResponse;
 import com.revature.p2_lfg.presentation.models.profile.UpdateUserProfileRequest;
-import com.revature.p2_lfg.repository.DAO.implementation.UserProfileDao;
-import com.revature.p2_lfg.repository.entities.UserCredential;
-import com.revature.p2_lfg.repository.entities.UserProfile;
+import com.revature.p2_lfg.repository.entities.user.UserCredential;
+import com.revature.p2_lfg.repository.entities.user.UserProfile;
 import com.revature.p2_lfg.utility.JWTInfo;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.context.annotation.Scope;
+
+import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -25,7 +26,10 @@ import static org.junit.jupiter.api.Assertions.*;
 class ProfileServiceTest {
 
     @MockBean
-    private UserProfileDao userProfileDao;
+    private LoginRepository loginRepository;
+
+    @MockBean
+    private UserProfileRepository userProfileRepository;
 
     @Autowired
     private ProfileService profileService;
@@ -76,7 +80,7 @@ class ProfileServiceTest {
 
 
         profileResponse = new ProfileResponse(
-                storedUserProfile.getUserCredential().getUserLogin(),
+                storedUserProfile.getUserCredential().getUsername(),
                 storedUserProfile.getFirstName(),
                 storedUserProfile.getLastName(),
                 storedUserProfile.getEmail(),
@@ -88,11 +92,11 @@ class ProfileServiceTest {
         );
 
         UserProfile userProfileRequest = new UserProfile(
-                0, new UserCredential(storedUserCredential.getUserID(), "", ""), "", "", ""
+                0, new UserCredential(storedUserCredential.getUserId(), "", ""), "", "", ""
         );
 
         UserProfile userProfileNewRequest = new UserProfile(
-            0, new UserCredential(storedNewUserCredentials.getUserID(), "", ""), "", "", "");
+            0, new UserCredential(storedNewUserCredentials.getUserId(), "", ""), "", "", "");
 
         storedNewProfile = new UserProfile(
                 newUserProfileColumnId, storedNewUserCredentials, "", "", newEmail
@@ -116,19 +120,18 @@ class ProfileServiceTest {
         );
 
         newProfileResponse = new ProfileResponse(
-                updatedUserProfile.getUserCredential().getUserLogin(),
+                updatedUserProfile.getUserCredential().getUsername(),
                 updatedUserProfile.getFirstName(),
                 updatedUserProfile.getLastName(),
                 updatedUserProfile.getEmail(),
                 newJWT
         );
 
+        Mockito.when(userProfileRepository.findById(storedUserCredential.getUserId())).thenReturn(Optional.ofNullable(storedUserProfile));
+        Mockito.when(userProfileRepository.save(new UserProfile(0,storedNewUserCredentials, "", "", newEmail))).thenReturn(storedNewProfile);
+        Mockito.when(userProfileRepository.findById(newUserProfileColumnId)).thenReturn(Optional.ofNullable(storedNewProfile));
 
-        Mockito.when(userProfileDao.getUserProfileWithUserCredentials(storedUserCredential)).thenReturn(storedUserProfile);
-        Mockito.when(userProfileDao.createProfile(new UserProfile(0,storedNewUserCredentials, "", "", newEmail))).thenReturn(newUserProfileColumnId);
-        Mockito.when(userProfileDao.getUserProfile(new UserProfile(newUserProfileColumnId, new UserCredential(), "", "", ""))).thenReturn(storedNewProfile);
-
-        Mockito.when(userProfileDao.getUserProfile(userProfileToBeUpdated)).thenReturn(updatedUserProfile);
+        Mockito.when(userProfileRepository.findById(userProfileToBeUpdated.getColumnID())).thenReturn(Optional.ofNullable(updatedUserProfile));
 
     }
 

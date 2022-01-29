@@ -1,4 +1,4 @@
-package com.revature.p2_lfg.repository.entities;
+package com.revature.p2_lfg.repository.entities.user;
 
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
@@ -14,16 +14,15 @@ import javax.persistence.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
-
 public class UserCredential {
     @Id
-    @Column(name = "userID")
+    @Column(name = "userId")
     @GeneratedValue(generator = "lfg_user_creds_user_id_seq", strategy = GenerationType.AUTO)
     @SequenceGenerator(allocationSize = 1, name = "lfg_user_creds_user_id_seq", sequenceName = "lfg_user_creds_user_id_seq")
-    private int userID;
-    @Column
-    private String userLogin;
-    @Column
-    private String userPass;
+    private int userId;
+    @Column(name = "userlogin")
+    private String username;
+    @Column(name = "userpass")
+    private String password;
 
 }

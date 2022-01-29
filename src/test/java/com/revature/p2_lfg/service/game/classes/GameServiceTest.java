@@ -2,11 +2,11 @@ package com.revature.p2_lfg.service.game.classes;
 
 import com.revature.p2_lfg.presentation.models.games.GameSessionInfoResponse;
 import com.revature.p2_lfg.presentation.models.games.SelectedGameAvailableGroupsResponse;
-import com.revature.p2_lfg.repository.DAO.implementation.GamesDao;
-import com.revature.p2_lfg.repository.DAO.implementation.SessionDetailsDao;
-import com.revature.p2_lfg.repository.entities.Games;
-import com.revature.p2_lfg.repository.entities.SessionDetails;
-import com.revature.p2_lfg.repository.entities.Tag;
+import com.revature.p2_lfg.repository.interfaces.GamesRepository;
+import com.revature.p2_lfg.repository.interfaces.SessionDetailsRepository;
+import com.revature.p2_lfg.repository.entities.session.Games;
+import com.revature.p2_lfg.repository.entities.session.SessionDetails;
+import com.revature.p2_lfg.repository.entities.session.Tag;
 import com.revature.p2_lfg.service.game.dto.GameSelectInfo;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -26,10 +26,10 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 class GameServiceTest {
 
     @MockBean
-    private GamesDao gameDao;
+    private GamesRepository gamesRepository;
 
     @MockBean
-    private SessionDetailsDao sessionDetailsDao;
+    private SessionDetailsRepository sessionDetailsRepository;
 
     private GameSessionInfoResponse gameSessionInfoResponse;
 
@@ -45,8 +45,8 @@ class GameServiceTest {
         Games game1 = new Games(1, "gameName", "link");
         Games game2 = new Games(2, "gameName2", "link");
 
-        GameSelectInfo game1Info = new GameSelectInfo(game1.getGameID(), game1.getGameTitle(), game1.getImgLink(), 2);
-        GameSelectInfo game2Info = new GameSelectInfo(game2.getGameID(),game2.getGameTitle(), game2.getImgLink(), 2);
+        GameSelectInfo game1Info = new GameSelectInfo(game1.getGameId(), game1.getGameTitle(), game1.getImgLink(), 2);
+        GameSelectInfo game2Info = new GameSelectInfo(game2.getGameId(),game2.getGameTitle(), game2.getImgLink(), 2);
         Set<Tag> tags1 = new HashSet<>();
         Set<Tag> tags2 = new HashSet<>();
 
@@ -72,9 +72,9 @@ class GameServiceTest {
         selectedGameAvailableGroupsResponse = new SelectedGameAvailableGroupsResponse(1, game1Sessions);
         List<Games> gameList = new ArrayList<>();
 
-        Mockito.when(gameDao.findAllGames()).thenReturn(Arrays.asList(game1, game2));
-        Mockito.when(sessionDetailsDao.getSessionByGameId(1)).thenReturn(game1Sessions);
-        Mockito.when(sessionDetailsDao.getSessionByGameId(2)).thenReturn(game2Sessions);
+        Mockito.when(gamesRepository.findAll()).thenReturn(Arrays.asList(game1, game2));
+        Mockito.when(sessionDetailsRepository.findAllByGameId(1)).thenReturn(game1Sessions);
+        Mockito.when(sessionDetailsRepository.findAllByGameId(2)).thenReturn(game2Sessions);
 
 
     }

@@ -1,4 +1,4 @@
-package com.revature.p2_lfg.repository.entities;
+package com.revature.p2_lfg.repository.entities.session;
 
 import com.revature.p2_lfg.repository.entities.compositeKeys.GroupSessionId;
 import lombok.AccessLevel;
@@ -14,7 +14,7 @@ import javax.persistence.*;
 @AllArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
 
-@Entity
+@Entity(name = "Session")
 @IdClass(GroupSessionId.class)
 @Table(schema = "project_two", name = "lfg_group_sessions")
 public class Session {
@@ -29,6 +29,5 @@ public class Session {
      SessionDetails groupSession;
     @Column(name = "inSession")
      boolean inSession;
-
 }
 

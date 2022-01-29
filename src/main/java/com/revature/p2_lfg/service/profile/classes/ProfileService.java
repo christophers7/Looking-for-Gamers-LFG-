@@ -1,12 +1,12 @@
 package com.revature.p2_lfg.service.profile.classes;
 
+import com.revature.p2_lfg.repository.interfaces.UserProfileRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import com.revature.p2_lfg.presentation.models.profile.ProfileResponse;
 import com.revature.p2_lfg.presentation.models.profile.UpdateUserProfileRequest;
-import com.revature.p2_lfg.repository.DAO.implementation.UserProfileDao;
-import com.revature.p2_lfg.repository.entities.UserCredential;
-import com.revature.p2_lfg.repository.entities.UserProfile;
+import com.revature.p2_lfg.repository.entities.user.UserCredential;
+import com.revature.p2_lfg.repository.entities.user.UserProfile;
 import com.revature.p2_lfg.service.login.exceptions.InvalidInputException;
 import com.revature.p2_lfg.service.profile.interfaces.ProfileServiceable;
 import com.revature.p2_lfg.service.profile.validation.ProfileValidation;
@@ -21,25 +21,17 @@ public class ProfileService implements ProfileServiceable {
     private final Logger dLog = LoggerFactory.getLogger("dLog");
 
     @Autowired
-    private UserProfileDao userProfileDao;
+    private UserProfileRepository userProfileRepository;
 
     @Override
     public ProfileResponse getProfileResponse(UserCredential userCredential) {
         dLog.debug("Getting Profile Response with User Credentials: " + userCredential);
-        return convertUserProfileToProfileResponse(userProfileDao.getUserProfileWithUserCredentials(userCredential));
+        return convertUserProfileToProfileResponse(userProfileRepository.findByUserId(userCredential.getUserId()).orElse(null));
     }
 
     public UserProfile getUserProfile(int columnId) {
         dLog.debug("Getting User Profile: " + columnId);
-        return userProfileDao.getUserProfile(
-                new UserProfile(
-                        columnId,
-                        new UserCredential(),
-                        "",
-                        "",
-                        ""
-                )
-        );
+        return userProfileRepository.findById(columnId).orElse(null);
     }
 
     @Override
@@ -47,7 +39,7 @@ public class ProfileService implements ProfileServiceable {
         dLog.debug("Converting User profile into profile Response: " + userProfile);
         String JWT = JWTUtility.generateJWT(userProfile);
         return new ProfileResponse(
-                userProfile.getUserCredential().getUserLogin(),
+                userProfile.getUserCredential().getUsername(),
                 userProfile.getFirstName(),
                 userProfile.getLastName(),
                 userProfile.getEmail(),
@@ -58,7 +50,7 @@ public class ProfileService implements ProfileServiceable {
     @Override
     public ProfileResponse newUserProfile(UserCredential newUserCredential, String email) {
         dLog.debug("Creating new UserProfile: " + newUserCredential + " " + email);
-        return convertUserProfileToProfileResponse(getUserProfile(userProfileDao.createProfile(new UserProfile(0,newUserCredential,"","",email))));
+        return convertUserProfileToProfileResponse(userProfileRepository.save(new UserProfile(0,newUserCredential,"","",email)));
     }
 
     @Override
@@ -69,8 +61,7 @@ public class ProfileService implements ProfileServiceable {
             storedUserProfile.setFirstName(updateUserProfileRequest.getFirstName());
             storedUserProfile.setLastName(updateUserProfileRequest.getLastName());
             storedUserProfile.setEmail(updateUserProfileRequest.getEmail());
-            userProfileDao.updateUserProfile(storedUserProfile);
-            return convertUserProfileToProfileResponse(userProfileDao.getUserProfile(storedUserProfile));
+            return convertUserProfileToProfileResponse(userProfileRepository.save(storedUserProfile));
         } catch (InvalidInputException e) {
             dLog.debug("Invalid Input for Updating User Profile: " + updateUserProfileRequest);
             dLog.error(e.getMessage(), e);

@@ -1,6 +1,6 @@
 package com.revature.p2_lfg.presentation.models.profile;
 
-import com.revature.p2_lfg.repository.entities.Socials;
+import com.revature.p2_lfg.repository.entities.user.Socials;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Data;

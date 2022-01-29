@@ -1,4 +1,4 @@
-package com.revature.p2_lfg.repository.entities;
+package com.revature.p2_lfg.repository.entities.user;
 
 import com.revature.p2_lfg.repository.entities.compositeKeys.SocialId;
 import lombok.AccessLevel;

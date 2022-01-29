@@ -18,20 +18,20 @@
 
         <property name="hibernate.hbm2ddl.auto">validate</property>
 
-        <mapping class="com.revature.p2_lfg.repository.entities.UserCredential"/>
-        <mapping class="com.revature.p2_lfg.repository.entities.UserProfile"/>
-        <mapping class="com.revature.p2_lfg.repository.entities.Socials"/>
-        <mapping class="com.revature.p2_lfg.repository.entities.Games"/>
-        <mapping class="com.revature.p2_lfg.repository.entities.Tag"/>
-        <mapping class="com.revature.p2_lfg.repository.entities.SessionDetails"/>
-        <mapping class="com.revature.p2_lfg.repository.entities.Session"/>
+        <mapping class="com.revature.p2_lfg.repository.entities.user.UserCredential"/>
+        <mapping class="com.revature.p2_lfg.repository.entities.user.UserProfile"/>
+        <mapping class="com.revature.p2_lfg.repository.entities.user.Socials"/>
+        <mapping class="com.revature.p2_lfg.repository.entities.session.Games"/>
+        <mapping class="com.revature.p2_lfg.repository.entities.session.Tag"/>
+        <mapping class="com.revature.p2_lfg.repository.entities.session.SessionDetails"/>
+        <mapping class="com.revature.p2_lfg.repository.entities.session.Session"/>
         <mapping class="com.revature.p2_lfg.repository.entities.compositeKeys.GroupSessionId"/>
         <mapping class="com.revature.p2_lfg.repository.entities.compositeKeys.SocialId"/>
-        <mapping class ="com.revature.p2_lfg.repository.entities.UserReports"/>
-        <mapping class ="com.revature.p2_lfg.repository.entities.ReportTagTable" />
-        <mapping class ="com.revature.p2_lfg.repository.entities.CommendTagTable" />
-        <mapping class ="com.revature.p2_lfg.repository.entities.UserCommends" />
-        <mapping class ="com.revature.p2_lfg.repository.entities.UserScore" />
+        <mapping class ="com.revature.p2_lfg.repository.entities.user.UserReports"/>
+        <mapping class ="com.revature.p2_lfg.repository.entities.user.ReportTagTable" />
+        <mapping class ="com.revature.p2_lfg.repository.entities.user.CommendTagTable" />
+        <mapping class ="com.revature.p2_lfg.repository.entities.user.UserCommends" />
+        <mapping class ="com.revature.p2_lfg.repository.entities.user.UserScore" />
 
     </session-factory>
 </hibernate-configuration>
