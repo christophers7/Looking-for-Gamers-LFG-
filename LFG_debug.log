@@ -3561,3 +3561,6 @@ Caused by: javax.persistence.TransactionRequiredException: Executing an update/d
 22:42:59.470 [http-nio-8088-exec-2] DEBUG dLog - Validating user login attempt: LoginRequest(username=testUser3, password=testPass3)
 22:42:59.600 [http-nio-8088-exec-2] DEBUG dLog - Getting Profile Response with User Credentials: UserCredential(userid=20, username=testUser3, password=testPass3)
 22:42:59.646 [http-nio-8088-exec-2] DEBUG dLog - Converting User profile into profile Response: UserProfile(columnID=7, usercredential=UserCredential(userid=20, username=testUser3, password=testPass3), firstname=empty, lastname=empty, email=testemail3@email.com)
+23:00:39.705 [http-nio-8088-exec-1] DEBUG dLog - Validating user login attempt: LoginRequest(username=testUser3, password=testPass3)
+23:00:39.830 [http-nio-8088-exec-1] DEBUG dLog - Getting Profile Response with User Credentials: UserCredential(userid=20, username=testUser3, password=testPass3)
+23:00:39.876 [http-nio-8088-exec-1] DEBUG dLog - Converting User profile into profile Response: UserProfile(columnID=7, usercredential=UserCredential(userid=20, username=testUser3, password=testPass3), firstname=empty, lastname=empty, email=testemail3@email.com)
