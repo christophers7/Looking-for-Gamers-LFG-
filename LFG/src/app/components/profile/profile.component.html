@@ -1,0 +1,19 @@
+<div id="profileInfoBox">
+    <div id="profileInfo" class="displayProfile">
+        <label>Username: </label><br/>
+        <h2>{{currentUser.username}}</h2><br><br>
+
+        <label>First Name: </label><br/>
+        <h2>{{currentUser.firstName}}</h2><br><br>
+
+        <label>Last Name: </label><br/>
+        <h2>{{currentUser.lastName}}</h2><br><br>
+
+        <label>Email Address: </label><br/>
+        <h2>{{currentUser.email}}</h2><br><br>
+    </div>
+</div>
+<button id="profileModifyButton" (click)="modifyProfile()">Edit Profile</button>
+<br><br>
+<button id="backToMainButton" (click)="goToMain()">Go Back</button>
+    

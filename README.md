@@ -1,5 +1,9 @@
 # P2_LFGG
+<<<<<<< HEAD
 Project 2 - Looking for Good Gamers
+=======
+Project 2 - Looking for Gamers
+>>>>>>> cc5c8facd07f16c1d434cbbd5a8765fce26e24f3
 
 ###Conventions
 ___

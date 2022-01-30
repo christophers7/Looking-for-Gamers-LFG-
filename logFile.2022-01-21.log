@@ -1,0 +1,6 @@
+23:16:17.622 [main] DEBUG dLog - Validating user login attempt: {"LoginRequest":{"username":"", "password":""}}
+23:16:17.635 [main] DEBUG dLog - Validating user login attempt: {"LoginRequest":{"username":"username", "password":"password"}}
+23:16:17.639 [main] DEBUG dLog - Validating user login attempt: {"LoginRequest":{"username":"user", "password":"wrong"}}
+23:16:17.641 [main] DEBUG dLog - Validating user login attempt: {"LoginRequest":{"username":"null", "password":"null"}}
+23:16:17.643 [main] DEBUG dLog - Validating user login attempt: {"LoginRequest":{"username":"wrong", "password":"pass"}}
+23:16:24.741 [main] DEBUG dLog - Getting Profile Response with User Credentials: UserCredential{userID=1, userLogin='username', userPass='password', userProfile=UserProfile{profileID=1, firstName='firstName', lastName='lastName', email='email@email.com'}, publicDetails=PublicDetails{columnID=1, userID=null, gameID=Games{gameID=0, gameTitle='null', imgLink='null'}, gamerTag='gamerTag'}}

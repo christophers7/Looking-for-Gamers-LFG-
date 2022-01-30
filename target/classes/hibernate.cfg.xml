@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration xmlns="http://www.hibernate.org/xsd/orm/cfg">
+    <session-factory>
+        <property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
+        <property name="hibernate.dialect">org.hibernate.dialect.PostgresPlusDialect</property>
+
+        <property name="hibernate.connection.url"/>
+        <property name="hibernate.connection.username"/>
+        <property name="hibernate.connection.password"/>
+
+        <property name="show_sql">true</property>
+        <property name="hibernate.connection.pool_size">5</property>
+        <property name="hibernate.current_session_context_class">thread</property>
+
+        <property name="hibernate.hbm2ddl.auto">validate</property>
+
+        <mapping class="repository.entities.UserCredential"/>
+        <mapping class="repository.entities.UserProfile"/>
+        <mapping class="repository.entities.Socials"/>
+        <mapping class="repository.entities.Games"/>
+        <mapping class="repository.entities.Tag"/>
+        <mapping class="repository.entities.SessionDetails"/>
+        <mapping class="repository.entities.Session"/>
+        <mapping class="repository.entities.compositeKeys.GroupSessionId"/>
+        <mapping class="repository.entities.compositeKeys.SocialId"/>
+
+
+    </session-factory>
+</hibernate-configuration>
