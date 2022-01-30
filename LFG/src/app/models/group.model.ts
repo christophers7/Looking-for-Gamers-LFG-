@@ -3,16 +3,16 @@ import { GroupUser } from "./group-user.model";
 import { WaitingForGroup } from "./waiting-for-group.model";
 
 export class Group {
-    
+
     private _groupMembers: GroupUser[] = [];
     private _waitingUsers: GroupUser[] = [];
     // Add tag(s) when they're implemented
 
     constructor (
-        private _groupId: number, 
-        private _gameId: number, 
+        private _groupId: number,
+        private _gameId: number,
         private _groupLead: GroupUser,
-        private _maxUsers: number, 
+        private _maxUsers: number,
         private _currentSize: number,
         private _description: string
     ){
@@ -76,7 +76,7 @@ export class Group {
     public set groupMembers(value: GroupUser[]) {
         this._groupMembers = value;
     }
-    
+
     public get waitingUsers(): Array<GroupUser> {
         return this._waitingUsers;
     }
@@ -92,7 +92,7 @@ export class Group {
             if(this._groupMembers.length + 1 === this._maxUsers) {
                 // tell server that group is full
                 console.log("Group has filled!");
-            } 
+            }
     }
 
     removeGroupMember(currentMember: GroupUser) {
