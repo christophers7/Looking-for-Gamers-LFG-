@@ -37,6 +37,7 @@ public class UserController {
     public ProfileResponse getUserProfile(@RequestHeader("Authorization") String token){
         dLog.debug("Attempting to get user profile");
         JWTInfo parsedJWT = JWTUtility.verifyUser(token);
+        dLog.debug("JWT TOken : " + parsedJWT);
         if(parsedJWT != null) return profileService.convertUserProfileToProfileResponse(profileService.getUserProfile(parsedJWT.getUserId()));
         else return null;
     }

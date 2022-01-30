@@ -53,23 +53,28 @@ import java.util.*;
 
     @Override
     public JoinGroupSessionResponse joinGroupSession(JWTInfo parsedJWT, int groupId, int gameId) throws MaxUsersException {
-        dLog.debug("Joining group session response from group join request: " + groupId);
+        dLog.debug("Joining group session waiting room Group ID: " + groupId + " JWT: " + parsedJWT);
         return enterWaitingRoom(groupId, parsedJWT);
     }
 
     private JoinGroupSessionResponse enterWaitingRoom(int groupId, JWTInfo parsedJWT) throws MaxUsersException {
+        dLog.debug("Attempting to enter waiting room: " + groupId);
         SessionDetails sessionDetails = getSessionDetailsByGroupId(groupId);
-        iLog.info("Joining group session: " + sessionDetails);
-        GroupSessionId sessionId = createUserSession(sessionDetails, parsedJWT, sessionRepository.findFirst1HostidByGroupsession(new SessionDetails(groupId, new Games(), 0, 0, "", new HashSet<>())),  false);
-        return new JoinGroupSessionResponse(
-                sessionId,
-                sessionDetails.getGame().getGameid(),
-                sessionDetails.getGroupid()
-        );
+        if (sessionDetails != null){
+            iLog.info("Joining group session: " + sessionDetails);
+            GroupSessionId sessionId = createUserSession(sessionDetails, parsedJWT, findByHostId(groupId),  false);
+            return new JoinGroupSessionResponse(
+                    sessionId,
+                    sessionDetails.getGame().getGameid(),
+                    sessionDetails.getGroupid()
+            );
+        }
+       return null;
     }
 
     private int findByHostId(int groupId) {
-        return sessionRepository.findFirst1HostidByGroupsession(new SessionDetails(groupId, new Games(), 0, 0, "", new HashSet<>()));
+        dLog.debug("Finding host Id by Group ID: " + groupId);
+        return sessionRepository.findFirst1HostidByGroupsession(new SessionDetails(groupId, new Games(), 0, 0, "", new HashSet<>())).getHostid();
     }
 
     private List<GroupUser> getGroupMembersOfSession(int groupId) {
@@ -112,7 +117,7 @@ import java.util.*;
                         0,
                         shellGame,
                         maxUsers,
-                        0,
+                        1,
                         description,
                         tags));
     }
@@ -178,5 +183,15 @@ import java.util.*;
             dLog.error(e.getMessage(), e);
             return new LeaveGroupResponse(false);
         }
+    }
+
+    @Override
+    public GroupSessionResponse getGroupSession(int groupId, int gameId, JWTInfo parsedJWT) {
+        dLog.debug("Attempting to get Group Session: " + groupId);
+        return new GroupSessionResponse(
+                groupId,
+                gameId,
+                getGroupMembersOfSession(groupId)
+        );
     }
 }

@@ -17,4 +17,6 @@ public interface SessionServiceable {
     CancelGroupResponse cancelSession(JWTInfo parsedJWT, CancelGroupRequest cancelGroup);
 
     LeaveGroupResponse leaveSession(JWTInfo parsedJWT, int groupId, int gameId);
+
+    GroupSessionResponse getGroupSession(int groupId, int gameId, JWTInfo parsedJWT);
 }

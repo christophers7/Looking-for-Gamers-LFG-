@@ -29,9 +29,9 @@ public class ProfileService implements ProfileServiceable {
         return convertUserProfileToProfileResponse(userProfileRepository.findByUserId(userCredential.getUserid()).orElse(null));
     }
 
-    public UserProfile getUserProfile(int columnId) {
-        dLog.debug("Getting User Profile: " + columnId);
-        return userProfileRepository.findById(columnId).orElse(null);
+    public UserProfile getUserProfile(int userId) {
+        dLog.debug("Getting User Profile: " + userId);
+        return userProfileRepository.findByUserId(userId).orElse(null);
     }
 
     @Override
@@ -50,7 +50,7 @@ public class ProfileService implements ProfileServiceable {
     @Override
     public ProfileResponse newUserProfile(UserCredential newUserCredential, String email) {
         dLog.debug("Creating new UserProfile: " + newUserCredential + " " + email);
-        return convertUserProfileToProfileResponse(userProfileRepository.save(new UserProfile(0,newUserCredential,"","",email)));
+        return convertUserProfileToProfileResponse(userProfileRepository.save(new UserProfile(0,newUserCredential,"empty","empty",email)));
     }
 
     @Override

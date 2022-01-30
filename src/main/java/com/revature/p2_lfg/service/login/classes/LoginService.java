@@ -67,7 +67,7 @@ public class LoginService implements LoginServiceable {
             byte[] array = new byte[7]; // length is bounded by 7
             new Random().nextBytes(array);
             String generatedString = new String(array, StandardCharsets.UTF_8);
-            UserCredential storedUserCredential = getUserCredentialFromLogin(new LoginRequest(resetPasswordRequest.getUsername(), ""));
+            UserCredential storedUserCredential = loginRepository.findByUsername(resetPasswordRequest.getUsername());
             storedUserCredential.setPassword(generatedString);
             loginRepository.save(storedUserCredential);
             iLog.info("Reset password for user: " + resetPasswordRequest);

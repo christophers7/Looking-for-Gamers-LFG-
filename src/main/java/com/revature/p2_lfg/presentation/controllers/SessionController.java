@@ -27,6 +27,14 @@ public class SessionController {
         else return null;
     }
 
+    @GetMapping("/refresh")
+    public GroupSessionResponse refreshGroupSession(@RequestHeader("Authorization") String token, @RequestParam int groupId, @RequestParam int gameId){
+        dLog.debug("Refreshing members in group Session: " + groupId);
+        JWTInfo parsedJWT = JWTUtility.verifyUser(token);
+        if(parsedJWT != null) return sessionService.getGroupSession(groupId, gameId, parsedJWT);
+        else return null;
+    }
+
     @PostMapping("/join")
     public JoinGroupSessionResponse joinGroupSession(@RequestParam int groupId, @RequestParam int gameId, @RequestHeader("Authorization") String token){
         dLog.debug("Joining a group session: " + groupId);
@@ -35,7 +43,7 @@ public class SessionController {
         else return null;
     }
 
-    @PostMapping("/check")
+    @GetMapping("/check")
     public CheckWaitingRoomResponse waitingRoomResponse(@RequestHeader("Authorization") String token, @RequestParam int groupId){
         dLog.debug("Checking session status: " + groupId);
         JWTInfo parsedJWT = JWTUtility.verifyUser(token);

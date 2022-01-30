@@ -195,7 +195,7 @@ class SessionServiceTest {
         Mockito.when(sessionDetailsRepository.findById(sessionDetailJustForId.getGroupid())).thenReturn(Optional.ofNullable(createdSessionDetails));
         Mockito.when(sessionRepository.save(mockSession)).thenReturn(storedSession);
         Mockito.when(sessionRepository.findAllByGroupId(createdSessionDetails.getGroupid())).thenReturn(groupMembersSession);
-        Mockito.when(sessionRepository.findFirst1HostidByGroupsession(new SessionDetails(joinGroupSessionRequest.getGroupId(), new Games(), 0, 0, "", new HashSet<>()))).thenReturn(sessionId.getHostid());
+        Mockito.when(sessionRepository.findFirst1HostidByGroupsession(new SessionDetails(joinGroupSessionRequest.getGroupId(), new Games(), 0, 0, "", new HashSet<>()))).thenReturn(storedSession);
         Mockito.when(sessionRepository.save(new Session(parsedJWT2.getUserId(), sessionId.getHostid(), createdSessionDetails, false))).thenReturn(session2);
         Mockito.when(sessionRepository.findByUserIdAndGroupId(parsedJWT2.getUserId(), createdSessionDetails.getGroupid())).thenReturn(user2Session);
         Mockito.when(loginRepository.findByUsername("user2")).thenReturn(new UserCredential(2, "user2", "pass2"));
