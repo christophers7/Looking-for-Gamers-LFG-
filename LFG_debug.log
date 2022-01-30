@@ -3558,3 +3558,6 @@ Caused by: javax.persistence.TransactionRequiredException: Executing an update/d
 22:21:20.457 [http-nio-8088-exec-7] DEBUG dLog - Checking session status: 4 + userId: 20
 22:23:02.937 [http-nio-8088-exec-10] DEBUG dLog - Joining a group session: 4
 22:23:02.940 [http-nio-8088-exec-10] DEBUG dLog - Attempting to leave Group Session: 4
+22:42:59.470 [http-nio-8088-exec-2] DEBUG dLog - Validating user login attempt: LoginRequest(username=testUser3, password=testPass3)
+22:42:59.600 [http-nio-8088-exec-2] DEBUG dLog - Getting Profile Response with User Credentials: UserCredential(userid=20, username=testUser3, password=testPass3)
+22:42:59.646 [http-nio-8088-exec-2] DEBUG dLog - Converting User profile into profile Response: UserProfile(columnID=7, usercredential=UserCredential(userid=20, username=testUser3, password=testPass3), firstname=empty, lastname=empty, email=testemail3@email.com)
