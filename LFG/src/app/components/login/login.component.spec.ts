@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import HttpClientTestingModule from "@angular/cli"
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { LoginComponent } from './login.component';
 import { AuthService } from 'src/app/_services/auth.service';
 import { Observable } from 'rxjs';
