@@ -25,7 +25,7 @@ create table lfg_socials (
 socialID serial primary key,
 platform varchar unique not null
 );
-insert into lfg values
+
 select * from lfg_socials ls ;
 
 drop table lfg_games cascade;
@@ -45,3 +45,51 @@ gameID integer references lfg_games(gameID),
 gamerTag varchar unique not null
 );
 select * from lfg_public_details lpd ;
+
+
+create table user_reports(
+reportID serial primary key,
+reportingUser integer unique not null references lfg_user_creds (userID),
+reportedUser integer unique not null references lfg_user_creds (userID),
+reportTag integer not null references report_tag_table(reportTagID),
+description varchar,
+incidentDate date not null,
+reviewStatus boolean not null
+);
+select * from user_reports;
+
+
+create table user_commends(
+commendID serial primary key,
+commendingUser integer unique not null references lfg_user_creds (userID),
+commendedUser integer unique not null references lfg_user_creds (userID),
+commendTag integer not null references commend_tag_table(commendTagID),
+description varchar,
+commendDate date not null
+);
+select * from user_commends;
+
+
+drop table report_tag_table ;
+create table report_tag_table(
+reportTagID integer primary key,
+value text unique not null
+);
+insert into report_tag_table values (1,'Trolling'), (2, 'Raging'), (3, 'AFK');
+select * from report_tag_table;
+
+drop table commend_tag_table ;
+create table commend_tag_table(
+commendTagID integer primary key,
+value text unique not null
+);
+insert into commend_tag_table values (1,'Friendly'), (2, 'Funny'), (3, 'Certified Gamer');
+select * from commend_tag_table ;
+
+
+create table user_score(
+scoreID integer primary key,
+userID integer unique not null references lfg_user_creds(userID),
+rating integer not null
+);
+select * from user_score;
