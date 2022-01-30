@@ -3535,3 +3535,26 @@ Caused by: javax.persistence.TransactionRequiredException: Executing an update/d
 	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
 	at org.springframework.dao.support.PersistenceExceptionTranslationInterceptor.invoke(PersistenceExceptionTranslationInterceptor.java:137)
 	... 59 common frames omitted
+22:20:35.154 [http-nio-8088-exec-2] DEBUG dLog - Cancelling an active group session: CancelGroupRequest(groupId=3, gameId=3, groupMembers=[GroupUser(username=testUser2, groupId=3, insideSession=true), GroupUser(username=testUser3, groupId=3, insideSession=true)])
+22:20:35.208 [http-nio-8088-exec-2] DEBUG dLog - Canceling group session: CancelGroupRequest(groupId=3, gameId=3, groupMembers=[GroupUser(username=testUser2, groupId=3, insideSession=true), GroupUser(username=testUser3, groupId=3, insideSession=true)])
+22:20:51.534 [http-nio-8088-exec-3] DEBUG dLog - Creating a group session: CreateGroupSessionRequest(gameId=3, maxUsers=4, description=This is a created Group through Postman)
+22:20:51.537 [http-nio-8088-exec-3] DEBUG dLog - Creating group session response from group create request: CreateGroupSessionRequest(gameId=3, maxUsers=4, description=This is a created Group through Postman)
+22:20:51.537 [http-nio-8088-exec-3] DEBUG dLog - Creating a group session: GameId - 3 maxUsers - 4 Description: This is a created Group through Postman
+22:20:51.720 [http-nio-8088-exec-3] DEBUG dLog - Creating user Session for a group: SessionDetails(groupid=4, game=Games(gameid=3, gametitle=, imglink=), maxusers=4, currentusers=1, description=This is a created Group through Postman, tags=[])
+22:20:51.895 [http-nio-8088-exec-3] DEBUG dLog - Getting group users associated by group Id: 4
+22:21:04.980 [http-nio-8088-exec-4] DEBUG dLog - Joining a group session: 4
+22:21:04.983 [http-nio-8088-exec-4] DEBUG dLog - Joining group session waiting room Group ID: 4 JWT: JWTInfo(firstName=empty, lastName=empty, username=testUser3, userId=20)
+22:21:04.983 [http-nio-8088-exec-4] DEBUG dLog - Attempting to enter waiting room: 4
+22:21:04.983 [http-nio-8088-exec-4] DEBUG dLog - Getting session details by group ID: 4
+22:21:05.117 [http-nio-8088-exec-4] DEBUG dLog - Finding host Id by Group ID: 4
+22:21:05.173 [http-nio-8088-exec-4] DEBUG dLog - Creating user Session for a group: SessionDetails(groupid=4, game=Games(gameid=3, gametitle=Apex Legends, imglink=https://media.contentapi.ea.com/content/dam/apex-legends/images/2019/01/apex-featured-image-16x9.jpg.adapt.crop16x9.1023w.jpg), maxusers=4, currentusers=2, description=This is a created Group through Postman, tags=[])
+22:21:07.922 [http-nio-8088-exec-5] DEBUG dLog - Refreshing members in group Session: 3
+22:21:07.924 [http-nio-8088-exec-5] DEBUG dLog - Attempting to get Group Session: 3
+22:21:07.924 [http-nio-8088-exec-5] DEBUG dLog - Getting group users associated by group Id: 3
+22:21:12.658 [http-nio-8088-exec-6] DEBUG dLog - Refreshing members in group Session: 4
+22:21:12.661 [http-nio-8088-exec-6] DEBUG dLog - Attempting to get Group Session: 4
+22:21:12.661 [http-nio-8088-exec-6] DEBUG dLog - Getting group users associated by group Id: 4
+22:21:20.455 [http-nio-8088-exec-7] DEBUG dLog - Checking session status: 4
+22:21:20.457 [http-nio-8088-exec-7] DEBUG dLog - Checking session status: 4 + userId: 20
+22:23:02.937 [http-nio-8088-exec-10] DEBUG dLog - Joining a group session: 4
+22:23:02.940 [http-nio-8088-exec-10] DEBUG dLog - Attempting to leave Group Session: 4
