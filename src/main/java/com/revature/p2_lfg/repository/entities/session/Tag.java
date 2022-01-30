@@ -21,12 +21,12 @@ public class Tag {
     @Id
     @GeneratedValue(generator = "lfg_tags_tagid_seq", strategy = GenerationType.AUTO)
     @SequenceGenerator(allocationSize = 1, name = "lfg_tags_tagid_seq", sequenceName = "lfg_tags_tagid_seq")
-    private int tagId;
+    int tagid;
     @Column(name = "value")
-    private String tagValue;
+    String tagvalue;
 
     @ManyToMany(mappedBy = "tags")
-    private Set<SessionDetails> taggedSession = new HashSet<>();
+    Set<SessionDetails> taggedsession = new HashSet<>();
 
 
 }

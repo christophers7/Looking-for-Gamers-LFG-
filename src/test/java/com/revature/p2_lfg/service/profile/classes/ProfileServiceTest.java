@@ -80,9 +80,9 @@ class ProfileServiceTest {
 
 
         profileResponse = new ProfileResponse(
-                storedUserProfile.getUserCredential().getUsername(),
-                storedUserProfile.getFirstName(),
-                storedUserProfile.getLastName(),
+                storedUserProfile.getUsercredential().getUsername(),
+                storedUserProfile.getFirstname(),
+                storedUserProfile.getLastname(),
                 storedUserProfile.getEmail(),
                 JWT
         );
@@ -92,11 +92,11 @@ class ProfileServiceTest {
         );
 
         UserProfile userProfileRequest = new UserProfile(
-                0, new UserCredential(storedUserCredential.getUserId(), "", ""), "", "", ""
+                0, new UserCredential(storedUserCredential.getUserid(), "", ""), "", "", ""
         );
 
         UserProfile userProfileNewRequest = new UserProfile(
-            0, new UserCredential(storedNewUserCredentials.getUserId(), "", ""), "", "", "");
+            0, new UserCredential(storedNewUserCredentials.getUserid(), "", ""), "", "", "");
 
         storedNewProfile = new UserProfile(
                 newUserProfileColumnId, storedNewUserCredentials, "", "", newEmail
@@ -120,14 +120,14 @@ class ProfileServiceTest {
         );
 
         newProfileResponse = new ProfileResponse(
-                updatedUserProfile.getUserCredential().getUsername(),
-                updatedUserProfile.getFirstName(),
-                updatedUserProfile.getLastName(),
+                updatedUserProfile.getUsercredential().getUsername(),
+                updatedUserProfile.getFirstname(),
+                updatedUserProfile.getLastname(),
                 updatedUserProfile.getEmail(),
                 newJWT
         );
 
-        Mockito.when(userProfileRepository.findById(storedUserCredential.getUserId())).thenReturn(Optional.ofNullable(storedUserProfile));
+        Mockito.when(userProfileRepository.findById(storedUserCredential.getUserid())).thenReturn(Optional.ofNullable(storedUserProfile));
         Mockito.when(userProfileRepository.save(new UserProfile(0,storedNewUserCredentials, "", "", newEmail))).thenReturn(storedNewProfile);
         Mockito.when(userProfileRepository.findById(newUserProfileColumnId)).thenReturn(Optional.ofNullable(storedNewProfile));
 

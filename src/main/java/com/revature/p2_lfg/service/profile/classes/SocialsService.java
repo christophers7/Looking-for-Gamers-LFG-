@@ -71,8 +71,8 @@ public class SocialsService implements SocialsServiceable {
         List<Session> userInSession = sessionRepository.findAllByGroupId(groupId);
         List<GroupUser> groupUsers = new ArrayList<>();
         userInSession.forEach(s -> {
-            Optional<UserCredential> user = loginRepository.findById(s.getUserId());
-            groupUsers.add(new GroupUser(user.isPresent()? user.get().getUsername() : "NOT PRESENT", s.getGroupSession().getGroupId(), s.isInSession()));
+            Optional<UserCredential> user = loginRepository.findById(s.getUserid());
+            groupUsers.add(new GroupUser(user.isPresent()? user.get().getUsername() : "NOT PRESENT", s.getGroupsession().getGroupid(), s.isInsession()));
         });
         return groupUsers;
     }

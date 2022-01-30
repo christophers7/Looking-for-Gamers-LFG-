@@ -128,19 +128,19 @@ class SessionServiceTest {
                 1, new Games(), 0, 0,  "", new HashSet<>()
         );
 
-        GroupSessionId sessionId = new GroupSessionId(storedSession.getUserId(), storedSession.getHostId());
+        GroupSessionId sessionId = new GroupSessionId(storedSession.getUserid(), storedSession.getHostid());
 
         joinGroupSessionRequest = new JoinGroupSessionRequest(
-                createdSessionDetails.getGroupId(),
-                createdSessionDetails.getGame().getGameId(),
+                createdSessionDetails.getGroupid(),
+                createdSessionDetails.getGame().getGameid(),
                 user2.getUsername());
 
-        GroupSessionId sessionId2 = new GroupSessionId(2, storedSession.getHostId());
+        GroupSessionId sessionId2 = new GroupSessionId(2, storedSession.getHostid());
 
         joinGroupSessionResponse = new JoinGroupSessionResponse(
                 sessionId2,
-                createdSessionDetails.getGame().getGameId(),
-                createdSessionDetails.getGroupId()
+                createdSessionDetails.getGame().getGameid(),
+                createdSessionDetails.getGroupid()
         );
 
         parsedJWT2 = new JWTInfo(
@@ -152,20 +152,20 @@ class SessionServiceTest {
         );
 
         checkWaitingRoomResponse = new CheckWaitingRoomResponse(
-                user2Session.isInSession(),
+                user2Session.isInsession(),
                 1,
-                mockSessionDetail.getGame().getGameId()
+                mockSessionDetail.getGame().getGameid()
         );
 
         roomRequestSuccess = new WaitingRoomRequest(
-                createdSessionDetails.getGroupId(),
-                createdSessionDetails.getGame().getGameId(),
+                createdSessionDetails.getGroupid(),
+                createdSessionDetails.getGame().getGameid(),
                 parsedJWT2.getUsername(),
                 true
         );
         roomRequestReject = new WaitingRoomRequest(
-                createdSessionDetails.getGroupId(),
-                createdSessionDetails.getGame().getGameId(),
+                createdSessionDetails.getGroupid(),
+                createdSessionDetails.getGame().getGameid(),
                 parsedJWT2.getUsername(),
                 false
         );
@@ -180,7 +180,7 @@ class SessionServiceTest {
                 new GroupUser()
         );
 
-        cancelGroupRequest = new CancelGroupRequest(createdSessionDetails.getGroupId(), createdSessionDetails.getGame().getGameId(), Collections.singletonList(user2));
+        cancelGroupRequest = new CancelGroupRequest(createdSessionDetails.getGroupid(), createdSessionDetails.getGame().getGameid(), Collections.singletonList(user2));
 
         cancelGroupResponse = new CancelGroupResponse(true);
 
@@ -189,15 +189,15 @@ class SessionServiceTest {
         List<Session> groupMembersSession = new ArrayList<>();
         groupMembersSession.add(storedSession);
 
-        Session session2 = new Session(2, sessionId.getHostId(), createdSessionDetails, false);
+        Session session2 = new Session(2, sessionId.getHostid(), createdSessionDetails, false);
 
         Mockito.when(sessionDetailsRepository.save(mockSessionDetail)).thenReturn(createdSessionDetails);
-        Mockito.when(sessionDetailsRepository.findById(sessionDetailJustForId.getGroupId())).thenReturn(Optional.ofNullable(createdSessionDetails));
+        Mockito.when(sessionDetailsRepository.findById(sessionDetailJustForId.getGroupid())).thenReturn(Optional.ofNullable(createdSessionDetails));
         Mockito.when(sessionRepository.save(mockSession)).thenReturn(storedSession);
-        Mockito.when(sessionRepository.findAllByGroupId(createdSessionDetails.getGroupId())).thenReturn(groupMembersSession);
-        Mockito.when(sessionRepository.findFirst1HostIdByGroupSession(new SessionDetails(joinGroupSessionRequest.getGroupId(), new Games(), 0, 0, "", new HashSet<>()))).thenReturn(sessionId.getHostId());
-        Mockito.when(sessionRepository.save(new Session(parsedJWT2.getUserId(), sessionId.getHostId(), createdSessionDetails, false))).thenReturn(session2);
-        Mockito.when(sessionRepository.findByUserIdAndGroupId(parsedJWT2.getUserId(), createdSessionDetails.getGroupId())).thenReturn(user2Session);
+        Mockito.when(sessionRepository.findAllByGroupId(createdSessionDetails.getGroupid())).thenReturn(groupMembersSession);
+        Mockito.when(sessionRepository.findFirst1HostidByGroupsession(new SessionDetails(joinGroupSessionRequest.getGroupId(), new Games(), 0, 0, "", new HashSet<>()))).thenReturn(sessionId.getHostid());
+        Mockito.when(sessionRepository.save(new Session(parsedJWT2.getUserId(), sessionId.getHostid(), createdSessionDetails, false))).thenReturn(session2);
+        Mockito.when(sessionRepository.findByUserIdAndGroupId(parsedJWT2.getUserId(), createdSessionDetails.getGroupid())).thenReturn(user2Session);
         Mockito.when(loginRepository.findByUsername("user2")).thenReturn(new UserCredential(2, "user2", "pass2"));
     }
 

@@ -2940,3 +2940,27 @@ com.revature.p2_lfg.service.login.exceptions.InvalidInputException: null
 16:35:14.929 [main] DEBUG dLog - Creating group session response from group create request: CreateGroupSessionRequest(gameId=1, maxUsers=3, description=this is a description)
 16:35:14.930 [main] DEBUG dLog - Creating a group session: GameId - 1 maxUsers - 3 Description: this is a description
 16:35:14.930 [main] DEBUG dLog - Creating user Session for a group: null
+18:57:37.608 [http-nio-8088-exec-1] DEBUG dLog - Validating user login attempt: LoginRequest(username=user2, password=pass2)
+19:01:38.295 [http-nio-8088-exec-2] DEBUG dLog - Validating user login attempt: LoginRequest(username=user2, password=pass2)
+19:02:31.426 [http-nio-8088-exec-1] DEBUG dLog - Validating user login attempt: LoginRequest(username=user2, password=pass2)
+19:02:48.190 [http-nio-8088-exec-4] DEBUG dLog - Attempting to get user profile
+19:02:48.238 [http-nio-8088-exec-4] DEBUG dLog - Getting User Profile: 1
+19:03:12.214 [http-nio-8088-exec-6] DEBUG dLog - Validating user login attempt: LoginRequest(username=user2, password=pass2)
+19:03:50.188 [http-nio-8088-exec-1] DEBUG dLog - Validating user login attempt: LoginRequest(username=user2, password=pass2)
+19:07:45.710 [http-nio-8088-exec-2] DEBUG dLog - Validating user login attempt: LoginRequest(username=user2, password=pass2)
+19:13:18.901 [http-nio-8088-exec-2] DEBUG dLog - Validating user login attempt: LoginRequest(username=user2, password=pass2)
+19:13:46.366 [http-nio-8088-exec-1] DEBUG dLog - Validating user login attempt: LoginRequest(username=user2, password=pass2)
+19:32:06.017 [main] DEBUG dLog - Joining group session response from group join request: 1
+19:32:06.017 [main] DEBUG dLog - Getting session details by group ID: 1
+19:32:06.021 [main] DEBUG dLog - Creating user Session for a group: SessionDetails(groupid=1, game=Games(gameid=1, gametitle=gameTitle, imglink=link), maxusers=3, currentusers=1, description=this is a description, tags=[])
+19:32:06.054 [main] DEBUG dLog - Responding to user in session: WaitingRoomRequest(groupId=1, gameId=1, waitingUsername=user2, success=true)
+19:32:06.069 [main] DEBUG dLog - Attempting to leave Group Session: 1
+19:32:06.078 [main] DEBUG dLog - Checking session status: 1 + userId: 2
+19:32:06.090 [main] DEBUG dLog - Responding to user in session: WaitingRoomRequest(groupId=1, gameId=1, waitingUsername=user2, success=false)
+19:32:06.098 [main] DEBUG dLog - Canceling group session: CancelGroupRequest(groupId=1, gameId=1, groupMembers=[GroupUser(username=user2, groupId=1, insideSession=false)])
+19:32:06.109 [main] DEBUG dLog - Creating group session response from group create request: CreateGroupSessionRequest(gameId=1, maxUsers=3, description=this is a description)
+19:32:06.109 [main] DEBUG dLog - Creating a group session: GameId - 1 maxUsers - 3 Description: this is a description
+19:32:06.109 [main] DEBUG dLog - Creating user Session for a group: null
+19:32:18.239 [http-nio-8088-exec-1] DEBUG dLog - Validating user login attempt: LoginRequest(username=user2, password=pass2)
+19:35:41.954 [http-nio-8088-exec-2] DEBUG dLog - Validating user login attempt: LoginRequest(username=user2, password=pass2)
+19:35:42.082 [http-nio-8088-exec-2] DEBUG dLog - Getting Profile Response with User Credentials: UserCredential(userid=2, username=user2, password=pass2)

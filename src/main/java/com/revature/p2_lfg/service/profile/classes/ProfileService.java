@@ -26,7 +26,7 @@ public class ProfileService implements ProfileServiceable {
     @Override
     public ProfileResponse getProfileResponse(UserCredential userCredential) {
         dLog.debug("Getting Profile Response with User Credentials: " + userCredential);
-        return convertUserProfileToProfileResponse(userProfileRepository.findByUserId(userCredential.getUserId()).orElse(null));
+        return convertUserProfileToProfileResponse(userProfileRepository.findByUserId(userCredential.getUserid()).orElse(null));
     }
 
     public UserProfile getUserProfile(int columnId) {
@@ -39,9 +39,9 @@ public class ProfileService implements ProfileServiceable {
         dLog.debug("Converting User profile into profile Response: " + userProfile);
         String JWT = JWTUtility.generateJWT(userProfile);
         return new ProfileResponse(
-                userProfile.getUserCredential().getUsername(),
-                userProfile.getFirstName(),
-                userProfile.getLastName(),
+                userProfile.getUsercredential().getUsername(),
+                userProfile.getFirstname(),
+                userProfile.getLastname(),
                 userProfile.getEmail(),
                 JWT
         );
@@ -58,8 +58,8 @@ public class ProfileService implements ProfileServiceable {
         dLog.debug("Updating user profile with Request: " + updateUserProfileRequest + "\nStored Profile: " + storedUserProfile);
         try {
             ProfileValidation.validateUpdateProfile(updateUserProfileRequest);
-            storedUserProfile.setFirstName(updateUserProfileRequest.getFirstName());
-            storedUserProfile.setLastName(updateUserProfileRequest.getLastName());
+            storedUserProfile.setFirstname(updateUserProfileRequest.getFirstName());
+            storedUserProfile.setLastname(updateUserProfileRequest.getLastName());
             storedUserProfile.setEmail(updateUserProfileRequest.getEmail());
             return convertUserProfileToProfileResponse(userProfileRepository.save(storedUserProfile));
         } catch (InvalidInputException e) {

@@ -17,20 +17,20 @@ import javax.persistence.*;
 @Table(schema = "project_two", name = "lfg_user_profile")
 public class UserProfile {
     @Id
-    @Column(name = "columnID")
+    @Column(name = "columnid")
     @GeneratedValue(generator = "lfg_user_profile_columnid_seq", strategy = GenerationType.AUTO)
     @SequenceGenerator(allocationSize = 1, name = "lfg_user_profile_columnid_seq",
             sequenceName = "lfg_user_profile_columnid_seq")
     private int columnID;
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "userID", referencedColumnName = "userID")
-    private UserCredential userCredential;
+    @JoinColumn(name = "userid", referencedColumnName = "userid")
+    UserCredential usercredential;
     @Column
-    private String firstName;
+    String firstname;
     @Column
-    private String lastName;
+    String lastname;
     @Column
-    private String email;
+    String email;
 
 
 }

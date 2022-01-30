@@ -13,10 +13,10 @@ public class JWTUtility {
 
     public static String generateJWT(UserProfile userProfile) {
         return Jwts.builder()
-                .claim("firstName", userProfile.getFirstName())
-                .claim("lastName", userProfile.getLastName())
-                .claim("username", userProfile.getUserCredential().getUsername())
-                .claim("userId", userProfile.getUserCredential().getUserId())
+                .claim("firstName", userProfile.getFirstname())
+                .claim("lastName", userProfile.getLastname())
+                .claim("username", userProfile.getUsercredential().getUsername())
+                .claim("userId", userProfile.getUsercredential().getUserid())
                 .claim("account", true)
                 .signWith(Keys.hmacShaKeyFor(secret))
                 .compact();

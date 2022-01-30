@@ -9,20 +9,20 @@ import lombok.experimental.FieldDefaults;
 import javax.persistence.*;
 
 @Entity
-@Table(schema = "project_two", name = "lfg_user_creds")
+@Table(name = "lfg_user_creds", schema = "project_two")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class UserCredential {
     @Id
-    @Column(name = "userId")
+    @Column(name = "userid")
     @GeneratedValue(generator = "lfg_user_creds_user_id_seq", strategy = GenerationType.AUTO)
     @SequenceGenerator(allocationSize = 1, name = "lfg_user_creds_user_id_seq", sequenceName = "lfg_user_creds_user_id_seq")
-    private int userId;
+    int userid;
     @Column(name = "userlogin")
-    private String username;
+    String username;
     @Column(name = "userpass")
-    private String password;
+    String password;
 
 }

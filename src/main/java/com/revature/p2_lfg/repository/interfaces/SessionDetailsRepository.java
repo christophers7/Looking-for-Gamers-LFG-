@@ -19,6 +19,6 @@ public interface SessionDetailsRepository extends CrudRepository<SessionDetails,
     @Override
     <S extends SessionDetails> S save(S entity);
 
-    @Query("select s from SessionDetails s where s.game.gameId = ?1")
+    @Query("select s from SessionDetails s where s.game.gameid = ?1")
     List<SessionDetails> findAllByGameId(int gameId);
 }

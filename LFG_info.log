@@ -35,3 +35,5 @@
 22:28:27.004 [main] INFO  iLog - Successful entry of a user to a session: GroupSessionId(userId=1, hostId=1)
 16:35:14.860 [main] INFO  iLog - Joining group session: SessionDetails(groupId=1, game=Games(gameId=1, gameTitle=gameTitle, imgLink=link), maxUsers=3, currentUsers=1, description=this is a description, tags=[])
 16:35:14.930 [main] INFO  iLog - New Group Session created and stored in database: null
+19:32:06.021 [main] INFO  iLog - Joining group session: SessionDetails(groupid=1, game=Games(gameid=1, gametitle=gameTitle, imglink=link), maxusers=3, currentusers=1, description=this is a description, tags=[])
+19:32:06.109 [main] INFO  iLog - New Group Session created and stored in database: null

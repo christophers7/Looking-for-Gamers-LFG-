@@ -38,8 +38,8 @@ public class GameService implements GameServiceable {
     public List<GameSelectInfo> getGameSelectInfoList(List<Games> gamesList){
         List<GameSelectInfo> gameSelectInfoList = new ArrayList<>(gamesList.size());
         for (Games games : gamesList) {
-            List<SessionDetails> sessionForGame = sessionDetailsRepository.findAllByGameId(games.getGameId());
-            gameSelectInfoList.add(new GameSelectInfo(games.getGameId(), games.getGameTitle(), games.getImgLink(), sessionForGame.size()));
+            List<SessionDetails> sessionForGame = sessionDetailsRepository.findAllByGameId(games.getGameid());
+            gameSelectInfoList.add(new GameSelectInfo(games.getGameid(), games.getGametitle(), games.getImglink(), sessionForGame.size()));
         }
         return gameSelectInfoList;
     }

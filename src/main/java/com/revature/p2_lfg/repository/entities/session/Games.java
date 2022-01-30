@@ -16,13 +16,13 @@ import javax.persistence.*;
 @Table(schema = "project_two", name = "lfg_games")
 public class Games {
     @Id
-    @Column(name = "gameID")
+    @Column(name = "gameid")
     @GeneratedValue(generator = "auto_increment", strategy = GenerationType.IDENTITY)
     @SequenceGenerator(allocationSize = 1, name = "lfg_games_gameid_seq", sequenceName = "lfg_games_gameid_seq")
-    int gameId;
+    int gameid;
     @Column
-    String gameTitle;
+    String gametitle;
     @Column
-    String imgLink;
+    String imglink;
 
 }

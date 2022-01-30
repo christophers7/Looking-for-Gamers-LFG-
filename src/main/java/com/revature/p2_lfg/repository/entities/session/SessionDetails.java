@@ -22,22 +22,22 @@ public class SessionDetails {
     @Id
     @GeneratedValue(generator = "lfg_group_information_groupid_seq", strategy = GenerationType.AUTO)
     @SequenceGenerator(allocationSize = 1, name = "lfg_group_information_groupid_seq", sequenceName = "lfg_group_information_groupid_seq")
-    private int groupId;
+    int groupid;
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "gameID")
-    private Games game;
+    @JoinColumn(name = "gameid")
+    Games game;
     @Column(name = "maxusers")
-    private int maxUsers;
+    int maxusers;
     @Column(name = "currentusers")
-    private int currentUsers;
+    int currentusers;
     @Column(name = "description")
-    private String description;
+    String description;
 
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
             name = "tag_bridge_table",
-            joinColumns = @JoinColumn(name = "groupID"),
-            inverseJoinColumns = @JoinColumn(name = "tagID"))
+            joinColumns = @JoinColumn(name = "groupid"),
+            inverseJoinColumns = @JoinColumn(name = "tagid"))
     Set<Tag> tags = new HashSet<>();
 
 

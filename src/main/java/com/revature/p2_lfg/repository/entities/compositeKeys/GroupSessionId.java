@@ -10,6 +10,6 @@ import java.util.Objects;
 @NoArgsConstructor
 @AllArgsConstructor
 public class GroupSessionId implements Serializable {
-    private int userId;
-    private int hostId;
+    private int userid;
+    private int hostid;
 }

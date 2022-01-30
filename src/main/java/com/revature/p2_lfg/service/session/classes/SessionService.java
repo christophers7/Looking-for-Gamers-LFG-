@@ -43,11 +43,11 @@ import java.util.*;
         GroupSessionId sessionId = createUserSession(sessionDetails, parsedJWT, parsedJWT.getUserId(), true);
         iLog.info("Successful entry of a user to a session: " + sessionId);
         return new CreatedGroupSessionResponse(
-                sessionDetails.getGroupId(),
-                sessionDetails.getGame().getGameId(),
-                sessionDetails.getMaxUsers(),
+                sessionDetails.getGroupid(),
+                sessionDetails.getGame().getGameid(),
+                sessionDetails.getMaxusers(),
                 sessionDetails.getDescription(),
-                getGroupMembersOfSession(sessionDetails.getGroupId())
+                getGroupMembersOfSession(sessionDetails.getGroupid())
         );
     }
 
@@ -60,16 +60,16 @@ import java.util.*;
     private JoinGroupSessionResponse enterWaitingRoom(int groupId, JWTInfo parsedJWT) throws MaxUsersException {
         SessionDetails sessionDetails = getSessionDetailsByGroupId(groupId);
         iLog.info("Joining group session: " + sessionDetails);
-        GroupSessionId sessionId = createUserSession(sessionDetails, parsedJWT, sessionRepository.findFirst1HostIdByGroupSession(new SessionDetails(groupId, new Games(), 0, 0, "", new HashSet<>())),  false);
+        GroupSessionId sessionId = createUserSession(sessionDetails, parsedJWT, sessionRepository.findFirst1HostidByGroupsession(new SessionDetails(groupId, new Games(), 0, 0, "", new HashSet<>())),  false);
         return new JoinGroupSessionResponse(
                 sessionId,
-                sessionDetails.getGame().getGameId(),
-                sessionDetails.getGroupId()
+                sessionDetails.getGame().getGameid(),
+                sessionDetails.getGroupid()
         );
     }
 
     private int findByHostId(int groupId) {
-        return sessionRepository.findFirst1HostIdByGroupSession(new SessionDetails(groupId, new Games(), 0, 0, "", new HashSet<>()));
+        return sessionRepository.findFirst1HostidByGroupsession(new SessionDetails(groupId, new Games(), 0, 0, "", new HashSet<>()));
     }
 
     private List<GroupUser> getGroupMembersOfSession(int groupId) {
@@ -77,16 +77,16 @@ import java.util.*;
         List<Session> userInSession = sessionRepository.findAllByGroupId(groupId);
         List<GroupUser> groupUsers = new ArrayList<>();
         userInSession.forEach(s -> {
-            Optional<UserCredential> user = loginRepository.findById(s.getUserId());
-            groupUsers.add(new GroupUser(user.isPresent()? user.get().getUsername() : "NOT PRESENT", s.getGroupSession().getGroupId(), s.isInSession()));
+            Optional<UserCredential> user = loginRepository.findById(s.getUserid());
+            groupUsers.add(new GroupUser(user.isPresent()? user.get().getUsername() : "NOT PRESENT", s.getGroupsession().getGroupid(), s.isInsession()));
         });
         return groupUsers;
     }
 
     private GroupSessionId createUserSession(SessionDetails sessionDetails, JWTInfo parsedJWT, int hostId, boolean status) throws MaxUsersException {
         dLog.debug("Creating user Session for a group: " + sessionDetails);
-        if(sessionDetails.getCurrentUsers() < sessionDetails.getMaxUsers()) {
-            sessionDetails.setCurrentUsers(sessionDetails.getCurrentUsers() + 1);
+        if(sessionDetails.getCurrentusers() < sessionDetails.getMaxusers()) {
+            sessionDetails.setCurrentusers(sessionDetails.getCurrentusers() + 1);
             sessionRepository.save(
                     new Session(
                             parsedJWT.getUserId(), hostId, sessionDetails, status
@@ -125,9 +125,9 @@ import java.util.*;
 
     private CheckWaitingRoomResponse createWaitingRoomResponse(Session session) {
         return new CheckWaitingRoomResponse(
-                session.isInSession(),
-                session.getGroupSession().getGame().getGameId(),
-                session.getGroupSession().getGroupId()
+                session.isInsession(),
+                session.getGroupsession().getGame().getGameid(),
+                session.getGroupsession().getGroupid()
         );
     }
 
@@ -138,10 +138,10 @@ import java.util.*;
     @Override
     public WaitingRoomResponse respondToUserSession(JWTInfo parsedJWT, WaitingRoomRequest roomRequest) {
         dLog.debug("Responding to user in session: " + roomRequest);
-        int userRespondingId = loginRepository.findByUsername(roomRequest.getWaitingUsername()).getUserId();
+        int userRespondingId = loginRepository.findByUsername(roomRequest.getWaitingUsername()).getUserid();
         Session session = sessionRepository.findByUserIdAndGroupId(userRespondingId, roomRequest.getGroupId());
         if(roomRequest.isSuccess()) {
-            session.setInSession(true);
+            session.setInsession(true);
             sessionRepository.save(session);
             return new WaitingRoomResponse(
                     true,

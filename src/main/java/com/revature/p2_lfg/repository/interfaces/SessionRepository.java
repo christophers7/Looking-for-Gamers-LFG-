@@ -14,22 +14,22 @@ import java.util.List;
 @Repository("sessionRepository")
 public interface SessionRepository extends JpaRepository<Session, GroupSessionId> {
 
-    int findFirst1HostIdByGroupSession(SessionDetails groupSession);
+    int findFirst1HostidByGroupsession(SessionDetails groupsession);
 
-    @Query("select s from Session s where s.groupSession.groupId = ?1")
-    List<Session> findAllByGroupId(int groupId);
+    @Query("select s from Session s where s.groupsession.groupid = ?1")
+    List<Session> findAllByGroupId(int groupid);
 
     @Override
     <S extends Session> S save(S entity);
 
-    @Query("select s from Session s where s.userId = ?1 and s.groupSession.groupId = ?2")
-    Session findByUserIdAndGroupId(int userId, int groupId);
+    @Query("select s from Session s where s.userid = ?1 and s.groupsession.groupid = ?2")
+    Session findByUserIdAndGroupId(int userId, int groupid);
 
     @Modifying
-    @Query("delete from Session s where s.groupSession.groupId = ?1")
-    void deleteAllByGroupId(int groupId);
+    @Query("delete from Session s where s.groupsession.groupid = ?1")
+    void deleteAllByGroupId(int groupid);
 
     @Modifying
-    @Query("delete from Session s where s.userId = ?1 and s.groupSession.groupId = ?2")
-    void deleteByUserIdAndGroupId(int userId, int groupId);
+    @Query("delete from Session s where s.userid = ?1 and s.groupsession.groupid = ?2")
+    void deleteByUserIdAndGroupId(int userId, int groupid);
 }

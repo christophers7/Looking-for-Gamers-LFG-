@@ -20,11 +20,10 @@ import javax.persistence.*;
 public class Socials {
     @Id
     @Column(name = "userid")
-    private int userID;
+    int userid;
     @Id
     @Column(name = "gameid")
-    private int gameID;
+    int gameid;
     @Column(name = "gamertag")
-    private String gamerTag;
-
+    String gamertag;
 }
