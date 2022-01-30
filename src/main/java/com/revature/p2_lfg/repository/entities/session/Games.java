@@ -20,6 +20,8 @@ public class Games {
     @GeneratedValue(generator = "auto_increment", strategy = GenerationType.IDENTITY)
     @SequenceGenerator(allocationSize = 1, name = "lfg_games_gameid_seq", sequenceName = "lfg_games_gameid_seq")
     int gameid;
+    @Column(name = "platformkey")
+    int platformkey;
     @Column
     String gametitle;
     @Column

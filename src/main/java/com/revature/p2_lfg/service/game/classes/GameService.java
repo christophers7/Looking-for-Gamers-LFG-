@@ -8,14 +8,21 @@ import com.revature.p2_lfg.repository.entities.session.Games;
 import com.revature.p2_lfg.repository.entities.session.SessionDetails;
 import com.revature.p2_lfg.service.game.dto.GameSelectInfo;
 import com.revature.p2_lfg.service.game.interfaces.GameServiceable;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service("gameService")
 public class GameService implements GameServiceable {
+
+
+    private final Logger iLog = LoggerFactory.getLogger("iLog");
+    private final Logger dLog = LoggerFactory.getLogger("dLog");
 
     @Autowired
     private GamesRepository gamesRepository;
@@ -28,7 +35,15 @@ public class GameService implements GameServiceable {
 
     @Override
     public SelectedGameAvailableGroupsResponse getSelectedGameGroups(int gameId) {
+        dLog.debug("Getting selected game groups: " + gameId);
         return new SelectedGameAvailableGroupsResponse(gameId, sessionDetailsRepository.findAllByGameId(gameId));
+    }
+
+    @Override
+    public int getGamePlatformKey(int gameId) {
+        dLog.debug("Getting game platform key");
+        Optional<Games> game = gamesRepository.findById(gameId);
+        return game.map(Games::getPlatformkey).orElse(1);
     }
 
     public List<Games> getGames(){
@@ -39,7 +54,7 @@ public class GameService implements GameServiceable {
         List<GameSelectInfo> gameSelectInfoList = new ArrayList<>(gamesList.size());
         for (Games games : gamesList) {
             List<SessionDetails> sessionForGame = sessionDetailsRepository.findAllByGameId(games.getGameid());
-            gameSelectInfoList.add(new GameSelectInfo(games.getGameid(), games.getGametitle(), games.getImglink(), sessionForGame.size()));
+            gameSelectInfoList.add(new GameSelectInfo(games.getGameid(), games.getPlatformkey(), games.getGametitle(), games.getImglink(), sessionForGame.size()));
         }
         return gameSelectInfoList;
     }

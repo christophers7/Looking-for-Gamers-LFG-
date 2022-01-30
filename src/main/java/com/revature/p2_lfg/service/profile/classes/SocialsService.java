@@ -48,7 +48,7 @@ public class SocialsService implements SocialsServiceable {
         );
     }
 
-    private Socials getUserSocial(int userId, int gameId) {
+    public Socials getUserSocial(int userId, int gameId) {
         return socialsRepository.findById(new SocialId(userId, gameId)).orElse(null);
     }
 
@@ -79,7 +79,7 @@ public class SocialsService implements SocialsServiceable {
 
     @Override
     public UserSocialResponse createUserSocial(CreateSocialRequest socialRequest, JWTInfo parsedJWT) {
-        return null;
+        return convertSocialToUserSocialResponse(socialsRepository.save(new Socials(parsedJWT.getUserId(), socialRequest.getGameId(), socialRequest.getSocial())));
     }
 
     @Override

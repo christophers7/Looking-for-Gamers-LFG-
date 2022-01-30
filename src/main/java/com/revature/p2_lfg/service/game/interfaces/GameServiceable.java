@@ -8,4 +8,6 @@ public interface GameServiceable {
     GameSessionInfoResponse getCurrentGameSessionList();
 
     SelectedGameAvailableGroupsResponse getSelectedGameGroups(int gameId);
+
+    int getGamePlatformKey(int gameId);
 }

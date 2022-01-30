@@ -12,6 +12,7 @@ import java.util.Objects;
 public class GameSelectInfo {
 
     private int gameId;
+    private int platformKey;
     private String name;
     private String imgLink;
     private int sessions;

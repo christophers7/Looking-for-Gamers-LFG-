@@ -111,7 +111,7 @@ import java.util.*;
     private SessionDetails createGroupSessionInDatabase(int gameId, int maxUsers, String description) {
         dLog.debug("Creating a group session: GameId - " + gameId + " maxUsers - " + maxUsers + " Description: " + description);
         Set<Tag> tags = new HashSet<>();
-        Games shellGame = new Games(gameId, "", "");
+        Games shellGame = new Games(gameId, 0, "", "");
        return sessionDetailsRepository.save(
                 new SessionDetails(
                         0,

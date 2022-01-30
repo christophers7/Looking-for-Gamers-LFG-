@@ -42,11 +42,11 @@ class GameServiceTest {
     void setUp() {
         MockitoAnnotations.openMocks(this);
 
-        Games game1 = new Games(1, "gameName", "link");
-        Games game2 = new Games(2, "gameName2", "link");
+        Games game1 = new Games(1, 1,"gameName", "link");
+        Games game2 = new Games(2, 2, "gameName2", "link");
 
-        GameSelectInfo game1Info = new GameSelectInfo(game1.getGameid(), game1.getGametitle(), game1.getImglink(), 2);
-        GameSelectInfo game2Info = new GameSelectInfo(game2.getGameid(),game2.getGametitle(), game2.getImglink(), 2);
+        GameSelectInfo game1Info = new GameSelectInfo(game1.getGameid(), game1.getPlatformkey(), game1.getGametitle(), game1.getImglink(), 2);
+        GameSelectInfo game2Info = new GameSelectInfo(game2.getGameid(), game1.getPlatformkey(),game2.getGametitle(), game2.getImglink(), 2);
         Set<Tag> tags1 = new HashSet<>();
         Set<Tag> tags2 = new HashSet<>();
 

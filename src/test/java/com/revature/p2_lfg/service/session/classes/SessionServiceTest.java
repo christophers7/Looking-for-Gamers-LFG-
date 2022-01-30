@@ -76,7 +76,7 @@ class SessionServiceTest {
         Set<Tag> tags = new HashSet<>();
 
         game = new Games(
-                1, "gameTitle", "link"
+                1, 1, "gameTitle", "link"
         );
 
         GroupUser user1 = new GroupUser(
@@ -110,7 +110,7 @@ class SessionServiceTest {
 
         SessionDetails mockSessionDetail =  new SessionDetails(
                 0,
-                new Games(1, "", ""),
+                new Games(1, 1, "", ""),
                 maxUsers,
                 1,
                 description,
