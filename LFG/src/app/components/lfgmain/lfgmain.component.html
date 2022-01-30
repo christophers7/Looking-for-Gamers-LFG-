@@ -4,6 +4,7 @@
             <div>
                 <div *ngSwitchCase="1"><app-game-display (emitter)="send($event)"></app-game-display></div>
                 <div *ngSwitchCase="2"><app-view-game-groups (panelNumberChange)="changePanel($event)" [gameId]="gameId"></app-view-game-groups></div>
+                <div *ngSwitchCase="3"><app-create-group></app-create-group></div>
                 <div *ngSwitchDefault><app-game-display (emitter)="send($event)"></app-game-display></div>
             </div>
         </div>
