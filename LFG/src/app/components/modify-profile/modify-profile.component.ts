@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import Validation from 'src/app/utils/validation';
+import { TokenStorageService } from 'src/app/_services/token-storage.service';
+import { UserService } from 'src/app/_services/user.service';
+import BuildUser from 'src/app/utils/build-user';
 
 @Component({
   selector: 'app-modify-profile',
@@ -19,10 +22,12 @@ export class ModifyProfileComponent implements OnInit {
     confirmPassword: new FormControl('')
   });
   submitted = false;
+  currentUser: any;
 
-  constructor(private router: Router, private formBuilder: FormBuilder) { }
+  constructor(private router: Router, private formBuilder: FormBuilder, private tokenStorage: TokenStorageService, private userService: UserService) { }
 
   ngOnInit(): void {
+    this.currentUser = this.tokenStorage.getUser();
     this.form = this.formBuilder.group(
       {   
         username: [
@@ -76,10 +81,18 @@ export class ModifyProfileComponent implements OnInit {
         validators: [Validation.match('password', 'confirmPassword')]
       }
     );
+    this.form.controls["username"].patchValue(this.currentUser.username);
+    if(this.currentUser.firstName){
+    this.form.controls["firstname"].patchValue(this.currentUser.firstName);
+    }
+    if(this.currentUser.lastName) {
+      this.form.controls["lastname"].patchValue(this.currentUser.lastName);
+    }
+    this.form.controls["email"].patchValue(this.currentUser.email);
   }
 
   goToProfile(): void {
-    const navigationDetails: string[] = ['/profile'];
+    const navigationDetails: string[] = ['/main/profile'];
     this.router.navigate(navigationDetails);
   }
 
@@ -94,7 +107,47 @@ export class ModifyProfileComponent implements OnInit {
       return;
     }
 
-    console.log(JSON.stringify(this.form.value, null, 2));
+    let tempUser = BuildUser.userBuilder(this.currentUser)
+
+    let userN = this.form.get('username')?.value
+    if(userN){
+      tempUser._username = userN;
+    }
+
+    let firstN = this.form.get('firstname')?.value
+    if(firstN) {
+      tempUser._firstName = firstN;
+    }
+
+    let lastN = this.form.get('lastname')?.value
+    if(lastN) {
+      tempUser._lastName = lastN;
+    }
+
+    let eMail = this.form.get('email')?.value
+    if(eMail) {
+      tempUser._email = eMail;
+    }
+
+    let passW = this.form.get('password')?.value
+    if(passW) {
+      tempUser._password = passW;
+    }
+    console.log(tempUser)
+    if(tempUser._username && tempUser._email) {
+      this.userService.updateUser(tempUser).subscribe(
+        (data) => {
+          
+          /**
+           *  For testing, double check when backend is done!!!!!
+           */
+          this.tokenStorage.saveToken(data.jwt);
+          let builtUser = BuildUser.userBuilder(data);
+          this.tokenStorage.saveUser(builtUser);
+          this.goToProfile();
+      })
+    }    
+
   }
 
   onReset(): void {

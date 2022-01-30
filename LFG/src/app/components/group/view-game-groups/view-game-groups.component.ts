@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { UserViewGroup } from 'src/app/models/user-view-group.model';
 import { GameGroupService } from 'src/app/_services/game-group.service';
 import { ActivatedRoute } from '@angular/router';
@@ -23,11 +23,12 @@ export class ViewGameGroupsComponent implements OnInit {
     this.getGroupSessions();
   }
 
-  id!:number;
+  @Input()
+  gameId!:number;
 
   getGroupSessions(){
-    this.id = Number(this.route.snapshot.paramMap.get('id'));
-    this.gameGroupService.getGroups(this.id)
+    
+    this.gameGroupService.getGroups(this.gameId)
       .subscribe(
         (data) => {
           this.groupSessions = data;
@@ -38,8 +39,14 @@ export class ViewGameGroupsComponent implements OnInit {
       )
   }
   
-  goBack(): void{
-    this.location.back();
+  panelNumber!: number;
+
+  @Output()
+  panelNumberChange = new EventEmitter<number>();
+
+  goBackToGameSelect(): void{
+    this.panelNumber = 1;
+    this.panelNumberChange.emit(this.panelNumber);
   }
 
 }

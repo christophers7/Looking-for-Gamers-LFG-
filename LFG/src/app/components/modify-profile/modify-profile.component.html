@@ -6,7 +6,7 @@
             <input
                 type="text"
                 formControlName="username"
-                class="form-control"
+                class="form-control"   
                 [ngClass]="{ 'is-invalid': submitted && f['username'].errors }"
             />
         <div *ngIf="submitted && f['username'].errors" class="invalid-feedback">
@@ -126,4 +126,6 @@
         </button>
       </div>
     </form>
+    <br>
+    <button name="backToProfileButton" (click)="goToProfile()">Back to Profile</button>
 </div> 

@@ -3,6 +3,7 @@ import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from
 import { Router } from '@angular/router';
 import Validation from 'src/app/utils/validation';
 import { AuthService } from 'src/app/_services/auth.service';
+import { TokenStorageService } from 'src/app/_services/token-storage.service';
 
 @Component({
   selector: 'app-new-user',
@@ -22,7 +23,8 @@ export class NewUserComponent implements OnInit {
   submitted = false;
   posts : any;
 
-  constructor(private router: Router, private formBuilder: FormBuilder, private authService: AuthService) { }
+  constructor(private router: Router, private formBuilder: FormBuilder, private authService: AuthService,
+    private tokenStorage: TokenStorageService) { }
 
   ngOnInit(): void {
     this.form = this.formBuilder.group(
@@ -33,20 +35,6 @@ export class NewUserComponent implements OnInit {
             Validators.required,
             Validators.minLength(6),
             Validators.maxLength(20)
-          ]
-        ],
-        firstname: [
-          '', 
-          [
-            Validators.required,
-            Validators.maxLength(30)
-          ]
-        ],
-        lastname: [
-          '', 
-          [
-            Validators.required,
-            Validators.maxLength(30)
           ]
         ],
         email: [
@@ -99,12 +87,16 @@ export class NewUserComponent implements OnInit {
     console.log(JSON.stringify(this.form.value, null, 2));
 
     let userN = this.form.get('username')?.value
-    let email = this.form.get('username')?.value
+    let email = this.form.get('email')?.value
     let passW = this.form.get('password')?.value
+    console.log(userN, email, passW)
     if(userN != null && passW != null) {
       this.authService.register(userN, email, passW).subscribe(
-        (response) => {this.posts = response;},
-        (error) => {console.log(error);}) 
+        (data) => {
+          console.log(data.username);
+          console.log(data.email)
+          console.log(data.password)
+        }) 
     }
   }
 

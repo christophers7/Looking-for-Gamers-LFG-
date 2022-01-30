@@ -2,75 +2,82 @@ import { Group } from "./group.model"
 
 export class User {
 
-    private _firstName: string = "";
-    private _lastName: string = ""; 
-    private _stats: string = "";
+    private firstName: string = "";
+    private lastName: string = ""; 
+    private password: string = "";
     
-    private _appCount: number = 0;
-    private _inGroup: boolean = false;
+    private stats: string = "";
     
-    private _group!: Group;
+    private appCount: number = 0;
+    private inGroup: boolean = false;
     
-
-    constructor(private _id: number,private _username: string, private _email: string){
-        this._id = _id;
-        this._username = _username;
-        this._email = _email;
-    }
-
-    public get id(): number {
-        return this._id;
-    }
-    public set id(value: number) {
-        this._id = value;
-    }
-
-
-    public get username(): string {
-        return this._username;
-    }
-    public set username(value: string) {
-        this._username = value;
-    }
-
-
-    public get firstName(): string {
-        return this._firstName;
-    }
-    public set firstName(value: string) {
-        this._firstName = value;
-    }
-
-
-    public get lastName(): string {
-        return this._lastName;
-    }
-    public set lastName(value: string) {
-        this._lastName = value;
-    }
-
+    private group!: Group;
     
-    public get email(): string {
-        return this._email;
+    constructor(private id: number,private username: string, private email: string){
+        this.id = id;
+        this.username = username;
+        this.email = email;
     }
-    public set email(value: string) {
-        this._email = value;
+
+    public get _id(): number {
+        return this.id;
+    }
+    public set _id(value: number) {
+        this.id = value;
     }
 
 
-    public get stats(): string {
-        return this._stats;
+    public get _username(): string {
+        return this.username;
     }
-    public set stats(value: string) {
-        this._stats = value;
+    public set _username(value: string) {
+        this.username = value;
     }
 
 
-    get appCount() {
-        return this._appCount;
+    public get _firstName(): string {
+        return this.firstName;
     }
-    set appCount(value: number) {
-        this._appCount = value;
+    public set _firstName(value: string) {
+        this.firstName = value;
+    }
+
+
+    public get _lastName(): string {
+        return this.lastName;
+    }
+    public set _lastName(value: string) {
+        this.lastName = value;
+    }
+
+    public get _password(): string {
+        return this.password;
+    }
+    public set _password(value: string) {
+        this.password = value;
+    }
+    
+    public get _email(): string {
+        return this.email;
+    }
+    public set _email(value: string) {
+        this.email = value;
+    }
+
+
+    public get _stats(): string {
+        return this.stats;
+    }
+    public set _stats(value: string) {
+        this.stats = value;
+    }
+
+
+    get _appCount() {
+        return this.appCount;
+    }
+    set _appCount(value: number) {
+        this.appCount = value;
     }
 
     resetAppCount(): void {
@@ -84,18 +91,18 @@ export class User {
     }
 
 
-    public get inGroup(): boolean {
-        return this._inGroup;
+    public get _inGroup(): boolean {
+        return this.inGroup;
     }
-    public set inGroup(value: boolean) {
-        this._inGroup = value;
+    public set _inGroup(value: boolean) {
+        this.inGroup = value;
     }
 
     
-    public get group(): Group {
-        return this._group;
+    public get _group(): Group {
+        return this.group;
     }
-    public set group(value: Group) {
-        this._group = value;
+    public set _group(value: Group) {
+        this.group = value;
     }
 }

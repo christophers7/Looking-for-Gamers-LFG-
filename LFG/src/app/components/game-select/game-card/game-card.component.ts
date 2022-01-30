@@ -1,5 +1,6 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { EventEmitter, Component, Input, OnInit, Output } from '@angular/core';
 import { AvailableGames } from 'src/app/models/available-games.model';
+import { GameDisplayComponent } from '../game-display/game-display.component';
 
 @Component({
   selector: 'app-game-card',
@@ -16,6 +17,11 @@ export class GameCardComponent implements OnInit {
   @Input()
   game!: AvailableGames;
   
+  @Output() 
+  emitter = new EventEmitter<{gId: number, panelNumber: number}>()
 
+  emit(gameId: number) {
+    this.emitter.emit({gId: this.game.gameId, panelNumber: 2})
+  }
 
 }

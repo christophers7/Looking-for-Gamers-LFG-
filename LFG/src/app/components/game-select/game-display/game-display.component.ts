@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { EventEmitter, Component, OnInit, Output } from '@angular/core';
 import { AvailableGames } from 'src/app/models/available-games.model';
 import { GameService } from 'src/app/_services/game.service';
 import { Location } from '@angular/common';
+
 
 @Component({
   selector: 'app-game-display',
@@ -12,7 +13,7 @@ export class GameDisplayComponent implements OnInit {
 
   constructor(
     private gameService:GameService,
-    private location: Location
+ //   private location: Location
     ) { }
 
   ngOnInit(): void {
@@ -32,8 +33,14 @@ export class GameDisplayComponent implements OnInit {
 
   games:AvailableGames[] = [];
 
-  goBack(): void{
-    this.location.back();
+  @Output()
+  emitter = new EventEmitter<{gId: number, panelNumber: number}>()
+
+  send(data:any) {
+    this.emitter.emit(data)
   }
+//  goBack(): void{
+//    this.location.back();
+//  }
 
 }
