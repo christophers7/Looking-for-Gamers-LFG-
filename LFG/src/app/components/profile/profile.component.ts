@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { TokenStorageService } from 'src/app/_services/token-storage.service';
 
 @Component({
   selector: 'app-profile',
@@ -8,14 +9,16 @@ import { Router } from '@angular/router';
 })
 export class ProfileComponent implements OnInit {
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private tokenStorage: TokenStorageService) { }
+
+  currentUser: any;
 
   ngOnInit(): void {
-    
+    this.currentUser = this.tokenStorage.getUser();
   }
 
   modifyProfile(): void {
-    const navigationDetails: string[] = ['/profile/modify'];
+    const navigationDetails: string[] = ['/main/profile/modify'];
     this.router.navigate(navigationDetails);
   }
 
