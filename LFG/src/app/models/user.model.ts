@@ -13,7 +13,6 @@ export class User {
     
     private group!: Group;
     
-
     constructor(private id: number,private username: string, private email: string){
         this.id = id;
         this.username = username;

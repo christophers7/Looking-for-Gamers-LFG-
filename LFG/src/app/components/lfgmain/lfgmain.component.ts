@@ -39,8 +39,4 @@ export class LFGMainComponent implements OnInit {
     this.tokenStorage.signOut();
     this.router.navigate([''])
   }
-
-//  viewGameList(): void{
-//    this.router.navigate(['/main/games'])
-//  }
 }

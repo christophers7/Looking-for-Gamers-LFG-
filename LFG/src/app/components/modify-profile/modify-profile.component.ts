@@ -134,7 +134,7 @@ export class ModifyProfileComponent implements OnInit {
       tempUser._password = passW;
     }
     console.log(tempUser)
-    if(userN != null) {
+    if(tempUser._username && tempUser._email) {
       this.userService.updateUser(tempUser).subscribe(
         (data) => {
           
