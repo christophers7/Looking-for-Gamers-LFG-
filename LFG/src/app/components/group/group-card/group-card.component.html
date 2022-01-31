@@ -1,7 +1,8 @@
 <app-game-card [game] = "game"></app-game-card>
 <div *ngFor = "let group of groupSessions">
-    <h2>Group ID: {{group.groupId}}</h2>
-    <h4>Current Users: {{group.currentUsers}}</h4>
+    <h2>Group ID: {{group.groupID}}</h2>
+    <h4>Current Users: {{group.currentSize}}</h4>
     <h4>Max Users: {{group.maxUsers}}</h4>
     <p>{{group.description}}</p>
+    <button (click)="groupRequest(group)">Request to Join</button>
 </div>

@@ -1,7 +1,9 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { AvailableGames } from 'src/app/models/available-games.model';
+import { Group } from 'src/app/models/group.model';
 import { UserViewGroup } from 'src/app/models/user-view-group.model';
 import { GameService } from 'src/app/_services/game.service';
+import { UserService } from 'src/app/_services/user.service';
 
 @Component({
   selector: 'app-group-card',
@@ -11,14 +13,14 @@ import { GameService } from 'src/app/_services/game.service';
 export class GroupCardComponent implements OnInit {
 
   @Input()
-  groupSessions!: UserViewGroup[];
+  groupSessions!: Group[];
 
   @Input()
   gameId!:number;
 
   game!:AvailableGames;
 
-  constructor(private gameService:GameService) { }
+  constructor(private gameService:GameService, private userService: UserService) { }
 
   ngOnInit(): void {
     this.getGameInfo();
@@ -33,5 +35,13 @@ export class GroupCardComponent implements OnInit {
         console.log(error);
       }
     );
+  }
+
+  groupRequest(group: Group) {
+    this.userService.requestToJoinGroup(group).subscribe(
+      (data) => {
+        // increase app counter
+      }
+    )
   }
 }

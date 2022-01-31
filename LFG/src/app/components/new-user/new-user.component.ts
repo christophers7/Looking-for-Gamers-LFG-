@@ -84,18 +84,15 @@ export class NewUserComponent implements OnInit {
       return;
     }
 
-    console.log(JSON.stringify(this.form.value, null, 2));
-
     let userN = this.form.get('username')?.value
     let email = this.form.get('email')?.value
     let passW = this.form.get('password')?.value
     console.log(userN, email, passW)
-    if(userN != null && passW != null) {
+    if(userN != null && email != null && passW != null) {
       this.authService.register(userN, email, passW).subscribe(
         (data) => {
-          console.log(data.username);
-          console.log(data.email)
-          console.log(data.password)
+          console.log("Profile successfully created!");
+          this.goToLogin();
         }) 
     }
   }

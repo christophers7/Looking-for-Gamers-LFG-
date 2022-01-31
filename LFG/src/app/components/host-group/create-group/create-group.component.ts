@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Group } from 'src/app/models/group.model';
@@ -23,9 +23,14 @@ export class CreateGroupComponent implements OnInit {
   submitted = false;
   posts : any;
   currentUser: any;
+  panelNumber!: number;
+  group!: Group;
 
-  Input()
-  game: Game
+  @Input()
+  gameId!: number;
+
+  @Output()
+  panelNumberChange = new EventEmitter<number>();
 
   constructor(private router: Router, private formBuilder: FormBuilder, private userService: UserService,
     private tokenStorage: TokenStorageService) { }
@@ -66,22 +71,34 @@ export class CreateGroupComponent implements OnInit {
     console.log(JSON.stringify(this.form.value, null, 2));
 
     let gSize = this.form.get('maxGroupSize')?.value
-    let desc = this.form.get('description')?.value
-    console.log(gSize, desc)
-    if(gSize != null && desc != null) {
-      let group = new Group(1, )
-      this.userService.createGroup(userN, email).subscribe(
+    let description = this.form.get('description')?.value
+    console.log(gSize, description)
+    if(gSize != null && description != null) {
+      let group = new Group(1, this.gameId, this.currentUser.username, gSize, 1, description)
+      this.userService.createGroup(group).subscribe(
         (data) => {
-          console.log(data.username);
-          console.log(data.email)
-          console.log(data.password)
-        }) 
+          console.log(data);
+        })
     }
   }
 
   onReset(): void {
     this.submitted = false;
     this.form.reset();
+  }
+
+  goToHostView() {
+    this.panelNumber = 4;
+    this.changePanel();
+  }
+
+  goBackToGroupSelect(): void{
+    this.panelNumber = 2;
+    this.changePanel();
+  }
+
+  changePanel() {
+    this.panelNumberChange.emit(this.panelNumber);
   }
 }
 

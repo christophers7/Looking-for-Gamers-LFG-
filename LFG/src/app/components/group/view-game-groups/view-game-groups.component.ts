@@ -1,9 +1,9 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Group } from 'src/app/models/group.model';
 import { UserViewGroup } from 'src/app/models/user-view-group.model';
 import { GameGroupService } from 'src/app/_services/game-group.service';
-import { ActivatedRoute } from '@angular/router';
-import { Location } from '@angular/common';
 import { TokenStorageService } from 'src/app/_services/token-storage.service';
+import { UserService } from 'src/app/_services/user.service';
 
 
 @Component({
@@ -13,12 +13,13 @@ import { TokenStorageService } from 'src/app/_services/token-storage.service';
 })
 export class ViewGameGroupsComponent implements OnInit {
 
-  groupSessions: UserViewGroup[] = [];
+  groupSessions: Group[] = [];
   currentUser: any;
 
   constructor(
     private tokenStorage: TokenStorageService,
-    private gameGroupService: GameGroupService
+    private gameGroupService: GameGroupService,
+    private userService: UserService
   ) { }
 
   ngOnInit(): void {
@@ -31,7 +32,7 @@ export class ViewGameGroupsComponent implements OnInit {
 
   getGroupSessions(){
     
-    this.gameGroupService.getGroups(this.gameId)
+    this.userService.generateGroupsForGame(this.gameId)
       .subscribe(
         (data) => {
           this.groupSessions = data;
