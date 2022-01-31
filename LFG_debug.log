@@ -1083,3 +1083,987 @@ java.lang.NullPointerException: null
 15:02:46.927 [http-nio-8080-exec-1] DEBUG dLog - Getting game sessions select list
 15:02:58.102 [http-nio-8080-exec-10] DEBUG dLog - Getting game group sessions by gameName: 3
 15:02:58.102 [http-nio-8080-exec-10] DEBUG dLog - Getting selected game groups: 3
+15:05:31.090 [http-nio-8080-exec-2] DEBUG dLog - Creating new Login: NewUserCredentialsRequest(username=testUser1, password=testPass1, email=testemail1@email.com)
+15:05:31.090 [http-nio-8080-exec-2] DEBUG dLog - Creating new Account, generating new User Credential: NewUserCredentialsRequest(username=testUser1, password=testPass1, email=testemail1@email.com)
+15:05:31.148 [http-nio-8080-exec-2] DEBUG dLog - Creating new UserProfile: UserCredential(userid=1, username=testUser1, password=testPass1) testemail1@email.com
+15:05:31.155 [http-nio-8080-exec-2] DEBUG dLog - Converting User profile into profile Response: UserProfile(columnID=1, usercredential=UserCredential(userid=1, username=testUser1, password=testPass1), firstname=, lastname=, email=testemail1@email.com)
+15:05:40.887 [http-nio-8080-exec-3] DEBUG dLog - Creating new Login: NewUserCredentialsRequest(username=testUser2, password=testPass2, email=testemail2@email.com)
+15:05:40.887 [http-nio-8080-exec-3] DEBUG dLog - Creating new Account, generating new User Credential: NewUserCredentialsRequest(username=testUser2, password=testPass2, email=testemail2@email.com)
+15:05:40.889 [http-nio-8080-exec-3] DEBUG dLog - Creating new UserProfile: UserCredential(userid=2, username=testUser2, password=testPass2) testemail2@email.com
+15:05:40.891 [http-nio-8080-exec-3] DEBUG dLog - Converting User profile into profile Response: UserProfile(columnID=2, usercredential=UserCredential(userid=2, username=testUser2, password=testPass2), firstname=, lastname=, email=testemail2@email.com)
+15:05:53.425 [http-nio-8080-exec-4] DEBUG dLog - Creating a group session: CreateGroupSessionRequest(gameId=3, maxUsers=4, description=This is a created Group through Postman)
+15:05:53.429 [http-nio-8080-exec-4] DEBUG dLog - Creating group session response from group create request: CreateGroupSessionRequest(gameId=3, maxUsers=4, description=This is a created Group through Postman)
+15:05:53.429 [http-nio-8080-exec-4] DEBUG dLog - Creating a group session: GameId - 3 maxUsers - 4 Description: This is a created Group through Postman
+15:05:53.447 [http-nio-8080-exec-4] DEBUG dLog - Creating user Session for a group: SessionDetails(groupid=1, game=Games(gameid=3, platformkey=0, gametitle=, imglink=), maxusers=4, currentusers=1, description=This is a created Group through Postman, tags=[])
+15:05:53.481 [http-nio-8080-exec-4] ERROR dLog - could not execute statement; SQL [n/a]; constraint [CONSTRAINT_A9]; nested exception is org.hibernate.exception.ConstraintViolationException: could not execute statement
+org.springframework.dao.DataIntegrityViolationException: could not execute statement; SQL [n/a]; constraint [CONSTRAINT_A9]; nested exception is org.hibernate.exception.ConstraintViolationException: could not execute statement
+	at org.springframework.orm.jpa.vendor.HibernateJpaDialect.convertHibernateAccessException(HibernateJpaDialect.java:276)
+	at org.springframework.orm.jpa.vendor.HibernateJpaDialect.translateExceptionIfPossible(HibernateJpaDialect.java:233)
+	at org.springframework.orm.jpa.JpaTransactionManager.doCommit(JpaTransactionManager.java:566)
+	at org.springframework.transaction.support.AbstractPlatformTransactionManager.processCommit(AbstractPlatformTransactionManager.java:743)
+	at org.springframework.transaction.support.AbstractPlatformTransactionManager.commit(AbstractPlatformTransactionManager.java:711)
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.commitTransactionAfterReturning(TransactionAspectSupport.java:654)
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:407)
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:119)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
+	at org.springframework.dao.support.PersistenceExceptionTranslationInterceptor.invoke(PersistenceExceptionTranslationInterceptor.java:137)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
+	at org.springframework.data.jpa.repository.support.CrudMethodMetadataPostProcessor$CrudMethodMetadataPopulatingMethodInterceptor.invoke(CrudMethodMetadataPostProcessor.java:174)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
+	at org.springframework.aop.interceptor.ExposeInvocationInterceptor.invoke(ExposeInvocationInterceptor.java:97)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
+	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:215)
+	at com.sun.proxy.$Proxy123.save(Unknown Source)
+	at com.revature.p2_lfg.service.session.classes.SessionService.createUserSession(SessionService.java:143)
+	at com.revature.p2_lfg.service.session.classes.SessionService.createGroupSession(SessionService.java:48)
+	at com.revature.p2_lfg.presentation.controllers.SessionController.hostGroupSession(SessionController.java:29)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:205)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:150)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:117)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:895)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:808)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1067)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:963)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006)
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:909)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:681)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:764)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:227)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:197)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:540)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:135)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:357)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:382)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:895)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1732)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: org.hibernate.exception.ConstraintViolationException: could not execute statement
+	at org.hibernate.exception.internal.SQLExceptionTypeDelegate.convert(SQLExceptionTypeDelegate.java:59)
+	at org.hibernate.exception.internal.StandardSQLExceptionConverter.convert(StandardSQLExceptionConverter.java:37)
+	at org.hibernate.engine.jdbc.spi.SqlExceptionHelper.convert(SqlExceptionHelper.java:113)
+	at org.hibernate.engine.jdbc.spi.SqlExceptionHelper.convert(SqlExceptionHelper.java:99)
+	at org.hibernate.engine.jdbc.internal.ResultSetReturnImpl.executeUpdate(ResultSetReturnImpl.java:200)
+	at org.hibernate.engine.jdbc.batch.internal.NonBatchingBatch.addToBatch(NonBatchingBatch.java:46)
+	at org.hibernate.persister.entity.AbstractEntityPersister.insert(AbstractEntityPersister.java:3375)
+	at org.hibernate.persister.entity.AbstractEntityPersister.insert(AbstractEntityPersister.java:3908)
+	at org.hibernate.action.internal.EntityInsertAction.execute(EntityInsertAction.java:107)
+	at org.hibernate.engine.spi.ActionQueue.executeActions(ActionQueue.java:604)
+	at org.hibernate.engine.spi.ActionQueue.lambda$executeActions$1(ActionQueue.java:478)
+	at java.util.LinkedHashMap.forEach(LinkedHashMap.java:684)
+	at org.hibernate.engine.spi.ActionQueue.executeActions(ActionQueue.java:475)
+	at org.hibernate.event.internal.AbstractFlushingEventListener.performExecutions(AbstractFlushingEventListener.java:344)
+	at org.hibernate.event.internal.DefaultFlushEventListener.onFlush(DefaultFlushEventListener.java:40)
+	at org.hibernate.event.service.internal.EventListenerGroupImpl.fireEventOnEachListener(EventListenerGroupImpl.java:107)
+	at org.hibernate.internal.SessionImpl.doFlush(SessionImpl.java:1402)
+	at org.hibernate.internal.SessionImpl.managedFlush(SessionImpl.java:493)
+	at org.hibernate.internal.SessionImpl.flushBeforeTransactionCompletion(SessionImpl.java:3285)
+	at org.hibernate.internal.SessionImpl.beforeTransactionCompletion(SessionImpl.java:2420)
+	at org.hibernate.engine.jdbc.internal.JdbcCoordinatorImpl.beforeTransactionCompletion(JdbcCoordinatorImpl.java:449)
+	at org.hibernate.resource.transaction.backend.jdbc.internal.JdbcResourceLocalTransactionCoordinatorImpl.beforeCompletionCallback(JdbcResourceLocalTransactionCoordinatorImpl.java:183)
+	at org.hibernate.resource.transaction.backend.jdbc.internal.JdbcResourceLocalTransactionCoordinatorImpl.access$300(JdbcResourceLocalTransactionCoordinatorImpl.java:40)
+	at org.hibernate.resource.transaction.backend.jdbc.internal.JdbcResourceLocalTransactionCoordinatorImpl$TransactionDriverControlImpl.commit(JdbcResourceLocalTransactionCoordinatorImpl.java:281)
+	at org.hibernate.engine.transaction.internal.TransactionImpl.commit(TransactionImpl.java:101)
+	at org.springframework.orm.jpa.JpaTransactionManager.doCommit(JpaTransactionManager.java:562)
+	... 67 common frames omitted
+Caused by: org.h2.jdbc.JdbcSQLIntegrityConstraintViolationException: Referential integrity constraint violation: "CONSTRAINT_A9: PROJECT_TWO.LFG_GROUP_SESSIONS FOREIGN KEY(USERID) REFERENCES PROJECT_TWO.LFG_USER_CREDS(USERID) (21)"; SQL statement:
+insert into project_two.lfg_group_sessions (groupid, insession, hostid, userid) values (?, ?, ?, ?) [23506-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:459)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	at org.h2.message.DbException.get(DbException.java:205)
+	at org.h2.message.DbException.get(DbException.java:181)
+	at org.h2.constraint.ConstraintReferential.checkRowOwnTable(ConstraintReferential.java:319)
+	at org.h2.constraint.ConstraintReferential.checkRow(ConstraintReferential.java:261)
+	at org.h2.table.Table.fireConstraints(Table.java:1057)
+	at org.h2.table.Table.fireAfterRow(Table.java:1075)
+	at org.h2.command.dml.Insert.insertRows(Insert.java:211)
+	at org.h2.command.dml.Insert.update(Insert.java:151)
+	at org.h2.command.CommandContainer.update(CommandContainer.java:198)
+	at org.h2.command.Command.executeUpdate(Command.java:251)
+	at org.h2.jdbc.JdbcPreparedStatement.executeUpdateInternal(JdbcPreparedStatement.java:191)
+	at org.h2.jdbc.JdbcPreparedStatement.executeUpdate(JdbcPreparedStatement.java:152)
+	at com.zaxxer.hikari.pool.ProxyPreparedStatement.executeUpdate(ProxyPreparedStatement.java:61)
+	at com.zaxxer.hikari.pool.HikariProxyPreparedStatement.executeUpdate(HikariProxyPreparedStatement.java)
+	at org.hibernate.engine.jdbc.internal.ResultSetReturnImpl.executeUpdate(ResultSetReturnImpl.java:197)
+	... 88 common frames omitted
+15:07:24.810 [http-nio-8080-exec-7] DEBUG dLog - Validating user login attempt: LoginRequest(username=testUser1, password=testPass1)
+15:07:24.825 [http-nio-8080-exec-7] DEBUG dLog - Getting Profile Response with User Credentials: UserCredential(userid=1, username=testUser1, password=testPass1)
+15:07:24.829 [http-nio-8080-exec-7] DEBUG dLog - Converting User profile into profile Response: UserProfile(columnID=1, usercredential=UserCredential(userid=1, username=testUser1, password=testPass1), firstname=, lastname=, email=testemail1@email.com)
+15:16:56.531 [http-nio-8080-exec-2] DEBUG dLog - Creating new Login: NewUserCredentialsRequest(username=testUser1, password=testPass1, email=testemail1@email.com)
+15:16:56.531 [http-nio-8080-exec-2] DEBUG dLog - Creating new Account, generating new User Credential: NewUserCredentialsRequest(username=testUser1, password=testPass1, email=testemail1@email.com)
+15:16:56.595 [http-nio-8080-exec-2] DEBUG dLog - Creating new UserProfile: UserCredential(userid=1, username=testUser1, password=testPass1) testemail1@email.com
+15:16:56.602 [http-nio-8080-exec-2] DEBUG dLog - Converting User profile into profile Response: UserProfile(columnID=1, usercredential=UserCredential(userid=1, username=testUser1, password=testPass1), firstname=, lastname=, email=testemail1@email.com)
+15:17:08.500 [http-nio-8080-exec-3] DEBUG dLog - Creating new Login: NewUserCredentialsRequest(username=testUser1, password=testPass1, email=testemail1@email.com)
+15:17:08.500 [http-nio-8080-exec-3] DEBUG dLog - Creating new Account, generating new User Credential: NewUserCredentialsRequest(username=testUser1, password=testPass1, email=testemail1@email.com)
+15:17:19.973 [http-nio-8080-exec-5] DEBUG dLog - Validating user login attempt: LoginRequest(username=testUser1, password=testPass1)
+15:17:19.997 [http-nio-8080-exec-5] DEBUG dLog - Getting Profile Response with User Credentials: UserCredential(userid=1, username=testUser1, password=testPass1)
+15:17:20.005 [http-nio-8080-exec-5] DEBUG dLog - Converting User profile into profile Response: UserProfile(columnID=1, usercredential=UserCredential(userid=1, username=testUser1, password=testPass1), firstname=, lastname=, email=testemail1@email.com)
+15:17:24.724 [http-nio-8080-exec-6] DEBUG dLog - Validating user login attempt: LoginRequest(username=testUse, password=testPass1)
+15:17:24.725 [http-nio-8080-exec-6] DEBUG dLog - Getting Profile Response with User Credentials: null
+15:17:24.726 [http-nio-8080-exec-6] ERROR dLog - null
+java.lang.NullPointerException: null
+	at com.revature.p2_lfg.service.profile.classes.ProfileService.getProfileResponse(ProfileService.java:31)
+	at com.revature.p2_lfg.presentation.controllers.LoginController.checkLogin(LoginController.java:31)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:205)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:150)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:117)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:895)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:808)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1067)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:963)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006)
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:909)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:681)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:764)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:227)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:197)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:540)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:135)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:357)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:382)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:895)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1732)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.lang.Thread.run(Thread.java:748)
+15:17:37.474 [http-nio-8080-exec-7] DEBUG dLog - Validating user login attempt: LoginRequest(username=testUser1, password=testPass1)
+15:17:37.475 [http-nio-8080-exec-7] DEBUG dLog - Getting Profile Response with User Credentials: UserCredential(userid=1, username=testUser1, password=testPass1)
+15:17:37.476 [http-nio-8080-exec-7] DEBUG dLog - Converting User profile into profile Response: UserProfile(columnID=1, usercredential=UserCredential(userid=1, username=testUser1, password=testPass1), firstname=, lastname=, email=testemail1@email.com)
+15:18:04.194 [http-nio-8080-exec-8] DEBUG dLog - Attempting to get user profile
+15:18:04.198 [http-nio-8080-exec-8] DEBUG dLog - JWT TOken : JWTInfo(firstName=Bob, lastName=Dylan, username=testUser1, userId=21)
+15:18:04.198 [http-nio-8080-exec-8] DEBUG dLog - Getting User Profile: 21
+15:18:08.975 [http-nio-8080-exec-10] DEBUG dLog - Attempting to get user profile
+15:18:08.978 [http-nio-8080-exec-10] DEBUG dLog - JWT TOken : JWTInfo(firstName=, lastName=, username=testUser1, userId=1)
+15:18:08.978 [http-nio-8080-exec-10] DEBUG dLog - Getting User Profile: 1
+15:18:08.985 [http-nio-8080-exec-10] DEBUG dLog - Converting User profile into profile Response: UserProfile(columnID=1, usercredential=UserCredential(userid=1, username=testUser1, password=testPass1), firstname=, lastname=, email=testemail1@email.com)
+15:18:27.652 [http-nio-8080-exec-1] DEBUG dLog - Getting game sessions select list
+15:18:47.494 [http-nio-8080-exec-2] DEBUG dLog - Getting game group sessions by gameName: 3
+15:18:47.494 [http-nio-8080-exec-2] DEBUG dLog - Getting selected game groups: 3
+15:19:30.201 [http-nio-8080-exec-3] DEBUG dLog - Creating a group session: CreateGroupSessionRequest(gameId=3, maxUsers=4, description=This is a created Group through Postman)
+15:19:30.205 [http-nio-8080-exec-3] DEBUG dLog - Creating group session response from group create request: CreateGroupSessionRequest(gameId=3, maxUsers=4, description=This is a created Group through Postman)
+15:19:30.205 [http-nio-8080-exec-3] DEBUG dLog - Creating a group session: GameId - 3 maxUsers - 4 Description: This is a created Group through Postman
+15:19:30.229 [http-nio-8080-exec-3] DEBUG dLog - Creating user Session for a group: SessionDetails(groupid=1, game=Games(gameid=3, platformkey=0, gametitle=, imglink=), maxusers=4, currentusers=1, description=This is a created Group through Postman, tags=[])
+15:19:30.257 [http-nio-8080-exec-3] DEBUG dLog - Getting host user
+15:19:30.257 [http-nio-8080-exec-3] DEBUG dLog - Finding host Id by Group ID: 1
+15:19:30.267 [http-nio-8080-exec-3] DEBUG dLog - Getting Host user with Host Id: 1
+15:20:32.208 [http-nio-8080-exec-6] DEBUG dLog - Refreshing members in group Session: 1
+15:20:32.212 [http-nio-8080-exec-6] DEBUG dLog - Attempting to get Group Session: 1
+15:20:32.213 [http-nio-8080-exec-6] DEBUG dLog - Getting group users associated by group Id: 1
+15:20:32.225 [http-nio-8080-exec-6] ERROR dLog - could not prepare statement; SQL [select sessiondet0_.groupid as groupid1_1_0_, sessiondet0_.currentusers as currentu2_1_0_, sessiondet0_.description as descript3_1_0_, sessiondet0_.gameid as gameid5_1_0_, sessiondet0_.maxusers as maxusers4_1_0_, games1_.gameid as gameid1_0_1_, games1_.gametitle as gametitl2_0_1_, games1_.imglink as imglink3_0_1_, games1_.platformkey as platform4_0_1_, tags2_.groupid as groupid1_7_2_, tag3_.tagid as tagid2_7_2_, tag3_.tagid as tagid1_4_3_, tag3_.value as value2_4_3_ from project_two.lfg_group_information sessiondet0_ left outer join project_two.lfg_games games1_ on sessiondet0_.gameid=games1_.gameid left outer join tag_bridge_table tags2_ on sessiondet0_.groupid=tags2_.groupid left outer join project_two.lfg_tags tag3_ on tags2_.tagid=tag3_.tagid where sessiondet0_.groupid=?]; nested exception is org.hibernate.exception.SQLGrammarException: could not prepare statement
+org.springframework.dao.InvalidDataAccessResourceUsageException: could not prepare statement; SQL [select sessiondet0_.groupid as groupid1_1_0_, sessiondet0_.currentusers as currentu2_1_0_, sessiondet0_.description as descript3_1_0_, sessiondet0_.gameid as gameid5_1_0_, sessiondet0_.maxusers as maxusers4_1_0_, games1_.gameid as gameid1_0_1_, games1_.gametitle as gametitl2_0_1_, games1_.imglink as imglink3_0_1_, games1_.platformkey as platform4_0_1_, tags2_.groupid as groupid1_7_2_, tag3_.tagid as tagid2_7_2_, tag3_.tagid as tagid1_4_3_, tag3_.value as value2_4_3_ from project_two.lfg_group_information sessiondet0_ left outer join project_two.lfg_games games1_ on sessiondet0_.gameid=games1_.gameid left outer join tag_bridge_table tags2_ on sessiondet0_.groupid=tags2_.groupid left outer join project_two.lfg_tags tag3_ on tags2_.tagid=tag3_.tagid where sessiondet0_.groupid=?]; nested exception is org.hibernate.exception.SQLGrammarException: could not prepare statement
+	at org.springframework.orm.jpa.vendor.HibernateJpaDialect.convertHibernateAccessException(HibernateJpaDialect.java:259)
+	at org.springframework.orm.jpa.vendor.HibernateJpaDialect.translateExceptionIfPossible(HibernateJpaDialect.java:233)
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.translateExceptionIfPossible(AbstractEntityManagerFactoryBean.java:551)
+	at org.springframework.dao.support.ChainedPersistenceExceptionTranslator.translateExceptionIfPossible(ChainedPersistenceExceptionTranslator.java:61)
+	at org.springframework.dao.support.DataAccessUtils.translateIfNecessary(DataAccessUtils.java:242)
+	at org.springframework.dao.support.PersistenceExceptionTranslationInterceptor.invoke(PersistenceExceptionTranslationInterceptor.java:152)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
+	at org.springframework.data.jpa.repository.support.CrudMethodMetadataPostProcessor$CrudMethodMetadataPopulatingMethodInterceptor.invoke(CrudMethodMetadataPostProcessor.java:145)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
+	at org.springframework.aop.interceptor.ExposeInvocationInterceptor.invoke(ExposeInvocationInterceptor.java:97)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
+	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:215)
+	at com.sun.proxy.$Proxy123.findByGroupIdAndInsession(Unknown Source)
+	at com.revature.p2_lfg.service.session.classes.SessionService.getGroupMembersOfSession(SessionService.java:119)
+	at com.revature.p2_lfg.service.session.classes.SessionService.getGroupSession(SessionService.java:242)
+	at com.revature.p2_lfg.presentation.controllers.SessionController.refreshGroupSession(SessionController.java:37)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:205)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:150)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:117)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:895)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:808)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1067)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:963)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006)
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:898)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:655)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:764)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:227)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:197)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:540)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:135)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:357)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:382)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:895)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1732)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: org.hibernate.exception.SQLGrammarException: could not prepare statement
+	at org.hibernate.exception.internal.SQLExceptionTypeDelegate.convert(SQLExceptionTypeDelegate.java:63)
+	at org.hibernate.exception.internal.StandardSQLExceptionConverter.convert(StandardSQLExceptionConverter.java:37)
+	at org.hibernate.engine.jdbc.spi.SqlExceptionHelper.convert(SqlExceptionHelper.java:113)
+	at org.hibernate.engine.jdbc.internal.StatementPreparerImpl$StatementPreparationTemplate.prepareStatement(StatementPreparerImpl.java:186)
+	at org.hibernate.engine.jdbc.internal.StatementPreparerImpl.prepareQueryStatement(StatementPreparerImpl.java:151)
+	at org.hibernate.loader.plan.exec.internal.AbstractLoadPlanBasedLoader.prepareQueryStatement(AbstractLoadPlanBasedLoader.java:198)
+	at org.hibernate.loader.plan.exec.internal.AbstractLoadPlanBasedLoader.executeQueryStatement(AbstractLoadPlanBasedLoader.java:162)
+	at org.hibernate.loader.plan.exec.internal.AbstractLoadPlanBasedLoader.executeLoad(AbstractLoadPlanBasedLoader.java:104)
+	at org.hibernate.loader.entity.plan.AbstractLoadPlanBasedEntityLoader.load(AbstractLoadPlanBasedEntityLoader.java:285)
+	at org.hibernate.persister.entity.AbstractEntityPersister.doLoad(AbstractEntityPersister.java:4521)
+	at org.hibernate.persister.entity.AbstractEntityPersister.load(AbstractEntityPersister.java:4511)
+	at org.hibernate.event.internal.DefaultLoadEventListener.loadFromDatasource(DefaultLoadEventListener.java:571)
+	at org.hibernate.event.internal.DefaultLoadEventListener.doLoad(DefaultLoadEventListener.java:539)
+	at org.hibernate.event.internal.DefaultLoadEventListener.load(DefaultLoadEventListener.java:208)
+	at org.hibernate.event.internal.DefaultLoadEventListener.proxyOrLoad(DefaultLoadEventListener.java:327)
+	at org.hibernate.event.internal.DefaultLoadEventListener.doOnLoad(DefaultLoadEventListener.java:108)
+	at org.hibernate.event.internal.DefaultLoadEventListener.onLoad(DefaultLoadEventListener.java:74)
+	at org.hibernate.event.service.internal.EventListenerGroupImpl.fireEventOnEachListener(EventListenerGroupImpl.java:118)
+	at org.hibernate.internal.SessionImpl.fireLoadNoChecks(SessionImpl.java:1226)
+	at org.hibernate.internal.SessionImpl.internalLoad(SessionImpl.java:1091)
+	at org.hibernate.type.EntityType.resolveIdentifier(EntityType.java:699)
+	at org.hibernate.type.EntityType.resolve(EntityType.java:464)
+	at org.hibernate.type.ManyToOneType.resolve(ManyToOneType.java:240)
+	at org.hibernate.engine.internal.TwoPhaseLoad$EntityResolver.lambda$static$0(TwoPhaseLoad.java:576)
+	at org.hibernate.engine.internal.TwoPhaseLoad.initializeEntityEntryLoadedState(TwoPhaseLoad.java:221)
+	at org.hibernate.engine.internal.TwoPhaseLoad.initializeEntity(TwoPhaseLoad.java:155)
+	at org.hibernate.engine.internal.TwoPhaseLoad.initializeEntity(TwoPhaseLoad.java:126)
+	at org.hibernate.loader.Loader.initializeEntitiesAndCollections(Loader.java:1201)
+	at org.hibernate.loader.Loader.processResultSet(Loader.java:1009)
+	at org.hibernate.loader.Loader.doQuery(Loader.java:967)
+	at org.hibernate.loader.Loader.doQueryAndInitializeNonLazyCollections(Loader.java:357)
+	at org.hibernate.loader.Loader.doList(Loader.java:2868)
+	at org.hibernate.loader.Loader.doList(Loader.java:2850)
+	at org.hibernate.loader.Loader.listIgnoreQueryCache(Loader.java:2682)
+	at org.hibernate.loader.Loader.list(Loader.java:2677)
+	at org.hibernate.loader.hql.QueryLoader.list(QueryLoader.java:540)
+	at org.hibernate.hql.internal.ast.QueryTranslatorImpl.list(QueryTranslatorImpl.java:400)
+	at org.hibernate.engine.query.spi.HQLQueryPlan.performList(HQLQueryPlan.java:219)
+	at org.hibernate.internal.SessionImpl.list(SessionImpl.java:1454)
+	at org.hibernate.query.internal.AbstractProducedQuery.doList(AbstractProducedQuery.java:1649)
+	at org.hibernate.query.internal.AbstractProducedQuery.list(AbstractProducedQuery.java:1617)
+	at org.hibernate.query.Query.getResultList(Query.java:165)
+	at org.springframework.data.jpa.repository.query.JpaQueryExecution$CollectionExecution.doExecute(JpaQueryExecution.java:128)
+	at org.springframework.data.jpa.repository.query.JpaQueryExecution.execute(JpaQueryExecution.java:90)
+	at org.springframework.data.jpa.repository.query.AbstractJpaQuery.doExecute(AbstractJpaQuery.java:155)
+	at org.springframework.data.jpa.repository.query.AbstractJpaQuery.execute(AbstractJpaQuery.java:143)
+	at org.springframework.data.repository.core.support.RepositoryMethodInvoker.doInvoke(RepositoryMethodInvoker.java:137)
+	at org.springframework.data.repository.core.support.RepositoryMethodInvoker.invoke(RepositoryMethodInvoker.java:121)
+	at org.springframework.data.repository.core.support.QueryExecutorMethodInterceptor.doInvoke(QueryExecutorMethodInterceptor.java:159)
+	at org.springframework.data.repository.core.support.QueryExecutorMethodInterceptor.invoke(QueryExecutorMethodInterceptor.java:138)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
+	at org.springframework.data.projection.DefaultMethodInvokingMethodInterceptor.invoke(DefaultMethodInvokingMethodInterceptor.java:80)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
+	at org.springframework.transaction.interceptor.TransactionInterceptor$1.proceedWithInvocation(TransactionInterceptor.java:123)
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:388)
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:119)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
+	at org.springframework.dao.support.PersistenceExceptionTranslationInterceptor.invoke(PersistenceExceptionTranslationInterceptor.java:137)
+	... 60 common frames omitted
+Caused by: org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "TAG_BRIDGE_TABLE" not found; SQL statement:
+select sessiondet0_.groupid as groupid1_1_0_, sessiondet0_.currentusers as currentu2_1_0_, sessiondet0_.description as descript3_1_0_, sessiondet0_.gameid as gameid5_1_0_, sessiondet0_.maxusers as maxusers4_1_0_, games1_.gameid as gameid1_0_1_, games1_.gametitle as gametitl2_0_1_, games1_.imglink as imglink3_0_1_, games1_.platformkey as platform4_0_1_, tags2_.groupid as groupid1_7_2_, tag3_.tagid as tagid2_7_2_, tag3_.tagid as tagid1_4_3_, tag3_.value as value2_4_3_ from project_two.lfg_group_information sessiondet0_ left outer join project_two.lfg_games games1_ on sessiondet0_.gameid=games1_.gameid left outer join tag_bridge_table tags2_ on sessiondet0_.groupid=tags2_.groupid left outer join project_two.lfg_tags tag3_ on tags2_.tagid=tag3_.tagid where sessiondet0_.groupid=? [42102-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:453)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	at org.h2.message.DbException.get(DbException.java:205)
+	at org.h2.message.DbException.get(DbException.java:181)
+	at org.h2.command.Parser.readTableOrView(Parser.java:7628)
+	at org.h2.command.Parser.readTableFilter(Parser.java:1970)
+	at org.h2.command.Parser.readJoin(Parser.java:2400)
+	at org.h2.command.Parser.parseJoinTableFilter(Parser.java:2839)
+	at org.h2.command.Parser.parseSelectFromPart(Parser.java:2828)
+	at org.h2.command.Parser.parseSelect(Parser.java:2959)
+	at org.h2.command.Parser.parseQuerySub(Parser.java:2817)
+	at org.h2.command.Parser.parseSelectUnion(Parser.java:2649)
+	at org.h2.command.Parser.parseQuery(Parser.java:2620)
+	at org.h2.command.Parser.parsePrepared(Parser.java:868)
+	at org.h2.command.Parser.parse(Parser.java:843)
+	at org.h2.command.Parser.parse(Parser.java:815)
+	at org.h2.command.Parser.prepareCommand(Parser.java:738)
+	at org.h2.engine.Session.prepareLocal(Session.java:657)
+	at org.h2.engine.Session.prepareCommand(Session.java:595)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1235)
+	at org.h2.jdbc.JdbcPreparedStatement.<init>(JdbcPreparedStatement.java:76)
+	at org.h2.jdbc.JdbcConnection.prepareStatement(JdbcConnection.java:352)
+	at com.zaxxer.hikari.pool.ProxyConnection.prepareStatement(ProxyConnection.java:337)
+	at com.zaxxer.hikari.pool.HikariProxyConnection.prepareStatement(HikariProxyConnection.java)
+	at org.hibernate.engine.jdbc.internal.StatementPreparerImpl$5.doPrepare(StatementPreparerImpl.java:149)
+	at org.hibernate.engine.jdbc.internal.StatementPreparerImpl$StatementPreparationTemplate.prepareStatement(StatementPreparerImpl.java:176)
+	... 114 common frames omitted
+15:21:01.197 [http-nio-8080-exec-7] DEBUG dLog - Refreshing members in group Session: 1
+15:21:01.199 [http-nio-8080-exec-7] DEBUG dLog - Attempting to get Group Session: 1
+15:21:01.199 [http-nio-8080-exec-7] DEBUG dLog - Getting group users associated by group Id: 1
+15:21:01.201 [http-nio-8080-exec-7] ERROR dLog - could not prepare statement; SQL [select sessiondet0_.groupid as groupid1_1_0_, sessiondet0_.currentusers as currentu2_1_0_, sessiondet0_.description as descript3_1_0_, sessiondet0_.gameid as gameid5_1_0_, sessiondet0_.maxusers as maxusers4_1_0_, games1_.gameid as gameid1_0_1_, games1_.gametitle as gametitl2_0_1_, games1_.imglink as imglink3_0_1_, games1_.platformkey as platform4_0_1_, tags2_.groupid as groupid1_7_2_, tag3_.tagid as tagid2_7_2_, tag3_.tagid as tagid1_4_3_, tag3_.value as value2_4_3_ from project_two.lfg_group_information sessiondet0_ left outer join project_two.lfg_games games1_ on sessiondet0_.gameid=games1_.gameid left outer join tag_bridge_table tags2_ on sessiondet0_.groupid=tags2_.groupid left outer join project_two.lfg_tags tag3_ on tags2_.tagid=tag3_.tagid where sessiondet0_.groupid=?]; nested exception is org.hibernate.exception.SQLGrammarException: could not prepare statement
+org.springframework.dao.InvalidDataAccessResourceUsageException: could not prepare statement; SQL [select sessiondet0_.groupid as groupid1_1_0_, sessiondet0_.currentusers as currentu2_1_0_, sessiondet0_.description as descript3_1_0_, sessiondet0_.gameid as gameid5_1_0_, sessiondet0_.maxusers as maxusers4_1_0_, games1_.gameid as gameid1_0_1_, games1_.gametitle as gametitl2_0_1_, games1_.imglink as imglink3_0_1_, games1_.platformkey as platform4_0_1_, tags2_.groupid as groupid1_7_2_, tag3_.tagid as tagid2_7_2_, tag3_.tagid as tagid1_4_3_, tag3_.value as value2_4_3_ from project_two.lfg_group_information sessiondet0_ left outer join project_two.lfg_games games1_ on sessiondet0_.gameid=games1_.gameid left outer join tag_bridge_table tags2_ on sessiondet0_.groupid=tags2_.groupid left outer join project_two.lfg_tags tag3_ on tags2_.tagid=tag3_.tagid where sessiondet0_.groupid=?]; nested exception is org.hibernate.exception.SQLGrammarException: could not prepare statement
+	at org.springframework.orm.jpa.vendor.HibernateJpaDialect.convertHibernateAccessException(HibernateJpaDialect.java:259)
+	at org.springframework.orm.jpa.vendor.HibernateJpaDialect.translateExceptionIfPossible(HibernateJpaDialect.java:233)
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.translateExceptionIfPossible(AbstractEntityManagerFactoryBean.java:551)
+	at org.springframework.dao.support.ChainedPersistenceExceptionTranslator.translateExceptionIfPossible(ChainedPersistenceExceptionTranslator.java:61)
+	at org.springframework.dao.support.DataAccessUtils.translateIfNecessary(DataAccessUtils.java:242)
+	at org.springframework.dao.support.PersistenceExceptionTranslationInterceptor.invoke(PersistenceExceptionTranslationInterceptor.java:152)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
+	at org.springframework.data.jpa.repository.support.CrudMethodMetadataPostProcessor$CrudMethodMetadataPopulatingMethodInterceptor.invoke(CrudMethodMetadataPostProcessor.java:145)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
+	at org.springframework.aop.interceptor.ExposeInvocationInterceptor.invoke(ExposeInvocationInterceptor.java:97)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
+	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:215)
+	at com.sun.proxy.$Proxy123.findByGroupIdAndInsession(Unknown Source)
+	at com.revature.p2_lfg.service.session.classes.SessionService.getGroupMembersOfSession(SessionService.java:119)
+	at com.revature.p2_lfg.service.session.classes.SessionService.getGroupSession(SessionService.java:242)
+	at com.revature.p2_lfg.presentation.controllers.SessionController.refreshGroupSession(SessionController.java:37)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:205)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:150)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:117)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:895)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:808)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1067)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:963)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006)
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:898)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:655)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:764)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:227)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:197)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:540)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:135)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:357)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:382)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:895)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1732)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: org.hibernate.exception.SQLGrammarException: could not prepare statement
+	at org.hibernate.exception.internal.SQLExceptionTypeDelegate.convert(SQLExceptionTypeDelegate.java:63)
+	at org.hibernate.exception.internal.StandardSQLExceptionConverter.convert(StandardSQLExceptionConverter.java:37)
+	at org.hibernate.engine.jdbc.spi.SqlExceptionHelper.convert(SqlExceptionHelper.java:113)
+	at org.hibernate.engine.jdbc.internal.StatementPreparerImpl$StatementPreparationTemplate.prepareStatement(StatementPreparerImpl.java:186)
+	at org.hibernate.engine.jdbc.internal.StatementPreparerImpl.prepareQueryStatement(StatementPreparerImpl.java:151)
+	at org.hibernate.loader.plan.exec.internal.AbstractLoadPlanBasedLoader.prepareQueryStatement(AbstractLoadPlanBasedLoader.java:198)
+	at org.hibernate.loader.plan.exec.internal.AbstractLoadPlanBasedLoader.executeQueryStatement(AbstractLoadPlanBasedLoader.java:162)
+	at org.hibernate.loader.plan.exec.internal.AbstractLoadPlanBasedLoader.executeLoad(AbstractLoadPlanBasedLoader.java:104)
+	at org.hibernate.loader.entity.plan.AbstractLoadPlanBasedEntityLoader.load(AbstractLoadPlanBasedEntityLoader.java:285)
+	at org.hibernate.persister.entity.AbstractEntityPersister.doLoad(AbstractEntityPersister.java:4521)
+	at org.hibernate.persister.entity.AbstractEntityPersister.load(AbstractEntityPersister.java:4511)
+	at org.hibernate.event.internal.DefaultLoadEventListener.loadFromDatasource(DefaultLoadEventListener.java:571)
+	at org.hibernate.event.internal.DefaultLoadEventListener.doLoad(DefaultLoadEventListener.java:539)
+	at org.hibernate.event.internal.DefaultLoadEventListener.load(DefaultLoadEventListener.java:208)
+	at org.hibernate.event.internal.DefaultLoadEventListener.proxyOrLoad(DefaultLoadEventListener.java:327)
+	at org.hibernate.event.internal.DefaultLoadEventListener.doOnLoad(DefaultLoadEventListener.java:108)
+	at org.hibernate.event.internal.DefaultLoadEventListener.onLoad(DefaultLoadEventListener.java:74)
+	at org.hibernate.event.service.internal.EventListenerGroupImpl.fireEventOnEachListener(EventListenerGroupImpl.java:118)
+	at org.hibernate.internal.SessionImpl.fireLoadNoChecks(SessionImpl.java:1226)
+	at org.hibernate.internal.SessionImpl.internalLoad(SessionImpl.java:1091)
+	at org.hibernate.type.EntityType.resolveIdentifier(EntityType.java:699)
+	at org.hibernate.type.EntityType.resolve(EntityType.java:464)
+	at org.hibernate.type.ManyToOneType.resolve(ManyToOneType.java:240)
+	at org.hibernate.engine.internal.TwoPhaseLoad$EntityResolver.lambda$static$0(TwoPhaseLoad.java:576)
+	at org.hibernate.engine.internal.TwoPhaseLoad.initializeEntityEntryLoadedState(TwoPhaseLoad.java:221)
+	at org.hibernate.engine.internal.TwoPhaseLoad.initializeEntity(TwoPhaseLoad.java:155)
+	at org.hibernate.engine.internal.TwoPhaseLoad.initializeEntity(TwoPhaseLoad.java:126)
+	at org.hibernate.loader.Loader.initializeEntitiesAndCollections(Loader.java:1201)
+	at org.hibernate.loader.Loader.processResultSet(Loader.java:1009)
+	at org.hibernate.loader.Loader.doQuery(Loader.java:967)
+	at org.hibernate.loader.Loader.doQueryAndInitializeNonLazyCollections(Loader.java:357)
+	at org.hibernate.loader.Loader.doList(Loader.java:2868)
+	at org.hibernate.loader.Loader.doList(Loader.java:2850)
+	at org.hibernate.loader.Loader.listIgnoreQueryCache(Loader.java:2682)
+	at org.hibernate.loader.Loader.list(Loader.java:2677)
+	at org.hibernate.loader.hql.QueryLoader.list(QueryLoader.java:540)
+	at org.hibernate.hql.internal.ast.QueryTranslatorImpl.list(QueryTranslatorImpl.java:400)
+	at org.hibernate.engine.query.spi.HQLQueryPlan.performList(HQLQueryPlan.java:219)
+	at org.hibernate.internal.SessionImpl.list(SessionImpl.java:1454)
+	at org.hibernate.query.internal.AbstractProducedQuery.doList(AbstractProducedQuery.java:1649)
+	at org.hibernate.query.internal.AbstractProducedQuery.list(AbstractProducedQuery.java:1617)
+	at org.hibernate.query.Query.getResultList(Query.java:165)
+	at org.springframework.data.jpa.repository.query.JpaQueryExecution$CollectionExecution.doExecute(JpaQueryExecution.java:128)
+	at org.springframework.data.jpa.repository.query.JpaQueryExecution.execute(JpaQueryExecution.java:90)
+	at org.springframework.data.jpa.repository.query.AbstractJpaQuery.doExecute(AbstractJpaQuery.java:155)
+	at org.springframework.data.jpa.repository.query.AbstractJpaQuery.execute(AbstractJpaQuery.java:143)
+	at org.springframework.data.repository.core.support.RepositoryMethodInvoker.doInvoke(RepositoryMethodInvoker.java:137)
+	at org.springframework.data.repository.core.support.RepositoryMethodInvoker.invoke(RepositoryMethodInvoker.java:121)
+	at org.springframework.data.repository.core.support.QueryExecutorMethodInterceptor.doInvoke(QueryExecutorMethodInterceptor.java:159)
+	at org.springframework.data.repository.core.support.QueryExecutorMethodInterceptor.invoke(QueryExecutorMethodInterceptor.java:138)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
+	at org.springframework.data.projection.DefaultMethodInvokingMethodInterceptor.invoke(DefaultMethodInvokingMethodInterceptor.java:80)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
+	at org.springframework.transaction.interceptor.TransactionInterceptor$1.proceedWithInvocation(TransactionInterceptor.java:123)
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:388)
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:119)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
+	at org.springframework.dao.support.PersistenceExceptionTranslationInterceptor.invoke(PersistenceExceptionTranslationInterceptor.java:137)
+	... 60 common frames omitted
+Caused by: org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "TAG_BRIDGE_TABLE" not found; SQL statement:
+select sessiondet0_.groupid as groupid1_1_0_, sessiondet0_.currentusers as currentu2_1_0_, sessiondet0_.description as descript3_1_0_, sessiondet0_.gameid as gameid5_1_0_, sessiondet0_.maxusers as maxusers4_1_0_, games1_.gameid as gameid1_0_1_, games1_.gametitle as gametitl2_0_1_, games1_.imglink as imglink3_0_1_, games1_.platformkey as platform4_0_1_, tags2_.groupid as groupid1_7_2_, tag3_.tagid as tagid2_7_2_, tag3_.tagid as tagid1_4_3_, tag3_.value as value2_4_3_ from project_two.lfg_group_information sessiondet0_ left outer join project_two.lfg_games games1_ on sessiondet0_.gameid=games1_.gameid left outer join tag_bridge_table tags2_ on sessiondet0_.groupid=tags2_.groupid left outer join project_two.lfg_tags tag3_ on tags2_.tagid=tag3_.tagid where sessiondet0_.groupid=? [42102-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:453)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	at org.h2.message.DbException.get(DbException.java:205)
+	at org.h2.message.DbException.get(DbException.java:181)
+	at org.h2.command.Parser.readTableOrView(Parser.java:7628)
+	at org.h2.command.Parser.readTableFilter(Parser.java:1970)
+	at org.h2.command.Parser.readJoin(Parser.java:2400)
+	at org.h2.command.Parser.parseJoinTableFilter(Parser.java:2839)
+	at org.h2.command.Parser.parseSelectFromPart(Parser.java:2828)
+	at org.h2.command.Parser.parseSelect(Parser.java:2959)
+	at org.h2.command.Parser.parseQuerySub(Parser.java:2817)
+	at org.h2.command.Parser.parseSelectUnion(Parser.java:2649)
+	at org.h2.command.Parser.parseQuery(Parser.java:2620)
+	at org.h2.command.Parser.parsePrepared(Parser.java:868)
+	at org.h2.command.Parser.parse(Parser.java:843)
+	at org.h2.command.Parser.parse(Parser.java:815)
+	at org.h2.command.Parser.prepareCommand(Parser.java:738)
+	at org.h2.engine.Session.prepareLocal(Session.java:657)
+	at org.h2.engine.Session.prepareCommand(Session.java:595)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1235)
+	at org.h2.jdbc.JdbcPreparedStatement.<init>(JdbcPreparedStatement.java:76)
+	at org.h2.jdbc.JdbcConnection.prepareStatement(JdbcConnection.java:352)
+	at com.zaxxer.hikari.pool.ProxyConnection.prepareStatement(ProxyConnection.java:337)
+	at com.zaxxer.hikari.pool.HikariProxyConnection.prepareStatement(HikariProxyConnection.java)
+	at org.hibernate.engine.jdbc.internal.StatementPreparerImpl$5.doPrepare(StatementPreparerImpl.java:149)
+	at org.hibernate.engine.jdbc.internal.StatementPreparerImpl$StatementPreparationTemplate.prepareStatement(StatementPreparerImpl.java:176)
+	... 114 common frames omitted
+15:25:58.294 [http-nio-8080-exec-2] DEBUG dLog - Creating new Login: NewUserCredentialsRequest(username=testUser1, password=testPass1, email=testemail1@email.com)
+15:25:58.295 [http-nio-8080-exec-2] DEBUG dLog - Creating new Account, generating new User Credential: NewUserCredentialsRequest(username=testUser1, password=testPass1, email=testemail1@email.com)
+15:25:58.380 [http-nio-8080-exec-2] DEBUG dLog - Creating new UserProfile: UserCredential(userid=1, username=testUser1, password=testPass1) testemail1@email.com
+15:25:58.392 [http-nio-8080-exec-2] DEBUG dLog - Converting User profile into profile Response: UserProfile(columnID=1, usercredential=UserCredential(userid=1, username=testUser1, password=testPass1), firstname=, lastname=, email=testemail1@email.com)
+15:26:05.527 [http-nio-8080-exec-3] DEBUG dLog - Creating a group session: CreateGroupSessionRequest(gameId=3, maxUsers=4, description=This is a created Group through Postman)
+15:26:05.531 [http-nio-8080-exec-3] DEBUG dLog - Creating group session response from group create request: CreateGroupSessionRequest(gameId=3, maxUsers=4, description=This is a created Group through Postman)
+15:26:05.531 [http-nio-8080-exec-3] DEBUG dLog - Creating a group session: GameId - 3 maxUsers - 4 Description: This is a created Group through Postman
+15:26:05.562 [http-nio-8080-exec-3] DEBUG dLog - Creating user Session for a group: SessionDetails(groupid=1, game=Games(gameid=3, platformkey=0, gametitle=, imglink=), maxusers=4, currentusers=1, description=This is a created Group through Postman, tags=[])
+15:26:05.604 [http-nio-8080-exec-3] DEBUG dLog - Getting host user
+15:26:05.604 [http-nio-8080-exec-3] DEBUG dLog - Finding host Id by Group ID: 1
+15:26:05.633 [http-nio-8080-exec-3] DEBUG dLog - Getting Host user with Host Id: 1
+15:26:11.909 [http-nio-8080-exec-4] DEBUG dLog - Refreshing members in group Session: 1
+15:26:11.914 [http-nio-8080-exec-4] DEBUG dLog - Attempting to get Group Session: 1
+15:26:11.915 [http-nio-8080-exec-4] DEBUG dLog - Getting group users associated by group Id: 1
+15:26:11.937 [http-nio-8080-exec-4] DEBUG dLog - Getting group users associated by group Id: 1
+15:26:11.940 [http-nio-8080-exec-4] DEBUG dLog - Getting host user
+15:26:11.940 [http-nio-8080-exec-4] DEBUG dLog - Finding host Id by Group ID: 1
+15:26:11.942 [http-nio-8080-exec-4] DEBUG dLog - Getting Host user with Host Id: 1
+15:26:11.943 [http-nio-8080-exec-4] DEBUG dLog - Getting session details by group ID: 1
+15:26:30.871 [http-nio-8080-exec-5] DEBUG dLog - Creating new Login: NewUserCredentialsRequest(username=testUser2, password=testPass2, email=testemail2@email.com)
+15:26:30.871 [http-nio-8080-exec-5] DEBUG dLog - Creating new Account, generating new User Credential: NewUserCredentialsRequest(username=testUser2, password=testPass2, email=testemail2@email.com)
+15:26:30.873 [http-nio-8080-exec-5] DEBUG dLog - Creating new UserProfile: UserCredential(userid=2, username=testUser2, password=testPass2) testemail2@email.com
+15:26:30.875 [http-nio-8080-exec-5] DEBUG dLog - Converting User profile into profile Response: UserProfile(columnID=2, usercredential=UserCredential(userid=2, username=testUser2, password=testPass2), firstname=, lastname=, email=testemail2@email.com)
+15:27:03.324 [http-nio-8080-exec-6] DEBUG dLog - Joining a group session: 6
+15:27:03.329 [http-nio-8080-exec-6] DEBUG dLog - Joining group session waiting room Group ID: 6 JWT: JWTInfo(firstName=, lastName=, username=testUser2, userId=2)
+15:27:03.330 [http-nio-8080-exec-6] DEBUG dLog - Attempting to enter waiting room: 6
+15:27:03.330 [http-nio-8080-exec-6] DEBUG dLog - Getting session details by group ID: 6
+15:27:03.331 [http-nio-8080-exec-6] DEBUG dLog - Finding host Id by Group ID: 6
+15:27:03.332 [http-nio-8080-exec-6] ERROR dLog - null
+java.lang.NullPointerException: null
+	at com.revature.p2_lfg.service.session.classes.SessionService.findByHostId(SessionService.java:114)
+	at com.revature.p2_lfg.service.session.classes.SessionService.enterWaitingRoom(SessionService.java:81)
+	at com.revature.p2_lfg.service.session.classes.SessionService.joinGroupSession(SessionService.java:73)
+	at com.revature.p2_lfg.presentation.controllers.SessionController.joinGroupSession(SessionController.java:45)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:205)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:150)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:117)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:895)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:808)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1067)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:963)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006)
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:909)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:681)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:764)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:227)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:197)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:540)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:135)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:357)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:382)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:895)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1732)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.lang.Thread.run(Thread.java:748)
+15:27:08.622 [http-nio-8080-exec-7] DEBUG dLog - Joining a group session: 1
+15:27:08.626 [http-nio-8080-exec-7] DEBUG dLog - Joining group session waiting room Group ID: 1 JWT: JWTInfo(firstName=, lastName=, username=testUser2, userId=2)
+15:27:08.626 [http-nio-8080-exec-7] DEBUG dLog - Attempting to enter waiting room: 1
+15:27:08.626 [http-nio-8080-exec-7] DEBUG dLog - Getting session details by group ID: 1
+15:27:08.627 [http-nio-8080-exec-7] DEBUG dLog - Finding host Id by Group ID: 1
+15:27:08.629 [http-nio-8080-exec-7] DEBUG dLog - Creating user Session for a group: SessionDetails(groupid=1, game=Games(gameid=3, platformkey=730, gametitle=Counter Strike: Global Offensive, imglink=https://cdn.akamai.steamstatic.com/steam/apps/730/capsule_616x353.jpg?t=1635269541), maxusers=4, currentusers=2, description=This is a created Group through Postman, tags=[])
+15:27:08.633 [http-nio-8080-exec-7] DEBUG dLog - Getting host user
+15:27:08.633 [http-nio-8080-exec-7] DEBUG dLog - Finding host Id by Group ID: 1
+15:27:08.635 [http-nio-8080-exec-7] DEBUG dLog - Getting Host user with Host Id: 1
+15:27:08.636 [http-nio-8080-exec-7] DEBUG dLog - Getting group users associated by group Id: 1
+15:30:43.005 [http-nio-8080-exec-10] DEBUG dLog - Checking session status: 1
+15:30:43.010 [http-nio-8080-exec-10] DEBUG dLog - Checking session status: 1 + userId: 2
+15:30:43.014 [http-nio-8080-exec-10] DEBUG dLog - Getting host user
+15:30:43.014 [http-nio-8080-exec-10] DEBUG dLog - Finding host Id by Group ID: 1
+15:30:43.015 [http-nio-8080-exec-10] DEBUG dLog - Getting Host user with Host Id: 1
+15:31:05.410 [http-nio-8080-exec-1] DEBUG dLog - Checking session status: 1
+15:31:05.413 [http-nio-8080-exec-1] DEBUG dLog - Checking session status: 1 + userId: 2
+15:31:05.415 [http-nio-8080-exec-1] DEBUG dLog - Getting host user
+15:31:05.415 [http-nio-8080-exec-1] DEBUG dLog - Finding host Id by Group ID: 1
+15:31:05.416 [http-nio-8080-exec-1] DEBUG dLog - Getting Host user with Host Id: 1
+15:31:06.105 [http-nio-8080-exec-2] DEBUG dLog - Checking session status: 1
+15:31:06.110 [http-nio-8080-exec-2] DEBUG dLog - Checking session status: 1 + userId: 2
+15:31:06.115 [http-nio-8080-exec-2] DEBUG dLog - Getting host user
+15:31:06.115 [http-nio-8080-exec-2] DEBUG dLog - Finding host Id by Group ID: 1
+15:31:06.117 [http-nio-8080-exec-2] DEBUG dLog - Getting Host user with Host Id: 1
+15:31:06.851 [http-nio-8080-exec-3] DEBUG dLog - Checking session status: 1
+15:31:06.854 [http-nio-8080-exec-3] DEBUG dLog - Checking session status: 1 + userId: 2
+15:31:06.855 [http-nio-8080-exec-3] DEBUG dLog - Getting host user
+15:31:06.855 [http-nio-8080-exec-3] DEBUG dLog - Finding host Id by Group ID: 1
+15:31:06.856 [http-nio-8080-exec-3] DEBUG dLog - Getting Host user with Host Id: 1
+15:31:07.561 [http-nio-8080-exec-4] DEBUG dLog - Checking session status: 1
+15:31:07.564 [http-nio-8080-exec-4] DEBUG dLog - Checking session status: 1 + userId: 2
+15:31:07.566 [http-nio-8080-exec-4] DEBUG dLog - Getting host user
+15:31:07.566 [http-nio-8080-exec-4] DEBUG dLog - Finding host Id by Group ID: 1
+15:31:07.567 [http-nio-8080-exec-4] DEBUG dLog - Getting Host user with Host Id: 1
+15:31:08.246 [http-nio-8080-exec-5] DEBUG dLog - Checking session status: 1
+15:31:08.249 [http-nio-8080-exec-5] DEBUG dLog - Checking session status: 1 + userId: 2
+15:31:08.250 [http-nio-8080-exec-5] DEBUG dLog - Getting host user
+15:31:08.250 [http-nio-8080-exec-5] DEBUG dLog - Finding host Id by Group ID: 1
+15:31:08.251 [http-nio-8080-exec-5] DEBUG dLog - Getting Host user with Host Id: 1
+15:31:08.914 [http-nio-8080-exec-6] DEBUG dLog - Checking session status: 1
+15:31:08.916 [http-nio-8080-exec-6] DEBUG dLog - Checking session status: 1 + userId: 2
+15:31:08.918 [http-nio-8080-exec-6] DEBUG dLog - Getting host user
+15:31:08.918 [http-nio-8080-exec-6] DEBUG dLog - Finding host Id by Group ID: 1
+15:31:08.918 [http-nio-8080-exec-6] DEBUG dLog - Getting Host user with Host Id: 1
+15:31:09.666 [http-nio-8080-exec-7] DEBUG dLog - Checking session status: 1
+15:31:09.669 [http-nio-8080-exec-7] DEBUG dLog - Checking session status: 1 + userId: 2
+15:31:09.671 [http-nio-8080-exec-7] DEBUG dLog - Getting host user
+15:31:09.671 [http-nio-8080-exec-7] DEBUG dLog - Finding host Id by Group ID: 1
+15:31:09.673 [http-nio-8080-exec-7] DEBUG dLog - Getting Host user with Host Id: 1
+15:31:10.828 [http-nio-8080-exec-8] DEBUG dLog - Checking session status: 1
+15:31:10.831 [http-nio-8080-exec-8] DEBUG dLog - Checking session status: 1 + userId: 2
+15:31:10.833 [http-nio-8080-exec-8] DEBUG dLog - Getting host user
+15:31:10.833 [http-nio-8080-exec-8] DEBUG dLog - Finding host Id by Group ID: 1
+15:31:10.834 [http-nio-8080-exec-8] DEBUG dLog - Getting Host user with Host Id: 1
+15:31:11.727 [http-nio-8080-exec-9] DEBUG dLog - Checking session status: 1
+15:31:11.734 [http-nio-8080-exec-9] DEBUG dLog - Checking session status: 1 + userId: 2
+15:31:11.738 [http-nio-8080-exec-9] DEBUG dLog - Getting host user
+15:31:11.738 [http-nio-8080-exec-9] DEBUG dLog - Finding host Id by Group ID: 1
+15:31:11.740 [http-nio-8080-exec-9] DEBUG dLog - Getting Host user with Host Id: 1
+15:31:12.900 [http-nio-8080-exec-10] DEBUG dLog - Checking session status: 1
+15:31:12.906 [http-nio-8080-exec-10] DEBUG dLog - Checking session status: 1 + userId: 2
+15:31:12.908 [http-nio-8080-exec-10] DEBUG dLog - Getting host user
+15:31:12.908 [http-nio-8080-exec-10] DEBUG dLog - Finding host Id by Group ID: 1
+15:31:12.909 [http-nio-8080-exec-10] DEBUG dLog - Getting Host user with Host Id: 1
+15:31:13.499 [http-nio-8080-exec-1] DEBUG dLog - Checking session status: 1
+15:31:13.505 [http-nio-8080-exec-1] DEBUG dLog - Checking session status: 1 + userId: 2
+15:31:13.507 [http-nio-8080-exec-1] DEBUG dLog - Getting host user
+15:31:13.507 [http-nio-8080-exec-1] DEBUG dLog - Finding host Id by Group ID: 1
+15:31:13.508 [http-nio-8080-exec-1] DEBUG dLog - Getting Host user with Host Id: 1
+15:31:14.046 [http-nio-8080-exec-2] DEBUG dLog - Checking session status: 1
+15:31:14.049 [http-nio-8080-exec-2] DEBUG dLog - Checking session status: 1 + userId: 2
+15:31:14.053 [http-nio-8080-exec-2] DEBUG dLog - Getting host user
+15:31:14.053 [http-nio-8080-exec-2] DEBUG dLog - Finding host Id by Group ID: 1
+15:31:14.055 [http-nio-8080-exec-2] DEBUG dLog - Getting Host user with Host Id: 1
+15:31:43.151 [http-nio-8080-exec-3] DEBUG dLog - Responding to user in with session status false: WaitingRoomRequest(groupId=1, gameId=3, waitingUsername=testUser2, success=true)
+15:31:43.154 [http-nio-8080-exec-3] DEBUG dLog - Responding to user in session: WaitingRoomRequest(groupId=1, gameId=3, waitingUsername=testUser2, success=true)
+15:31:43.160 [http-nio-8080-exec-3] DEBUG dLog - Getting host user
+15:31:43.160 [http-nio-8080-exec-3] DEBUG dLog - Finding host Id by Group ID: 1
+15:31:43.162 [http-nio-8080-exec-3] DEBUG dLog - Getting Host user with Host Id: 1
+15:31:43.163 [http-nio-8080-exec-3] DEBUG dLog - Getting session details by group ID: 1
+15:31:43.164 [http-nio-8080-exec-3] DEBUG dLog - Getting group users associated by group Id: 1
+15:31:43.167 [http-nio-8080-exec-3] DEBUG dLog - Getting group users associated by group Id: 1
+15:31:56.768 [http-nio-8080-exec-4] DEBUG dLog - Checking session status: 1
+15:31:56.775 [http-nio-8080-exec-4] DEBUG dLog - Checking session status: 1 + userId: 2
+15:31:56.777 [http-nio-8080-exec-4] DEBUG dLog - Getting host user
+15:31:56.777 [http-nio-8080-exec-4] DEBUG dLog - Finding host Id by Group ID: 1
+15:31:56.778 [http-nio-8080-exec-4] DEBUG dLog - Getting Host user with Host Id: 1
+15:31:56.779 [http-nio-8080-exec-4] DEBUG dLog - Getting group users associated by group Id: 1
+15:32:22.815 [http-nio-8080-exec-5] DEBUG dLog - Creating user social: CreateSocialRequest(gameId=3, social=76561198051281395)
+15:32:22.841 [http-nio-8080-exec-5] DEBUG dLog - Getting user Steam Profile: Socials(userid=2, gameid=3, gamertag=76561198051281395)
+15:32:48.821 [http-nio-8080-exec-6] DEBUG dLog - Getting users social for game: 3
+15:32:48.828 [http-nio-8080-exec-6] DEBUG dLog - Getting userSocial
+15:32:48.832 [http-nio-8080-exec-6] DEBUG dLog - null
+com.revature.p2_lfg.service.profile.exception.InvalidRequestException: null
+	at java.util.Optional.orElseThrow(Optional.java:290)
+	at com.revature.p2_lfg.service.profile.classes.SocialsService.getUserSocial(SocialsService.java:69)
+	at com.revature.p2_lfg.service.profile.classes.SocialsService.getUserSocialResponse(SocialsService.java:51)
+	at com.revature.p2_lfg.presentation.controllers.SocialsController.getUserSocial(SocialsController.java:30)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:205)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:150)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:117)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:895)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:808)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1067)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:963)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006)
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:898)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:655)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:764)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:227)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:197)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:540)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:135)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:357)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:382)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:895)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1732)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.lang.Thread.run(Thread.java:748)
+15:32:53.568 [http-nio-8080-exec-7] DEBUG dLog - Getting users social for game: 1
+15:32:53.572 [http-nio-8080-exec-7] DEBUG dLog - Getting userSocial
+15:32:53.573 [http-nio-8080-exec-7] DEBUG dLog - null
+com.revature.p2_lfg.service.profile.exception.InvalidRequestException: null
+	at java.util.Optional.orElseThrow(Optional.java:290)
+	at com.revature.p2_lfg.service.profile.classes.SocialsService.getUserSocial(SocialsService.java:69)
+	at com.revature.p2_lfg.service.profile.classes.SocialsService.getUserSocialResponse(SocialsService.java:51)
+	at com.revature.p2_lfg.presentation.controllers.SocialsController.getUserSocial(SocialsController.java:30)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:205)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:150)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:117)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:895)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:808)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1067)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:963)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006)
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:898)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:655)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:764)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:227)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:197)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:540)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:135)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:357)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:382)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:895)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1732)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.lang.Thread.run(Thread.java:748)
+15:32:59.959 [http-nio-8080-exec-8] DEBUG dLog - Getting users social for game: 1
+15:32:59.963 [http-nio-8080-exec-8] DEBUG dLog - Getting userSocial
+15:32:59.964 [http-nio-8080-exec-8] DEBUG dLog - null
+com.revature.p2_lfg.service.profile.exception.InvalidRequestException: null
+	at java.util.Optional.orElseThrow(Optional.java:290)
+	at com.revature.p2_lfg.service.profile.classes.SocialsService.getUserSocial(SocialsService.java:69)
+	at com.revature.p2_lfg.service.profile.classes.SocialsService.getUserSocialResponse(SocialsService.java:51)
+	at com.revature.p2_lfg.presentation.controllers.SocialsController.getUserSocial(SocialsController.java:30)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:205)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:150)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:117)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:895)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:808)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1067)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:963)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006)
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:898)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:655)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:764)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:227)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:197)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:540)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:135)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:357)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:382)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:895)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1732)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.lang.Thread.run(Thread.java:748)
+15:33:11.973 [http-nio-8080-exec-9] DEBUG dLog - Getting users social for game: 3
+15:33:11.975 [http-nio-8080-exec-9] DEBUG dLog - Getting userSocial
+15:33:11.976 [http-nio-8080-exec-9] DEBUG dLog - Getting user Steam Profile: Socials(userid=2, gameid=3, gamertag=76561198051281395)
+15:33:31.944 [http-nio-8080-exec-10] DEBUG dLog - Creating user social: CreateSocialRequest(gameId=3, social=76561198051281395)
+15:33:47.570 [http-nio-8080-exec-2] DEBUG dLog - Creating user social: CreateSocialRequest(gameId=3, social=76561198051281395)
+15:33:47.581 [http-nio-8080-exec-2] DEBUG dLog - Getting user Steam Profile: Socials(userid=2, gameid=3, gamertag=76561198051281395)
+15:34:04.057 [http-nio-8080-exec-3] DEBUG dLog - Getting group socials: 6
+15:34:04.061 [http-nio-8080-exec-3] DEBUG dLog - Getting Group Socials
+15:34:04.061 [http-nio-8080-exec-3] DEBUG dLog - Getting group users associated by group Id: 6
+15:34:12.804 [http-nio-8080-exec-4] DEBUG dLog - Getting group socials: 1
+15:34:12.806 [http-nio-8080-exec-4] DEBUG dLog - Getting Group Socials
+15:34:12.806 [http-nio-8080-exec-4] DEBUG dLog - Getting group users associated by group Id: 1
+15:34:27.457 [http-nio-8080-exec-6] DEBUG dLog - Getting group socials: 1
+15:34:27.463 [http-nio-8080-exec-6] DEBUG dLog - Getting Group Socials
+15:34:27.463 [http-nio-8080-exec-6] DEBUG dLog - Getting group users associated by group Id: 1
+15:34:58.185 [http-nio-8080-exec-8] DEBUG dLog - Getting group socials: 1
+15:34:58.189 [http-nio-8080-exec-8] DEBUG dLog - Getting Group Socials
+15:34:58.189 [http-nio-8080-exec-8] DEBUG dLog - Getting group users associated by group Id: 1
+15:35:58.401 [http-nio-8080-exec-10] DEBUG dLog - Getting users social for game: 3
+15:35:58.410 [http-nio-8080-exec-10] DEBUG dLog - Getting userSocial
+15:35:58.412 [http-nio-8080-exec-10] DEBUG dLog - Getting user Steam Profile: Socials(userid=2, gameid=3, gamertag=76561198051281395)
+15:36:34.029 [http-nio-8080-exec-1] DEBUG dLog - Getting game sessions select list
+15:36:36.189 [http-nio-8080-exec-2] DEBUG dLog - Getting game group sessions by gameName: 3
+15:36:36.190 [http-nio-8080-exec-2] DEBUG dLog - Getting selected game groups: 3
+15:38:17.364 [http-nio-8080-exec-5] DEBUG dLog - Getting group socials: 1
+15:38:17.368 [http-nio-8080-exec-5] DEBUG dLog - Getting Group Socials
+15:38:17.368 [http-nio-8080-exec-5] DEBUG dLog - Getting group users associated by group Id: 1
+15:39:17.010 [http-nio-8080-exec-3] DEBUG dLog - Getting group socials: 1
+15:39:17.015 [http-nio-8080-exec-3] DEBUG dLog - Getting Group Socials
+15:39:17.015 [http-nio-8080-exec-3] DEBUG dLog - Getting group users associated by group Id: 1
+15:42:14.986 [http-nio-8080-exec-5] DEBUG dLog - Getting users social for game: 3
+15:42:14.992 [http-nio-8080-exec-5] DEBUG dLog - Getting userSocial
+15:42:14.993 [http-nio-8080-exec-5] DEBUG dLog - null
+com.revature.p2_lfg.service.profile.exception.InvalidRequestException: null
+	at java.util.Optional.orElseThrow(Optional.java:290)
+	at com.revature.p2_lfg.service.profile.classes.SocialsService.getUserSocial(SocialsService.java:69)
+	at com.revature.p2_lfg.service.profile.classes.SocialsService.getUserSocialResponse(SocialsService.java:51)
+	at com.revature.p2_lfg.presentation.controllers.SocialsController.getUserSocial(SocialsController.java:30)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:205)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:150)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:117)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:895)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:808)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1067)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:963)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006)
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:898)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:655)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:764)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:227)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:197)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:540)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:135)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:357)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:382)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:895)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1732)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.lang.Thread.run(Thread.java:748)
+15:42:24.573 [http-nio-8080-exec-6] DEBUG dLog - Creating user social: CreateSocialRequest(gameId=3, social=76561198051281395)
+15:42:24.578 [http-nio-8080-exec-6] DEBUG dLog - Getting user Steam Profile: Socials(userid=1, gameid=3, gamertag=76561198051281395)
+15:42:27.748 [http-nio-8080-exec-7] DEBUG dLog - Getting group socials: 1
+15:42:27.751 [http-nio-8080-exec-7] DEBUG dLog - Getting Group Socials
+15:42:27.751 [http-nio-8080-exec-7] DEBUG dLog - Getting group users associated by group Id: 1
+15:42:27.756 [http-nio-8080-exec-7] DEBUG dLog - Getting user Steam Profile: Socials(userid=1, gameid=3, gamertag=76561198051281395)
+15:42:27.884 [http-nio-8080-exec-7] DEBUG dLog - Getting user Steam Profile: Socials(userid=2, gameid=3, gamertag=76561198051281395)

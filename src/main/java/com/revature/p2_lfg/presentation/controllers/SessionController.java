@@ -38,7 +38,7 @@ public class SessionController {
         else return null;
     }
 
-    @PostMapping("/join")
+    @GetMapping("/join")
     public SessionResponse joinGroupSession(@RequestParam int groupId, @RequestParam int gameId, @RequestHeader("Authorization") String token){
         dLog.debug("Joining a group session: " + groupId);
         JWTInfo parsedJWT = JWTUtility.verifyUser(token);

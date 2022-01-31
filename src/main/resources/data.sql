@@ -61,29 +61,37 @@ tagID serial primary key,
 value varchar
 );
 create sequence lfg_tags_tagid_seq start with 1 increment by 1;
+
+create table project_two.tag_bridge_table(
+groupId integer,
+tagid integer,
+foreign key (tagId) references lfg_tags(tagid),
+foreign key (groupID) references lfg_group_information(groupID),
+primary key(groupId, tagId)
+);
 --
---insert into lfg_user_creds
---values
---	(default, 'user1', 'pass1'),
---	(default, 'user2', 'pass2'),
---	(default, 'user3', 'pass3'),
---	(default, 'user4', 'pass4'),
---	(default, 'user5', 'pass5');
+insert into lfg_user_creds
+values
+	(default, 'user1', 'pass1'),
+	(default, 'user2', 'pass2'),
+	(default, 'user3', 'pass3'),
+	(default, 'user4', 'pass4'),
+	(default, 'user5', 'pass5');
 --
---insert into lfg_user_profile
---	values
---	(default, 1, 'John1', 'Doe1', 'email11@email.com'),
---	(default, 2, 'John2', 'Doe2', 'email12@email.com'),
---	(default, 3, 'John3', 'Doe3', 'email13@email.com'),
---	(default, 4, 'John4', 'Doe4', 'email14@email.com'),
---	(default, 5, 'John5', 'Doe5', 'email15@email.com');
+insert into lfg_user_profile
+	values
+	(default, 1, 'John1', 'Doe1', 'email11@email.com'),
+	(default, 2, 'John2', 'Doe2', 'email12@email.com'),
+	(default, 3, 'John3', 'Doe3', 'email13@email.com'),
+	(default, 4, 'John4', 'Doe4', 'email14@email.com'),
+	(default, 5, 'John5', 'Doe5', 'email15@email.com');
 --
---insert into lfg_tags
---values
---	(default, 'ranked'),
---	(default, 'casual'),
---	(default, 'grind'),
---	(default, 'short');
+insert into lfg_tags
+values
+	(default, 'ranked'),
+	(default, 'casual'),
+	(default, 'grind'),
+	(default, 'short');
 --
 insert into project_two.lfg_games
 values
