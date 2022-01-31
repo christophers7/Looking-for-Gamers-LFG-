@@ -17,7 +17,12 @@ import { GameDisplayComponent } from './components/game-select/game-display/game
 import { GameCardComponent } from './components/game-select/game-card/game-card.component';
 import { ViewGameGroupsComponent } from './components/group/view-game-groups/view-game-groups.component';
 import { GroupCardComponent } from './components/group/group-card/group-card.component';
+<<<<<<< HEAD
 import { ApiViewComponent } from './components/api-view/api-view.component';
+=======
+import { HostViewComponent } from './components/host-group/host-view/host-view.component';
+import { CreateGroupComponent } from './components/host-group/create-group/create-group.component';
+>>>>>>> dev_branch
 
 @NgModule({
   declarations: [
@@ -31,7 +36,12 @@ import { ApiViewComponent } from './components/api-view/api-view.component';
     GameCardComponent,
     ViewGameGroupsComponent,
     GroupCardComponent,
+<<<<<<< HEAD
     ApiViewComponent
+=======
+    HostViewComponent,
+    CreateGroupComponent
+>>>>>>> dev_branch
   ],
   imports: [
     BrowserModule,

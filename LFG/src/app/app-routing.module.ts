@@ -24,11 +24,11 @@ const routes: Routes = [
   },
   {
     component: ProfileComponent,
-    path: 'profile'
+    path: 'main/profile'
   },
   {
     component: ModifyProfileComponent,
-    path: 'profile/modify'
+    path: 'main/profile/modify'
   },
   {
     component: GameDisplayComponent,
