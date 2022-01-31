@@ -57,6 +57,6 @@ public class LoginController {
 
     @ExceptionHandler(NullPointerException.class)
     public String handleNonNullException(){
-        return "Null value error";
+        return "User not found";
     }
 }

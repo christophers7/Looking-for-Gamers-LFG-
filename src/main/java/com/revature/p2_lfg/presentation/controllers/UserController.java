@@ -24,9 +24,7 @@ public class UserController {
     private LoginService loginService;
 
     @PostMapping("/update")
-    public ProfileResponse updateProfile(
-            @RequestHeader("Authorization") String token,
-            @RequestBody UpdateUserProfileRequest profile){
+    public ProfileResponse updateProfile(@RequestHeader("Authorization") String token, @RequestBody UpdateUserProfileRequest profile){
         dLog.debug("Attempting to update user profile: "  + profile);
         JWTInfo parsedJWT = JWTUtility.verifyUser(token);
         if(parsedJWT != null) return profileService.updateProfileWithRequest(profile, profileService.getUserProfile(parsedJWT.getUserId()));

@@ -5,18 +5,12 @@ import com.revature.p2_lfg.service.profile.classes.SocialsService;
 import com.revature.p2_lfg.service.social.SteamService;
 import com.revature.p2_lfg.utility.JWTInfo;
 import com.revature.p2_lfg.utility.JWTUtility;
-import com.revature.p2_lfg.utility.SteamDev;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.client.RestTemplate;
 
 @RestController("steamController")
 @RequestMapping("/steam")
 public class SteamController {
-
-
 
     @Autowired
     private SocialsService socialsService;
@@ -28,7 +22,6 @@ public class SteamController {
     private SteamService steamService;
 
     @GetMapping("/profile")
-
     public Object getSteamProfile(@RequestParam int gameId, @RequestHeader("Authorization") String token){
         JWTInfo parsedJWT = JWTUtility.verifyUser(token);
         if(parsedJWT != null) {

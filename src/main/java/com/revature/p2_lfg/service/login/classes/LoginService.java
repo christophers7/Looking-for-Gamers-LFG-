@@ -25,7 +25,16 @@ public class LoginService implements LoginServiceable {
 
     public UserCredential getUserCredentialFromLogin(LoginRequest loginRequest) {
         dLog.debug("Validating user login attempt: " + loginRequest);
-        return loginRepository.findByUsernameAndPassword(loginRequest.getUsername(), loginRequest.getPassword());
+        try{
+            return loginRepository.findByUsernameAndPassword(loginRequest.getUsername(), loginRequest.getPassword());
+        }catch(Exception e){
+            dLog.error(e.getMessage(), e);
+            return failResponse();
+        }
+    }
+
+    private UserCredential failResponse() {
+        return new UserCredential(0, "", "");
     }
 
     @Override

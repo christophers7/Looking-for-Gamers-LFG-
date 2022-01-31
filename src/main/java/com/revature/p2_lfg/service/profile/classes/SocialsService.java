@@ -3,8 +3,7 @@ package com.revature.p2_lfg.service.profile.classes;
 import com.revature.p2_lfg.presentation.models.profile.requests.CreateSocialRequest;
 import com.revature.p2_lfg.presentation.models.profile.requests.DeleteSocialRequest;
 import com.revature.p2_lfg.presentation.models.profile.requests.UpdateSocialRequest;
-import com.revature.p2_lfg.presentation.models.profile.responses.GroupSocialResponse;
-import com.revature.p2_lfg.presentation.models.profile.responses.UserSocialResponse;
+import com.revature.p2_lfg.presentation.models.profile.responses.SocialResponse;
 import com.revature.p2_lfg.repository.interfaces.LoginRepository;
 import com.revature.p2_lfg.repository.interfaces.SessionRepository;
 import com.revature.p2_lfg.repository.interfaces.SocialsRepository;
@@ -12,8 +11,11 @@ import com.revature.p2_lfg.repository.entities.session.Session;
 import com.revature.p2_lfg.repository.entities.user.Socials;
 import com.revature.p2_lfg.repository.entities.compositeKeys.SocialId;
 import com.revature.p2_lfg.repository.entities.user.UserCredential;
+import com.revature.p2_lfg.service.profile.exception.InvalidRequestException;
+import com.revature.p2_lfg.service.profile.exception.InvalidUserIdException;
 import com.revature.p2_lfg.service.profile.interfaces.SocialsServiceable;
 import com.revature.p2_lfg.service.session.dto.GroupUser;
+import com.revature.p2_lfg.service.social.SteamService;
 import com.revature.p2_lfg.utility.JWTInfo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -34,40 +36,54 @@ public class SocialsService implements SocialsServiceable {
     private SocialsRepository socialsRepository;
 
     @Autowired
+    private SteamService steamService;
+
+    @Autowired
     private SessionRepository sessionRepository;
 
     @Autowired
     private LoginRepository loginRepository;
 
     @Override
-    public UserSocialResponse getUserSocialResponse(JWTInfo parsedJWT, int gameId) {
+    public SocialResponse getUserSocialResponse(JWTInfo parsedJWT, int gameId) {
         dLog.debug("Getting userSocial");
-        return convertSocialToUserSocialResponse(getUserSocial(parsedJWT.getUserId(), gameId));
+        try{
+            return convertSocialToSocialResponse(getUserSocial(parsedJWT.getUserId(), gameId));
+        }catch(Exception e){
+            dLog.debug(e.getMessage(), e);
+            return failedSocialResponse();
+        }
     }
 
-    private UserSocialResponse convertSocialToUserSocialResponse(Socials userSocial) {
-        return new UserSocialResponse(
-              true,
-              userSocial
-        );
+    private SocialResponse failedSocialResponse() {
+        return new SocialResponse.SocialResponseBuilder(false, new Socials()).build();
+    }
+
+    private SocialResponse convertSocialToSocialResponse(Socials userSocial) {
+        return new SocialResponse.SocialResponseBuilder(true, userSocial)
+                .steamProfile(steamService.getSteamProfile(userSocial))
+                .build();
     }
 
     public Socials getUserSocial(int userId, int gameId) {
-        return socialsRepository.findById(new SocialId(userId, gameId)).orElse(null);
+        return socialsRepository.findById(new SocialId(userId, gameId)).orElseThrow(InvalidRequestException::new);
     }
 
     @Override
-    public GroupSocialResponse getGroupSocials(int gameId, int groupId, JWTInfo parsedJWT) {
+    public List<SocialResponse> getGroupSocials(int gameId, int groupId, JWTInfo parsedJWT) {
         dLog.debug("Getting Group Socials");
         List<GroupUser> groupUsers = getGroupMembersOfSession(groupId);
-        List<Socials> socials = new ArrayList<>();
+        List<SocialResponse> socials = new ArrayList<>();
         for (GroupUser groupUser : groupUsers) {
             if (groupUser.isInsideSession()){
                 int userId = loginRepository.findIdByUsername(groupUser.getUsername());
-                socials.add(socialsRepository.findById(new SocialId(userId, gameId)).orElse(null));
+                Socials social = socialsRepository.findById(new SocialId(userId, gameId)).orElseThrow(InvalidUserIdException::new);
+                socials.add( new SocialResponse.SocialResponseBuilder(true, social)
+                        .steamProfile(steamService.getSteamProfile(social))
+                        .build());
             }
         }
-        return new GroupSocialResponse(socials);
+        return socials;
     }
 
     private List<GroupUser> getGroupMembersOfSession(int groupId) {
@@ -82,13 +98,20 @@ public class SocialsService implements SocialsServiceable {
     }
 
     @Override
-    public UserSocialResponse createUserSocial(CreateSocialRequest socialRequest, JWTInfo parsedJWT) {
-        return convertSocialToUserSocialResponse(socialsRepository.save(new Socials(parsedJWT.getUserId(), socialRequest.getGameId(), socialRequest.getSocial())));
+    public SocialResponse createUserSocial(CreateSocialRequest socialRequest, JWTInfo parsedJWT) {
+        return convertSocialToSocialResponse(socialsRepository.save(new Socials(parsedJWT.getUserId(), socialRequest.getGameId(), socialRequest.getSocial())));
     }
 
     @Override
-    public UserSocialResponse updateUserSocial(UpdateSocialRequest updateSocial, JWTInfo parsedJWT) {
-        return null;
+    public SocialResponse updateUserSocial(UpdateSocialRequest updateSocial, JWTInfo parsedJWT) {
+        try{
+            Socials storedSocial = socialsRepository.findById(new SocialId(parsedJWT.getUserId(), updateSocial.getGameId())).orElseThrow(InvalidRequestException::new);
+            storedSocial.setGamertag(updateSocial.getSocial());
+            return new SocialResponse.SocialResponseBuilder(true, socialsRepository.save(storedSocial)).build();
+        }catch(Exception e){
+            dLog.error(e.getMessage(), e);
+            return new SocialResponse.SocialResponseBuilder(false, new Socials()).build();
+        }
     }
 
     @Override

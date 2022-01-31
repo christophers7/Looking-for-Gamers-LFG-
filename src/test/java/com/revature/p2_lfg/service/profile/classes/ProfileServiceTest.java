@@ -79,13 +79,7 @@ class ProfileServiceTest {
         );
 
 
-        profileResponse = new ProfileResponse(
-                storedUserProfile.getUsercredential().getUsername(),
-                storedUserProfile.getFirstname(),
-                storedUserProfile.getLastname(),
-                storedUserProfile.getEmail(),
-                JWT
-        );
+        profileResponse = new ProfileResponse.ProfileResponseBuilder(true, username, email, JWT).build();
 
         storedNewUserCredentials = new UserCredential(
                 3, "newUsername", "newPassword"
@@ -119,13 +113,7 @@ class ProfileServiceTest {
                 3, new UserCredential(parsedJWT.getUserId(), parsedJWT.getUsername(), "password"), updateUserProfileRequest.getFirstName(), updateUserProfileRequest.getLastName(), updateUserProfileRequest.getEmail()
         );
 
-        newProfileResponse = new ProfileResponse(
-                updatedUserProfile.getUsercredential().getUsername(),
-                updatedUserProfile.getFirstname(),
-                updatedUserProfile.getLastname(),
-                updatedUserProfile.getEmail(),
-                newJWT
-        );
+        newProfileResponse = new ProfileResponse.ProfileResponseBuilder(true, updatedUserProfile.getUsercredential().getUsername(), updatedUserProfile.getEmail(), newJWT).build();
 
         Mockito.when(userProfileRepository.findById(storedUserCredential.getUserid())).thenReturn(Optional.ofNullable(storedUserProfile));
         Mockito.when(userProfileRepository.save(new UserProfile(0,storedNewUserCredentials, "", "", newEmail))).thenReturn(storedNewProfile);
