@@ -38,19 +38,20 @@ public class ProfileService implements ProfileServiceable {
     public ProfileResponse convertUserProfileToProfileResponse(UserProfile userProfile) {
         dLog.debug("Converting User profile into profile Response: " + userProfile);
         String JWT = JWTUtility.generateJWT(userProfile);
-        return new ProfileResponse(
+        return new ProfileResponse
+                .ProfileResponseBuilder(
                 userProfile.getUsercredential().getUsername(),
-                userProfile.getFirstname(),
-                userProfile.getLastname(),
                 userProfile.getEmail(),
-                JWT
-        );
+                JWT)
+                .firstName(userProfile.getFirstname())
+                .lastName(userProfile.getLastname())
+                .build();
     }
 
     @Override
     public ProfileResponse newUserProfile(UserCredential newUserCredential, String email) {
         dLog.debug("Creating new UserProfile: " + newUserCredential + " " + email);
-        return convertUserProfileToProfileResponse(userProfileRepository.save(new UserProfile(0,newUserCredential,"empty","empty",email)));
+        return convertUserProfileToProfileResponse(userProfileRepository.save(new UserProfile(0,newUserCredential,"","",email)));
     }
 
     @Override

@@ -20,7 +20,7 @@ public class SessionController {
     private SessionService sessionService;
 
     @PostMapping("/host")
-    public CreatedGroupSessionResponse hostGroupSession(@RequestHeader("Authorization") String token, @RequestBody CreateGroupSessionRequest groupSession){
+    public SessionResponse hostGroupSession(@RequestHeader("Authorization") String token, @RequestBody CreateGroupSessionRequest groupSession){
         dLog.debug("Creating a group session: " + groupSession);
         JWTInfo parsedJWT = JWTUtility.verifyUser(token);
         if(parsedJWT != null) return sessionService.createGroupSession(groupSession, parsedJWT);
@@ -28,7 +28,7 @@ public class SessionController {
     }
 
     @GetMapping("/refresh")
-    public GroupSessionResponse refreshGroupSession(@RequestHeader("Authorization") String token, @RequestParam int groupId, @RequestParam int gameId){
+    public SessionResponse refreshGroupSession(@RequestHeader("Authorization") String token, @RequestParam int groupId, @RequestParam int gameId){
         dLog.debug("Refreshing members in group Session: " + groupId);
         JWTInfo parsedJWT = JWTUtility.verifyUser(token);
         if(parsedJWT != null) return sessionService.getGroupSession(groupId, gameId, parsedJWT);
@@ -36,7 +36,7 @@ public class SessionController {
     }
 
     @PostMapping("/join")
-    public JoinGroupSessionResponse joinGroupSession(@RequestParam int groupId, @RequestParam int gameId, @RequestHeader("Authorization") String token){
+    public SessionResponse joinGroupSession(@RequestParam int groupId, @RequestParam int gameId, @RequestHeader("Authorization") String token){
         dLog.debug("Joining a group session: " + groupId);
         JWTInfo parsedJWT = JWTUtility.verifyUser(token);
         if(parsedJWT != null) return sessionService.joinGroupSession(parsedJWT, groupId, gameId);
@@ -44,15 +44,23 @@ public class SessionController {
     }
 
     @GetMapping("/check")
-    public CheckWaitingRoomResponse waitingRoomResponse(@RequestHeader("Authorization") String token, @RequestParam int groupId){
+    public SessionResponse getWaitingRoomResponse(@RequestHeader("Authorization") String token, @RequestParam int groupId){
         dLog.debug("Checking session status: " + groupId);
         JWTInfo parsedJWT = JWTUtility.verifyUser(token);
         if(parsedJWT != null) return sessionService.checkSessionStatus(parsedJWT, groupId);
         else return null;
     }
 
+    @GetMapping("/member-check")
+    public SessionResponse getGroupMembers(@RequestHeader("Authorization") String token, @RequestParam int groupId){
+        dLog.debug("Checking session status: " + groupId);
+        JWTInfo parsedJWT = JWTUtility.verifyUser(token);
+        if(parsedJWT != null) return sessionService.getGroupMembersResponse(parsedJWT, groupId);
+        else return null;
+    }
+
     @PostMapping("/respond")
-    public WaitingRoomResponse respondToUser(@RequestHeader("Authorization") String token, @RequestBody WaitingRoomRequest roomRequest){
+    public SessionResponse respondToUser(@RequestHeader("Authorization") String token, @RequestBody WaitingRoomRequest roomRequest){
         dLog.debug("Responding to user in with session status false: " + roomRequest);
         JWTInfo parsedJWT = JWTUtility.verifyUser(token);
         if(parsedJWT != null) return sessionService.respondToUserSession(parsedJWT, roomRequest);
@@ -60,19 +68,19 @@ public class SessionController {
     }
 
     @DeleteMapping("/cancel")
-    public CancelGroupResponse cancelGroup(@RequestHeader("Authorization") String token, @RequestBody CancelGroupRequest cancelGroup){
+    public boolean cancelGroup(@RequestHeader("Authorization") String token, @RequestBody CancelGroupRequest cancelGroup){
         dLog.debug("Cancelling an active group session: " + cancelGroup);
         JWTInfo parsedJWT = JWTUtility.verifyUser(token);
         if(parsedJWT != null) return sessionService.cancelSession(parsedJWT, cancelGroup);
-        return null;
+        return false;
     }
 
     @DeleteMapping("/leave")
-    public LeaveGroupResponse leaveGroupSession(@RequestParam int groupId, @RequestParam int gameId, @RequestHeader("Authorization") String token){
+    public boolean leaveGroupSession(@RequestParam int groupId, @RequestParam int gameId, @RequestHeader("Authorization") String token){
         dLog.debug("Joining a group session: " + groupId);
         JWTInfo parsedJWT = JWTUtility.verifyUser(token);
         if(parsedJWT != null) return sessionService.leaveSession(parsedJWT, groupId, gameId);
-        return null;
+        return false;
     }
 
 }

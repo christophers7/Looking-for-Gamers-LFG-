@@ -34,8 +34,8 @@ public class LoginController {
 
     @PostMapping("/new")
     public ProfileResponse newLogin(@NonNull @RequestBody NewUserCredentialsRequest newUser) {
-        UserCredential userCredential = loginService.newAccount(newUser);
-        return profileService.newUserProfile(userCredential, newUser.getEmail());
+        dLog.debug("Creating new Login: " + newUser);
+        return profileService.newUserProfile(loginService.newAccount(newUser), newUser.getEmail());
     }
 
     @PutMapping("/update-password")
