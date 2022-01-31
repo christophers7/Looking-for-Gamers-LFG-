@@ -1,8 +1,7 @@
 package com.revature.p2_lfg.presentation.controllers;
 
 import com.revature.p2_lfg.presentation.models.login.*;
-import com.revature.p2_lfg.presentation.models.profile.ProfileResponse;
-import com.revature.p2_lfg.repository.entities.user.UserCredential;
+import com.revature.p2_lfg.presentation.models.profile.responses.ProfileResponse;
 import com.revature.p2_lfg.service.login.classes.LoginService;
 import com.revature.p2_lfg.service.profile.classes.ProfileService;
 import com.revature.p2_lfg.utility.JWTUtility;
@@ -34,8 +33,8 @@ public class LoginController {
 
     @PostMapping("/new")
     public ProfileResponse newLogin(@NonNull @RequestBody NewUserCredentialsRequest newUser) {
-        UserCredential userCredential = loginService.newAccount(newUser);
-        return profileService.newUserProfile(userCredential, newUser.getEmail());
+        dLog.debug("Creating new Login: " + newUser);
+        return profileService.newUserProfile(loginService.newAccount(newUser), newUser.getEmail());
     }
 
     @PutMapping("/update-password")
@@ -58,6 +57,6 @@ public class LoginController {
 
     @ExceptionHandler(NullPointerException.class)
     public String handleNonNullException(){
-        return "Null value error";
+        return "User not found";
     }
 }

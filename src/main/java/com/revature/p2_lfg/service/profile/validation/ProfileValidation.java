@@ -1,7 +1,9 @@
 package com.revature.p2_lfg.service.profile.validation;
 
-import com.revature.p2_lfg.presentation.models.profile.UpdateUserProfileRequest;
+import com.revature.p2_lfg.presentation.models.profile.responses.ProfileResponse;
+import com.revature.p2_lfg.presentation.models.profile.requests.UpdateUserProfileRequest;
 import com.revature.p2_lfg.service.login.exceptions.InvalidInputException;
+import com.revature.p2_lfg.utility.JWTUtility;
 
 import java.util.regex.Pattern;
 
@@ -39,4 +41,20 @@ public class ProfileValidation {
     }
 
 
+    public static void validateUsername(String username) {
+        if(username.contentEquals("")) throw new InvalidInputException("Empty new username input");
+        if(username.trim().length() < 2) throw new InvalidInputException("Too Short new username input");
+        if(username.trim().length() > 25) throw new InvalidInputException("Too Long new username input");
+    }
+
+    public static void validateProfileResponse(ProfileResponse response) {
+        try{
+            validateUsername(response.getUsername());
+            validateEmail(response.getEmail());
+            JWTUtility.verifyUser(response.getJWT());
+        }catch(NullPointerException e){
+            e.printStackTrace();
+            throw new InvalidInputException("NULL VALUE RECEIVED");
+        }
+    }
 }

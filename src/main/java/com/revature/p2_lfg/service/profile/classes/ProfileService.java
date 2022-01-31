@@ -1,10 +1,11 @@
 package com.revature.p2_lfg.service.profile.classes;
 
 import com.revature.p2_lfg.repository.interfaces.UserProfileRepository;
+import com.revature.p2_lfg.service.profile.exception.InvalidUserIdException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import com.revature.p2_lfg.presentation.models.profile.ProfileResponse;
-import com.revature.p2_lfg.presentation.models.profile.UpdateUserProfileRequest;
+import com.revature.p2_lfg.presentation.models.profile.responses.ProfileResponse;
+import com.revature.p2_lfg.presentation.models.profile.requests.UpdateUserProfileRequest;
 import com.revature.p2_lfg.repository.entities.user.UserCredential;
 import com.revature.p2_lfg.repository.entities.user.UserProfile;
 import com.revature.p2_lfg.service.login.exceptions.InvalidInputException;
@@ -26,31 +27,65 @@ public class ProfileService implements ProfileServiceable {
     @Override
     public ProfileResponse getProfileResponse(UserCredential userCredential) {
         dLog.debug("Getting Profile Response with User Credentials: " + userCredential);
-        return convertUserProfileToProfileResponse(userProfileRepository.findByUserId(userCredential.getUserid()).orElse(null));
+        try{
+            return convertUserProfileToProfileResponse(userProfileRepository.findByUserId(userCredential.getUserid()).orElseThrow(InvalidUserIdException::new));
+        }catch(Exception e){
+            dLog.error(e.getMessage(), e);
+            return failResponse();
+        }
     }
 
     public UserProfile getUserProfile(int userId) {
         dLog.debug("Getting User Profile: " + userId);
-        return userProfileRepository.findByUserId(userId).orElse(null);
+        return userProfileRepository.findByUserId(userId).orElseThrow(InvalidUserIdException::new);
     }
 
     @Override
     public ProfileResponse convertUserProfileToProfileResponse(UserProfile userProfile) {
         dLog.debug("Converting User profile into profile Response: " + userProfile);
-        String JWT = JWTUtility.generateJWT(userProfile);
-        return new ProfileResponse(
+        try{
+            String JWT = JWTUtility.generateJWT(userProfile);
+            return new ProfileResponse
+                    .ProfileResponseBuilder(
+                    true,
+                    userProfile.getUsercredential().getUsername(),
+                    userProfile.getEmail(),
+                    JWT)
+                    .firstName(userProfile.getFirstname())
+                    .lastName(userProfile.getLastname())
+                    .build();
+        }catch(Exception e){
+            dLog.error(e.getMessage(), e);
+            return failResponse();
+        }
+    }
+
+    private ProfileResponse failResponse() {
+        return new ProfileResponse.ProfileResponseBuilder(
+                false,
+                "failed to get username",
+                "failed@email.com",
+                "fail"
+        ).build();
+    }
+
+
+    private ProfileResponse failProfileResponse(UserProfile userProfile){
+        return new ProfileResponse
+                .ProfileResponseBuilder(
+                false,
                 userProfile.getUsercredential().getUsername(),
-                userProfile.getFirstname(),
-                userProfile.getLastname(),
                 userProfile.getEmail(),
-                JWT
-        );
+                JWTUtility.generateJWT(userProfile))
+                .firstName(userProfile.getFirstname())
+                .lastName(userProfile.getLastname())
+                .build();
     }
 
     @Override
     public ProfileResponse newUserProfile(UserCredential newUserCredential, String email) {
         dLog.debug("Creating new UserProfile: " + newUserCredential + " " + email);
-        return convertUserProfileToProfileResponse(userProfileRepository.save(new UserProfile(0,newUserCredential,"empty","empty",email)));
+        return convertUserProfileToProfileResponse(userProfileRepository.save(new UserProfile(0,newUserCredential,"","",email)));
     }
 
     @Override
@@ -65,7 +100,7 @@ public class ProfileService implements ProfileServiceable {
         } catch (InvalidInputException e) {
             dLog.debug("Invalid Input for Updating User Profile: " + updateUserProfileRequest);
             dLog.error(e.getMessage(), e);
-            return null;
+            return failProfileResponse(storedUserProfile);
         }
     }
 }

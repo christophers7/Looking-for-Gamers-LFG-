@@ -25,7 +25,16 @@ public class LoginService implements LoginServiceable {
 
     public UserCredential getUserCredentialFromLogin(LoginRequest loginRequest) {
         dLog.debug("Validating user login attempt: " + loginRequest);
-        return loginRepository.findByUsernameAndPassword(loginRequest.getUsername(), loginRequest.getPassword());
+        try{
+            return loginRepository.findByUsernameAndPassword(loginRequest.getUsername(), loginRequest.getPassword());
+        }catch(Exception e){
+            dLog.error(e.getMessage(), e);
+            return failResponse();
+        }
+    }
+
+    private UserCredential failResponse() {
+        return new UserCredential(0, "", "");
     }
 
     @Override
@@ -42,17 +51,11 @@ public class LoginService implements LoginServiceable {
     @Override
     public boolean updateUserCredentialUsername(UpdateUsernameRequest updateUserCredentialRequest, JWTInfo parsedJWT) {
         dLog.debug("Attempting to update User name: " + updateUserCredentialRequest);
-        try{
-            LoginValidation.validateUsername(updateUserCredentialRequest.getUsername());
-            UserCredential storedUser = getUserWithUserID(parsedJWT.getUserId());
-            storedUser.setUsername(updateUserCredentialRequest.getUsername());
-            loginRepository.save(storedUser);
-            iLog.info("Updated username, userID: " + parsedJWT.getUserId());
-            return true;
-        } catch (InvalidInputException e) {
-            dLog.error(e.getMessage(), e);
-            return false;
-        }
+        UserCredential user = getUserWithUserID(parsedJWT.getUserId());
+        return updateProfile(
+                user,
+                updateUserCredentialRequest.getUsername(),
+                user.getPassword()) != null;
     }
 
     public UserCredential getUserWithUserID(int userId) {
@@ -63,36 +66,40 @@ public class LoginService implements LoginServiceable {
     @Override
     public boolean resetPassword(ResetPasswordRequest resetPasswordRequest) {
         dLog.debug("Attempting to reset UserPassword: " + resetPasswordRequest);
-        try{
-            byte[] array = new byte[7]; // length is bounded by 7
-            new Random().nextBytes(array);
-            String generatedString = new String(array, StandardCharsets.UTF_8);
-            UserCredential storedUserCredential = loginRepository.findByUsername(resetPasswordRequest.getUsername());
-            storedUserCredential.setPassword(generatedString);
-            loginRepository.save(storedUserCredential);
-            iLog.info("Reset password for user: " + resetPasswordRequest);
-            return true;
-        }catch (Exception e){
-            dLog.error(e.getMessage(), e);
-            return false;
-        }
+        return updateProfile(
+                getUserWithUsername(resetPasswordRequest.getUsername()),
+                resetPasswordRequest.getUsername(),
+                getGeneratedString()) != null;
+    }
 
+    private String getGeneratedString() {
+        Random random = new Random();
+        random.nextInt(100000);
+        return String.valueOf(random);
+    }
+
+    private UserCredential updateProfile(UserCredential credentials, String username, String password){
+        dLog.debug("Updating Profile: " + credentials + " - Username: " + username + " - Password: " + password);
+        LoginValidation.validateUsername(username);
+        LoginValidation.validatePassword(password);
+        credentials.setUsername(username);
+        credentials.setPassword(password);
+        return loginRepository.save(credentials);
+    }
+
+    private UserCredential getUserWithUsername(String username) {
+        dLog.debug("Getting User Credentials with username");
+        return loginRepository.findByUsername(username);
     }
 
     @Override
     public boolean updateUserCredentialPassword(UpdatePasswordRequest updateUserCredentialRequest, JWTInfo parsedJWT) {
         dLog.debug("Attempting to update password: " + updateUserCredentialRequest);
-        try{
-            LoginValidation.validatePassword(updateUserCredentialRequest.getPassword());
-            UserCredential storedUser = getUserWithUserID(parsedJWT.getUserId());
-            storedUser.setPassword(updateUserCredentialRequest.getPassword());
-            loginRepository.save(storedUser);
-            iLog.info("Updated password, userID: " + parsedJWT.getUserId());
-            return true;
-        } catch (InvalidInputException e) {
-            dLog.error(e.getMessage(), e);
-            return false;
-        }
+        UserCredential user = getUserWithUserID(parsedJWT.getUserId());
+        return updateProfile(
+                user,
+                user.getUsername(),
+                updateUserCredentialRequest.getPassword()) != null;
     }
 
 }

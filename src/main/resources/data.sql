@@ -19,6 +19,7 @@ create sequence lfg_user_profile_columnid_seq start with 1 increment by 1;
 
 create table project_two.lfg_games(
 gameID serial primary key,
+platformkey integer,
 gameTitle varchar unique not null,
 imgLink varchar
 );
@@ -84,10 +85,16 @@ create sequence lfg_tags_tagid_seq start with 1 increment by 1;
 --	(default, 'grind'),
 --	(default, 'short');
 --
---insert into lfg_games
---values
---	(default, 'Apex Legends', 'https://media.contentapi.ea.com/content/dam/apex-legends/images/2019/01/apex-featured-image-16x9.jpg.adapt.crop16x9.1023w.jpg'),
---	(default, 'League of Legends', 'https://cdn1.epicgames.com/salesEvent/salesEvent/EGS_LeagueofLegends_RiotGames_S1_2560x1440-ee500721c06da3ec1e5535a88588c77f?h=270&resize=1&w=480');
+insert into project_two.lfg_games
+values
+	(default, 1172470 ,'Apex Legends', 'https://media.contentapi.ea.com/content/dam/apex-legends/images/2019/01/apex-featured-image-16x9.jpg.adapt.crop16x9.1023w.jpg');
+insert into project_two.lfg_games
+    values
+	(default, 404, 'League of Legends', 'https://cdn1.epicgames.com/salesEvent/salesEvent/EGS_LeagueofLegends_RiotGames_S1_2560x1440-ee500721c06da3ec1e5535a88588c77f?h=270&resize=1&w=480');
+
+insert into project_two.lfg_games
+    values
+	(default, 730, 'Counter Strike: Global Offensive', 'https://cdn.akamai.steamstatic.com/steam/apps/730/capsule_616x353.jpg?t=1635269541');
 --
 --insert into lfg_group_information
 --values

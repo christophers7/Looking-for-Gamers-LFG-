@@ -5,7 +5,7 @@ import org.junit.jupiter.api.TestInstance;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.NullAndEmptySource;
 import org.junit.jupiter.params.provider.ValueSource;
-import com.revature.p2_lfg.presentation.models.profile.UpdateUserProfileRequest;
+import com.revature.p2_lfg.presentation.models.profile.requests.UpdateUserProfileRequest;
 import com.revature.p2_lfg.service.login.exceptions.InvalidInputException;
 import org.springframework.boot.test.context.SpringBootTest;
 
