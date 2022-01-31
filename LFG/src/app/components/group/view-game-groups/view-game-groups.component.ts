@@ -18,7 +18,6 @@ export class ViewGameGroupsComponent implements OnInit {
 
   constructor(
     private tokenStorage: TokenStorageService,
-    private gameGroupService: GameGroupService,
     private userService: UserService
   ) { }
 
@@ -32,7 +31,7 @@ export class ViewGameGroupsComponent implements OnInit {
 
   getGroupSessions(){
     
-    this.userService.generateGroupsForGame(this.gameId)
+    this.userService.getSelectedGame(this.gameId)
       .subscribe(
         (data) => {
           this.groupSessions = data;

@@ -128,7 +128,7 @@ export class ModifyProfileComponent implements OnInit {
       tempUser._password = passW;
     }
     console.log(tempUser)
-    if(userN || firstN || lastN || eMail || passW) {
+    if(eMail) {
       this.userService.updateUser(tempUser).subscribe(
         (data) => {
           this.tokenStorage.saveToken(data.jwt);

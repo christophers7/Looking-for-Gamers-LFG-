@@ -21,6 +21,14 @@ export class UserService {
     return this.http.post(API_URL + 'update', JSON.stringify(data)); 
   }
 
+  generateGames(): Observable<any> {
+    return this.http.get(API_URL + "game/available")
+  }
+
+  getSelectedGame(gameId: number): Observable<any> {
+    return this.http.get(API_URL + 'game/select?gameId=' + gameId)
+  }
+
   generateGroupsForGame(gameId: number): Observable<any> {
     return this.http.post(API_URL, JSON.stringify(gameId))
   }
@@ -30,11 +38,23 @@ export class UserService {
   }
 
   requestToJoinGroup(group: Group): Observable<any> {
-    return this.http.post(API_URL ,JSON.stringify(group.groupID))
+    return this.http.post(API_URL + 'group/join?groupId=' + group.groupID + '&gameId=' + group.gameId, JSON.stringify(group))
+  }
+
+  leaveGroup(group: Group): Observable<any> {
+    return this.http.delete(API_URL + 'group/leave?groupId=' + group.groupID + '&gameId=' + group.gameId)
+  }
+
+  leaveAllWaitingList(): Observable<any> {
+    return this.http.get(API_URL)
   }
 
   createGroup(group: Group): Observable<any> {
-    return this.http.put(API_URL, JSON.stringify(group))
+    return this.http.post(API_URL + 'group/host', JSON.stringify(group))
+  }
+
+  refreshGroupMemberList(group: Group): Observable<any> {
+    return this.http.get(API_URL + 'group/refresh?groupId=' + group.groupID + '&gameId=' + group.gameId)
   }
 
   acceptApplicant(applicant: GroupUser): Observable<any> {

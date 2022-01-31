@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 
 const TOKEN_KEY = 'auth-token';
 const USER_KEY = 'auth-user';
+const SELETED_GAME = 'sel-game';
 
 @Injectable({
   providedIn: 'root'
@@ -34,5 +35,14 @@ export class TokenStorageService {
     }
 
     return {};
+  }
+
+  public saveGame(game: string): void {
+    window.sessionStorage.removeItem(SELETED_GAME);
+    window.sessionStorage.setItem(SELETED_GAME, game);
+  }
+
+  public getGame(): string | null {
+    return window.sessionStorage.getItem(SELETED_GAME);
   }
 }

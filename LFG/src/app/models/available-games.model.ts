@@ -6,10 +6,10 @@ export class AvailableGames {
         private _gameUrl: string,
         private _currentGroups: number
     ){
-        this.gameId = _gameId;
-        this.gameName = _gameName;
-        this.gameUrl = _gameUrl;
-        this.currentGroups = _currentGroups;
+        this._gameId = _gameId;
+        this._gameName = _gameName;
+        this._gameUrl = _gameUrl;
+        this._currentGroups = _currentGroups;
     }
 
     public get gameId(): number {
