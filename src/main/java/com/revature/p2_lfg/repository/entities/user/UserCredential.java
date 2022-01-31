@@ -17,7 +17,7 @@ import javax.persistence.*;
 public class UserCredential {
     @Id
     @Column(name = "userid")
-    @GeneratedValue(generator = "lfg_user_creds_user_id_seq", strategy = GenerationType.AUTO)
+    @GeneratedValue(generator = "lfg_user_creds_user_id_seq", strategy = GenerationType.SEQUENCE)
     @SequenceGenerator(allocationSize = 1, name = "lfg_user_creds_user_id_seq", sequenceName = "lfg_user_creds_user_id_seq")
     int userid;
     @Column(name = "userlogin")

@@ -1,5 +1,6 @@
 package com.revature.p2_lfg.service.login.validation;
 
+import com.revature.p2_lfg.service.login.validation.LoginValidation;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
