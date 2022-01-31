@@ -1,4 +1,4 @@
-package com.revature.p2_lfg.presentation.models.session;
+package com.revature.p2_lfg.presentation.models.session.response;
 
 
 import com.revature.p2_lfg.repository.entities.session.SessionDetails;

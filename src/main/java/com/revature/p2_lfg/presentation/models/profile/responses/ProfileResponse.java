@@ -1,10 +1,9 @@
-package com.revature.p2_lfg.presentation.models.profile;
+package com.revature.p2_lfg.presentation.models.profile.responses;
 
 import com.revature.p2_lfg.service.profile.validation.ProfileValidation;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
-import java.util.Objects;
 @Getter
 @ToString
 @EqualsAndHashCode

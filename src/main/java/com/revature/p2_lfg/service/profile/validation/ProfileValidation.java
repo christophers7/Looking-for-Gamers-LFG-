@@ -1,7 +1,7 @@
 package com.revature.p2_lfg.service.profile.validation;
 
-import com.revature.p2_lfg.presentation.models.profile.ProfileResponse;
-import com.revature.p2_lfg.presentation.models.profile.UpdateUserProfileRequest;
+import com.revature.p2_lfg.presentation.models.profile.responses.ProfileResponse;
+import com.revature.p2_lfg.presentation.models.profile.requests.UpdateUserProfileRequest;
 import com.revature.p2_lfg.service.login.exceptions.InvalidInputException;
 import com.revature.p2_lfg.utility.JWTUtility;
 

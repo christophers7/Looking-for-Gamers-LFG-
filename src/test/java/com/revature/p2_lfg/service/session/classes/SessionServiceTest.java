@@ -1,6 +1,10 @@
 package com.revature.p2_lfg.service.session.classes;
 
-import com.revature.p2_lfg.presentation.models.session.*;
+import com.revature.p2_lfg.presentation.models.session.requests.CancelGroupRequest;
+import com.revature.p2_lfg.presentation.models.session.requests.CreateGroupSessionRequest;
+import com.revature.p2_lfg.presentation.models.session.requests.JoinGroupSessionRequest;
+import com.revature.p2_lfg.presentation.models.session.requests.WaitingRoomRequest;
+import com.revature.p2_lfg.presentation.models.session.response.SessionResponse;
 import com.revature.p2_lfg.repository.interfaces.LoginRepository;
 import com.revature.p2_lfg.repository.interfaces.SessionDetailsRepository;
 import com.revature.p2_lfg.repository.interfaces.SessionRepository;
@@ -11,7 +15,6 @@ import com.revature.p2_lfg.repository.entities.session.SessionDetails;
 import com.revature.p2_lfg.repository.entities.session.Tag;
 import com.revature.p2_lfg.repository.entities.user.UserCredential;
 import com.revature.p2_lfg.service.session.dto.GroupUser;
-import com.revature.p2_lfg.service.session.validation.SessionResponseValidation;
 import com.revature.p2_lfg.utility.JWTInfo;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

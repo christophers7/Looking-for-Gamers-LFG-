@@ -1,6 +1,9 @@
 package com.revature.p2_lfg.service.session.interfaces;
 
-import com.revature.p2_lfg.presentation.models.session.*;
+import com.revature.p2_lfg.presentation.models.session.requests.CancelGroupRequest;
+import com.revature.p2_lfg.presentation.models.session.requests.CreateGroupSessionRequest;
+import com.revature.p2_lfg.presentation.models.session.requests.WaitingRoomRequest;
+import com.revature.p2_lfg.presentation.models.session.response.SessionResponse;
 import com.revature.p2_lfg.service.session.MaxUsersException;
 import com.revature.p2_lfg.service.session.exception.InvalidHostUserException;
 import com.revature.p2_lfg.service.session.exception.InvalidSessionDetailsException;

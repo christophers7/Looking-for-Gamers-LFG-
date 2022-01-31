@@ -1,4 +1,4 @@
-package com.revature.p2_lfg.presentation.models.profile;
+package com.revature.p2_lfg.presentation.models.session.requests;
 
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
@@ -10,7 +10,9 @@ import lombok.experimental.FieldDefaults;
 @NoArgsConstructor
 @AllArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class CreateSocialRequest {
+public class WaitingRoomRequest {
+    int groupId;
     int gameId;
-    String social;
+    String waitingUsername;
+    boolean success;
 }

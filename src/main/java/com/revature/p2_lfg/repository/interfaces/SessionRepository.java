@@ -36,7 +36,8 @@ public interface SessionRepository extends JpaRepository<Session, GroupSessionId
     @Query("delete from Session s where s.userid = ?1 and s.groupsession.groupid = ?2")
     void deleteByUserIdAndGroupId(int userId, int groupid);
 
-    List<Session> findAllByGroupIdAndInsession(int groupId, boolean insession);
+    @Query("select s from Session s where s.groupsession.groupid = ?1 and s.insession = ?2")
+    List<Session> findByGroupIdAndInsession(int groupId, boolean insession);
 
     Session findFirst1ByHostid(int hostid);
 }

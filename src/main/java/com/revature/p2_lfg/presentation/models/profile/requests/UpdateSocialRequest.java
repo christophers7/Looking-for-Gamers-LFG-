@@ -1,4 +1,4 @@
-package com.revature.p2_lfg.presentation.models.profile;
+package com.revature.p2_lfg.presentation.models.profile.requests;
 
 import lombok.*;
 import lombok.experimental.FieldDefaults;
@@ -7,5 +7,5 @@ import lombok.experimental.FieldDefaults;
 @Data
 @NoArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class DeleteSocialRequest extends CreateSocialRequest{
+public class UpdateSocialRequest extends CreateSocialRequest {
 }

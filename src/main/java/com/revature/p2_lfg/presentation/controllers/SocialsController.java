@@ -1,6 +1,10 @@
 package com.revature.p2_lfg.presentation.controllers;
 
-import com.revature.p2_lfg.presentation.models.profile.*;
+import com.revature.p2_lfg.presentation.models.profile.requests.CreateSocialRequest;
+import com.revature.p2_lfg.presentation.models.profile.requests.DeleteSocialRequest;
+import com.revature.p2_lfg.presentation.models.profile.requests.UpdateSocialRequest;
+import com.revature.p2_lfg.presentation.models.profile.responses.GroupSocialResponse;
+import com.revature.p2_lfg.presentation.models.profile.responses.UserSocialResponse;
 import com.revature.p2_lfg.service.profile.classes.SocialsService;
 import com.revature.p2_lfg.utility.JWTInfo;
 import com.revature.p2_lfg.utility.JWTUtility;

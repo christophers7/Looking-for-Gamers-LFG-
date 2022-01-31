@@ -1,6 +1,9 @@
 package com.revature.p2_lfg.service.session.classes;
 
-import com.revature.p2_lfg.presentation.models.session.*;
+import com.revature.p2_lfg.presentation.models.session.requests.CancelGroupRequest;
+import com.revature.p2_lfg.presentation.models.session.requests.CreateGroupSessionRequest;
+import com.revature.p2_lfg.presentation.models.session.requests.WaitingRoomRequest;
+import com.revature.p2_lfg.presentation.models.session.response.SessionResponse;
 import com.revature.p2_lfg.repository.interfaces.LoginRepository;
 import com.revature.p2_lfg.repository.interfaces.SessionDetailsRepository;
 import com.revature.p2_lfg.repository.interfaces.SessionRepository;
@@ -39,10 +42,30 @@ import java.util.*;
 
     public SessionResponse createGroupSession(CreateGroupSessionRequest createGroup, JWTInfo parsedJWT) {
         dLog.debug("Creating group session response from group create request: " + createGroup);
-        SessionDetails sessionDetails = createGroupSessionInDatabase(createGroup.getGameId() , createGroup.getMaxUsers(), createGroup.getDescription());
-        createUserSession(sessionDetails, parsedJWT, parsedJWT.getUserId(), true);
-        return new SessionResponse.SessionResponseBuilder(getHostUserWithGroupId(sessionDetails.getGroupid()), sessionDetails).build();
+        SessionDetails sessionDetails;
+        try {
+            sessionDetails = createGroupSessionInDatabase(createGroup.getGameId(), createGroup.getMaxUsers(), createGroup.getDescription());
+            createUserSession(sessionDetails, parsedJWT, parsedJWT.getUserId(), true);
+            GroupUser host = getHostUserWithGroupId(sessionDetails.getGroupid());
+            return new SessionResponse.SessionResponseBuilder(host, sessionDetails)
+                    .success(true)
+                    .groupId(sessionDetails.getGroupid())
+                    .gameId(sessionDetails.getGame().getGameid())
+                    .groupMembers(Collections.singletonList(host))
+                    .waitingMembers(new ArrayList<GroupUser>())
+                    .build();
+        } catch (Exception e){
+            dLog.error(e.getMessage(),e);
+            return failSessionResponse();
+        }
     }
+
+    private SessionResponse failSessionResponse(){
+        return new SessionResponse.SessionResponseBuilder(new GroupUser(), new SessionDetails())
+                .success(false)
+                .build();
+    }
+
 
     @Override
     public SessionResponse joinGroupSession(JWTInfo parsedJWT, int groupId, int gameId) throws MaxUsersException {
@@ -52,20 +75,29 @@ import java.util.*;
 
     private SessionResponse enterWaitingRoom(int groupId, JWTInfo parsedJWT) {
         dLog.debug("Attempting to enter waiting room: " + groupId);
-        SessionDetails sessionDetails = getSessionDetailsByGroupId(groupId);
-        createUserSession(sessionDetails, parsedJWT, findByHostId(groupId),  false);
-        return new SessionResponse.SessionResponseBuilder(getHostUserWithGroupId(groupId), sessionDetails)
-                .groupMembers(getGroupMembersOfSession(groupId))
-                .build();
+        SessionDetails sessionDetails;
+        try{
+            sessionDetails = getSessionDetailsByGroupId(groupId);
+            createUserSession(sessionDetails, parsedJWT, findByHostId(groupId),  false);
+            return new SessionResponse.SessionResponseBuilder(getHostUserWithGroupId(groupId), sessionDetails)
+                    .success(true)
+                    .groupId(groupId)
+                    .gameId(sessionDetails.getGame().getGameid())
+                    .groupMembers(getGroupMembersOfSession(groupId))
+                    .waitingMembers(new ArrayList<GroupUser>())
+                    .build();
+        } catch (Exception e){
+            dLog.error(e.getMessage(),e);
+            return failSessionResponse();
+        }
     }
 
     private GroupUser getHostUserWithGroupId(int groupId) {
         dLog.debug("Getting host user");
-        GroupUser host = new GroupUser();
-        host.setUsername(getHostUserWithId(findByHostId(groupId)).getUsername());
-        host.setGroupId(groupId);
-        host.setInsideSession(true);
-        return host;
+        return new GroupUser(
+                getHostUserWithId(findByHostId(groupId)).getUsername(),
+                groupId,
+                true);
     }
 
     private UserCredential getHostUserWithId(int hostId) {
@@ -84,7 +116,7 @@ import java.util.*;
 
     private List<GroupUser> getGroupMembersOfSession(int groupId) {
         dLog.debug("Getting group users associated by group Id: " + groupId);
-        List<Session> userInSession = sessionRepository.findAllByGroupIdAndInsession(groupId, true);
+        List<Session> userInSession = sessionRepository.findByGroupIdAndInsession(groupId, true);
         List<GroupUser> groupUsers = new ArrayList<>();
         userInSession.forEach(s -> {
             Optional<UserCredential> user = loginRepository.findById(s.getUserid());
@@ -95,7 +127,7 @@ import java.util.*;
 
     private List<GroupUser> getWaitingMembersOfSession(int groupId) {
         dLog.debug("Getting group users associated by group Id: " + groupId);
-        List<Session> userInSession = sessionRepository.findAllByGroupIdAndInsession(groupId, false);
+        List<Session> userInSession = sessionRepository.findByGroupIdAndInsession(groupId, false);
         List<GroupUser> groupUsers = new ArrayList<>();
         userInSession.forEach(s -> {
             Optional<UserCredential> user = loginRepository.findById(s.getUserid());
@@ -137,10 +169,14 @@ import java.util.*;
     private SessionResponse createWaitingRoomResponse(Session session) {
         if(session.isInsession()) return new SessionResponse.SessionResponseBuilder( getHostUserWithGroupId(session.getGroupsession().getGroupid()), session.getGroupsession())
                 .success(session.isInsession())
+                .groupId(session.getGroupsession().getGroupid())
+                .gameId(session.getGroupsession().getGame().getGameid())
                 .groupMembers(getGroupMembersOfSession(session.getGroupsession().getGroupid()))
                 .build();
         else return new SessionResponse.SessionResponseBuilder( getHostUserWithGroupId(session.getGroupsession().getGroupid()), session.getGroupsession())
                 .success(session.isInsession())
+                .groupId(session.getGroupsession().getGroupid())
+                .gameId(session.getGroupsession().getGame().getGameid())
                 .build();
     }
 
@@ -167,6 +203,8 @@ import java.util.*;
         }
         return new SessionResponse.SessionResponseBuilder(getHostUserWithGroupId(groupId), getSessionDetailsByGroupId(groupId))
                 .success(roomRequest.isSuccess())
+                .groupId(groupId)
+                .gameId(roomRequest.getGameId())
                 .groupMembers(getGroupMembersOfSession(groupId))
                 .waitingMembers(getWaitingMembersOfSession(groupId))
                 .build();
@@ -200,17 +238,36 @@ import java.util.*;
     @Override
     public SessionResponse getGroupSession(int groupId, int gameId, JWTInfo parsedJWT) {
         dLog.debug("Attempting to get Group Session: " + groupId);
-        return new SessionResponse.SessionResponseBuilder(getHostUserWithGroupId(groupId), getSessionDetailsByGroupId(groupId))
-                .groupMembers(getGroupMembersOfSession(groupId))
-                .waitingMembers(getWaitingMembersOfSession(groupId))
-                .build();
+        try{
+            List<GroupUser> members = getGroupMembersOfSession(groupId);
+            List<GroupUser> waitingMember = getWaitingMembersOfSession(groupId);
+            return new SessionResponse.SessionResponseBuilder(getHostUserWithGroupId(groupId), getSessionDetailsByGroupId(groupId))
+                    .success(true)
+                    .groupId(groupId)
+                    .gameId(gameId)
+                    .groupMembers(members)
+                    .waitingMembers(waitingMember)
+                    .build();
+        } catch (Exception e){
+            dLog.error(e.getMessage(),e);
+            return failSessionResponse();
+        }
     }
 
     @Override
     public SessionResponse getGroupMembersResponse(JWTInfo parsedJWT, int groupId) {
         dLog.debug("Getting group members with group Id: " + groupId);
-        return new SessionResponse.SessionResponseBuilder(getHostUserWithGroupId(groupId), getSessionDetailsByGroupId(groupId))
-                .groupMembers(getGroupMembersOfSession(groupId))
-                .build();
+        try{
+            SessionDetails sessionDetails = getSessionDetailsByGroupId(groupId);
+            return new SessionResponse.SessionResponseBuilder(getHostUserWithGroupId(groupId), sessionDetails)
+                    .success(true)
+                    .groupId(groupId)
+                    .gameId(sessionDetails.getGame().getGameid())
+                    .groupMembers(getGroupMembersOfSession(groupId))
+                    .build();
+        } catch (Exception e){
+            dLog.error(e.getMessage(),e);
+            return failSessionResponse();
+        }
     }
 }
