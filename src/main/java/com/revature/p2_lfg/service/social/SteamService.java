@@ -11,16 +11,12 @@ import org.springframework.web.client.RestTemplate;
 @Service("steamService")
 public class SteamService {
 
-    private final Logger iLog = LoggerFactory.getLogger("iLog");
-    private final Logger dLog = LoggerFactory.getLogger("dLog");
-
     @Autowired
     private GameService gameService;
 
     private final String steamKey = "key=9AEEA5F03CDDB51E2408BBAA26EB114F";
 
     public Object getSteamProfile(Socials userSocial) {
-        dLog.debug("Getting user Steam Profile: " + userSocial);
         String userId = userSocial.getGamertag();
         RestTemplate restTemplate = new RestTemplate();
         String url = "http://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0001/?" + steamKey
@@ -29,7 +25,6 @@ public class SteamService {
     }
 
     public Object getSteamAchievements(Socials userSocial) {
-        dLog.debug("Getting user steam achievements: " + userSocial);
         int platformKey = gameService.getGamePlatformKey(userSocial.getGameid());
         String userId = userSocial.getGamertag();
         RestTemplate restTemplate = new RestTemplate();

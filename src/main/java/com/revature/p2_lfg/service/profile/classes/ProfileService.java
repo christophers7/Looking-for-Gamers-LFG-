@@ -10,39 +10,37 @@ import com.revature.p2_lfg.repository.entities.user.UserCredential;
 import com.revature.p2_lfg.repository.entities.user.UserProfile;
 import com.revature.p2_lfg.service.login.exceptions.InvalidInputException;
 import com.revature.p2_lfg.service.profile.interfaces.ProfileServiceable;
-import com.revature.p2_lfg.service.profile.validation.ProfileValidation;
 import com.revature.p2_lfg.utility.JWTUtility;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service("profileService")
 public class ProfileService implements ProfileServiceable {
-
-    private final Logger iLog = LoggerFactory.getLogger("iLog");
-    private final Logger dLog = LoggerFactory.getLogger("dLog");
 
     @Autowired
     private UserProfileRepository userProfileRepository;
 
     @Override
     public ProfileResponse getProfileResponse(UserCredential userCredential) {
-        dLog.debug("Getting Profile Response with User Credentials: " + userCredential);
         try{
-            return convertUserProfileToProfileResponse(userProfileRepository.findByUserId(userCredential.getUserid()).orElseThrow(InvalidUserIdException::new));
+            Optional<UserProfile> profile = userProfileRepository.findByUserId(userCredential.getUserid());
+            if(profile.isPresent()) return convertUserProfileToProfileResponse(profile.get());
+            else throw new InvalidUserIdException("User Id was invalid, received from User Credentials");
         }catch(Exception e){
-            dLog.error(e.getMessage(), e);
             return failResponse();
         }
     }
 
     public UserProfile getUserProfile(int userId) {
-        dLog.debug("Getting User Profile: " + userId);
-        return userProfileRepository.findByUserId(userId).orElseThrow(InvalidUserIdException::new);
+        Optional<UserProfile> userProfile = userProfileRepository.findByUserId(userId);
+        if(userProfile.isPresent()) return userProfile.get();
+        else throw new InvalidUserIdException("UserId was not valid, user profile was not found");
     }
 
     @Override
     public ProfileResponse convertUserProfileToProfileResponse(UserProfile userProfile) {
-        dLog.debug("Converting User profile into profile Response: " + userProfile);
         try{
             String JWT = JWTUtility.generateJWT(userProfile);
             return new ProfileResponse
@@ -55,7 +53,6 @@ public class ProfileService implements ProfileServiceable {
                     .lastName(userProfile.getLastname())
                     .build();
         }catch(Exception e){
-            dLog.error(e.getMessage(), e);
             return failResponse();
         }
     }
@@ -84,22 +81,17 @@ public class ProfileService implements ProfileServiceable {
 
     @Override
     public ProfileResponse newUserProfile(UserCredential newUserCredential, String email) {
-        dLog.debug("Creating new UserProfile: " + newUserCredential + " " + email);
         return convertUserProfileToProfileResponse(userProfileRepository.save(new UserProfile(0,newUserCredential,"","",email)));
     }
 
     @Override
     public ProfileResponse updateProfileWithRequest(UpdateUserProfileRequest updateUserProfileRequest, UserProfile storedUserProfile) {
-        dLog.debug("Updating user profile with Request: " + updateUserProfileRequest + "\nStored Profile: " + storedUserProfile);
         try {
-            ProfileValidation.validateUpdateProfile(updateUserProfileRequest);
             storedUserProfile.setFirstname(updateUserProfileRequest.getFirstName());
             storedUserProfile.setLastname(updateUserProfileRequest.getLastName());
             storedUserProfile.setEmail(updateUserProfileRequest.getEmail());
             return convertUserProfileToProfileResponse(userProfileRepository.save(storedUserProfile));
         } catch (InvalidInputException e) {
-            dLog.debug("Invalid Input for Updating User Profile: " + updateUserProfileRequest);
-            dLog.error(e.getMessage(), e);
             return failProfileResponse(storedUserProfile);
         }
     }

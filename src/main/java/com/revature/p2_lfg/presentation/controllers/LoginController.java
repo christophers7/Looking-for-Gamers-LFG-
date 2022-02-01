@@ -17,8 +17,6 @@ import java.util.Objects;
 @RequestMapping("/login")
 public class LoginController {
 
-    private final Logger iLog = LoggerFactory.getLogger("iLog");
-    private final Logger dLog = LoggerFactory.getLogger("dLog");
 
     @Autowired
     private LoginService loginService;
@@ -33,25 +31,21 @@ public class LoginController {
 
     @PostMapping("/new")
     public ProfileResponse newLogin(@NonNull @RequestBody NewUserCredentialsRequest newUser) {
-        dLog.debug("Creating new Login: " + newUser);
         return profileService.newUserProfile(loginService.newAccount(newUser), newUser.getEmail());
     }
 
     @PutMapping("/update-password")
     public boolean updatePassword(@NonNull @RequestHeader("Authorization") String token , @NonNull @RequestBody UpdatePasswordRequest newPassword){
-        dLog.debug("Attempting to update password: " + newPassword);
         return loginService.updateUserCredentialPassword(newPassword, Objects.requireNonNull(JWTUtility.verifyUser(token)));
     }
 
     @PutMapping("/update-username")
     public boolean updateUsername(@NonNull @RequestHeader("Authorization") String token,@NonNull @RequestBody UpdateUsernameRequest newUsername){
-        dLog.debug("Attempting to update user login: " + newUsername);
         return loginService.updateUserCredentialUsername(newUsername, Objects.requireNonNull(JWTUtility.verifyUser(token)));
     }
 
     @PutMapping("/reset-password")
     public boolean resetPassword(@NonNull @RequestBody ResetPasswordRequest resetPassword){
-        dLog.debug("Attempting to reset password: " + resetPassword);
         return loginService.resetPassword(resetPassword);
     }
 

@@ -1,6 +1,5 @@
 package com.revature.p2_lfg.presentation.models.profile.responses;
 
-import com.revature.p2_lfg.service.profile.validation.ProfileValidation;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
@@ -58,8 +57,7 @@ public class ProfileResponse {
             return response;
         }
 
-        private void validateProfileResponse(ProfileResponse response) {
-            ProfileValidation.validateProfileResponse(response);
+        private void validateProfileResponse(ProfileResponse responseBuilt) {
         }
     }
 

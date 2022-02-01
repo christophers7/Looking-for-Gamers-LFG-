@@ -1,7 +1,5 @@
-package com.revature.p2_lfg.service.login.validation;
+package com.revature.p2_lfg.utility.validation;
 
-import com.revature.p2_lfg.service.login.validation.LoginValidation;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -16,17 +14,19 @@ import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
-class LoginValidationTest {
+class loginValidationTest {
 
     private final NewUserCredentialsRequest newUserCredentialsRequest = new NewUserCredentialsRequest();
 
+    @Autowired
+    private InputValidation inputValidation;
 
     @Test
     void validateNewUserCredentialsSuccessTest() {
         newUserCredentialsRequest.setUsername("validUsername");
         newUserCredentialsRequest.setPassword("validPassword");
         newUserCredentialsRequest.setEmail("validemail@gmail.com");
-        assertDoesNotThrow(() -> LoginValidation.validateNewUserCredentials(newUserCredentialsRequest));
+        assertDoesNotThrow(() -> inputValidation.validateNewUserCredentials(newUserCredentialsRequest));
     }
 
     @ParameterizedTest
@@ -35,7 +35,7 @@ class LoginValidationTest {
         newUserCredentialsRequest.setUsername("validUsername");
         newUserCredentialsRequest.setPassword("validPassword");
         newUserCredentialsRequest.setEmail(input);
-        assertDoesNotThrow(() -> LoginValidation.validateNewUserCredentials(newUserCredentialsRequest));
+        assertDoesNotThrow(() -> inputValidation.validateNewUserCredentials(newUserCredentialsRequest));
     }
 
     @ParameterizedTest
@@ -45,7 +45,7 @@ class LoginValidationTest {
         newUserCredentialsRequest.setUsername(input);
         newUserCredentialsRequest.setPassword("validPassword");
         newUserCredentialsRequest.setEmail("validemail@gmail.com");
-        assertThrows(InvalidInputException.class, () -> LoginValidation.validateNewUserCredentials(newUserCredentialsRequest));
+        assertThrows(InvalidInputException.class, () -> inputValidation.validateNewUserCredentials(newUserCredentialsRequest));
     }
 
     @ParameterizedTest
@@ -55,7 +55,7 @@ class LoginValidationTest {
         newUserCredentialsRequest.setUsername("validUsername");
         newUserCredentialsRequest.setPassword(input);
         newUserCredentialsRequest.setEmail("validemail@gmail.com");
-        assertThrows(InvalidInputException.class, () -> LoginValidation.validateNewUserCredentials(newUserCredentialsRequest));
+        assertThrows(InvalidInputException.class, () -> inputValidation.validateNewUserCredentials(newUserCredentialsRequest));
     }
 
     @ParameterizedTest
@@ -65,7 +65,7 @@ class LoginValidationTest {
         newUserCredentialsRequest.setUsername("validUsername");
         newUserCredentialsRequest.setPassword("validPassword");
         newUserCredentialsRequest.setEmail(input);
-        assertThrows(InvalidInputException.class, () -> LoginValidation.validateNewUserCredentials(newUserCredentialsRequest));
+        assertThrows(InvalidInputException.class, () -> inputValidation.validateNewUserCredentials(newUserCredentialsRequest));
     }
 
     @ParameterizedTest
@@ -75,7 +75,7 @@ class LoginValidationTest {
         newUserCredentialsRequest.setUsername("validUsername");
         newUserCredentialsRequest.setPassword("validPassword");
         newUserCredentialsRequest.setEmail(input);
-        assertThrows(InvalidInputException.class, () -> LoginValidation.validateNewUserCredentials(newUserCredentialsRequest));
+        assertThrows(InvalidInputException.class, () -> inputValidation.validateNewUserCredentials(newUserCredentialsRequest));
     }
 
 }

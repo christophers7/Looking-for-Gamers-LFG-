@@ -29,9 +29,6 @@ import java.util.*;
 @Service("sessionService")
     public class SessionService implements SessionServiceable {
 
-    private final Logger iLog = LoggerFactory.getLogger("iLog");
-    private final Logger dLog = LoggerFactory.getLogger("dLog");
-
     @Autowired
     private SessionDetailsRepository sessionDetailsRepository;
     @Autowired
@@ -40,7 +37,6 @@ import java.util.*;
     private LoginRepository loginRepository;
 
     public SessionResponse createGroupSession(CreateGroupSessionRequest createGroup, JWTInfo parsedJWT) {
-        dLog.debug("Creating group session response from group create request: " + createGroup);
         SessionDetails sessionDetails;
         try {
             sessionDetails = createGroupSessionInDatabase(createGroup.getGameId(), createGroup.getMaxUsers(), createGroup.getDescription());
@@ -54,7 +50,6 @@ import java.util.*;
                     .waitingMembers(new ArrayList<GroupUser>())
                     .build();
         } catch (Exception e){
-            dLog.error(e.getMessage(),e);
             return failSessionResponse();
         }
     }
@@ -68,12 +63,10 @@ import java.util.*;
 
     @Override
     public SessionResponse joinGroupSession(JWTInfo parsedJWT, int groupId, int gameId) throws MaxUsersException {
-        dLog.debug("Joining group session waiting room Group ID: " + groupId + " JWT: " + parsedJWT);
         return enterWaitingRoom(groupId, parsedJWT);
     }
 
     private SessionResponse enterWaitingRoom(int groupId, JWTInfo parsedJWT) {
-        dLog.debug("Attempting to enter waiting room: " + groupId);
         SessionDetails sessionDetails;
         try{
             sessionDetails = getSessionDetailsByGroupId(groupId);
@@ -86,13 +79,11 @@ import java.util.*;
                     .waitingMembers(new ArrayList<GroupUser>())
                     .build();
         } catch (Exception e){
-            dLog.error(e.getMessage(),e);
             return failSessionResponse();
         }
     }
 
     private GroupUser getHostUserWithGroupId(int groupId) {
-        dLog.debug("Getting host user");
         return new GroupUser(
                 getHostUserWithId(findByHostId(groupId)).getUsername(),
                 groupId,
@@ -100,7 +91,6 @@ import java.util.*;
     }
 
     private UserCredential getHostUserWithId(int hostId) {
-        dLog.debug("Getting Host user with Host Id: " + hostId);
         return loginRepository.findById(hostId).orElseThrow(InvalidHostUserException::new);
     }
 
@@ -109,12 +99,10 @@ import java.util.*;
     }
 
     private int findByHostId(int groupId) {
-        dLog.debug("Finding host Id by Group ID: " + groupId);
         return sessionRepository.findFirst1HostidByGroupsession(sessionDetailsForId(groupId)).getHostid();
     }
 
     private List<GroupUser> getGroupMembersOfSession(int groupId) {
-        dLog.debug("Getting group users associated by group Id: " + groupId);
         List<Session> userInSession = sessionRepository.findByGroupIdAndInsession(groupId, true);
         List<GroupUser> groupUsers = new ArrayList<>();
         userInSession.forEach(s -> {
@@ -125,7 +113,6 @@ import java.util.*;
     }
 
     private List<GroupUser> getWaitingMembersOfSession(int groupId) {
-        dLog.debug("Getting group users associated by group Id: " + groupId);
         List<Session> userInSession = sessionRepository.findByGroupIdAndInsession(groupId, false);
         List<GroupUser> groupUsers = new ArrayList<>();
         userInSession.forEach(s -> {
@@ -136,7 +123,6 @@ import java.util.*;
     }
 
     private GroupSessionId createUserSession(SessionDetails sessionDetails, JWTInfo parsedJWT, int hostId, boolean status) throws MaxUsersException {
-        dLog.debug("Creating user Session for a group: " + sessionDetails);
         if(sessionDetails.getCurrentusers() < sessionDetails.getMaxusers()) {
             sessionDetails.setCurrentusers(sessionDetails.getCurrentusers() + 1);
             if(sessionRepository.save(new Session(parsedJWT.getUserId(), hostId, sessionDetails, status)) != null)
@@ -146,13 +132,11 @@ import java.util.*;
     }
 
     private SessionDetails getSessionDetailsByGroupId(int groupId) {
-        dLog.debug("Getting session details by group ID: " + groupId);
         Optional<SessionDetails> session = sessionDetailsRepository.findById(groupId);
         return session.orElse(null);
     }
 
     private SessionDetails createGroupSessionInDatabase(int gameId, int maxUsers, String description) {
-        dLog.debug("Creating a group session: GameId - " + gameId + " maxUsers - " + maxUsers + " Description: " + description);
         Set<Tag> tags = new HashSet<>();
         Games shellGame = new Games(gameId, 0, "", "");
         return sessionDetailsRepository.save(
@@ -161,7 +145,6 @@ import java.util.*;
 
     @Override
     public SessionResponse checkSessionStatus(JWTInfo parsedJWT, int groupId) {
-        dLog.debug("Checking session status: " + groupId + " + userId: " + parsedJWT.getUserId());
         return createWaitingRoomResponse(getSessionForUser(parsedJWT, groupId));
     }
 
@@ -180,7 +163,6 @@ import java.util.*;
     }
 
     private SessionDetails getSessionDetailsByHostId(int hostid) {
-        dLog.debug("Getting SessionDetails by Host Id: " + hostid);
         return sessionRepository.findFirst1ByHostid(hostid).getGroupsession();
     }
 
@@ -190,7 +172,6 @@ import java.util.*;
 
     @Override
     public SessionResponse respondToUserSession(JWTInfo parsedJWT, WaitingRoomRequest roomRequest) {
-        dLog.debug("Responding to user in session: " + roomRequest);
         int groupId = roomRequest.getGroupId();
         int userRespondingId = loginRepository.findByUsername(roomRequest.getWaitingUsername()).getUserid();
         Session session = sessionRepository.findByUserIdAndGroupId(userRespondingId, groupId);
@@ -211,32 +192,27 @@ import java.util.*;
 
     @Override
     public boolean cancelSession(JWTInfo parsedJWT, CancelGroupRequest cancelGroup) {
-        dLog.debug("Canceling group session: " + cancelGroup);
         try{
             sessionRepository.deleteAllByGroupId(cancelGroup.getGroupId());
             sessionDetailsRepository.delete(new SessionDetails(cancelGroup.getGroupId(), new Games(), 0, 0, "", new HashSet<>()));
             return true;
         }catch(Exception e){
-            dLog.debug(e.getMessage(), e);
             return false;
         }
     }
 
     @Override
     public boolean leaveSession(JWTInfo parsedJWT, int groupId, int gameId) {
-        dLog.debug("Attempting to leave Group Session: " + groupId);
         try{
             sessionRepository.deleteByUserIdAndGroupId(parsedJWT.getUserId(), groupId);
             return true;
         }catch(Exception e){
-            dLog.error(e.getMessage(), e);
             return false;
         }
     }
 
     @Override
     public SessionResponse getGroupSession(int groupId, int gameId, JWTInfo parsedJWT) {
-        dLog.debug("Attempting to get Group Session: " + groupId);
         try{
             List<GroupUser> members = getGroupMembersOfSession(groupId);
             List<GroupUser> waitingMember = getWaitingMembersOfSession(groupId);
@@ -248,14 +224,12 @@ import java.util.*;
                     .waitingMembers(waitingMember)
                     .build();
         } catch (Exception e){
-            dLog.error(e.getMessage(),e);
             return failSessionResponse();
         }
     }
 
     @Override
     public SessionResponse getGroupMembersResponse(JWTInfo parsedJWT, int groupId) {
-        dLog.debug("Getting group members with group Id: " + groupId);
         try{
             SessionDetails sessionDetails = getSessionDetailsByGroupId(groupId);
             return new SessionResponse.SessionResponseBuilder(getHostUserWithGroupId(groupId), sessionDetails)
@@ -265,7 +239,6 @@ import java.util.*;
                     .groupMembers(getGroupMembersOfSession(groupId))
                     .build();
         } catch (Exception e){
-            dLog.error(e.getMessage(),e);
             return failSessionResponse();
         }
     }
