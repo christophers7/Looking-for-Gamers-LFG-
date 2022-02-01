@@ -1,5 +1,4 @@
 package com.revature.p2_lfg.service.session.classes;
-
 import com.revature.p2_lfg.presentation.models.session.requests.CancelGroupRequest;
 import com.revature.p2_lfg.presentation.models.session.requests.CreateGroupSessionRequest;
 import com.revature.p2_lfg.presentation.models.session.requests.WaitingRoomRequest;
@@ -192,9 +191,9 @@ import java.util.*;
     @Override
     public SessionResponse respondToUserSession(JWTInfo parsedJWT, WaitingRoomRequest roomRequest) {
         dLog.debug("Responding to user in session: " + roomRequest);
-        int userRespondingId = loginRepository.findByUsername(roomRequest.getWaitingUsername()).getUserid();
         int groupId = roomRequest.getGroupId();
-        Session session = sessionRepository.findByUserIdAndGroupId(userRespondingId, roomRequest.getGroupId());
+        int userRespondingId = loginRepository.findByUsername(roomRequest.getWaitingUsername()).getUserid();
+        Session session = sessionRepository.findByUserIdAndGroupId(userRespondingId, groupId);
         if(roomRequest.isSuccess()) {
             session.setInsession(true);
             sessionRepository.save(session);
