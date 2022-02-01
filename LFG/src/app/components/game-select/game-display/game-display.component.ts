@@ -3,6 +3,7 @@ import { AvailableGames } from 'src/app/models/available-games.model';
 import { GameService } from 'src/app/_services/game.service';
 import { Location } from '@angular/common';
 import { UserService } from 'src/app/_services/user.service';
+import { Game } from 'src/app/models/game.model';
 
 
 @Component({
@@ -12,7 +13,7 @@ import { UserService } from 'src/app/_services/user.service';
 })
 export class GameDisplayComponent implements OnInit {
   
-  games: AvailableGames[] = [];
+  games!: Game[];
 
   constructor(
     private gameService:GameService,
@@ -26,11 +27,12 @@ export class GameDisplayComponent implements OnInit {
   public findAllGames(){
     this.userService.generateGames().subscribe(
       (data) => {
-        this.games = data;
+        console.log(data)
+        this.games = data.gameSessionList;
       },
-      (error) => {
-        console.log(error);
-      }
+     // (error) => {
+      //  console.log(error);
+     // }
     )
   }
 

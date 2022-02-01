@@ -74,8 +74,8 @@ export class CreateGroupComponent implements OnInit {
     let description = this.form.get('description')?.value
     console.log(gSize, description)
     if(gSize != null && description != null) {
-      let group = new Group(1, this.gameId, this.currentUser.username, gSize, 1, description)
-      this.userService.createGroup(group).subscribe(
+      this.group = new Group(1, this.gameId, this.currentUser.username, gSize, 1, description)
+      this.userService.createGroup(this.group).subscribe(
         (data) => {
           console.log(data);
         })

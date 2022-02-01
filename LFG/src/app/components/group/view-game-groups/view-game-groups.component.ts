@@ -15,6 +15,7 @@ export class ViewGameGroupsComponent implements OnInit {
 
   groupSessions: Group[] = [];
   currentUser: any;
+  game: any;
 
   constructor(
     private tokenStorage: TokenStorageService,
@@ -23,6 +24,7 @@ export class ViewGameGroupsComponent implements OnInit {
 
   ngOnInit(): void {
     this.currentUser = this.tokenStorage.getUser();
+    this.game = this.tokenStorage.getGame();
     this.getGroupSessions();
   }
 
@@ -34,7 +36,8 @@ export class ViewGameGroupsComponent implements OnInit {
     this.userService.getSelectedGame(this.gameId)
       .subscribe(
         (data) => {
-          this.groupSessions = data;
+          console.log(data)
+          this.groupSessions = data.selectedGameAvailableGroups;
         },
         (error) => {
           console.log(error);

@@ -1,40 +1,40 @@
 export class AvailableGames {
 
     constructor(
-        private _gameId: number,
-        private _gameName: string,
-        private _gameUrl: string,
-        private _currentGroups: number
+        private gameId: number,
+        private name: string,
+        private imgLink: string,
+        private sessions: number
     ){
-        this._gameId = _gameId;
-        this._gameName = _gameName;
-        this._gameUrl = _gameUrl;
-        this._currentGroups = _currentGroups;
+        this.gameId = gameId;
+        this.name = name;
+        this.imgLink = imgLink;
+        this.sessions = sessions;
     }
 
-    public get gameId(): number {
-        return this._gameId;
+    public get _gameId(): number {
+        return this.gameId;
     }
-    public set gameId(value: number) {
-        this._gameId = value;
+    public set _gameId(value: number) {
+        this.gameId = value;
     }
     public get currentGroups(): number {
-        return this._currentGroups;
+        return this.sessions;
     }
     public set currentGroups(value: number) {
-        this._currentGroups = value;
+        this.sessions = value;
     }
     public get gameUrl(): string {
-        return this._gameUrl;
+        return this.imgLink;
     }
     public set gameUrl(value: string) {
-        this._gameUrl = value;
+        this.imgLink = value;
     }
     public get gameName(): string {
-        return this._gameName;
+        return this.name;
     }
     public set gameName(value: string) {
-        this._gameName = value;
+        this.name = value;
     }
 
     //gameId: number

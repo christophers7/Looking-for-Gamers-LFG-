@@ -1,5 +1,5 @@
-<app-game-card [game] = "game"></app-game-card>
-<div *ngFor = "let group of groupSessions">
+
+<div *ngFor="let group of groupSessions">
     <h2>Group ID: {{group.groupID}}</h2>
     <h4>Current Users: {{group.currentSize}}</h4>
     <h4>Max Users: {{group.maxUsers}}</h4>

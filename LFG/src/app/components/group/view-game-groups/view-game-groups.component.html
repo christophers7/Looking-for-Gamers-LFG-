@@ -1,5 +1,8 @@
+<div>
+    <p>{{game.name}}</p>
+    <a (click)="goBackToGameSelect()"><img [src]="game.imgLink"></a>
+</div>
 <div *ngIf="groupSessions">
-    <button (click)="goBackToGameSelect()">back</button>
     <div>    
         <app-group-card [groupSessions] = "groupSessions" [gameId]="gameId"></app-group-card>
     </div>

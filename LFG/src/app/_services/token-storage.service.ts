@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
+import { Game } from '../models/game.model';
 
 const TOKEN_KEY = 'auth-token';
 const USER_KEY = 'auth-user';
-const SELETED_GAME = 'sel-game';
+const SELECTED_GAME = 'sel-game';
 
 @Injectable({
   providedIn: 'root'
@@ -37,12 +38,17 @@ export class TokenStorageService {
     return {};
   }
 
-  public saveGame(game: string): void {
-    window.sessionStorage.removeItem(SELETED_GAME);
-    window.sessionStorage.setItem(SELETED_GAME, game);
+  public saveGame(game: any): void {
+    window.sessionStorage.removeItem(SELECTED_GAME);
+    window.sessionStorage.setItem(SELECTED_GAME, JSON.stringify(game));
   }
 
-  public getGame(): string | null {
-    return window.sessionStorage.getItem(SELETED_GAME);
+  public getGame(): any {
+    const game = window.sessionStorage.getItem(SELECTED_GAME);
+    if (game) {
+      return JSON.parse(game);
+    }
+
+    return {};
   }
 }
