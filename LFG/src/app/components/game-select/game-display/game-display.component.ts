@@ -2,6 +2,8 @@ import { EventEmitter, Component, OnInit, Output } from '@angular/core';
 import { AvailableGames } from 'src/app/models/available-games.model';
 import { GameService } from 'src/app/_services/game.service';
 import { Location } from '@angular/common';
+import { UserService } from 'src/app/_services/user.service';
+import { Game } from 'src/app/models/game.model';
 
 
 @Component({
@@ -10,10 +12,12 @@ import { Location } from '@angular/common';
   styleUrls: ['./game-display.component.css']
 })
 export class GameDisplayComponent implements OnInit {
+  
+  games!: Game[];
 
   constructor(
     private gameService:GameService,
- //   private location: Location
+    private userService: UserService
     ) { }
 
   ngOnInit(): void {
@@ -21,17 +25,18 @@ export class GameDisplayComponent implements OnInit {
   }
 
   public findAllGames(){
-    this.gameService.findAllGames().subscribe(
+    this.userService.generateGames().subscribe(
       (data) => {
-        this.games = data;
+        console.log(data)
+        this.games = data.gameSessionList;
       },
-      (error) => {
-        console.log(error);
-      }
+     // (error) => {
+      //  console.log(error);
+     // }
     )
   }
 
-  games:AvailableGames[] = [];
+  
 
   @Output()
   emitter = new EventEmitter<{gId: number, panelNumber: number}>()

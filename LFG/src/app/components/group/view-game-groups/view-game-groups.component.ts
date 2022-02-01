@@ -1,8 +1,9 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Group } from 'src/app/models/group.model';
 import { UserViewGroup } from 'src/app/models/user-view-group.model';
 import { GameGroupService } from 'src/app/_services/game-group.service';
-import { ActivatedRoute } from '@angular/router';
-import { Location } from '@angular/common';
+import { TokenStorageService } from 'src/app/_services/token-storage.service';
+import { UserService } from 'src/app/_services/user.service';
 
 
 @Component({
@@ -12,14 +13,18 @@ import { Location } from '@angular/common';
 })
 export class ViewGameGroupsComponent implements OnInit {
 
-  groupSessions: UserViewGroup[] = [];
+  groupSessions: Group[] = [];
+  currentUser: any;
+  game: any;
 
   constructor(
-    private route: ActivatedRoute,
-    private gameGroupService: GameGroupService,
-    private location: Location) { }
+    private tokenStorage: TokenStorageService,
+    private userService: UserService
+  ) { }
 
   ngOnInit(): void {
+    this.currentUser = this.tokenStorage.getUser();
+    this.game = this.tokenStorage.getGame();
     this.getGroupSessions();
   }
 
@@ -28,10 +33,11 @@ export class ViewGameGroupsComponent implements OnInit {
 
   getGroupSessions(){
     
-    this.gameGroupService.getGroups(this.gameId)
+    this.userService.getSelectedGame(this.gameId)
       .subscribe(
         (data) => {
-          this.groupSessions = data;
+          console.log(data)
+          this.groupSessions = data.selectedGameAvailableGroups;
         },
         (error) => {
           console.log(error);
@@ -46,6 +52,15 @@ export class ViewGameGroupsComponent implements OnInit {
 
   goBackToGameSelect(): void{
     this.panelNumber = 1;
+    this.changePanel();
+  }
+
+  goToCreateGroup(): void {
+    this.panelNumber = 3;
+    this.changePanel();
+  }
+
+  changePanel() {
     this.panelNumberChange.emit(this.panelNumber);
   }
 

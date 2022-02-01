@@ -1,0 +1,20 @@
+01:47:12.552 [http-nio-8088-exec-1] DEBUG dLog - Creating new Account, generating new User Credential: NewUserCredentialsRequest(username=testUser1, password=testPass1, email=testemail1@email.com)
+01:47:12.780 [http-nio-8088-exec-1] DEBUG dLog - Creating new UserProfile: UserCredential(userid=21, username=testUser1, password=testPass1) testemail1@email.com
+01:47:12.896 [http-nio-8088-exec-1] DEBUG dLog - Converting User profile into profile Response: UserProfile(columnID=8, usercredential=UserCredential(userid=21, username=testUser1, password=testPass1), firstname=empty, lastname=empty, email=testemail1@email.com)
+01:47:31.850 [http-nio-8088-exec-3] DEBUG dLog - Validating user login attempt: LoginRequest(username=testUser1, password=testPass1)
+01:47:31.947 [http-nio-8088-exec-3] DEBUG dLog - Getting Profile Response with User Credentials: UserCredential(userid=21, username=testUser1, password=testPass1)
+01:47:31.990 [http-nio-8088-exec-3] DEBUG dLog - Converting User profile into profile Response: UserProfile(columnID=8, usercredential=UserCredential(userid=21, username=testUser1, password=testPass1), firstname=empty, lastname=empty, email=testemail1@email.com)
+01:47:48.259 [http-nio-8088-exec-4] DEBUG dLog - Attempting to get user profile
+01:47:48.293 [http-nio-8088-exec-4] DEBUG dLog - JWT TOken : JWTInfo(firstName=empty, lastName=empty, username=testUser1, userId=21)
+01:47:48.293 [http-nio-8088-exec-4] DEBUG dLog - Getting User Profile: 21
+01:47:48.417 [http-nio-8088-exec-4] DEBUG dLog - Converting User profile into profile Response: UserProfile(columnID=8, usercredential=UserCredential(userid=21, username=testUser1, password=testPass1), firstname=empty, lastname=empty, email=testemail1@email.com)
+01:47:53.849 [http-nio-8088-exec-5] DEBUG dLog - Getting game sessions select list
+01:50:18.968 [http-nio-8088-exec-2] DEBUG dLog - Getting game sessions select list
+01:51:04.535 [http-nio-8088-exec-3] DEBUG dLog - Getting game group sessions by gameName: 1
+01:52:47.486 [http-nio-8088-exec-9] DEBUG dLog - Creating user social: CreateSocialRequest(gameId=1, social=76561198051281395)
+01:55:43.939 [http-nio-8088-exec-1] DEBUG dLog - Creating user social: CreateSocialRequest(gameId=1, social=76561198051281395)
+01:57:21.869 [http-nio-8088-exec-8] DEBUG dLog - Getting users social for game: 1
+01:57:21.874 [http-nio-8088-exec-8] DEBUG dLog - Getting userSocial
+02:09:52.436 [http-nio-8088-exec-2] DEBUG dLog - Finding Steam Achievements
+02:09:56.167 [http-nio-8088-exec-4] DEBUG dLog - Getting game sessions select list
+02:13:58.293 [http-nio-8088-exec-3] DEBUG dLog - Finding Steam Achievements

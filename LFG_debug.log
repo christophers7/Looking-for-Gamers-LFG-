@@ -1,117 +1,172 @@
-18:48:15.885 [http-nio-8080-exec-1] DEBUG dLog - newAccount
-18:48:15.964 [http-nio-8080-exec-1] INFO  dLog - UserCredential(userid=1, username=testUser2, password=testPass2)
-18:48:15.965 [http-nio-8080-exec-1] DEBUG dLog - newAccount
-18:48:15.965 [http-nio-8080-exec-1] DEBUG dLog - newUserProfile
-18:48:16.091 [http-nio-8080-exec-1] INFO  dLog - ProfileResponse(success=true, username=testUser2, firstName=, lastName=, email=testemail2@email.com, JWT=eyJhbGciOiJIUzI1NiJ9.eyJmaXJzdE5hbWUiOiIiLCJsYXN0TmFtZSI6IiIsInVzZXJuYW1lIjoidGVzdFVzZXIyIiwidXNlcklkIjoxLCJhY2NvdW50Ijp0cnVlfQ.wxWNxw22xfRwayKO3yrZMZ4dO8665aL1OPf-yH43bpg)
-18:48:16.091 [http-nio-8080-exec-1] DEBUG dLog - newUserProfile
-20:23:51.356 [http-nio-8080-exec-2] DEBUG dLog - Class: class com.revature.p2_lfg.service.login.classes.LoginService - Method: newAccount
-20:23:51.421 [http-nio-8080-exec-2] INFO  dLog - Class: class com.revature.p2_lfg.service.login.classes.LoginService - Returning: UserCredential(userid=1, username=testUser2, password=testPass2)
-20:23:51.421 [http-nio-8080-exec-2] DEBUG dLog - newAccount
-20:23:51.421 [http-nio-8080-exec-2] DEBUG dLog - Class: class com.revature.p2_lfg.service.profile.classes.ProfileService - Method: newUserProfile
-20:23:51.544 [http-nio-8080-exec-2] INFO  dLog - Class: class com.revature.p2_lfg.service.profile.classes.ProfileService - Returning: ProfileResponse(success=true, username=testUser2, firstName=, lastName=, email=testemail2@email.com, JWT=eyJhbGciOiJIUzI1NiJ9.eyJmaXJzdE5hbWUiOiIiLCJsYXN0TmFtZSI6IiIsInVzZXJuYW1lIjoidGVzdFVzZXIyIiwidXNlcklkIjoxLCJhY2NvdW50Ijp0cnVlfQ.wxWNxw22xfRwayKO3yrZMZ4dO8665aL1OPf-yH43bpg)
-20:23:51.544 [http-nio-8080-exec-2] DEBUG dLog - newUserProfile
-20:28:41.604 [http-nio-8080-exec-8] DEBUG dLog - Class: class com.revature.p2_lfg.service.login.classes.LoginService - Method: newAccount
-20:28:41.680 [http-nio-8080-exec-8] INFO  dLog - Class: class com.revature.p2_lfg.service.login.classes.LoginService - Returning: UserCredential(userid=1, username=124124124, password=testPass2)
-20:28:41.681 [http-nio-8080-exec-8] DEBUG dLog - newAccount
-20:28:41.681 [http-nio-8080-exec-8] DEBUG dLog - Class: class com.revature.p2_lfg.service.profile.classes.ProfileService - Method: newUserProfile
-20:28:41.783 [http-nio-8080-exec-8] INFO  dLog - Class: class com.revature.p2_lfg.service.profile.classes.ProfileService - Returning: ProfileResponse(success=true, username=124124124, firstName=, lastName=, email=testemail2@email.com, JWT=eyJhbGciOiJIUzI1NiJ9.eyJmaXJzdE5hbWUiOiIiLCJsYXN0TmFtZSI6IiIsInVzZXJuYW1lIjoiMTI0MTI0MTI0IiwidXNlcklkIjoxLCJhY2NvdW50Ijp0cnVlfQ.bf8VyIZn17-sK_0M8DySPZSMsVIJERvTO-kqRDZJoZs)
-20:28:41.784 [http-nio-8080-exec-8] DEBUG dLog - newUserProfile
-20:50:38.784 [http-nio-8080-exec-2] DEBUG dLog - Class: class com.revature.p2_lfg.service.login.classes.LoginService - Method: newAccount
-20:50:38.852 [http-nio-8080-exec-2] INFO  dLog - Class: class com.revature.p2_lfg.service.login.classes.LoginService - Returning: UserCredential(userid=1, username=shasdfasdf, password=asdfasdf)
-20:50:38.852 [http-nio-8080-exec-2] DEBUG dLog - newAccount
-20:50:38.852 [http-nio-8080-exec-2] DEBUG dLog - Class: class com.revature.p2_lfg.service.profile.classes.ProfileService - Method: newUserProfile
-20:50:38.943 [http-nio-8080-exec-2] INFO  dLog - Class: class com.revature.p2_lfg.service.profile.classes.ProfileService - Returning: ProfileResponse(success=true, username=shasdfasdf, firstName=, lastName=, email=testemail2@email.com, JWT=eyJhbGciOiJIUzI1NiJ9.eyJmaXJzdE5hbWUiOiIiLCJsYXN0TmFtZSI6IiIsInVzZXJuYW1lIjoic2hhc2RmYXNkZiIsInVzZXJJZCI6MSwiYWNjb3VudCI6dHJ1ZX0.ziX2mSubF80lqnrSxZlFM3ElgrAmBvWdII3m52dDKIs)
-20:50:38.943 [http-nio-8080-exec-2] DEBUG dLog - newUserProfile
-20:50:54.743 [http-nio-8080-exec-5] DEBUG dLog - Class: class com.revature.p2_lfg.service.login.classes.LoginService - Method: newAccount
-20:50:54.745 [http-nio-8080-exec-5] INFO  dLog - Class: class com.revature.p2_lfg.service.login.classes.LoginService - Returning: UserCredential(userid=2, username=asdfasdf, password=asdfasdf)
-20:50:54.745 [http-nio-8080-exec-5] DEBUG dLog - newAccount
-20:50:54.745 [http-nio-8080-exec-5] DEBUG dLog - Class: class com.revature.p2_lfg.service.profile.classes.ProfileService - Method: newUserProfile
-20:50:54.754 [http-nio-8080-exec-5] ERROR dLog - Class: class com.revature.p2_lfg.service.profile.classes.ProfileService - Throwing: org.springframework.dao.DataIntegrityViolationException: could not execute statement; SQL [n/a]; constraint ["PROJECT_TWO.CONSTRAINT_INDEX_7 ON PROJECT_TWO.LFG_USER_PROFILE(EMAIL) VALUES 1"; SQL statement:
-insert into project_two.lfg_user_profile (email, firstname, lastname, userid, columnid) values (?, ?, ?, ?, ?) [23505-200]]; nested exception is org.hibernate.exception.ConstraintViolationException: could not execute statement
-20:50:54.754 [http-nio-8080-exec-5] DEBUG dLog - newUserProfile
-20:51:02.946 [http-nio-8080-exec-7] DEBUG dLog - Class: class com.revature.p2_lfg.service.login.classes.LoginService - Method: newAccount
-20:51:02.949 [http-nio-8080-exec-7] ERROR dLog - Class: class com.revature.p2_lfg.service.login.classes.LoginService - Throwing: org.springframework.dao.DataIntegrityViolationException: could not execute statement; SQL [n/a]; constraint ["PROJECT_TWO.CONSTRAINT_INDEX_6 ON PROJECT_TWO.LFG_USER_CREDS(USERLOGIN) VALUES 2"; SQL statement:
-insert into project_two.lfg_user_creds (userpass, userlogin, userid) values (?, ?, ?) [23505-200]]; nested exception is org.hibernate.exception.ConstraintViolationException: could not execute statement
-20:51:02.949 [http-nio-8080-exec-7] DEBUG dLog - newAccount
-20:51:10.557 [http-nio-8080-exec-9] DEBUG dLog - Class: class com.revature.p2_lfg.service.login.classes.LoginService - Method: newAccount
-20:51:10.558 [http-nio-8080-exec-9] INFO  dLog - Class: class com.revature.p2_lfg.service.login.classes.LoginService - Returning: UserCredential(userid=4, username=asddfsadffasdf, password=asfdfa)
-20:51:10.559 [http-nio-8080-exec-9] DEBUG dLog - newAccount
-20:51:10.559 [http-nio-8080-exec-9] DEBUG dLog - Class: class com.revature.p2_lfg.service.profile.classes.ProfileService - Method: newUserProfile
-20:51:10.561 [http-nio-8080-exec-9] ERROR dLog - Class: class com.revature.p2_lfg.service.profile.classes.ProfileService - Throwing: org.springframework.dao.DataIntegrityViolationException: could not execute statement; SQL [n/a]; constraint ["PROJECT_TWO.CONSTRAINT_INDEX_7 ON PROJECT_TWO.LFG_USER_PROFILE(EMAIL) VALUES 1"; SQL statement:
-insert into project_two.lfg_user_profile (email, firstname, lastname, userid, columnid) values (?, ?, ?, ?, ?) [23505-200]]; nested exception is org.hibernate.exception.ConstraintViolationException: could not execute statement
-20:51:10.561 [http-nio-8080-exec-9] DEBUG dLog - newUserProfile
-20:51:19.660 [http-nio-8080-exec-1] DEBUG dLog - Class: class com.revature.p2_lfg.service.login.classes.LoginService - Method: newAccount
-20:51:19.662 [http-nio-8080-exec-1] INFO  dLog - Class: class com.revature.p2_lfg.service.login.classes.LoginService - Returning: UserCredential(userid=5, username=asdfd, password=asfdfa)
-20:51:19.662 [http-nio-8080-exec-1] DEBUG dLog - newAccount
-20:51:19.662 [http-nio-8080-exec-1] DEBUG dLog - Class: class com.revature.p2_lfg.service.profile.classes.ProfileService - Method: newUserProfile
-20:51:19.668 [http-nio-8080-exec-1] INFO  dLog - Class: class com.revature.p2_lfg.service.profile.classes.ProfileService - Returning: ProfileResponse(success=true, username=asdfd, firstName=, lastName=, email=testemaiasdfl2@email.com, JWT=eyJhbGciOiJIUzI1NiJ9.eyJmaXJzdE5hbWUiOiIiLCJsYXN0TmFtZSI6IiIsInVzZXJuYW1lIjoiYXNkZmQiLCJ1c2VySWQiOjUsImFjY291bnQiOnRydWV9.i4pGvzJbCbSAB6cO1F6SdFQa-e473B3LG-JvV6khULc)
-20:51:19.668 [http-nio-8080-exec-1] DEBUG dLog - newUserProfile
-22:13:29.554 [http-nio-8080-exec-1] DEBUG dLog - Class: class com.revature.p2_lfg.presentation.controllers.LoginController - Method: newLogin
-22:13:29.565 [http-nio-8080-exec-1] DEBUG dLog - Class: class com.revature.p2_lfg.service.login.classes.LoginService - Method: newAccount
-22:13:29.632 [http-nio-8080-exec-1] INFO  dLog - Class: class com.revature.p2_lfg.service.login.classes.LoginService - Returning: UserCredential(userid=1, username=asdfd, password=asfdfa)
-22:13:29.632 [http-nio-8080-exec-1] DEBUG dLog - newAccount
-22:13:29.632 [http-nio-8080-exec-1] DEBUG dLog - Class: class com.revature.p2_lfg.service.profile.classes.ProfileService - Method: newUserProfile
-22:13:29.710 [http-nio-8080-exec-1] INFO  dLog - Class: class com.revature.p2_lfg.service.profile.classes.ProfileService - Returning: ProfileResponse(success=true, username=asdfd, firstName=, lastName=, email=testemaiasdfl2@email.com, JWT=eyJhbGciOiJIUzI1NiJ9.eyJmaXJzdE5hbWUiOiIiLCJsYXN0TmFtZSI6IiIsInVzZXJuYW1lIjoiYXNkZmQiLCJ1c2VySWQiOjEsImFjY291bnQiOnRydWV9.ueLy7ys1gVp-vjdoiPDR28QXqJjpMQWlive08_ButLU)
-22:13:29.711 [http-nio-8080-exec-1] DEBUG dLog - newUserProfile
-22:13:29.711 [http-nio-8080-exec-1] INFO  dLog - Class: class com.revature.p2_lfg.presentation.controllers.LoginController - Returning: ProfileResponse(success=true, username=asdfd, firstName=, lastName=, email=testemaiasdfl2@email.com, JWT=eyJhbGciOiJIUzI1NiJ9.eyJmaXJzdE5hbWUiOiIiLCJsYXN0TmFtZSI6IiIsInVzZXJuYW1lIjoiYXNkZmQiLCJ1c2VySWQiOjEsImFjY291bnQiOnRydWV9.ueLy7ys1gVp-vjdoiPDR28QXqJjpMQWlive08_ButLU)
-22:13:29.711 [http-nio-8080-exec-1] DEBUG dLog - newLogin
-22:13:38.705 [http-nio-8080-exec-3] DEBUG dLog - Class: class com.revature.p2_lfg.presentation.controllers.GameController - Method: getAvailableGames
-22:13:38.709 [http-nio-8080-exec-3] DEBUG dLog - Class: class com.revature.p2_lfg.service.game.classes.GameService - Method: getCurrentGameSessionList
-22:13:38.751 [http-nio-8080-exec-3] INFO  dLog - Class: class com.revature.p2_lfg.service.game.classes.GameService - Returning: GameSessionInfoResponse(gameSessionList=[GameSelectInfo(gameId=1, platformKey=1172470, name=Apex Legends, imgLink=https://media.contentapi.ea.com/content/dam/apex-legends/images/2019/01/apex-featured-image-16x9.jpg.adapt.crop16x9.1023w.jpg, sessions=0), GameSelectInfo(gameId=2, platformKey=404, name=League of Legends, imgLink=https://cdn1.epicgames.com/salesEvent/salesEvent/EGS_LeagueofLegends_RiotGames_S1_2560x1440-ee500721c06da3ec1e5535a88588c77f?h=270&resize=1&w=480, sessions=0), GameSelectInfo(gameId=3, platformKey=730, name=Counter Strike: Global Offensive, imgLink=https://cdn.akamai.steamstatic.com/steam/apps/730/capsule_616x353.jpg?t=1635269541, sessions=0)])
-22:13:38.751 [http-nio-8080-exec-3] DEBUG dLog - getCurrentGameSessionList
-22:13:38.751 [http-nio-8080-exec-3] INFO  dLog - Class: class com.revature.p2_lfg.presentation.controllers.GameController - Returning: GameSessionInfoResponse(gameSessionList=[GameSelectInfo(gameId=1, platformKey=1172470, name=Apex Legends, imgLink=https://media.contentapi.ea.com/content/dam/apex-legends/images/2019/01/apex-featured-image-16x9.jpg.adapt.crop16x9.1023w.jpg, sessions=0), GameSelectInfo(gameId=2, platformKey=404, name=League of Legends, imgLink=https://cdn1.epicgames.com/salesEvent/salesEvent/EGS_LeagueofLegends_RiotGames_S1_2560x1440-ee500721c06da3ec1e5535a88588c77f?h=270&resize=1&w=480, sessions=0), GameSelectInfo(gameId=3, platformKey=730, name=Counter Strike: Global Offensive, imgLink=https://cdn.akamai.steamstatic.com/steam/apps/730/capsule_616x353.jpg?t=1635269541, sessions=0)])
-22:13:38.751 [http-nio-8080-exec-3] DEBUG dLog - getAvailableGames
-22:13:45.765 [http-nio-8080-exec-5] DEBUG dLog - Class: class com.revature.p2_lfg.presentation.controllers.GameController - Method: getAvailableGames
-22:13:45.765 [http-nio-8080-exec-5] DEBUG dLog - Class: class com.revature.p2_lfg.service.game.classes.GameService - Method: getCurrentGameSessionList
-22:13:45.768 [http-nio-8080-exec-5] INFO  dLog - Class: class com.revature.p2_lfg.service.game.classes.GameService - Returning: GameSessionInfoResponse(gameSessionList=[GameSelectInfo(gameId=1, platformKey=1172470, name=Apex Legends, imgLink=https://media.contentapi.ea.com/content/dam/apex-legends/images/2019/01/apex-featured-image-16x9.jpg.adapt.crop16x9.1023w.jpg, sessions=0), GameSelectInfo(gameId=2, platformKey=404, name=League of Legends, imgLink=https://cdn1.epicgames.com/salesEvent/salesEvent/EGS_LeagueofLegends_RiotGames_S1_2560x1440-ee500721c06da3ec1e5535a88588c77f?h=270&resize=1&w=480, sessions=0), GameSelectInfo(gameId=3, platformKey=730, name=Counter Strike: Global Offensive, imgLink=https://cdn.akamai.steamstatic.com/steam/apps/730/capsule_616x353.jpg?t=1635269541, sessions=0)])
-22:13:45.768 [http-nio-8080-exec-5] DEBUG dLog - getCurrentGameSessionList
-22:13:45.768 [http-nio-8080-exec-5] INFO  dLog - Class: class com.revature.p2_lfg.presentation.controllers.GameController - Returning: GameSessionInfoResponse(gameSessionList=[GameSelectInfo(gameId=1, platformKey=1172470, name=Apex Legends, imgLink=https://media.contentapi.ea.com/content/dam/apex-legends/images/2019/01/apex-featured-image-16x9.jpg.adapt.crop16x9.1023w.jpg, sessions=0), GameSelectInfo(gameId=2, platformKey=404, name=League of Legends, imgLink=https://cdn1.epicgames.com/salesEvent/salesEvent/EGS_LeagueofLegends_RiotGames_S1_2560x1440-ee500721c06da3ec1e5535a88588c77f?h=270&resize=1&w=480, sessions=0), GameSelectInfo(gameId=3, platformKey=730, name=Counter Strike: Global Offensive, imgLink=https://cdn.akamai.steamstatic.com/steam/apps/730/capsule_616x353.jpg?t=1635269541, sessions=0)])
-22:13:45.768 [http-nio-8080-exec-5] DEBUG dLog - getAvailableGames
-22:13:50.574 [http-nio-8080-exec-6] DEBUG dLog - Class: class com.revature.p2_lfg.presentation.controllers.GameController - Method: getSelectedGameGroups
-22:13:50.574 [http-nio-8080-exec-6] DEBUG dLog - Class: class com.revature.p2_lfg.service.game.classes.GameService - Method: getSelectedGameGroups
-22:13:50.575 [http-nio-8080-exec-6] INFO  dLog - Class: class com.revature.p2_lfg.service.game.classes.GameService - Returning: SelectedGameAvailableGroupsResponse(gameId=33, selectedGameAvailableGroups=[])
-22:13:50.575 [http-nio-8080-exec-6] DEBUG dLog - getSelectedGameGroups
-22:13:50.575 [http-nio-8080-exec-6] INFO  dLog - Class: class com.revature.p2_lfg.presentation.controllers.GameController - Returning: SelectedGameAvailableGroupsResponse(gameId=33, selectedGameAvailableGroups=[])
-22:13:50.575 [http-nio-8080-exec-6] DEBUG dLog - getSelectedGameGroups
-22:13:53.941 [http-nio-8080-exec-7] DEBUG dLog - Class: class com.revature.p2_lfg.presentation.controllers.GameController - Method: getSelectedGameGroups
-22:13:53.941 [http-nio-8080-exec-7] DEBUG dLog - Class: class com.revature.p2_lfg.service.game.classes.GameService - Method: getSelectedGameGroups
-22:13:53.942 [http-nio-8080-exec-7] INFO  dLog - Class: class com.revature.p2_lfg.service.game.classes.GameService - Returning: SelectedGameAvailableGroupsResponse(gameId=3, selectedGameAvailableGroups=[])
-22:13:53.942 [http-nio-8080-exec-7] DEBUG dLog - getSelectedGameGroups
-22:13:53.942 [http-nio-8080-exec-7] INFO  dLog - Class: class com.revature.p2_lfg.presentation.controllers.GameController - Returning: SelectedGameAvailableGroupsResponse(gameId=3, selectedGameAvailableGroups=[])
-22:13:53.942 [http-nio-8080-exec-7] DEBUG dLog - getSelectedGameGroups
-22:16:03.422 [http-nio-8080-exec-2] DEBUG dLog - Class: class com.revature.p2_lfg.presentation.controllers.GameController - Method: getSelectedGameGroups
-22:16:03.432 [http-nio-8080-exec-2] DEBUG dLog - Class: class com.revature.p2_lfg.service.game.classes.GameService - Method: getSelectedGameGroups - Arguments: [3]
-22:16:03.463 [http-nio-8080-exec-2] INFO  dLog - Class: class com.revature.p2_lfg.service.game.classes.GameService - Returning: SelectedGameAvailableGroupsResponse(gameId=3, selectedGameAvailableGroups=[])
-22:16:03.463 [http-nio-8080-exec-2] DEBUG dLog - getSelectedGameGroups
-22:16:03.463 [http-nio-8080-exec-2] INFO  dLog - Class: class com.revature.p2_lfg.presentation.controllers.GameController - Returning: SelectedGameAvailableGroupsResponse(gameId=3, selectedGameAvailableGroups=[])
-22:16:03.463 [http-nio-8080-exec-2] DEBUG dLog - getSelectedGameGroups
-22:16:12.331 [http-nio-8080-exec-3] DEBUG dLog - Class: class com.revature.p2_lfg.presentation.controllers.GameController - Method: getAvailableGames
-22:16:12.331 [http-nio-8080-exec-3] DEBUG dLog - Class: class com.revature.p2_lfg.service.game.classes.GameService - Method: getCurrentGameSessionList - Arguments: []
-22:16:12.366 [http-nio-8080-exec-3] INFO  dLog - Class: class com.revature.p2_lfg.service.game.classes.GameService - Returning: GameSessionInfoResponse(gameSessionList=[GameSelectInfo(gameId=1, platformKey=1172470, name=Apex Legends, imgLink=https://media.contentapi.ea.com/content/dam/apex-legends/images/2019/01/apex-featured-image-16x9.jpg.adapt.crop16x9.1023w.jpg, sessions=0), GameSelectInfo(gameId=2, platformKey=404, name=League of Legends, imgLink=https://cdn1.epicgames.com/salesEvent/salesEvent/EGS_LeagueofLegends_RiotGames_S1_2560x1440-ee500721c06da3ec1e5535a88588c77f?h=270&resize=1&w=480, sessions=0), GameSelectInfo(gameId=3, platformKey=730, name=Counter Strike: Global Offensive, imgLink=https://cdn.akamai.steamstatic.com/steam/apps/730/capsule_616x353.jpg?t=1635269541, sessions=0)])
-22:16:12.366 [http-nio-8080-exec-3] DEBUG dLog - getCurrentGameSessionList
-22:16:12.366 [http-nio-8080-exec-3] INFO  dLog - Class: class com.revature.p2_lfg.presentation.controllers.GameController - Returning: GameSessionInfoResponse(gameSessionList=[GameSelectInfo(gameId=1, platformKey=1172470, name=Apex Legends, imgLink=https://media.contentapi.ea.com/content/dam/apex-legends/images/2019/01/apex-featured-image-16x9.jpg.adapt.crop16x9.1023w.jpg, sessions=0), GameSelectInfo(gameId=2, platformKey=404, name=League of Legends, imgLink=https://cdn1.epicgames.com/salesEvent/salesEvent/EGS_LeagueofLegends_RiotGames_S1_2560x1440-ee500721c06da3ec1e5535a88588c77f?h=270&resize=1&w=480, sessions=0), GameSelectInfo(gameId=3, platformKey=730, name=Counter Strike: Global Offensive, imgLink=https://cdn.akamai.steamstatic.com/steam/apps/730/capsule_616x353.jpg?t=1635269541, sessions=0)])
-22:16:12.366 [http-nio-8080-exec-3] DEBUG dLog - getAvailableGames
-22:16:31.729 [http-nio-8080-exec-4] DEBUG dLog - Class: class com.revature.p2_lfg.presentation.controllers.LoginController - Method: checkLogin
-22:16:31.732 [http-nio-8080-exec-4] DEBUG dLog - Class: class com.revature.p2_lfg.service.login.classes.LoginService - Method: getUserCredentialFromLogin - Arguments: [LoginRequest(username=user1, password=pass1)]
-22:16:31.739 [http-nio-8080-exec-4] DEBUG dLog - getUserCredentialFromLogin
-22:16:31.739 [http-nio-8080-exec-4] ERROR dLog - Class: class com.revature.p2_lfg.presentation.controllers.LoginController - Throwing: java.lang.NullPointerException
-22:16:31.739 [http-nio-8080-exec-4] DEBUG dLog - checkLogin
-22:16:31.741 [http-nio-8080-exec-4] DEBUG dLog - Class: class com.revature.p2_lfg.presentation.controllers.LoginController - Method: handleNonNullException
-22:16:31.741 [http-nio-8080-exec-4] INFO  dLog - Class: class com.revature.p2_lfg.presentation.controllers.LoginController - Returning: User not found
-22:16:31.741 [http-nio-8080-exec-4] DEBUG dLog - handleNonNullException
-22:20:21.274 [http-nio-8080-exec-2] DEBUG dLog - Class: class com.revature.p2_lfg.presentation.controllers.LoginController - Method: checkLogin
-22:20:21.284 [http-nio-8080-exec-2] DEBUG dLog - Class: class com.revature.p2_lfg.service.login.classes.LoginService - Method: getUserCredentialFromLogin - Arguments: [LoginRequest(username=user1, password=pass1)]
-22:20:21.316 [http-nio-8080-exec-2] DEBUG dLog - getUserCredentialFromLogin
-22:20:21.317 [http-nio-8080-exec-2] ERROR dLog - Class: class com.revature.p2_lfg.presentation.controllers.LoginController - Throwing: java.lang.NullPointerException
-22:20:21.317 [http-nio-8080-exec-2] DEBUG dLog - checkLogin
-22:20:21.318 [http-nio-8080-exec-2] DEBUG dLog - Class: class com.revature.p2_lfg.presentation.controllers.LoginController - Method: handleNonNullException
-22:20:21.318 [http-nio-8080-exec-2] ERROR dLog - Class: class com.revature.p2_lfg.presentation.controllers.LoginController - Throwing: com.revature.p2_lfg.service.login.exceptions.InvalidInputException: 400 BAD_REQUEST "User was not found"
-22:20:21.318 [http-nio-8080-exec-2] DEBUG dLog - handleNonNullException
-22:23:22.609 [http-nio-8080-exec-2] DEBUG dLog - Class: class com.revature.p2_lfg.presentation.controllers.LoginController - Method: checkLogin
-22:23:22.619 [http-nio-8080-exec-2] DEBUG dLog - Class: class com.revature.p2_lfg.service.login.classes.LoginService - Method: getUserCredentialFromLogin - Arguments: [LoginRequest(username=user1, password=pass1)]
-22:23:22.652 [http-nio-8080-exec-2] DEBUG dLog - getUserCredentialFromLogin
-22:23:22.653 [http-nio-8080-exec-2] ERROR dLog - Class: class com.revature.p2_lfg.presentation.controllers.LoginController - Throwing: java.lang.NullPointerException
-22:23:22.653 [http-nio-8080-exec-2] DEBUG dLog - checkLogin
-22:23:22.654 [http-nio-8080-exec-2] DEBUG dLog - Class: class com.revature.p2_lfg.presentation.controllers.LoginController - Method: handleNonNullException
-22:23:22.654 [http-nio-8080-exec-2] INFO  dLog - Class: class com.revature.p2_lfg.presentation.controllers.LoginController - Returning: User not found
-22:23:22.655 [http-nio-8080-exec-2] DEBUG dLog - handleNonNullException
+18:21:09.957 [http-nio-8088-exec-2] DEBUG dLog - Getting game sessions select list
+18:39:50.725 [http-nio-8088-exec-2] DEBUG dLog - Validating user login attempt: LoginRequest(username=ChrisS, password=pass123123)
+18:39:50.865 [http-nio-8088-exec-2] DEBUG dLog - Getting Profile Response with User Credentials: null
+18:40:04.279 [http-nio-8088-exec-3] DEBUG dLog - Validating user login attempt: LoginRequest(username=ChrisS, password=123123)
+18:40:04.415 [http-nio-8088-exec-3] DEBUG dLog - Getting Profile Response with User Credentials: UserCredential(userid=4, username=ChrisS, password=123123)
+18:40:04.483 [http-nio-8088-exec-3] DEBUG dLog - Converting User profile into profile Response: UserProfile(columnID=3, usercredential=UserCredential(userid=4, username=ChrisS, password=123123), firstname=empty, lastname=empty, email=email@email.com)
+18:40:04.519 [http-nio-8088-exec-5] DEBUG dLog - Getting game sessions select list
+18:44:45.702 [http-nio-8088-exec-2] DEBUG dLog - Getting game sessions select list
+18:46:10.855 [http-nio-8088-exec-4] DEBUG dLog - Validating user login attempt: LoginRequest(username=ChrisS, password=123123)
+18:46:10.990 [http-nio-8088-exec-4] DEBUG dLog - Getting Profile Response with User Credentials: UserCredential(userid=4, username=ChrisS, password=123123)
+18:46:11.056 [http-nio-8088-exec-4] DEBUG dLog - Converting User profile into profile Response: UserProfile(columnID=3, usercredential=UserCredential(userid=4, username=ChrisS, password=123123), firstname=empty, lastname=empty, email=email@email.com)
+18:46:11.073 [http-nio-8088-exec-5] DEBUG dLog - Getting game sessions select list
+18:49:49.764 [http-nio-8088-exec-1] DEBUG dLog - Getting game sessions select list
+19:07:36.584 [http-nio-8088-exec-1] DEBUG dLog - Validating user login attempt: LoginRequest(username=ChrisS, password=123123)
+19:07:37.073 [http-nio-8088-exec-1] DEBUG dLog - Getting Profile Response with User Credentials: UserCredential(userid=4, username=ChrisS, password=123123)
+19:07:37.139 [http-nio-8088-exec-1] DEBUG dLog - Converting User profile into profile Response: UserProfile(columnID=3, usercredential=UserCredential(userid=4, username=ChrisS, password=123123), firstname=empty, lastname=empty, email=email@email.com)
+19:07:37.161 [http-nio-8088-exec-2] DEBUG dLog - Getting game sessions select list
+19:14:08.441 [http-nio-8088-exec-6] DEBUG dLog - Getting game sessions select list
+19:14:08.838 [http-nio-8088-exec-7] DEBUG dLog - Getting game sessions select list
+19:14:15.422 [http-nio-8088-exec-8] DEBUG dLog - Getting game sessions select list
+19:17:39.456 [http-nio-8088-exec-1] DEBUG dLog - Getting game sessions select list
+19:17:39.857 [http-nio-8088-exec-2] DEBUG dLog - Getting game sessions select list
+19:17:52.379 [http-nio-8088-exec-3] DEBUG dLog - Getting game sessions select list
+19:18:09.435 [http-nio-8088-exec-5] DEBUG dLog - Validating user login attempt: LoginRequest(username=ChrisS, password=123123)
+19:18:09.568 [http-nio-8088-exec-5] DEBUG dLog - Getting Profile Response with User Credentials: UserCredential(userid=4, username=ChrisS, password=123123)
+19:18:09.633 [http-nio-8088-exec-5] DEBUG dLog - Converting User profile into profile Response: UserProfile(columnID=3, usercredential=UserCredential(userid=4, username=ChrisS, password=123123), firstname=empty, lastname=empty, email=email@email.com)
+19:18:09.647 [http-nio-8088-exec-6] DEBUG dLog - Getting game sessions select list
+19:19:25.074 [http-nio-8088-exec-8] DEBUG dLog - Getting game sessions select list
+19:19:25.469 [http-nio-8088-exec-9] DEBUG dLog - Getting game sessions select list
+19:20:18.525 [http-nio-8088-exec-10] DEBUG dLog - Getting game sessions select list
+19:20:18.928 [http-nio-8088-exec-1] DEBUG dLog - Getting game sessions select list
+19:20:51.911 [http-nio-8088-exec-2] DEBUG dLog - Getting game sessions select list
+19:20:52.323 [http-nio-8088-exec-3] DEBUG dLog - Getting game sessions select list
+19:24:25.584 [http-nio-8088-exec-5] DEBUG dLog - Validating user login attempt: LoginRequest(username=ChrisS, password=123123)
+19:24:25.719 [http-nio-8088-exec-5] DEBUG dLog - Getting Profile Response with User Credentials: UserCredential(userid=4, username=ChrisS, password=123123)
+19:24:25.783 [http-nio-8088-exec-5] DEBUG dLog - Converting User profile into profile Response: UserProfile(columnID=3, usercredential=UserCredential(userid=4, username=ChrisS, password=123123), firstname=empty, lastname=empty, email=email@email.com)
+19:24:25.798 [http-nio-8088-exec-6] DEBUG dLog - Getting game sessions select list
+19:29:32.017 [http-nio-8088-exec-8] DEBUG dLog - Getting game sessions select list
+19:29:32.769 [http-nio-8088-exec-9] DEBUG dLog - Getting game sessions select list
+19:30:33.147 [http-nio-8088-exec-10] DEBUG dLog - Getting game sessions select list
+19:30:33.540 [http-nio-8088-exec-1] DEBUG dLog - Getting game sessions select list
+19:41:05.843 [http-nio-8088-exec-3] DEBUG dLog - Getting game sessions select list
+19:41:06.317 [http-nio-8088-exec-4] DEBUG dLog - Getting game sessions select list
+20:02:37.386 [http-nio-8088-exec-8] DEBUG dLog - Getting game sessions select list
+20:02:37.866 [http-nio-8088-exec-9] DEBUG dLog - Getting game sessions select list
+20:08:25.809 [http-nio-8088-exec-3] DEBUG dLog - Validating user login attempt: LoginRequest(username=ChrisS, password=123123)
+20:08:25.953 [http-nio-8088-exec-3] DEBUG dLog - Getting Profile Response with User Credentials: UserCredential(userid=4, username=ChrisS, password=123123)
+20:08:26.028 [http-nio-8088-exec-3] DEBUG dLog - Converting User profile into profile Response: UserProfile(columnID=3, usercredential=UserCredential(userid=4, username=ChrisS, password=123123), firstname=empty, lastname=empty, email=email@email.com)
+20:08:26.045 [http-nio-8088-exec-4] DEBUG dLog - Getting game sessions select list
+20:09:12.218 [http-nio-8088-exec-5] DEBUG dLog - Getting game sessions select list
+20:24:42.392 [http-nio-8088-exec-7] DEBUG dLog - Getting game sessions select list
+20:24:42.798 [http-nio-8088-exec-8] DEBUG dLog - Getting game sessions select list
+20:25:31.607 [http-nio-8088-exec-9] DEBUG dLog - Getting game sessions select list
+20:25:32.028 [http-nio-8088-exec-10] DEBUG dLog - Getting game sessions select list
+20:25:39.940 [http-nio-8088-exec-2] DEBUG dLog - Getting game group sessions by gameName: 1
+20:25:39.940 [http-nio-8088-exec-2] DEBUG dLog - Getting selected game groups: 1
+20:25:48.817 [http-nio-8088-exec-3] DEBUG dLog - Getting game sessions select list
+20:32:29.930 [http-nio-8088-exec-1] DEBUG dLog - Getting game sessions select list
+20:35:02.743 [http-nio-8088-exec-7] DEBUG dLog - Getting game sessions select list
+20:51:15.268 [http-nio-8088-exec-9] DEBUG dLog - Getting game group sessions by gameName: 1
+20:51:15.268 [http-nio-8088-exec-9] DEBUG dLog - Getting selected game groups: 1
+20:54:43.956 [http-nio-8088-exec-2] DEBUG dLog - Getting game group sessions by gameName: 3
+20:54:43.956 [http-nio-8088-exec-2] DEBUG dLog - Getting selected game groups: 3
+20:58:26.542 [http-nio-8088-exec-4] DEBUG dLog - Getting game sessions select list
+20:58:26.945 [http-nio-8088-exec-5] DEBUG dLog - Getting game sessions select list
+20:58:32.793 [http-nio-8088-exec-7] DEBUG dLog - Getting game group sessions by gameName: 1
+20:58:32.793 [http-nio-8088-exec-7] DEBUG dLog - Getting selected game groups: 1
+21:02:01.390 [http-nio-8088-exec-9] DEBUG dLog - Getting game sessions select list
+21:02:02.100 [http-nio-8088-exec-10] DEBUG dLog - Getting game sessions select list
+21:02:04.648 [http-nio-8088-exec-1] DEBUG dLog - Getting game group sessions by gameName: 1
+21:02:04.648 [http-nio-8088-exec-1] DEBUG dLog - Getting selected game groups: 1
+21:02:18.411 [http-nio-8088-exec-2] DEBUG dLog - Getting game sessions select list
+21:02:20.551 [http-nio-8088-exec-4] DEBUG dLog - Getting game group sessions by gameName: 3
+21:02:20.551 [http-nio-8088-exec-4] DEBUG dLog - Getting selected game groups: 3
+21:04:27.084 [http-nio-8088-exec-6] DEBUG dLog - Getting game sessions select list
+21:04:28.146 [http-nio-8088-exec-7] DEBUG dLog - Getting game sessions select list
+21:14:33.853 [http-nio-8088-exec-10] DEBUG dLog - Getting game sessions select list
+21:14:34.344 [http-nio-8088-exec-1] DEBUG dLog - Getting game sessions select list
+21:16:58.349 [http-nio-8088-exec-3] DEBUG dLog - Getting game sessions select list
+21:16:58.756 [http-nio-8088-exec-4] DEBUG dLog - Getting game sessions select list
+21:17:38.525 [http-nio-8088-exec-5] DEBUG dLog - Getting game sessions select list
+21:17:38.930 [http-nio-8088-exec-6] DEBUG dLog - Getting game sessions select list
+21:20:18.120 [http-nio-8088-exec-8] DEBUG dLog - Getting game sessions select list
+21:20:18.518 [http-nio-8088-exec-9] DEBUG dLog - Getting game sessions select list
+21:21:10.788 [http-nio-8088-exec-10] DEBUG dLog - Getting game group sessions by gameName: 1
+21:21:10.788 [http-nio-8088-exec-10] DEBUG dLog - Getting selected game groups: 1
+21:29:10.414 [http-nio-8088-exec-2] DEBUG dLog - Getting game sessions select list
+21:29:10.828 [http-nio-8088-exec-3] DEBUG dLog - Getting game sessions select list
+21:32:24.781 [http-nio-8088-exec-5] DEBUG dLog - Getting game sessions select list
+21:32:25.251 [http-nio-8088-exec-6] DEBUG dLog - Getting game sessions select list
+21:32:28.775 [http-nio-8088-exec-8] DEBUG dLog - Getting game group sessions by gameName: 1
+21:32:28.775 [http-nio-8088-exec-8] DEBUG dLog - Getting selected game groups: 1
+21:35:28.440 [http-nio-8088-exec-10] DEBUG dLog - Getting game sessions select list
+21:35:28.835 [http-nio-8088-exec-1] DEBUG dLog - Getting game sessions select list
+21:35:31.931 [http-nio-8088-exec-2] DEBUG dLog - Getting game group sessions by gameName: 1
+21:35:31.931 [http-nio-8088-exec-2] DEBUG dLog - Getting selected game groups: 1
+21:37:23.942 [http-nio-8088-exec-4] DEBUG dLog - Getting game sessions select list
+21:37:26.262 [http-nio-8088-exec-6] DEBUG dLog - Getting game group sessions by gameName: 2
+21:37:26.262 [http-nio-8088-exec-6] DEBUG dLog - Getting selected game groups: 2
+21:37:27.446 [http-nio-8088-exec-7] DEBUG dLog - Getting game sessions select list
+21:38:18.028 [http-nio-8088-exec-8] DEBUG dLog - Getting game sessions select list
+21:38:18.430 [http-nio-8088-exec-9] DEBUG dLog - Getting game sessions select list
+21:38:45.097 [http-nio-8088-exec-10] DEBUG dLog - Getting game group sessions by gameName: 1
+21:38:45.097 [http-nio-8088-exec-10] DEBUG dLog - Getting selected game groups: 1
+21:42:16.215 [http-nio-8088-exec-2] DEBUG dLog - Getting game sessions select list
+21:42:16.626 [http-nio-8088-exec-3] DEBUG dLog - Getting game sessions select list
+21:42:18.473 [http-nio-8088-exec-4] DEBUG dLog - Getting game group sessions by gameName: 1
+21:42:18.473 [http-nio-8088-exec-4] DEBUG dLog - Getting selected game groups: 1
+21:42:52.982 [http-nio-8088-exec-5] DEBUG dLog - Getting game sessions select list
+21:42:53.382 [http-nio-8088-exec-6] DEBUG dLog - Getting game sessions select list
+21:42:54.838 [http-nio-8088-exec-7] DEBUG dLog - Getting game group sessions by gameName: 1
+21:42:54.838 [http-nio-8088-exec-7] DEBUG dLog - Getting selected game groups: 1
+21:45:14.971 [http-nio-8088-exec-1] DEBUG dLog - Getting game sessions select list
+21:45:15.380 [http-nio-8088-exec-2] DEBUG dLog - Getting game sessions select list
+21:45:17.516 [http-nio-8088-exec-3] DEBUG dLog - Getting game group sessions by gameName: 1
+21:45:17.516 [http-nio-8088-exec-3] DEBUG dLog - Getting selected game groups: 1
+21:48:03.174 [http-nio-8088-exec-6] DEBUG dLog - Getting game sessions select list
+21:48:03.583 [http-nio-8088-exec-7] DEBUG dLog - Getting game sessions select list
+21:48:21.360 [http-nio-8088-exec-8] DEBUG dLog - Getting game group sessions by gameName: 1
+21:48:21.360 [http-nio-8088-exec-8] DEBUG dLog - Getting selected game groups: 1
+21:49:30.468 [http-nio-8088-exec-10] DEBUG dLog - Getting game sessions select list
+21:49:30.864 [http-nio-8088-exec-1] DEBUG dLog - Getting game sessions select list
+21:49:32.849 [http-nio-8088-exec-2] DEBUG dLog - Getting game group sessions by gameName: 1
+21:49:32.849 [http-nio-8088-exec-2] DEBUG dLog - Getting selected game groups: 1
+21:51:43.788 [http-nio-8088-exec-4] DEBUG dLog - Getting game sessions select list
+21:51:44.182 [http-nio-8088-exec-5] DEBUG dLog - Getting game sessions select list
+21:55:06.756 [http-nio-8088-exec-7] DEBUG dLog - Getting game sessions select list
+21:55:07.151 [http-nio-8088-exec-8] DEBUG dLog - Getting game sessions select list
+21:55:13.415 [http-nio-8088-exec-9] DEBUG dLog - Getting game group sessions by gameName: 1
+21:55:13.415 [http-nio-8088-exec-9] DEBUG dLog - Getting selected game groups: 1
+21:55:18.987 [http-nio-8088-exec-10] DEBUG dLog - Getting game sessions select list
+21:57:14.102 [http-nio-8088-exec-2] DEBUG dLog - Getting game sessions select list
+21:57:14.495 [http-nio-8088-exec-3] DEBUG dLog - Getting game sessions select list
+21:59:12.325 [http-nio-8088-exec-5] DEBUG dLog - Getting game sessions select list
+21:59:12.725 [http-nio-8088-exec-6] DEBUG dLog - Getting game sessions select list
+21:59:56.600 [http-nio-8088-exec-7] DEBUG dLog - Getting game sessions select list
+21:59:57.019 [http-nio-8088-exec-8] DEBUG dLog - Getting game sessions select list
+21:59:58.525 [http-nio-8088-exec-9] DEBUG dLog - Getting game group sessions by gameName: 1
+21:59:58.525 [http-nio-8088-exec-9] DEBUG dLog - Getting selected game groups: 1
+22:01:02.081 [http-nio-8088-exec-1] DEBUG dLog - Getting game sessions select list
+22:01:02.624 [http-nio-8088-exec-2] DEBUG dLog - Getting game sessions select list
+22:01:06.123 [http-nio-8088-exec-3] DEBUG dLog - Getting game group sessions by gameName: 1
+22:01:06.123 [http-nio-8088-exec-3] DEBUG dLog - Getting selected game groups: 1
+22:01:08.650 [http-nio-8088-exec-4] DEBUG dLog - Getting game sessions select list
+22:01:14.882 [http-nio-8088-exec-6] DEBUG dLog - Getting game group sessions by gameName: 3
+22:01:14.882 [http-nio-8088-exec-6] DEBUG dLog - Getting selected game groups: 3
+22:01:22.328 [http-nio-8088-exec-7] DEBUG dLog - Getting game sessions select list
+22:02:19.727 [http-nio-8088-exec-8] DEBUG dLog - Getting game group sessions by gameName: 2
+22:02:19.727 [http-nio-8088-exec-8] DEBUG dLog - Getting selected game groups: 2
+22:02:37.099 [http-nio-8088-exec-9] DEBUG dLog - Getting game sessions select list
+22:02:37.495 [http-nio-8088-exec-10] DEBUG dLog - Getting game sessions select list
+22:02:39.883 [http-nio-8088-exec-1] DEBUG dLog - Getting game group sessions by gameName: 2
+22:02:39.883 [http-nio-8088-exec-1] DEBUG dLog - Getting selected game groups: 2
+22:05:39.941 [http-nio-8088-exec-3] DEBUG dLog - Getting game sessions select list
+22:05:40.341 [http-nio-8088-exec-4] DEBUG dLog - Getting game sessions select list
+22:05:56.620 [http-nio-8088-exec-5] DEBUG dLog - Getting game group sessions by gameName: 2
+22:05:56.620 [http-nio-8088-exec-5] DEBUG dLog - Getting selected game groups: 2
+22:12:51.721 [http-nio-8088-exec-9] DEBUG dLog - Getting game sessions select list
+22:12:52.358 [http-nio-8088-exec-10] DEBUG dLog - Getting game sessions select list
+22:13:18.511 [http-nio-8088-exec-1] DEBUG dLog - Getting game sessions select list
+22:13:18.914 [http-nio-8088-exec-2] DEBUG dLog - Getting game sessions select list
+22:13:20.846 [http-nio-8088-exec-4] DEBUG dLog - Getting game group sessions by gameName: 2
+22:13:20.847 [http-nio-8088-exec-4] DEBUG dLog - Getting selected game groups: 2
+22:13:27.658 [http-nio-8088-exec-6] DEBUG dLog - Creating a group session: CreateGroupSessionRequest(gameId=0, maxUsers=0, description=null)
+22:13:27.675 [http-nio-8088-exec-6] DEBUG dLog - Creating group session response from group create request: CreateGroupSessionRequest(gameId=0, maxUsers=0, description=null)
+22:13:27.675 [http-nio-8088-exec-6] DEBUG dLog - Creating a group session: GameId - 0 maxUsers - 0 Description: null
+22:18:05.244 [http-nio-8088-exec-7] DEBUG dLog - Creating a group session: CreateGroupSessionRequest(gameId=0, maxUsers=0, description=null)
+22:18:05.247 [http-nio-8088-exec-7] DEBUG dLog - Creating group session response from group create request: CreateGroupSessionRequest(gameId=0, maxUsers=0, description=null)
+22:18:05.247 [http-nio-8088-exec-7] DEBUG dLog - Creating a group session: GameId - 0 maxUsers - 0 Description: null
+22:18:46.377 [http-nio-8088-exec-9] DEBUG dLog - Creating a group session: CreateGroupSessionRequest(gameId=3, maxUsers=4, description=This is a created Group through Postman)
+22:18:46.379 [http-nio-8088-exec-9] DEBUG dLog - Creating group session response from group create request: CreateGroupSessionRequest(gameId=3, maxUsers=4, description=This is a created Group through Postman)
+22:18:46.379 [http-nio-8088-exec-9] DEBUG dLog - Creating a group session: GameId - 3 maxUsers - 4 Description: This is a created Group through Postman
