@@ -1,7 +1,11 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { AvailableGames } from 'src/app/models/available-games.model';
+import { Game } from 'src/app/models/game.model';
+import { Group } from 'src/app/models/group.model';
 import { UserViewGroup } from 'src/app/models/user-view-group.model';
 import { GameService } from 'src/app/_services/game.service';
+import { TokenStorageService } from 'src/app/_services/token-storage.service';
+import { UserService } from 'src/app/_services/user.service';
 
 @Component({
   selector: 'app-group-card',
@@ -11,27 +15,37 @@ import { GameService } from 'src/app/_services/game.service';
 export class GroupCardComponent implements OnInit {
 
   @Input()
-  groupSessions!: UserViewGroup[];
+  groupSessions!: Group[];
 
   @Input()
   gameId!:number;
 
-  game!:AvailableGames;
+  game: any;
 
-  constructor(private gameService:GameService) { }
+  constructor(private tokenStorage: TokenStorageService, private userService: UserService) { }
 
   ngOnInit(): void {
     this.getGameInfo();
+    this.game = this.tokenStorage.getGame()
   }
 
   getGameInfo(){
-    this.gameService.findGame(this.gameId).subscribe(
+    this.userService.getSelectedGame(this.game.gameId).subscribe(
       (data) => {
-        this.game = data;
+        
+        this.groupSessions = data.selectedGameAvailableGroups
       },
       (error) => {
         console.log(error);
       }
     );
+  }
+
+  groupRequest(group: Group) {
+    this.userService.requestToJoinGroup(group).subscribe(
+      (data) => {
+        // increase app counter
+      }
+    )
   }
 }

@@ -1,12 +1,18 @@
 package com.revature.p2_lfg.service.login.exceptions;
 
 import lombok.experimental.StandardException;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.server.ResponseStatusException;
 
-@StandardException
-@ResponseStatus(code = HttpStatus.BAD_REQUEST, reason = "Invalid input")
-public class InvalidInputException extends RuntimeException {
-    public InvalidInputException(String empty_new_username_input) {
+public class InvalidInputException extends ResponseStatusException {
+    public InvalidInputException(String message) {
+        super(HttpStatus.BAD_REQUEST, message);
+    }
+
+    @Override
+    public HttpHeaders getResponseHeaders() {
+        return super.getResponseHeaders();
     }
 }

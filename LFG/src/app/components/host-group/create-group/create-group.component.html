@@ -1,1 +1,50 @@
-<p>create-group works!</p>
+<div>
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+      
+        <div class="form-group">
+            <label>Enter desired group size: </label>
+            <input
+                type="number"
+                formControlName="maxGroupSize"
+                class="form-control"
+                [ngClass]="{ 'is-invalid': submitted && f['maxGroupSize'].errors }"
+            />
+        <div *ngIf="submitted && f['maxGroupSize'].errors" class="invalid-feedback">
+          <div *ngIf="f['maxGroupSize'].errors['required']">Group size is required</div>
+          <div *ngIf="f['maxGroupSize'].errors['minlength']">
+            Group size may not be less than 2
+          </div>
+          <div *ngIf="f['maxGroupSize'].errors['maxlength']">
+            Group size must be less than 100
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Description of group's purpose</label>
+        <input
+          type="text"
+          formControlName="description"
+          class="form-control"
+          [ngClass]="{ 'is-invalid': submitted && f['description'].errors }"
+        />
+        <div *ngIf="submitted && f['description'].errors" class="invalid-feedback">
+          <div *ngIf="f['description'].errors['required']">Description is required</div>
+          <div *ngIf="f['description'].errors['maxlength']">
+            Description must not exceed 50 characters
+          </div>
+        </div>
+      </div>
+  
+      <div class="form-group">
+        <button type="submit" class="btn btn-primary">Register</button>
+        <button
+          type="button"
+          (click)="onReset()"
+          class="btn btn-warning float-right"
+        >
+          Reset
+        </button>
+      </div>
+    </form>
+</div>
