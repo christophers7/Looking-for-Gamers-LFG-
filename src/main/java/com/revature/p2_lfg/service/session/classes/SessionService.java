@@ -1,6 +1,8 @@
 package com.revature.p2_lfg.service.session.classes;
-
-import com.revature.p2_lfg.presentation.models.session.*;
+import com.revature.p2_lfg.presentation.models.session.requests.CancelGroupRequest;
+import com.revature.p2_lfg.presentation.models.session.requests.CreateGroupSessionRequest;
+import com.revature.p2_lfg.presentation.models.session.requests.WaitingRoomRequest;
+import com.revature.p2_lfg.presentation.models.session.response.SessionResponse;
 import com.revature.p2_lfg.repository.interfaces.LoginRepository;
 import com.revature.p2_lfg.repository.interfaces.SessionDetailsRepository;
 import com.revature.p2_lfg.repository.interfaces.SessionRepository;
@@ -11,6 +13,8 @@ import com.revature.p2_lfg.repository.entities.session.SessionDetails;
 import com.revature.p2_lfg.repository.entities.session.Tag;
 import com.revature.p2_lfg.repository.entities.user.UserCredential;
 import com.revature.p2_lfg.service.session.MaxUsersException;
+import com.revature.p2_lfg.service.session.exception.InvalidHostUserException;
+import com.revature.p2_lfg.service.session.exception.InvalidUserException;
 import com.revature.p2_lfg.service.session.interfaces.SessionServiceable;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -25,9 +29,6 @@ import java.util.*;
 @Service("sessionService")
     public class SessionService implements SessionServiceable {
 
-    private final Logger iLog = LoggerFactory.getLogger("iLog");
-    private final Logger dLog = LoggerFactory.getLogger("dLog");
-
     @Autowired
     private SessionDetailsRepository sessionDetailsRepository;
     @Autowired
@@ -35,51 +36,84 @@ import java.util.*;
     @Autowired
     private LoginRepository loginRepository;
 
-    public CreatedGroupSessionResponse createGroupSession(CreateGroupSessionRequest createGroup, JWTInfo parsedJWT) {
-        dLog.debug("Creating group session response from group create request: " + createGroup);
-        SessionDetails sessionDetails = createGroupSessionInDatabase(createGroup.getGameId() , createGroup.getMaxUsers(), createGroup.getDescription());
-        iLog.info("New Group Session created and stored in database: " + sessionDetails);
-
-        GroupSessionId sessionId = createUserSession(sessionDetails, parsedJWT, parsedJWT.getUserId(), true);
-        iLog.info("Successful entry of a user to a session: " + sessionId);
-        return new CreatedGroupSessionResponse(
-                sessionDetails.getGroupid(),
-                sessionDetails.getGame().getGameid(),
-                sessionDetails.getMaxusers(),
-                sessionDetails.getDescription(),
-                getGroupMembersOfSession(sessionDetails.getGroupid())
-        );
+    public SessionResponse createGroupSession(CreateGroupSessionRequest createGroup, JWTInfo parsedJWT) {
+        SessionDetails sessionDetails;
+        try {
+            sessionDetails = createGroupSessionInDatabase(createGroup.getGameId(), createGroup.getMaxUsers(), createGroup.getDescription());
+            createUserSession(sessionDetails, parsedJWT, parsedJWT.getUserId(), true);
+            GroupUser host = getHostUserWithGroupId(sessionDetails.getGroupid());
+            return new SessionResponse.SessionResponseBuilder(host, sessionDetails)
+                    .success(true)
+                    .groupId(sessionDetails.getGroupid())
+                    .gameId(sessionDetails.getGame().getGameid())
+                    .groupMembers(Collections.singletonList(host))
+                    .waitingMembers(new ArrayList<GroupUser>())
+                    .build();
+        } catch (Exception e){
+            return failSessionResponse();
+        }
     }
 
+    private SessionResponse failSessionResponse(){
+        return new SessionResponse.SessionResponseBuilder(new GroupUser(), new SessionDetails())
+                .success(false)
+                .build();
+    }
+
+
     @Override
-    public JoinGroupSessionResponse joinGroupSession(JWTInfo parsedJWT, int groupId, int gameId) throws MaxUsersException {
-        dLog.debug("Joining group session waiting room Group ID: " + groupId + " JWT: " + parsedJWT);
+    public SessionResponse joinGroupSession(JWTInfo parsedJWT, int groupId, int gameId) throws MaxUsersException {
         return enterWaitingRoom(groupId, parsedJWT);
     }
 
-    private JoinGroupSessionResponse enterWaitingRoom(int groupId, JWTInfo parsedJWT) throws MaxUsersException {
-        dLog.debug("Attempting to enter waiting room: " + groupId);
-        SessionDetails sessionDetails = getSessionDetailsByGroupId(groupId);
-        if (sessionDetails != null){
-            iLog.info("Joining group session: " + sessionDetails);
-            GroupSessionId sessionId = createUserSession(sessionDetails, parsedJWT, findByHostId(groupId),  false);
-            return new JoinGroupSessionResponse(
-                    sessionId,
-                    sessionDetails.getGame().getGameid(),
-                    sessionDetails.getGroupid()
-            );
+    private SessionResponse enterWaitingRoom(int groupId, JWTInfo parsedJWT) {
+        SessionDetails sessionDetails;
+        try{
+            sessionDetails = getSessionDetailsByGroupId(groupId);
+            createUserSession(sessionDetails, parsedJWT, findByHostId(groupId),  false);
+            return new SessionResponse.SessionResponseBuilder(getHostUserWithGroupId(groupId), sessionDetails)
+                    .success(true)
+                    .groupId(groupId)
+                    .gameId(sessionDetails.getGame().getGameid())
+                    .groupMembers(getGroupMembersOfSession(groupId))
+                    .waitingMembers(new ArrayList<GroupUser>())
+                    .build();
+        } catch (Exception e){
+            return failSessionResponse();
         }
-       return null;
+    }
+
+    private GroupUser getHostUserWithGroupId(int groupId) {
+        return new GroupUser(
+                getHostUserWithId(findByHostId(groupId)).getUsername(),
+                groupId,
+                true);
+    }
+
+    private UserCredential getHostUserWithId(int hostId) {
+        return loginRepository.findById(hostId).orElseThrow(InvalidHostUserException::new);
+    }
+
+    private SessionDetails sessionDetailsForId(int groupId){
+        return new SessionDetails(groupId, new Games(), 0, 0, "", new HashSet<>());
     }
 
     private int findByHostId(int groupId) {
-        dLog.debug("Finding host Id by Group ID: " + groupId);
-        return sessionRepository.findFirst1HostidByGroupsession(new SessionDetails(groupId, new Games(), 0, 0, "", new HashSet<>())).getHostid();
+        return sessionRepository.findFirst1HostidByGroupsession(sessionDetailsForId(groupId)).getHostid();
     }
 
     private List<GroupUser> getGroupMembersOfSession(int groupId) {
-        dLog.debug("Getting group users associated by group Id: " + groupId);
-        List<Session> userInSession = sessionRepository.findAllByGroupId(groupId);
+        List<Session> userInSession = sessionRepository.findByGroupIdAndInsession(groupId, true);
+        List<GroupUser> groupUsers = new ArrayList<>();
+        userInSession.forEach(s -> {
+            Optional<UserCredential> user = loginRepository.findById(s.getUserid());
+            groupUsers.add(new GroupUser(user.orElseThrow(InvalidUserException::new).getUsername(), s.getGroupsession().getGroupid(), s.isInsession()));
+        });
+        return groupUsers;
+    }
+
+    private List<GroupUser> getWaitingMembersOfSession(int groupId) {
+        List<Session> userInSession = sessionRepository.findByGroupIdAndInsession(groupId, false);
         List<GroupUser> groupUsers = new ArrayList<>();
         userInSession.forEach(s -> {
             Optional<UserCredential> user = loginRepository.findById(s.getUserid());
@@ -89,51 +123,47 @@ import java.util.*;
     }
 
     private GroupSessionId createUserSession(SessionDetails sessionDetails, JWTInfo parsedJWT, int hostId, boolean status) throws MaxUsersException {
-        dLog.debug("Creating user Session for a group: " + sessionDetails);
         if(sessionDetails.getCurrentusers() < sessionDetails.getMaxusers()) {
             sessionDetails.setCurrentusers(sessionDetails.getCurrentusers() + 1);
-            sessionRepository.save(
-                    new Session(
-                            parsedJWT.getUserId(), hostId, sessionDetails, status
-                    )
-            );
-            return new GroupSessionId(parsedJWT.getUserId(), hostId);
-        }
-        else throw new MaxUsersException();
+            if(sessionRepository.save(new Session(parsedJWT.getUserId(), hostId, sessionDetails, status)) != null)
+                return new GroupSessionId(parsedJWT.getUserId(), hostId);
+        } else throw new MaxUsersException();
+        return null;
     }
 
     private SessionDetails getSessionDetailsByGroupId(int groupId) {
-        dLog.debug("Getting session details by group ID: " + groupId);
         Optional<SessionDetails> session = sessionDetailsRepository.findById(groupId);
         return session.orElse(null);
     }
 
     private SessionDetails createGroupSessionInDatabase(int gameId, int maxUsers, String description) {
-        dLog.debug("Creating a group session: GameId - " + gameId + " maxUsers - " + maxUsers + " Description: " + description);
         Set<Tag> tags = new HashSet<>();
         Games shellGame = new Games(gameId, 0, "", "");
-       return sessionDetailsRepository.save(
-                new SessionDetails(
-                        0,
-                        shellGame,
-                        maxUsers,
-                        1,
-                        description,
-                        tags));
+        return sessionDetailsRepository.save(
+                new SessionDetails(0,shellGame,maxUsers,1,description,tags));
     }
 
     @Override
-    public CheckWaitingRoomResponse checkSessionStatus(JWTInfo parsedJWT, int groupId) {
-        dLog.debug("Checking session status: " + groupId + " + userId: " + parsedJWT.getUserId());
+    public SessionResponse checkSessionStatus(JWTInfo parsedJWT, int groupId) {
         return createWaitingRoomResponse(getSessionForUser(parsedJWT, groupId));
     }
 
-    private CheckWaitingRoomResponse createWaitingRoomResponse(Session session) {
-        return new CheckWaitingRoomResponse(
-                session.isInsession(),
-                session.getGroupsession().getGame().getGameid(),
-                session.getGroupsession().getGroupid()
-        );
+    private SessionResponse createWaitingRoomResponse(Session session) {
+        if(session.isInsession()) return new SessionResponse.SessionResponseBuilder( getHostUserWithGroupId(session.getGroupsession().getGroupid()), session.getGroupsession())
+                .success(session.isInsession())
+                .groupId(session.getGroupsession().getGroupid())
+                .gameId(session.getGroupsession().getGame().getGameid())
+                .groupMembers(getGroupMembersOfSession(session.getGroupsession().getGroupid()))
+                .build();
+        else return new SessionResponse.SessionResponseBuilder( getHostUserWithGroupId(session.getGroupsession().getGroupid()), session.getGroupsession())
+                .success(session.isInsession())
+                .groupId(session.getGroupsession().getGroupid())
+                .gameId(session.getGroupsession().getGame().getGameid())
+                .build();
+    }
+
+    private SessionDetails getSessionDetailsByHostId(int hostid) {
+        return sessionRepository.findFirst1ByHostid(hostid).getGroupsession();
     }
 
     private Session getSessionForUser(JWTInfo parsedJWT, int groupId) {
@@ -141,57 +171,75 @@ import java.util.*;
     }
 
     @Override
-    public WaitingRoomResponse respondToUserSession(JWTInfo parsedJWT, WaitingRoomRequest roomRequest) {
-        dLog.debug("Responding to user in session: " + roomRequest);
+    public SessionResponse respondToUserSession(JWTInfo parsedJWT, WaitingRoomRequest roomRequest) {
+        int groupId = roomRequest.getGroupId();
         int userRespondingId = loginRepository.findByUsername(roomRequest.getWaitingUsername()).getUserid();
-        Session session = sessionRepository.findByUserIdAndGroupId(userRespondingId, roomRequest.getGroupId());
+        Session session = sessionRepository.findByUserIdAndGroupId(userRespondingId, groupId);
         if(roomRequest.isSuccess()) {
             session.setInsession(true);
             sessionRepository.save(session);
-            return new WaitingRoomResponse(
-                    true,
-                    new GroupUser(roomRequest.getWaitingUsername(), roomRequest.getGroupId(), true )
-            );
         }else{
             sessionRepository.delete(session);
-            return new WaitingRoomResponse(
-              false, new GroupUser()
-            );
         }
+        return new SessionResponse.SessionResponseBuilder(getHostUserWithGroupId(groupId), getSessionDetailsByGroupId(groupId))
+                .success(roomRequest.isSuccess())
+                .groupId(groupId)
+                .gameId(roomRequest.getGameId())
+                .groupMembers(getGroupMembersOfSession(groupId))
+                .waitingMembers(getWaitingMembersOfSession(groupId))
+                .build();
     }
 
     @Override
-    public CancelGroupResponse cancelSession(JWTInfo parsedJWT, CancelGroupRequest cancelGroup) {
-        dLog.debug("Canceling group session: " + cancelGroup);
+    public boolean cancelSession(JWTInfo parsedJWT, CancelGroupRequest cancelGroup) {
         try{
             sessionRepository.deleteAllByGroupId(cancelGroup.getGroupId());
             sessionDetailsRepository.delete(new SessionDetails(cancelGroup.getGroupId(), new Games(), 0, 0, "", new HashSet<>()));
-            return new CancelGroupResponse(true);
+            return true;
         }catch(Exception e){
-            dLog.debug(e.getMessage(), e);
-            return new CancelGroupResponse(false);
+            return false;
         }
     }
 
     @Override
-    public LeaveGroupResponse leaveSession(JWTInfo parsedJWT, int groupId, int gameId) {
-        dLog.debug("Attempting to leave Group Session: " + groupId);
+    public boolean leaveSession(JWTInfo parsedJWT, int groupId, int gameId) {
         try{
             sessionRepository.deleteByUserIdAndGroupId(parsedJWT.getUserId(), groupId);
-            return new LeaveGroupResponse(true);
+            return true;
         }catch(Exception e){
-            dLog.error(e.getMessage(), e);
-            return new LeaveGroupResponse(false);
+            return false;
         }
     }
 
     @Override
-    public GroupSessionResponse getGroupSession(int groupId, int gameId, JWTInfo parsedJWT) {
-        dLog.debug("Attempting to get Group Session: " + groupId);
-        return new GroupSessionResponse(
-                groupId,
-                gameId,
-                getGroupMembersOfSession(groupId)
-        );
+    public SessionResponse getGroupSession(int groupId, int gameId, JWTInfo parsedJWT) {
+        try{
+            List<GroupUser> members = getGroupMembersOfSession(groupId);
+            List<GroupUser> waitingMember = getWaitingMembersOfSession(groupId);
+            return new SessionResponse.SessionResponseBuilder(getHostUserWithGroupId(groupId), getSessionDetailsByGroupId(groupId))
+                    .success(true)
+                    .groupId(groupId)
+                    .gameId(gameId)
+                    .groupMembers(members)
+                    .waitingMembers(waitingMember)
+                    .build();
+        } catch (Exception e){
+            return failSessionResponse();
+        }
+    }
+
+    @Override
+    public SessionResponse getGroupMembersResponse(JWTInfo parsedJWT, int groupId) {
+        try{
+            SessionDetails sessionDetails = getSessionDetailsByGroupId(groupId);
+            return new SessionResponse.SessionResponseBuilder(getHostUserWithGroupId(groupId), sessionDetails)
+                    .success(true)
+                    .groupId(groupId)
+                    .gameId(sessionDetails.getGame().getGameid())
+                    .groupMembers(getGroupMembersOfSession(groupId))
+                    .build();
+        } catch (Exception e){
+            return failSessionResponse();
+        }
     }
 }

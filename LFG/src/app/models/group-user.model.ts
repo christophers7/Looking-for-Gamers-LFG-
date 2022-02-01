@@ -10,18 +10,9 @@ export class GroupUser {
     private _inGroup: boolean = false;
     
     constructor (
-        private _id: number, 
         private _username: string, 
     ){
-        this._id = _id;
         this._username = _username;;
-    }
-    
-    public get id(): number {
-        return this._id;
-    }
-    public set id(value: number) {
-        this._id = value;
     }
 
     public get username(): string {

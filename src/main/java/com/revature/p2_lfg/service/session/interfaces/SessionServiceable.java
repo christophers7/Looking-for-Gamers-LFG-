@@ -1,22 +1,29 @@
 package com.revature.p2_lfg.service.session.interfaces;
 
-import com.revature.p2_lfg.presentation.models.session.*;
+import com.revature.p2_lfg.presentation.models.session.requests.CancelGroupRequest;
+import com.revature.p2_lfg.presentation.models.session.requests.CreateGroupSessionRequest;
+import com.revature.p2_lfg.presentation.models.session.requests.WaitingRoomRequest;
+import com.revature.p2_lfg.presentation.models.session.response.SessionResponse;
 import com.revature.p2_lfg.service.session.MaxUsersException;
+import com.revature.p2_lfg.service.session.exception.InvalidHostUserException;
+import com.revature.p2_lfg.service.session.exception.InvalidSessionDetailsException;
 import com.revature.p2_lfg.utility.JWTInfo;
 
 public interface SessionServiceable {
 
-    CreatedGroupSessionResponse createGroupSession(CreateGroupSessionRequest createGroup, JWTInfo parsedJWT);
+    SessionResponse createGroupSession(CreateGroupSessionRequest createGroup, JWTInfo parsedJWT) throws InvalidHostUserException, InvalidSessionDetailsException;
 
-    JoinGroupSessionResponse joinGroupSession(JWTInfo parsedJWT, int groupId, int gameId) throws MaxUsersException;
+    SessionResponse joinGroupSession(JWTInfo parsedJWT, int groupId, int gameId) throws MaxUsersException;
 
-    CheckWaitingRoomResponse checkSessionStatus(JWTInfo parsedJWT, int groupId);
+    SessionResponse checkSessionStatus(JWTInfo parsedJWT, int groupId);
 
-    WaitingRoomResponse respondToUserSession(JWTInfo parsedJWT, WaitingRoomRequest roomRequest);
+    SessionResponse respondToUserSession(JWTInfo parsedJWT, WaitingRoomRequest roomRequest);
 
-    CancelGroupResponse cancelSession(JWTInfo parsedJWT, CancelGroupRequest cancelGroup);
+    boolean cancelSession(JWTInfo parsedJWT, CancelGroupRequest cancelGroup);
 
-    LeaveGroupResponse leaveSession(JWTInfo parsedJWT, int groupId, int gameId);
+    boolean leaveSession(JWTInfo parsedJWT, int groupId, int gameId);
 
-    GroupSessionResponse getGroupSession(int groupId, int gameId, JWTInfo parsedJWT);
+    SessionResponse getGroupSession(int groupId, int gameId, JWTInfo parsedJWT);
+
+    SessionResponse getGroupMembersResponse(JWTInfo parsedJWT, int groupId);
 }
