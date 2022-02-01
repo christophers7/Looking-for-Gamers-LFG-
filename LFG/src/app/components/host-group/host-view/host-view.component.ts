@@ -21,7 +21,7 @@ export class HostViewComponent implements OnInit {
   }
 
   checkUsername(value: string) {
-    if(value === this.currentUser._username) {
+    if(value === this.group.groupLead.username) {
       return false;
     }
     else {

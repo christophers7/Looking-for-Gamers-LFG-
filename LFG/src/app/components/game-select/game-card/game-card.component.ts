@@ -1,5 +1,7 @@
 import { EventEmitter, Component, Input, OnInit, Output } from '@angular/core';
 import { AvailableGames } from 'src/app/models/available-games.model';
+import { Game } from 'src/app/models/game.model';
+import { TokenStorageService } from 'src/app/_services/token-storage.service';
 import { GameDisplayComponent } from '../game-display/game-display.component';
 
 @Component({
@@ -9,18 +11,20 @@ import { GameDisplayComponent } from '../game-display/game-display.component';
 })
 export class GameCardComponent implements OnInit {
 
-  constructor() { }
+  constructor(private tokenStorage: TokenStorageService) { }
 
   ngOnInit(): void {
   }
 
   @Input()
-  game!: AvailableGames;
+  game!: Game;
   
   @Output() 
   emitter = new EventEmitter<{gId: number, panelNumber: number}>()
 
   emit(gameId: number) {
+    let tempGame: AvailableGames = new AvailableGames(this.game.gameId, this.game.name, this.game.imgLink, this.game.sessions)
+    this.tokenStorage.saveGame(tempGame)
     this.emitter.emit({gId: this.game.gameId, panelNumber: 2})
   }
 
