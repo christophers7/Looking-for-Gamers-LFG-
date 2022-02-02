@@ -6,7 +6,7 @@ import { Game } from '../models/game.model';
 import { GroupUser } from '../models/group-user.model';
 import { Group } from '../models/group.model';
 
-const API_URL = 'http://localhost:8088/';
+const API_URL = 'http://localhost:8080/';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -20,7 +20,7 @@ export class UserService {
   constructor(private http: HttpClient) { }
 
   updateUser(data: any): Observable<any> {
-    return this.http.post(API_URL + 'update', JSON.stringify(data)/*, httpOptions*/); 
+    return this.http.post(API_URL + 'user/update', JSON.stringify(data), httpOptions); 
   }
 
   generateGames(): Observable<any> {
@@ -51,8 +51,8 @@ export class UserService {
     return this.http.get(API_URL)
   }
 
-  createGroup(group: Group): Observable<any> {
-    return this.http.post(API_URL + 'group/host', JSON.stringify(group), httpOptions)
+  createGroup(group: any): Observable<any> {
+    return this.http.post(API_URL + 'group/host', group, httpOptions)
   }
 
   refreshGroupMemberList(group: Group): Observable<any> {
