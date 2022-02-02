@@ -104,19 +104,19 @@ insert into project_two.lfg_games
     values
 	(default, 730, 'Counter Strike: Global Offensive', 'https://cdn.akamai.steamstatic.com/steam/apps/730/capsule_616x353.jpg?t=1635269541');
 --
---insert into lfg_group_information
---values
---	(default, 1, 4, 1, 'This is a testing group for Apex Legends'),
---	(default, 2, 3, 2, 'This is a testing group for League of Legends');
---
---insert into lfg_group_sessions
---values
---	(1, 1, 1, TRUE),
---	(2, 1, 1, FALSE),
---	(3, 3, 2, FALSE),
---	(4, 3, 2, TRUE),
---	(5, 1, 1, FALSE);
---
+insert into lfg_group_information
+values
+	(default, 1, 4, 1, 'This is a testing group for Apex Legends'),
+	(default, 2, 3, 2, 'This is a testing group for League of Legends');
+
+insert into lfg_group_sessions
+values
+	(1, 1, 1, TRUE),
+	(2, 1, 1, FALSE),
+	(3, 3, 2, FALSE),
+	(4, 3, 2, TRUE),
+	(5, 1, 1, FALSE);
+
 --insert into lfg_socials
 --values
 --	(1, 1, 'apexGamer1'),

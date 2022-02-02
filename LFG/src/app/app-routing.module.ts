@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ApiViewComponent } from './components/api-view/api-view.component';
 import { GameDisplayComponent } from './components/game-select/game-display/game-display.component';
+import { UserViewComponent } from './components/group/user-view/user-view.component';
 import { ViewGameGroupsComponent } from './components/group/view-game-groups/view-game-groups.component';
 import { CreateGroupComponent } from './components/host-group/create-group/create-group.component';
 import { HostViewComponent } from './components/host-group/host-view/host-view.component';
@@ -44,6 +45,10 @@ const routes: Routes = [
   {
     component: ViewGameGroupsComponent,
     path: 'game/group'
+  },
+  {
+    component: UserViewComponent,
+    path: 'game/group/view'
   },
   {
     component: HostViewComponent,

@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Group } from 'src/app/models/group.model';
 import { TokenStorageService } from 'src/app/_services/token-storage.service';
+import { UserService } from 'src/app/_services/user.service';
 
 @Component({
   selector: 'app-lfgmain',
@@ -13,7 +14,10 @@ export class LFGMainComponent implements OnInit {
 
   panelNumber!: number;
 
-  constructor(private router: Router, private tokenStorage: TokenStorageService) { }
+  constructor(
+    private router: Router, 
+    private tokenStorage: TokenStorageService,
+    private userService: UserService) { }
 
   currentUser: any;
 
@@ -51,6 +55,7 @@ export class LFGMainComponent implements OnInit {
   }
 
   logOut(): void {
+    if(this.tokenStorage.getCreatedGroup()) this.userService.endSession();
     this.tokenStorage.signOut();
     this.router.navigate([''])
   }

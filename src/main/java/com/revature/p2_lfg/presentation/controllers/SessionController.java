@@ -10,6 +10,7 @@ import com.revature.p2_lfg.utility.JWTUtility;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 @CrossOrigin(origins = "http://localhost:4200/")
@@ -63,7 +64,7 @@ public class SessionController {
         else return null;
     }
 
-    @PostMapping("/respond")
+    @PostMapping(value = "/respond", consumes = MediaType.APPLICATION_JSON_VALUE)
     public SessionResponse respondToUser(@RequestHeader("Authorization") String token, @RequestBody WaitingRoomRequest roomRequest){
         dLog.debug("Responding to user in with session status false: " + roomRequest);
         JWTInfo parsedJWT = JWTUtility.verifyUser(token);
