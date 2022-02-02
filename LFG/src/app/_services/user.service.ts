@@ -23,6 +23,10 @@ export class UserService {
     return this.http.post(API_URL + 'user/update', JSON.stringify(data), httpOptions); 
   }
 
+  updateCredential(data: any): Observable<any> {
+    return this.http.put(API_URL + 'login/update', JSON.stringify(data), httpOptions); 
+  }
+
   generateGames(): Observable<any> {
     return this.http.get(API_URL + "game/available")
   }

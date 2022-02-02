@@ -5,6 +5,7 @@ import { GameDisplayComponent } from './components/game-select/game-display/game
 import { ViewGameGroupsComponent } from './components/group/view-game-groups/view-game-groups.component';
 import { LFGMainComponent } from './components/lfgmain/lfgmain.component';
 import { LoginComponent } from './components/login/login.component';
+import { ModifyCredentialComponent } from './components/modify-credential/modify-credential.component';
 import { ModifyProfileComponent } from './components/modify-profile/modify-profile.component';
 import { NewUserComponent } from './components/new-user/new-user.component';
 import { ProfileComponent } from './components/profile/profile.component';
@@ -29,6 +30,10 @@ const routes: Routes = [
   {
     component: ModifyProfileComponent,
     path: 'main/profile/modify'
+  },
+  {
+    component: ModifyCredentialComponent,
+    path: 'main/credential/modify'
   },
   {
     component: GameDisplayComponent,

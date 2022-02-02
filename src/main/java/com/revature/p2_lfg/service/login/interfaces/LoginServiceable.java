@@ -1,6 +1,7 @@
 package com.revature.p2_lfg.service.login.interfaces;
 
 import com.revature.p2_lfg.presentation.models.login.*;
+import com.revature.p2_lfg.presentation.models.profile.responses.ProfileResponse;
 import com.revature.p2_lfg.repository.entities.user.UserCredential;
 import com.revature.p2_lfg.service.login.exceptions.InvalidInputException;
 import com.revature.p2_lfg.utility.JWTInfo;
@@ -27,12 +28,13 @@ public interface LoginServiceable {
     UserCredential newAccount(NewUserCredentialsRequest newUserAccountRequest) throws InvalidInputException;
 
 
-    boolean updateUserCredentialUsername(UpdateUsernameRequest updateUserCredentialRequest, JWTInfo parsedJWT);
+    ProfileResponse updateUserCredentialUsername(UpdateUsernameRequest updateUserCredentialRequest, JWTInfo parsedJWT);
 
-    boolean resetPassword(ResetPasswordRequest bodyAsClass);
+    ProfileResponse resetPassword(ResetPasswordRequest bodyAsClass);
 
     UserCredential getUserWithUserID(int userId);
 
-    boolean updateUserCredentialPassword(UpdatePasswordRequest updateUserCredentialRequest, JWTInfo parsedJWT);
+    ProfileResponse updateUserCredentialPassword(UpdatePasswordRequest updateUserCredentialRequest, JWTInfo parsedJWT);
 
+    ProfileResponse updateCredentials(UpdatePasswordRequest newCredentials, JWTInfo parsedJwT);
 }

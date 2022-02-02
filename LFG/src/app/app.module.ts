@@ -19,6 +19,7 @@ import { ViewGameGroupsComponent } from './components/group/view-game-groups/vie
 import { GroupCardComponent } from './components/group/group-card/group-card.component';
 import { HostViewComponent } from './components/host-group/host-view/host-view.component';
 import { CreateGroupComponent } from './components/host-group/create-group/create-group.component';
+import { ModifyCredentialComponent } from './components/modify-credential/modify-credential.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { CreateGroupComponent } from './components/host-group/create-group/creat
     ViewGameGroupsComponent,
     GroupCardComponent,
     HostViewComponent,
-    CreateGroupComponent
+    CreateGroupComponent,
+    ModifyCredentialComponent
   ],
   imports: [
     BrowserModule,

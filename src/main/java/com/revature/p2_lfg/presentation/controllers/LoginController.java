@@ -35,18 +35,23 @@ public class LoginController {
         return profileService.newUserProfile(loginService.newAccount(newUser), newUser.getEmail());
     }
 
+    @PutMapping("/update")
+    public ProfileResponse updateCredentials(@NonNull @RequestHeader("Authorization") String token , @NonNull @RequestBody UpdatePasswordRequest newCredentials){
+        return loginService.updateCredentials(newCredentials, Objects.requireNonNull(JWTUtility.verifyUser(token)));
+    }
+
     @PutMapping("/update-password")
-    public boolean updatePassword(@NonNull @RequestHeader("Authorization") String token , @NonNull @RequestBody UpdatePasswordRequest newPassword){
+    public ProfileResponse updatePassword(@NonNull @RequestHeader("Authorization") String token , @NonNull @RequestBody UpdatePasswordRequest newPassword){
         return loginService.updateUserCredentialPassword(newPassword, Objects.requireNonNull(JWTUtility.verifyUser(token)));
     }
 
     @PutMapping("/update-username")
-    public boolean updateUsername(@NonNull @RequestHeader("Authorization") String token,@NonNull @RequestBody UpdateUsernameRequest newUsername){
+    public ProfileResponse updateUsername(@NonNull @RequestHeader("Authorization") String token,@NonNull @RequestBody UpdateUsernameRequest newUsername){
         return loginService.updateUserCredentialUsername(newUsername, Objects.requireNonNull(JWTUtility.verifyUser(token)));
     }
 
     @PutMapping("/reset-password")
-    public boolean resetPassword(@NonNull @RequestBody ResetPasswordRequest resetPassword){
+    public ProfileResponse resetPassword(@NonNull @RequestBody ResetPasswordRequest resetPassword){
         return loginService.resetPassword(resetPassword);
     }
 

@@ -22,6 +22,11 @@ export class ProfileComponent implements OnInit {
     this.router.navigate(navigationDetails);
   }
 
+  modifyCredential(): void {
+    const navigationDetails: string[] = ['/main/credential/modify'];
+    this.router.navigate(navigationDetails);
+  }
+
   goToMain(): void {
     const navigationDetails: string[] = ['/main'];
     this.router.navigate(navigationDetails);

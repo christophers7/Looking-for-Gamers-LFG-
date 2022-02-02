@@ -1,10 +1,12 @@
 package com.revature.p2_lfg.service.login.classes;
 
+import com.revature.p2_lfg.presentation.models.profile.responses.ProfileResponse;
 import com.revature.p2_lfg.repository.interfaces.LoginRepository;
 import com.revature.p2_lfg.presentation.models.login.*;
 import com.revature.p2_lfg.repository.entities.user.UserCredential;
 import com.revature.p2_lfg.service.login.exceptions.InvalidInputException;
 import com.revature.p2_lfg.service.login.interfaces.LoginServiceable;
+import com.revature.p2_lfg.service.profile.classes.ProfileService;
 import com.revature.p2_lfg.utility.JWTInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,6 +18,9 @@ public class LoginService implements LoginServiceable {
 
     @Autowired
     private LoginRepository loginRepository;
+
+    @Autowired
+    private ProfileService profileService;
 
     public UserCredential getUserCredentialFromLogin(LoginRequest loginRequest) {
         try{
@@ -39,12 +44,12 @@ public class LoginService implements LoginServiceable {
     }
 
     @Override
-    public boolean updateUserCredentialUsername(UpdateUsernameRequest updateUserCredentialRequest, JWTInfo parsedJWT) {
+    public ProfileResponse updateUserCredentialUsername(UpdateUsernameRequest updateUserCredentialRequest, JWTInfo parsedJWT) {
         UserCredential user = getUserWithUserID(parsedJWT.getUserId());
-        return updateProfile(
+        return profileService.getProfileResponse(updateProfile(
                 user,
                 updateUserCredentialRequest.getUsername(),
-                user.getPassword()) != null;
+                user.getPassword()));
     }
 
     public UserCredential getUserWithUserID(int userId) {
@@ -52,11 +57,12 @@ public class LoginService implements LoginServiceable {
     }
 
     @Override
-    public boolean resetPassword(ResetPasswordRequest resetPasswordRequest) {
-        return updateProfile(
+    public ProfileResponse resetPassword(ResetPasswordRequest resetPasswordRequest) {
+        return profileService.getProfileResponse(
+                updateProfile(
                 getUserWithUsername(resetPasswordRequest.getUsername()),
                 resetPasswordRequest.getUsername(),
-                getGeneratedString()) != null;
+                getGeneratedString()));
     }
 
     private String getGeneratedString() {
@@ -76,12 +82,22 @@ public class LoginService implements LoginServiceable {
     }
 
     @Override
-    public boolean updateUserCredentialPassword(UpdatePasswordRequest updateUserCredentialRequest, JWTInfo parsedJWT) {
+    public ProfileResponse updateUserCredentialPassword(UpdatePasswordRequest updateUserCredentialRequest, JWTInfo parsedJWT) {
         UserCredential user = getUserWithUserID(parsedJWT.getUserId());
-        return updateProfile(
+        return profileService.getProfileResponse(updateProfile(
                 user,
                 user.getUsername(),
-                updateUserCredentialRequest.getPassword()) != null;
+                updateUserCredentialRequest.getPassword()));
+    }
+
+    @Override
+    public ProfileResponse updateCredentials(UpdatePasswordRequest newCredentials, JWTInfo parsedJwT) {
+        UserCredential user = getUserWithUserID(parsedJwT.getUserId());
+        return profileService.getProfileResponse(updateProfile(
+                user,
+                newCredentials.getUsername(),
+                newCredentials.getUsername()
+        ));
     }
 
 }
