@@ -18,7 +18,7 @@ import javax.persistence.*;
 public class UserProfile {
     @Id
     @Column(name = "columnid")
-    @GeneratedValue(generator = "lfg_user_profile_columnid_seq", strategy = GenerationType.AUTO)
+    @GeneratedValue(generator = "lfg_user_profile_columnid_seq", strategy = GenerationType.SEQUENCE)
     @SequenceGenerator(allocationSize = 1, name = "lfg_user_profile_columnid_seq",
             sequenceName = "lfg_user_profile_columnid_seq")
     private int columnID;

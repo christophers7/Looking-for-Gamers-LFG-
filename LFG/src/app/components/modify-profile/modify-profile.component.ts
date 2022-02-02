@@ -33,7 +33,6 @@ export class ModifyProfileComponent implements OnInit {
         username: [
           '',
           [
-            Validators.required,
             Validators.minLength(6),
             Validators.maxLength(20)
           ]
@@ -41,21 +40,18 @@ export class ModifyProfileComponent implements OnInit {
         firstname: [
           '', 
           [
-            Validators.required,
             Validators.maxLength(30)
           ]
         ],
         lastname: [
           '', 
           [
-            Validators.required,
             Validators.maxLength(30)
           ]
         ],
         email: [
           '', 
-          [
-            Validators.required, 
+          [ 
             Validators.email,
             Validators.maxLength(50)
           ]
@@ -63,7 +59,6 @@ export class ModifyProfileComponent implements OnInit {
         password: [
           '',
           [
-            Validators.required,
             Validators.minLength(6),
             Validators.maxLength(30)
           ]
@@ -71,7 +66,6 @@ export class ModifyProfileComponent implements OnInit {
         confirmPassword: [
           '', 
           [
-            Validators.required,
             Validators.minLength(6),
             Validators.maxLength(30)
           ]
@@ -134,20 +128,15 @@ export class ModifyProfileComponent implements OnInit {
       tempUser._password = passW;
     }
     console.log(tempUser)
-    if(tempUser._username && tempUser._email) {
+    if(eMail) {
       this.userService.updateUser(tempUser).subscribe(
         (data) => {
-          
-          /**
-           *  For testing, double check when backend is done!!!!!
-           */
           this.tokenStorage.saveToken(data.jwt);
           let builtUser = BuildUser.userBuilder(data);
           this.tokenStorage.saveUser(builtUser);
           this.goToProfile();
       })
     }    
-
   }
 
   onReset(): void {

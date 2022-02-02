@@ -9,6 +9,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="P2_LFG" />
         <module name="ProjectTwo" />
+        <module name="P2" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
@@ -17,6 +18,7 @@
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="P2" options="-parameters" />
       <module name="P2_LFG" options="-parameters" />
       <module name="ProjectTwo" options="-parameters" />
     </option>

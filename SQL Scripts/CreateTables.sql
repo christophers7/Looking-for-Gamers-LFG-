@@ -14,6 +14,7 @@ email varchar unique not null
 
 create table lfg_games(
 gameID serial primary key,
+platformkey integer,
 gameTitle varchar unique not null,
 imgLink varchar
 );

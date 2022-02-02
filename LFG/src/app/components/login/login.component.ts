@@ -31,7 +31,7 @@ export class LoginComponent implements OnInit {
           '',
           [
             Validators.required,
-            Validators.minLength(6),
+            Validators.minLength(1),
             Validators.maxLength(20)
           ]
         ],
@@ -39,7 +39,7 @@ export class LoginComponent implements OnInit {
           '',
           [
             Validators.required,
-            Validators.minLength(6),
+            Validators.minLength(1),
             Validators.maxLength(30)
           ]
         ],      
@@ -62,37 +62,17 @@ export class LoginComponent implements OnInit {
     let passW = this.form.get('password')?.value
     if(userN != null && passW != null) {
       this.authService.login(userN, passW).subscribe({
-        next: data => {
-          
-          /**
-           *  For testing till backend is done!!!!!
-           */
-          const user = data.find((a:any)=>{
-            return a.username === userN && a.password === passW;
-          });
-          if(user){
-            this.isLoginFailed = false;
-            this.tokenStorage.saveToken(user.jwt);
-            let builtUser = BuildUser.userBuilder(user);
-            this.tokenStorage.saveUser(builtUser)
-            this.router.navigate(['main'])
-          }
-          else {
-            this.errorMessage = "Username or password incorrect";
-            console.log("Username or password incorrect")
-            this.isLoginFailed = true;
-          }
-          /**
-           *  For testing till backend is done!!!!!
-           */
-
-//          this.isLoginFailed = false;
-//          this.tokenStorage.saveToken(data.jwt);
-//          this.tokenStorage.saveUser(data)
-//          this.router.navigate(['main'])   
+        next: data => {         
+          this.isLoginFailed = false;
+          this.tokenStorage.saveToken(data.jwt);
+          let builtUser = BuildUser.userBuilder(data);
+          this.tokenStorage.saveUser(builtUser)
+          // this.tokenStorage.saveUser(data)
+          this.router.navigate(['main'])   
         },
         error: err => {
           this.errorMessage = err.error.message;
+          console.log("Login failed")
           this.isLoginFailed = true;
         }
       });        
