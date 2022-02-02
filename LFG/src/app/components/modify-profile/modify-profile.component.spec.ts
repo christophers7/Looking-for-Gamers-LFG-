@@ -1,7 +1,9 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { ModifyProfileComponent } from './modify-profile.component';
-import {FormBuilder} from '@angular/forms';
+import {FormBuilder, FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {BrowserModule} from '@angular/platform-browser'
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 describe('ModifyProfileComponent', () => {
   let component: ModifyProfileComponent;
@@ -11,7 +13,10 @@ describe('ModifyProfileComponent', () => {
     await TestBed.configureTestingModule({
       declarations: [ ModifyProfileComponent ],
       imports: [RouterTestingModule,
-      FormBuilder]
+      FormsModule,
+      ReactiveFormsModule,
+      BrowserModule,
+      HttpClientTestingModule]
     })
     .compileComponents();
   });

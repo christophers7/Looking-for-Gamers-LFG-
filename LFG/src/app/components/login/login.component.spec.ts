@@ -5,6 +5,7 @@ import { AuthService } from 'src/app/_services/auth.service';
 import { Observable } from 'rxjs';
 import { RouterTestingModule } from '@angular/router/testing';
 import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { BrowserModule } from '@angular/platform-browser';
 
 export class MockLoginService extends AuthService {
   //override login(username: string, password: string): Observable<any> {
@@ -21,7 +22,10 @@ describe('LoginComponent', () => {
       declarations: [ LoginComponent ],
       imports: [HttpClientTestingModule,
       RouterTestingModule,
-      FormBuilder],
+      FormBuilder,
+      FormsModule,
+      ReactiveFormsModule,
+      BrowserModule],
       providers: [{provide: AuthService, MockLoginService}]
     })
     .compileComponents();
