@@ -43,7 +43,7 @@ public class LoginService implements LoginServiceable {
         ));
     }
 
-    @Override
+//    @Override
     public ProfileResponse updateUserCredentialUsername(UpdateUsernameRequest updateUserCredentialRequest, JWTInfo parsedJWT) {
         UserCredential user = getUserWithUserID(parsedJWT.getUserId());
         return profileService.getProfileResponse(updateProfile(
@@ -81,8 +81,8 @@ public class LoginService implements LoginServiceable {
         return loginRepository.findByUsername(username);
     }
 
-    @Override
-    public ProfileResponse updateUserCredentialPassword(UpdatePasswordRequest updateUserCredentialRequest, JWTInfo parsedJWT) {
+//    @Override
+    public ProfileResponse updateUserCredentialPassword(UpdateCredentialRequest updateUserCredentialRequest, JWTInfo parsedJWT) {
         UserCredential user = getUserWithUserID(parsedJWT.getUserId());
         return profileService.getProfileResponse(updateProfile(
                 user,
@@ -91,7 +91,7 @@ public class LoginService implements LoginServiceable {
     }
 
     @Override
-    public ProfileResponse updateCredentials(UpdatePasswordRequest newCredentials, JWTInfo parsedJwT) {
+    public ProfileResponse updateCredentials(UpdateCredentialRequest newCredentials, JWTInfo parsedJwT) {
         UserCredential user = getUserWithUserID(parsedJwT.getUserId());
         return profileService.getProfileResponse(updateProfile(
                 user,

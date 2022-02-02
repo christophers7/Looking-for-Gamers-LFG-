@@ -14,12 +14,9 @@ import BuildUser from 'src/app/utils/build-user';
 export class ModifyProfileComponent implements OnInit {
 
   form: FormGroup = new FormGroup({
-    username: new FormControl(''),
     firstname: new FormControl(''),
     lastname: new FormControl(''),
-    email: new FormControl(''),
-    password: new FormControl(''),
-    confirmPassword: new FormControl('')
+    email: new FormControl('')
   });
   submitted = false;
   currentUser: any;

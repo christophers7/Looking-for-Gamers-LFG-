@@ -17,8 +17,9 @@ export default class BuildUser {
         if (data.lastName) {
             user._lastName = data.lastName;
         }
-        if(data.email) user._email = data._email;
-
+        if(data.email){
+            user._email = data._email;
+        }
         return user;
     }
 
@@ -35,12 +36,15 @@ export default class BuildUser {
         if (data.lastName) {
             user._lastName = data.lastName;
         }
-        if(data.username) user._username = data._username;
-
-        if(data.password) user._password = data._password;
-
-        if(data.email) user._email = data._email;
-
+        if(data.username) {
+            user._username = data._username;
+        }
+        if(data.password){
+            user._password = data._password;
+        }
+        if(data.email){
+            user._email = data._email;
+        }
         return user;
     }
 

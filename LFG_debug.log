@@ -1072,3 +1072,48 @@ Returning: GameSessionInfoResponse(gameSessionList=[GameSelectInfo(gameId=1, pla
 21:40:40.696 [http-nio-8080-exec-2] INFO  dLog - Class: class com.revature.p2_lfg.presentation.controllers.GameController
 Returning: GameSessionInfoResponse(gameSessionList=[GameSelectInfo(gameId=1, platformKey=1172470, name=Apex Legends, imgLink=https://media.contentapi.ea.com/content/dam/apex-legends/images/2019/01/apex-featured-image-16x9.jpg.adapt.crop16x9.1023w.jpg, sessions=0), GameSelectInfo(gameId=2, platformKey=404, name=League of Legends, imgLink=https://cdn1.epicgames.com/salesEvent/salesEvent/EGS_LeagueofLegends_RiotGames_S1_2560x1440-ee500721c06da3ec1e5535a88588c77f?h=270&resize=1&w=480, sessions=0), GameSelectInfo(gameId=3, platformKey=730, name=Counter Strike: Global Offensive, imgLink=https://cdn.akamai.steamstatic.com/steam/apps/730/capsule_616x353.jpg?t=1635269541, sessions=0)])
 21:40:40.697 [http-nio-8080-exec-2] DEBUG dLog - getAvailableGames
+21:46:16.502 [http-nio-8080-exec-1] DEBUG dLog - Class: class com.revature.p2_lfg.presentation.controllers.LoginController
+Method: checkLogin
+21:46:16.509 [http-nio-8080-exec-1] DEBUG dLog - Class: class com.revature.p2_lfg.service.login.classes.LoginService
+Method: getUserCredentialFromLogin
+Arguments: [LoginRequest(username=user1, password=pass1)]
+21:46:16.556 [http-nio-8080-exec-1] INFO  dLog - Class: class com.revature.p2_lfg.service.login.classes.LoginService
+Returning: UserCredential(userid=1, username=user1, password=pass1)
+21:46:16.556 [http-nio-8080-exec-1] DEBUG dLog - getUserCredentialFromLogin
+21:46:16.556 [http-nio-8080-exec-1] DEBUG dLog - Class: class com.revature.p2_lfg.service.profile.classes.ProfileService
+Method: getProfileResponse
+Arguments: [UserCredential(userid=1, username=user1, password=pass1)]
+21:46:16.639 [http-nio-8080-exec-1] INFO  dLog - Class: class com.revature.p2_lfg.service.profile.classes.ProfileService
+Returning: ProfileResponse(success=true, username=user1, firstName=John1, lastName=Doe1, email=email11@email.com, JWT=eyJhbGciOiJIUzI1NiJ9.eyJmaXJzdE5hbWUiOiJKb2huMSIsImxhc3ROYW1lIjoiRG9lMSIsInVzZXJuYW1lIjoidXNlcjEiLCJ1c2VySWQiOjEsImFjY291bnQiOnRydWV9.f-wF6gmdaFrCeXEhwXATXV63tI4tTvJRa_xP_wGPuOg)
+21:46:16.640 [http-nio-8080-exec-1] DEBUG dLog - getProfileResponse
+21:46:16.640 [http-nio-8080-exec-1] INFO  dLog - Class: class com.revature.p2_lfg.presentation.controllers.LoginController
+Returning: ProfileResponse(success=true, username=user1, firstName=John1, lastName=Doe1, email=email11@email.com, JWT=eyJhbGciOiJIUzI1NiJ9.eyJmaXJzdE5hbWUiOiJKb2huMSIsImxhc3ROYW1lIjoiRG9lMSIsInVzZXJuYW1lIjoidXNlcjEiLCJ1c2VySWQiOjEsImFjY291bnQiOnRydWV9.f-wF6gmdaFrCeXEhwXATXV63tI4tTvJRa_xP_wGPuOg)
+21:46:16.640 [http-nio-8080-exec-1] DEBUG dLog - checkLogin
+21:46:16.693 [http-nio-8080-exec-2] DEBUG dLog - Class: class com.revature.p2_lfg.presentation.controllers.GameController
+Method: getAvailableGames
+21:46:16.698 [http-nio-8080-exec-2] DEBUG dLog - Class: class com.revature.p2_lfg.service.game.classes.GameService
+Method: getCurrentGameSessionList
+Arguments: []
+21:46:16.733 [http-nio-8080-exec-2] INFO  dLog - Class: class com.revature.p2_lfg.service.game.classes.GameService
+Returning: GameSessionInfoResponse(gameSessionList=[GameSelectInfo(gameId=1, platformKey=1172470, name=Apex Legends, imgLink=https://media.contentapi.ea.com/content/dam/apex-legends/images/2019/01/apex-featured-image-16x9.jpg.adapt.crop16x9.1023w.jpg, sessions=0), GameSelectInfo(gameId=2, platformKey=404, name=League of Legends, imgLink=https://cdn1.epicgames.com/salesEvent/salesEvent/EGS_LeagueofLegends_RiotGames_S1_2560x1440-ee500721c06da3ec1e5535a88588c77f?h=270&resize=1&w=480, sessions=0), GameSelectInfo(gameId=3, platformKey=730, name=Counter Strike: Global Offensive, imgLink=https://cdn.akamai.steamstatic.com/steam/apps/730/capsule_616x353.jpg?t=1635269541, sessions=0)])
+21:46:16.734 [http-nio-8080-exec-2] DEBUG dLog - getCurrentGameSessionList
+21:46:16.734 [http-nio-8080-exec-2] INFO  dLog - Class: class com.revature.p2_lfg.presentation.controllers.GameController
+Returning: GameSessionInfoResponse(gameSessionList=[GameSelectInfo(gameId=1, platformKey=1172470, name=Apex Legends, imgLink=https://media.contentapi.ea.com/content/dam/apex-legends/images/2019/01/apex-featured-image-16x9.jpg.adapt.crop16x9.1023w.jpg, sessions=0), GameSelectInfo(gameId=2, platformKey=404, name=League of Legends, imgLink=https://cdn1.epicgames.com/salesEvent/salesEvent/EGS_LeagueofLegends_RiotGames_S1_2560x1440-ee500721c06da3ec1e5535a88588c77f?h=270&resize=1&w=480, sessions=0), GameSelectInfo(gameId=3, platformKey=730, name=Counter Strike: Global Offensive, imgLink=https://cdn.akamai.steamstatic.com/steam/apps/730/capsule_616x353.jpg?t=1635269541, sessions=0)])
+21:46:16.734 [http-nio-8080-exec-2] DEBUG dLog - getAvailableGames
+21:49:15.776 [http-nio-8080-exec-4] DEBUG dLog - Class: class com.revature.p2_lfg.presentation.controllers.LoginController
+Method: updateCredentials
+21:49:15.817 [http-nio-8080-exec-4] DEBUG dLog - Class: class com.revature.p2_lfg.service.login.classes.LoginService
+Method: updateCredentials
+Arguments: [UpdatePasswordRequest(username=user123, password=pass123), JWTInfo(firstName=John1, lastName=Doe1, username=user1, userId=1)]
+21:49:15.854 [http-nio-8080-exec-4] DEBUG dLog - Class: class com.revature.p2_lfg.service.profile.classes.ProfileService
+Method: getProfileResponse
+Arguments: [UserCredential(userid=1, username=user123, password=user123)]
+21:49:15.856 [http-nio-8080-exec-4] INFO  dLog - Class: class com.revature.p2_lfg.service.profile.classes.ProfileService
+Returning: ProfileResponse(success=true, username=user123, firstName=John1, lastName=Doe1, email=email11@email.com, JWT=eyJhbGciOiJIUzI1NiJ9.eyJmaXJzdE5hbWUiOiJKb2huMSIsImxhc3ROYW1lIjoiRG9lMSIsInVzZXJuYW1lIjoidXNlcjEyMyIsInVzZXJJZCI6MSwiYWNjb3VudCI6dHJ1ZX0.5VWpltNsdGqEu2L9JJ3I9hn__JI1kEOUKm045E6YSQk)
+21:49:15.857 [http-nio-8080-exec-4] DEBUG dLog - getProfileResponse
+21:49:15.857 [http-nio-8080-exec-4] INFO  dLog - Class: class com.revature.p2_lfg.service.login.classes.LoginService
+Returning: ProfileResponse(success=true, username=user123, firstName=John1, lastName=Doe1, email=email11@email.com, JWT=eyJhbGciOiJIUzI1NiJ9.eyJmaXJzdE5hbWUiOiJKb2huMSIsImxhc3ROYW1lIjoiRG9lMSIsInVzZXJuYW1lIjoidXNlcjEyMyIsInVzZXJJZCI6MSwiYWNjb3VudCI6dHJ1ZX0.5VWpltNsdGqEu2L9JJ3I9hn__JI1kEOUKm045E6YSQk)
+21:49:15.857 [http-nio-8080-exec-4] DEBUG dLog - updateCredentials
+21:49:15.857 [http-nio-8080-exec-4] INFO  dLog - Class: class com.revature.p2_lfg.presentation.controllers.LoginController
+Returning: ProfileResponse(success=true, username=user123, firstName=John1, lastName=Doe1, email=email11@email.com, JWT=eyJhbGciOiJIUzI1NiJ9.eyJmaXJzdE5hbWUiOiJKb2huMSIsImxhc3ROYW1lIjoiRG9lMSIsInVzZXJuYW1lIjoidXNlcjEyMyIsInVzZXJJZCI6MSwiYWNjb3VudCI6dHJ1ZX0.5VWpltNsdGqEu2L9JJ3I9hn__JI1kEOUKm045E6YSQk)
+21:49:15.857 [http-nio-8080-exec-4] DEBUG dLog - updateCredentials
