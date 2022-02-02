@@ -2,6 +2,7 @@ import { AvailableGames } from './available-games.model';
 
 describe('AvailableGames', () => {
   it('should create an instance', () => {
-    expect(new AvailableGames()).toBeTruthy();
+    let availableGames: AvailableGames = new AvailableGames(1, "game", "game_url", 1);
+    expect(availableGames).toBeTruthy();
   });
 });
