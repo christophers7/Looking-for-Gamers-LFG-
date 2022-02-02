@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Group } from 'src/app/models/group.model';
 import { TokenStorageService } from 'src/app/_services/token-storage.service';
@@ -12,8 +12,7 @@ export class HostViewComponent implements OnInit {
 
   currentUser: any;
 
-  @Input()
-  group!: Group;
+  group!: any;
 
   constructor(
     private tokenStorage: TokenStorageService,
@@ -21,11 +20,11 @@ export class HostViewComponent implements OnInit {
 
   ngOnInit(): void {
     this.currentUser = this.tokenStorage.getUser();
-    console.log(this.group);
+    this.group = JSON.parse(this.tokenStorage.getCreatedGroup());
   }
 
   checkUsername(value: string) {
-    if(value === this.group.groupLead.username) {
+    if(value === this.group._groupLead._username) {
       return false;
     }
     else {

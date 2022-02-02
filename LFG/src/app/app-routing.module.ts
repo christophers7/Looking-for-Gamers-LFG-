@@ -43,7 +43,7 @@ const routes: Routes = [
   },
   {
     component: ViewGameGroupsComponent,
-    path: 'game/:id'
+    path: 'game/group'
   },
   {
     component: HostViewComponent,

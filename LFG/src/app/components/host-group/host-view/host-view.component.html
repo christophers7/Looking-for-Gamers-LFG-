@@ -1,14 +1,14 @@
-<h2>{{group.groupLead.username}}</h2>
+<h2>{{group._groupLead.username}}</h2>
 <br>
 <div>
-    <p>{{group.groupDetails.description}}</p>
-    <p>{{group.groupDetails.currentSize}} of {{group.groupDetails.maxUsers}}</p>
+    <p>{{group._groupDetails.description}}</p>
+    <p>{{group._groupDetails.currentusers}} of {{group._groupDetails.maxusers}}</p>
 </div>
 <br>
 
-<div *ngFor="let member of group.groupMembers;">
-    <div *ngIf="checkUsername(member.username)">
-        {{ member.username }} <button (click)="removing()">Remove Member</button>
+<div *ngFor="let member of group._groupMembers;">
+    <div *ngIf="checkUsername(member._username)">
+        {{ member._username }} <button (click)="removing()">Remove Member</button>
     </div>
 </div>
 
@@ -18,10 +18,10 @@
 <button type="button" (click)="goMainPage()">Main Page</button>
 <br>
 
-<div *ngFor="let applicant of group.waitingUsers;">
+<div *ngFor="let applicant of group._waitingUsers;">
     <div>
         <!-- Might add a view stats or something button here or mayber their user rating -->
-        {{ applicant.username }} 
+        {{ applicant._username }} 
         <button (click)="addingUserFromWaitingRoom()">Accept</button>
         <button (click)="removingUserFromWaitingRoom()">Decline</button>
     </div>

@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { GameGroupHolders } from 'src/app/models/game-group-holders.model';
 import { GroupDetails } from 'src/app/models/group-details.model';
 import { Group } from 'src/app/models/group.model';
@@ -16,7 +16,6 @@ import { UserService } from 'src/app/_services/user.service';
 })
 export class ViewGameGroupsComponent implements OnInit {
 
-
   groupSessions!: GroupDetails[];
   
   currentUser: any;
@@ -25,14 +24,26 @@ export class ViewGameGroupsComponent implements OnInit {
   constructor(
     private tokenStorage: TokenStorageService,
     private userService: UserService,
-    private router: Router
+    private router: Router,
+    private route: ActivatedRoute
   ) { }
 
   ngOnInit(): void {
     this.currentUser = this.tokenStorage.getUser();
     this.game = this.tokenStorage.getGame();
+    // this.getGameGroups();
     this.getGroupSessions();
   }
+
+
+  // getGameGroups():void{
+  //   console.log(this.game.gameId);
+  //   this.userService.generateGroupsForGame(this.game.gameId).subscribe(
+  //     (data) => {
+  //       this.groupSessions = data.selectedGameAvailableGroups
+  //     }
+  //       );
+  // }
 
 
   hostingGroup: boolean = false;
@@ -45,7 +56,7 @@ export class ViewGameGroupsComponent implements OnInit {
 
   getGroupSessions(){
     
-    this.userService.getSelectedGame(this.gameId)
+    this.userService.getSelectedGame(this.game.gameId)
       .subscribe(
         (data) => {
           console.log(data)
@@ -91,6 +102,12 @@ export class ViewGameGroupsComponent implements OnInit {
   changePanel() {
     this.panelNumberChange.emit(this.panelNumber);
   }
+
+  goToMain():void{
+    const navigationDetails: string[] = ['/main'];
+    this.router.navigate(navigationDetails);
+  }
+
 
   goToSession():void{
     const navigationDetails: string[] = ['/game/group/host'];

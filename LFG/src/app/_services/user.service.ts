@@ -30,11 +30,11 @@ export class UserService {
   }
 
   generateGames(): Observable<any> {
-    return this.http.get(API_URL + "game/available")
+    return this.http.get(API_URL + "game/available", httpOptions)
   }
 
   getSelectedGame(gameId: number): Observable<any> {
-    return this.http.get(API_URL + 'game/select?gameId=' + gameId)
+    return this.http.get(API_URL + 'game/select?gameId=' + gameId, httpOptions)
   }
 
   generateGroupsForGame(gameId: number): Observable<any> {

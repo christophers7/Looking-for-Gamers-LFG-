@@ -89,18 +89,11 @@ export class CreateGroupComponent implements OnInit {
         (data) => {
           console.log(data);
           let group:Group = BuildGroup.groupBuilder(data);
-          this.group = group;
-          console.log(group);
-          this.emitter(group);
+          this.tokenStorage.saveCreatedGroup(group);
+          this.goToHostView()
         })
   }
 
-  emitter(group:Group):void{
-        console.log(group);
-        this.newGroupEvent.emit(group);
-        this.goToSession();
-    }
-  
 
   goToSession():void{
     const navigationDetails: string[] = ['/game/group/host'];

@@ -17,13 +17,17 @@ export class LFGMainComponent implements OnInit {
 
   currentUser: any;
 
-
+  hostGroupPanel:boolean = false;
 
   ngOnInit(): void {
     this.currentUser = this.tokenStorage.getUser();
-
-
+    this.viewHostedGroup();
   }
+
+  viewHostedGroup():void{
+    if(this.tokenStorage.getCreatedGroup()) this.hostGroupPanel = true;
+  }
+
   gameId: number = 0;
   send(data:any){
     this.panelNumber = data.panelNumber;
@@ -40,6 +44,11 @@ export class LFGMainComponent implements OnInit {
     this.router.navigate(navigationDetails);
   }
 
+
+  goToSession():void{
+    const navigationDetails: string[] = ['/game/group/host'];
+    this.router.navigate(navigationDetails);
+  }
 
   logOut(): void {
     this.tokenStorage.signOut();

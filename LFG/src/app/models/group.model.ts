@@ -4,6 +4,36 @@ import { GroupUser } from "./group-user.model";
 import { WaitingForGroup } from "./waiting-for-group.model";
 
 export class Group {
+    public get groupMembers(): GroupUser[] {
+        return this._groupMembers;
+    }
+    public set groupMembers(value: GroupUser[]) {
+        this._groupMembers = value;
+    }
+    public get groupDetails(): GroupDetails {
+        return this._groupDetails;
+    }
+    public set groupDetails(value: GroupDetails) {
+        this._groupDetails = value;
+    }
+    public get groupLead(): GroupUser {
+        return this._groupLead;
+    }
+    public set groupLead(value: GroupUser) {
+        this._groupLead = value;
+    }
+    public get gameId(): number {
+        return this._gameId;
+    }
+    public set gameId(value: number) {
+        this._gameId = value;
+    }
+    public get groupId(): number {
+        return this._groupId;
+    }
+    public set groupId(value: number) {
+        this._groupId = value;
+    }
 
     private _waitingUsers: GroupUser[] = [];
     // Add tag(s) when they're implemented
@@ -15,51 +45,18 @@ export class Group {
         private _groupDetails: GroupDetails,
         private _groupMembers: GroupUser[]
         ){
-        this._groupId = _groupId;
-        this._gameId = _gameId;
-        this._groupLead = _groupLead;
-        this._groupDetails = _groupDetails;
-        this._groupMembers = _groupMembers;
+        this.groupId = _groupId;
+        this.gameId = _gameId;
+        this.groupLead = _groupLead;
+        this.groupDetails = _groupDetails;
+        this.groupMembers = _groupMembers;
     }
 
-    public get groupId(): number {
-        return this._groupId;
-    }
-    public set groupId(value: number) {
-        this._groupId = value;
+    public get waitingUsers(): GroupUser[]{
+        return this.waitingUsers;
     }
 
-    public get gameId(): number {
-        return this._gameId;
-    }
-    public set gameId(value: number) {
-        this._gameId = value;
-    }
-
-    public get groupLead(): GroupUser {
-        return this._groupLead;
-    }
-    public set groupLead(value: GroupUser) {
-        this._groupLead = value;
-    }
-
-    public get groupDetails(): GroupDetails {
-        return this._groupDetails;
-    }
-    public set groupDetails(value: GroupDetails) {
-        this._groupDetails = value;
-    }
-    public get groupMembers(): Array<GroupUser> {
-        return this._groupMembers;
-    }
-    public set groupMembers(value: GroupUser[]) {
-        this._groupMembers = value;
-    }
-
-    public get waitingUsers(): Array<GroupUser> {
-        return this._waitingUsers;
-    }
-    public set waitingUsers(value: GroupUser[]) {
+    public set waitingUsers(value: GroupUser[]){
         this._waitingUsers = value;
     }
 

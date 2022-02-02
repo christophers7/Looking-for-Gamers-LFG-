@@ -2,24 +2,23 @@
     <div id="mainDisplayBox" class='mainGroup'>
         <div [ngSwitch]="panelNumber">
             <div>
-                <div *ngSwitchCase="1">
-                    <app-game-display 
-                        (emitter)="send($event)">
-                    </app-game-display>
-                </div>
-                <div *ngSwitchCase="2">
-                    <app-view-game-groups 
+                <div *ngIf="!hostGroupPanel">
+                <!-- <div *ngSwitchCase="1"> -->
+                    <!-- <app-game-display (emitter)="send($event)"> -->
+                        <app-game-display></app-game-display>
+                <!-- </div> -->
+                <!-- <div *ngSwitchCase="2"> -->
+                    <!-- <app-view-game-groups 
                         [gameId]="gameId">
                         [gameId]="gameId"
-                    </app-view-game-groups>
-                </div>
-                <div *ngSwitchCase="3">
-                </div>
-                    <div *ngSwitchDefault>
+                    </app-view-game-groups> -->
+                <!-- </div> -->
+                <!-- <div *ngSwitchCase="3"> -->
+                    <!-- <div *ngSwitchDefault>
                         <app-game-display 
                             (emitter)="send($event)">
-                        </app-game-display>
-                    </div>
+                        </app-game-display> -->
+                <!-- </div> -->
                 </div>
             </div>
 
@@ -30,6 +29,9 @@
         </div>
 
 
+    <div *ngIf="hostGroupPanel">
+            <button id="hostViewButton" class="hostDisplayGroup" (click)="goToSession()">View Hosted Session</button>
+    </div>
 
     <div id="profileDisplayBox" class="mainGroup">
         <div id="iconHolder" class="profileDisplayGroup">
