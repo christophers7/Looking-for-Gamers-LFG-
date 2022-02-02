@@ -21,9 +21,6 @@ import java.util.Optional;
 public class GameService implements GameServiceable {
 
 
-    private final Logger iLog = LoggerFactory.getLogger("iLog");
-    private final Logger dLog = LoggerFactory.getLogger("dLog");
-
     @Autowired
     private GamesRepository gamesRepository;
     @Autowired
@@ -35,13 +32,11 @@ public class GameService implements GameServiceable {
 
     @Override
     public SelectedGameAvailableGroupsResponse getSelectedGameGroups(int gameId) {
-        dLog.debug("Getting selected game groups: " + gameId);
         return new SelectedGameAvailableGroupsResponse(gameId, sessionDetailsRepository.findAllByGameId(gameId));
     }
 
     @Override
     public int getGamePlatformKey(int gameId) {
-        dLog.debug("Getting game platform key");
         Optional<Games> game = gamesRepository.findById(gameId);
         return game.map(Games::getPlatformkey).orElse(1);
     }

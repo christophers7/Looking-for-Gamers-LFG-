@@ -13,21 +13,17 @@ import org.springframework.web.bind.annotation.*;
 @RestController("gameController")
 @RequestMapping("/game")
 public class GameController {
-    private final Logger iLog = LoggerFactory.getLogger("iLog");
-    private final Logger dLog = LoggerFactory.getLogger("dLog");
 
     @Autowired
     private GameService gameService;
 
     @GetMapping("/available")
     public GameSessionInfoResponse getAvailableGames(){
-        dLog.debug("Getting game sessions select list");
         return gameService.getCurrentGameSessionList();
     }
 
     @GetMapping("/select")
     public SelectedGameAvailableGroupsResponse getSelectedGameGroups(@RequestParam("gameId") int id){
-        dLog.debug("Getting game group sessions by gameName: " + id);
         return gameService.getSelectedGameGroups(id);
     }
 

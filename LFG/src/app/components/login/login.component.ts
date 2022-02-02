@@ -31,7 +31,7 @@ export class LoginComponent implements OnInit {
           '',
           [
             Validators.required,
-            Validators.minLength(6),
+            Validators.minLength(1),
             Validators.maxLength(20)
           ]
         ],
@@ -39,7 +39,7 @@ export class LoginComponent implements OnInit {
           '',
           [
             Validators.required,
-            Validators.minLength(6),
+            Validators.minLength(1),
             Validators.maxLength(30)
           ]
         ],      

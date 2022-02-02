@@ -29,6 +29,8 @@ export class CreateGroupComponent implements OnInit {
   @Input()
   gameId!: number;
 
+  game: any;
+
   @Output()
   panelNumberChange = new EventEmitter<number>();
 
@@ -37,6 +39,7 @@ export class CreateGroupComponent implements OnInit {
 
   ngOnInit(): void {
     this.currentUser = this.tokenStorage.getUser();
+    this.game = this.tokenStorage.getGame();
     this.form = this.formBuilder.group(
       {   
         maxGroupSize: [
@@ -74,10 +77,15 @@ export class CreateGroupComponent implements OnInit {
     let description = this.form.get('description')?.value
     console.log(gSize, description)
     if(gSize != null && description != null) {
-      this.group = new Group(1, this.gameId, this.currentUser.username, gSize, 1, description)
-      this.userService.createGroup(this.group).subscribe(
+      let g = JSON.stringify({
+        gameId: this.game.gameId,
+        maxUsers: gSize,
+        description: description
+      })
+      console.log(g)
+      this.userService.createGroup(g).subscribe(
         (data) => {
-          console.log(data);
+          //this.game = data;
         })
     }
   }
