@@ -18,7 +18,7 @@ export default class BuildUser {
             user._lastName = data.lastName;
         }
         if(data.email){
-            user._email = data._email;
+            user._email = data.email;
         }
         return user;
     }
@@ -26,9 +26,10 @@ export default class BuildUser {
     static credentialBuilder(data:any){
         let id: number = data.id;
         let username:string = data.username;
+        let email:string = data.email;
         let password:string = data.password;
 
-        let user: User = new User(id, username, password);
+        let user: User = new User(id, username, email);
 
         if (data.firstName) {
             user._firstName = data.firstName;
@@ -37,13 +38,13 @@ export default class BuildUser {
             user._lastName = data.lastName;
         }
         if(data.username) {
-            user._username = data._username;
+            user._username = data.username;
         }
         if(data.password){
-            user._password = data._password;
+            user._password = password;
         }
         if(data.email){
-            user._email = data._email;
+            user._email = data.email;
         }
         return user;
     }
