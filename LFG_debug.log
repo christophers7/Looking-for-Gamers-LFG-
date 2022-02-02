@@ -1105,3 +1105,372 @@ Arguments: [1]
 Returning: SelectedGameAvailableGroupsResponse(gameId=1, selectedGameAvailableGroups=[SessionDetails(groupid=1, game=Games(gameid=1, platformkey=1172470, gametitle=Apex Legends, imglink=https://media.contentapi.ea.com/content/dam/apex-legends/images/2019/01/apex-featured-image-16x9.jpg.adapt.crop16x9.1023w.jpg), maxusers=44, currentusers=2, description=helo, tags=[]), SessionDetails(groupid=2, game=Games(gameid=1, platformkey=1172470, gametitle=Apex Legends, imglink=https://media.contentapi.ea.com/content/dam/apex-legends/images/2019/01/apex-featured-image-16x9.jpg.adapt.crop16x9.1023w.jpg), maxusers=41, currentusers=2, description=hahaha, tags=[])])
 00:40 INFO  - Class: class com.revature.p2_lfg.presentation.controllers.GameController
 Returning: SelectedGameAvailableGroupsResponse(gameId=1, selectedGameAvailableGroups=[SessionDetails(groupid=1, game=Games(gameid=1, platformkey=1172470, gametitle=Apex Legends, imglink=https://media.contentapi.ea.com/content/dam/apex-legends/images/2019/01/apex-featured-image-16x9.jpg.adapt.crop16x9.1023w.jpg), maxusers=44, currentusers=2, description=helo, tags=[]), SessionDetails(groupid=2, game=Games(gameid=1, platformkey=1172470, gametitle=Apex Legends, imglink=https://media.contentapi.ea.com/content/dam/apex-legends/images/2019/01/apex-featured-image-16x9.jpg.adapt.crop16x9.1023w.jpg), maxusers=41, currentusers=2, description=hahaha, tags=[])])
+00:42 DEBUG - Class: class com.revature.p2_lfg.presentation.controllers.GameController
+Method: getAvailableGames
+00:42 DEBUG - Class: class com.revature.p2_lfg.service.game.classes.GameService
+Method: getCurrentGameSessionList
+Arguments: []
+00:42 INFO  - Class: class com.revature.p2_lfg.service.game.classes.GameService
+Returning: GameSessionInfoResponse(gameSessionList=[GameSelectInfo(gameId=1, platformKey=1172470, name=Apex Legends, imgLink=https://media.contentapi.ea.com/content/dam/apex-legends/images/2019/01/apex-featured-image-16x9.jpg.adapt.crop16x9.1023w.jpg, sessions=2), GameSelectInfo(gameId=2, platformKey=404, name=League of Legends, imgLink=https://cdn1.epicgames.com/salesEvent/salesEvent/EGS_LeagueofLegends_RiotGames_S1_2560x1440-ee500721c06da3ec1e5535a88588c77f?h=270&resize=1&w=480, sessions=0), GameSelectInfo(gameId=3, platformKey=730, name=Counter Strike: Global Offensive, imgLink=https://cdn.akamai.steamstatic.com/steam/apps/730/capsule_616x353.jpg?t=1635269541, sessions=0)])
+00:42 INFO  - Class: class com.revature.p2_lfg.presentation.controllers.GameController
+Returning: GameSessionInfoResponse(gameSessionList=[GameSelectInfo(gameId=1, platformKey=1172470, name=Apex Legends, imgLink=https://media.contentapi.ea.com/content/dam/apex-legends/images/2019/01/apex-featured-image-16x9.jpg.adapt.crop16x9.1023w.jpg, sessions=2), GameSelectInfo(gameId=2, platformKey=404, name=League of Legends, imgLink=https://cdn1.epicgames.com/salesEvent/salesEvent/EGS_LeagueofLegends_RiotGames_S1_2560x1440-ee500721c06da3ec1e5535a88588c77f?h=270&resize=1&w=480, sessions=0), GameSelectInfo(gameId=3, platformKey=730, name=Counter Strike: Global Offensive, imgLink=https://cdn.akamai.steamstatic.com/steam/apps/730/capsule_616x353.jpg?t=1635269541, sessions=0)])
+00:42 DEBUG - Class: class com.revature.p2_lfg.presentation.controllers.GameController
+Method: getAvailableGames
+00:42 DEBUG - Class: class com.revature.p2_lfg.service.game.classes.GameService
+Method: getCurrentGameSessionList
+Arguments: []
+00:42 INFO  - Class: class com.revature.p2_lfg.service.game.classes.GameService
+Returning: GameSessionInfoResponse(gameSessionList=[GameSelectInfo(gameId=1, platformKey=1172470, name=Apex Legends, imgLink=https://media.contentapi.ea.com/content/dam/apex-legends/images/2019/01/apex-featured-image-16x9.jpg.adapt.crop16x9.1023w.jpg, sessions=2), GameSelectInfo(gameId=2, platformKey=404, name=League of Legends, imgLink=https://cdn1.epicgames.com/salesEvent/salesEvent/EGS_LeagueofLegends_RiotGames_S1_2560x1440-ee500721c06da3ec1e5535a88588c77f?h=270&resize=1&w=480, sessions=0), GameSelectInfo(gameId=3, platformKey=730, name=Counter Strike: Global Offensive, imgLink=https://cdn.akamai.steamstatic.com/steam/apps/730/capsule_616x353.jpg?t=1635269541, sessions=0)])
+00:42 INFO  - Class: class com.revature.p2_lfg.presentation.controllers.GameController
+Returning: GameSessionInfoResponse(gameSessionList=[GameSelectInfo(gameId=1, platformKey=1172470, name=Apex Legends, imgLink=https://media.contentapi.ea.com/content/dam/apex-legends/images/2019/01/apex-featured-image-16x9.jpg.adapt.crop16x9.1023w.jpg, sessions=2), GameSelectInfo(gameId=2, platformKey=404, name=League of Legends, imgLink=https://cdn1.epicgames.com/salesEvent/salesEvent/EGS_LeagueofLegends_RiotGames_S1_2560x1440-ee500721c06da3ec1e5535a88588c77f?h=270&resize=1&w=480, sessions=0), GameSelectInfo(gameId=3, platformKey=730, name=Counter Strike: Global Offensive, imgLink=https://cdn.akamai.steamstatic.com/steam/apps/730/capsule_616x353.jpg?t=1635269541, sessions=0)])
+00:42 DEBUG - Class: class com.revature.p2_lfg.presentation.controllers.GameController
+Method: getAvailableGames
+00:42 DEBUG - Class: class com.revature.p2_lfg.service.game.classes.GameService
+Method: getCurrentGameSessionList
+Arguments: []
+00:42 INFO  - Class: class com.revature.p2_lfg.service.game.classes.GameService
+Returning: GameSessionInfoResponse(gameSessionList=[GameSelectInfo(gameId=1, platformKey=1172470, name=Apex Legends, imgLink=https://media.contentapi.ea.com/content/dam/apex-legends/images/2019/01/apex-featured-image-16x9.jpg.adapt.crop16x9.1023w.jpg, sessions=2), GameSelectInfo(gameId=2, platformKey=404, name=League of Legends, imgLink=https://cdn1.epicgames.com/salesEvent/salesEvent/EGS_LeagueofLegends_RiotGames_S1_2560x1440-ee500721c06da3ec1e5535a88588c77f?h=270&resize=1&w=480, sessions=0), GameSelectInfo(gameId=3, platformKey=730, name=Counter Strike: Global Offensive, imgLink=https://cdn.akamai.steamstatic.com/steam/apps/730/capsule_616x353.jpg?t=1635269541, sessions=0)])
+00:42 INFO  - Class: class com.revature.p2_lfg.presentation.controllers.GameController
+Returning: GameSessionInfoResponse(gameSessionList=[GameSelectInfo(gameId=1, platformKey=1172470, name=Apex Legends, imgLink=https://media.contentapi.ea.com/content/dam/apex-legends/images/2019/01/apex-featured-image-16x9.jpg.adapt.crop16x9.1023w.jpg, sessions=2), GameSelectInfo(gameId=2, platformKey=404, name=League of Legends, imgLink=https://cdn1.epicgames.com/salesEvent/salesEvent/EGS_LeagueofLegends_RiotGames_S1_2560x1440-ee500721c06da3ec1e5535a88588c77f?h=270&resize=1&w=480, sessions=0), GameSelectInfo(gameId=3, platformKey=730, name=Counter Strike: Global Offensive, imgLink=https://cdn.akamai.steamstatic.com/steam/apps/730/capsule_616x353.jpg?t=1635269541, sessions=0)])
+00:42 DEBUG - Class: class com.revature.p2_lfg.presentation.controllers.GameController
+Method: getAvailableGames
+00:42 DEBUG - Class: class com.revature.p2_lfg.service.game.classes.GameService
+Method: getCurrentGameSessionList
+Arguments: []
+00:42 INFO  - Class: class com.revature.p2_lfg.service.game.classes.GameService
+Returning: GameSessionInfoResponse(gameSessionList=[GameSelectInfo(gameId=1, platformKey=1172470, name=Apex Legends, imgLink=https://media.contentapi.ea.com/content/dam/apex-legends/images/2019/01/apex-featured-image-16x9.jpg.adapt.crop16x9.1023w.jpg, sessions=2), GameSelectInfo(gameId=2, platformKey=404, name=League of Legends, imgLink=https://cdn1.epicgames.com/salesEvent/salesEvent/EGS_LeagueofLegends_RiotGames_S1_2560x1440-ee500721c06da3ec1e5535a88588c77f?h=270&resize=1&w=480, sessions=0), GameSelectInfo(gameId=3, platformKey=730, name=Counter Strike: Global Offensive, imgLink=https://cdn.akamai.steamstatic.com/steam/apps/730/capsule_616x353.jpg?t=1635269541, sessions=0)])
+00:42 INFO  - Class: class com.revature.p2_lfg.presentation.controllers.GameController
+Returning: GameSessionInfoResponse(gameSessionList=[GameSelectInfo(gameId=1, platformKey=1172470, name=Apex Legends, imgLink=https://media.contentapi.ea.com/content/dam/apex-legends/images/2019/01/apex-featured-image-16x9.jpg.adapt.crop16x9.1023w.jpg, sessions=2), GameSelectInfo(gameId=2, platformKey=404, name=League of Legends, imgLink=https://cdn1.epicgames.com/salesEvent/salesEvent/EGS_LeagueofLegends_RiotGames_S1_2560x1440-ee500721c06da3ec1e5535a88588c77f?h=270&resize=1&w=480, sessions=0), GameSelectInfo(gameId=3, platformKey=730, name=Counter Strike: Global Offensive, imgLink=https://cdn.akamai.steamstatic.com/steam/apps/730/capsule_616x353.jpg?t=1635269541, sessions=0)])
+00:42 DEBUG - Class: class com.revature.p2_lfg.presentation.controllers.GameController
+Method: getAvailableGames
+00:42 DEBUG - Class: class com.revature.p2_lfg.service.game.classes.GameService
+Method: getCurrentGameSessionList
+Arguments: []
+00:42 INFO  - Class: class com.revature.p2_lfg.service.game.classes.GameService
+Returning: GameSessionInfoResponse(gameSessionList=[GameSelectInfo(gameId=1, platformKey=1172470, name=Apex Legends, imgLink=https://media.contentapi.ea.com/content/dam/apex-legends/images/2019/01/apex-featured-image-16x9.jpg.adapt.crop16x9.1023w.jpg, sessions=2), GameSelectInfo(gameId=2, platformKey=404, name=League of Legends, imgLink=https://cdn1.epicgames.com/salesEvent/salesEvent/EGS_LeagueofLegends_RiotGames_S1_2560x1440-ee500721c06da3ec1e5535a88588c77f?h=270&resize=1&w=480, sessions=0), GameSelectInfo(gameId=3, platformKey=730, name=Counter Strike: Global Offensive, imgLink=https://cdn.akamai.steamstatic.com/steam/apps/730/capsule_616x353.jpg?t=1635269541, sessions=0)])
+00:42 INFO  - Class: class com.revature.p2_lfg.presentation.controllers.GameController
+Returning: GameSessionInfoResponse(gameSessionList=[GameSelectInfo(gameId=1, platformKey=1172470, name=Apex Legends, imgLink=https://media.contentapi.ea.com/content/dam/apex-legends/images/2019/01/apex-featured-image-16x9.jpg.adapt.crop16x9.1023w.jpg, sessions=2), GameSelectInfo(gameId=2, platformKey=404, name=League of Legends, imgLink=https://cdn1.epicgames.com/salesEvent/salesEvent/EGS_LeagueofLegends_RiotGames_S1_2560x1440-ee500721c06da3ec1e5535a88588c77f?h=270&resize=1&w=480, sessions=0), GameSelectInfo(gameId=3, platformKey=730, name=Counter Strike: Global Offensive, imgLink=https://cdn.akamai.steamstatic.com/steam/apps/730/capsule_616x353.jpg?t=1635269541, sessions=0)])
+00:42 DEBUG - Class: class com.revature.p2_lfg.presentation.controllers.GameController
+Method: getAvailableGames
+00:42 DEBUG - Class: class com.revature.p2_lfg.service.game.classes.GameService
+Method: getCurrentGameSessionList
+Arguments: []
+00:42 INFO  - Class: class com.revature.p2_lfg.service.game.classes.GameService
+Returning: GameSessionInfoResponse(gameSessionList=[GameSelectInfo(gameId=1, platformKey=1172470, name=Apex Legends, imgLink=https://media.contentapi.ea.com/content/dam/apex-legends/images/2019/01/apex-featured-image-16x9.jpg.adapt.crop16x9.1023w.jpg, sessions=2), GameSelectInfo(gameId=2, platformKey=404, name=League of Legends, imgLink=https://cdn1.epicgames.com/salesEvent/salesEvent/EGS_LeagueofLegends_RiotGames_S1_2560x1440-ee500721c06da3ec1e5535a88588c77f?h=270&resize=1&w=480, sessions=0), GameSelectInfo(gameId=3, platformKey=730, name=Counter Strike: Global Offensive, imgLink=https://cdn.akamai.steamstatic.com/steam/apps/730/capsule_616x353.jpg?t=1635269541, sessions=0)])
+00:42 INFO  - Class: class com.revature.p2_lfg.presentation.controllers.GameController
+Returning: GameSessionInfoResponse(gameSessionList=[GameSelectInfo(gameId=1, platformKey=1172470, name=Apex Legends, imgLink=https://media.contentapi.ea.com/content/dam/apex-legends/images/2019/01/apex-featured-image-16x9.jpg.adapt.crop16x9.1023w.jpg, sessions=2), GameSelectInfo(gameId=2, platformKey=404, name=League of Legends, imgLink=https://cdn1.epicgames.com/salesEvent/salesEvent/EGS_LeagueofLegends_RiotGames_S1_2560x1440-ee500721c06da3ec1e5535a88588c77f?h=270&resize=1&w=480, sessions=0), GameSelectInfo(gameId=3, platformKey=730, name=Counter Strike: Global Offensive, imgLink=https://cdn.akamai.steamstatic.com/steam/apps/730/capsule_616x353.jpg?t=1635269541, sessions=0)])
+00:42 DEBUG - Class: class com.revature.p2_lfg.presentation.controllers.GameController
+Method: getAvailableGames
+00:42 DEBUG - Class: class com.revature.p2_lfg.service.game.classes.GameService
+Method: getCurrentGameSessionList
+Arguments: []
+00:42 INFO  - Class: class com.revature.p2_lfg.service.game.classes.GameService
+Returning: GameSessionInfoResponse(gameSessionList=[GameSelectInfo(gameId=1, platformKey=1172470, name=Apex Legends, imgLink=https://media.contentapi.ea.com/content/dam/apex-legends/images/2019/01/apex-featured-image-16x9.jpg.adapt.crop16x9.1023w.jpg, sessions=2), GameSelectInfo(gameId=2, platformKey=404, name=League of Legends, imgLink=https://cdn1.epicgames.com/salesEvent/salesEvent/EGS_LeagueofLegends_RiotGames_S1_2560x1440-ee500721c06da3ec1e5535a88588c77f?h=270&resize=1&w=480, sessions=0), GameSelectInfo(gameId=3, platformKey=730, name=Counter Strike: Global Offensive, imgLink=https://cdn.akamai.steamstatic.com/steam/apps/730/capsule_616x353.jpg?t=1635269541, sessions=0)])
+00:42 INFO  - Class: class com.revature.p2_lfg.presentation.controllers.GameController
+Returning: GameSessionInfoResponse(gameSessionList=[GameSelectInfo(gameId=1, platformKey=1172470, name=Apex Legends, imgLink=https://media.contentapi.ea.com/content/dam/apex-legends/images/2019/01/apex-featured-image-16x9.jpg.adapt.crop16x9.1023w.jpg, sessions=2), GameSelectInfo(gameId=2, platformKey=404, name=League of Legends, imgLink=https://cdn1.epicgames.com/salesEvent/salesEvent/EGS_LeagueofLegends_RiotGames_S1_2560x1440-ee500721c06da3ec1e5535a88588c77f?h=270&resize=1&w=480, sessions=0), GameSelectInfo(gameId=3, platformKey=730, name=Counter Strike: Global Offensive, imgLink=https://cdn.akamai.steamstatic.com/steam/apps/730/capsule_616x353.jpg?t=1635269541, sessions=0)])
+00:42 DEBUG - Class: class com.revature.p2_lfg.presentation.controllers.GameController
+Method: getAvailableGames
+00:42 DEBUG - Class: class com.revature.p2_lfg.service.game.classes.GameService
+Method: getCurrentGameSessionList
+Arguments: []
+00:42 INFO  - Class: class com.revature.p2_lfg.service.game.classes.GameService
+Returning: GameSessionInfoResponse(gameSessionList=[GameSelectInfo(gameId=1, platformKey=1172470, name=Apex Legends, imgLink=https://media.contentapi.ea.com/content/dam/apex-legends/images/2019/01/apex-featured-image-16x9.jpg.adapt.crop16x9.1023w.jpg, sessions=2), GameSelectInfo(gameId=2, platformKey=404, name=League of Legends, imgLink=https://cdn1.epicgames.com/salesEvent/salesEvent/EGS_LeagueofLegends_RiotGames_S1_2560x1440-ee500721c06da3ec1e5535a88588c77f?h=270&resize=1&w=480, sessions=0), GameSelectInfo(gameId=3, platformKey=730, name=Counter Strike: Global Offensive, imgLink=https://cdn.akamai.steamstatic.com/steam/apps/730/capsule_616x353.jpg?t=1635269541, sessions=0)])
+00:42 INFO  - Class: class com.revature.p2_lfg.presentation.controllers.GameController
+Returning: GameSessionInfoResponse(gameSessionList=[GameSelectInfo(gameId=1, platformKey=1172470, name=Apex Legends, imgLink=https://media.contentapi.ea.com/content/dam/apex-legends/images/2019/01/apex-featured-image-16x9.jpg.adapt.crop16x9.1023w.jpg, sessions=2), GameSelectInfo(gameId=2, platformKey=404, name=League of Legends, imgLink=https://cdn1.epicgames.com/salesEvent/salesEvent/EGS_LeagueofLegends_RiotGames_S1_2560x1440-ee500721c06da3ec1e5535a88588c77f?h=270&resize=1&w=480, sessions=0), GameSelectInfo(gameId=3, platformKey=730, name=Counter Strike: Global Offensive, imgLink=https://cdn.akamai.steamstatic.com/steam/apps/730/capsule_616x353.jpg?t=1635269541, sessions=0)])
+00:42 DEBUG - Class: class com.revature.p2_lfg.presentation.controllers.GameController
+Method: getSelectedGameGroups
+00:42 DEBUG - Class: class com.revature.p2_lfg.service.game.classes.GameService
+Method: getSelectedGameGroups
+Arguments: [1]
+00:42 INFO  - Class: class com.revature.p2_lfg.service.game.classes.GameService
+Returning: SelectedGameAvailableGroupsResponse(gameId=1, selectedGameAvailableGroups=[SessionDetails(groupid=1, game=Games(gameid=1, platformkey=1172470, gametitle=Apex Legends, imglink=https://media.contentapi.ea.com/content/dam/apex-legends/images/2019/01/apex-featured-image-16x9.jpg.adapt.crop16x9.1023w.jpg), maxusers=44, currentusers=2, description=helo, tags=[]), SessionDetails(groupid=2, game=Games(gameid=1, platformkey=1172470, gametitle=Apex Legends, imglink=https://media.contentapi.ea.com/content/dam/apex-legends/images/2019/01/apex-featured-image-16x9.jpg.adapt.crop16x9.1023w.jpg), maxusers=41, currentusers=2, description=hahaha, tags=[])])
+00:42 INFO  - Class: class com.revature.p2_lfg.presentation.controllers.GameController
+Returning: SelectedGameAvailableGroupsResponse(gameId=1, selectedGameAvailableGroups=[SessionDetails(groupid=1, game=Games(gameid=1, platformkey=1172470, gametitle=Apex Legends, imglink=https://media.contentapi.ea.com/content/dam/apex-legends/images/2019/01/apex-featured-image-16x9.jpg.adapt.crop16x9.1023w.jpg), maxusers=44, currentusers=2, description=helo, tags=[]), SessionDetails(groupid=2, game=Games(gameid=1, platformkey=1172470, gametitle=Apex Legends, imglink=https://media.contentapi.ea.com/content/dam/apex-legends/images/2019/01/apex-featured-image-16x9.jpg.adapt.crop16x9.1023w.jpg), maxusers=41, currentusers=2, description=hahaha, tags=[])])
+00:42 DEBUG - Class: class com.revature.p2_lfg.presentation.controllers.GameController
+Method: getAvailableGames
+00:42 DEBUG - Class: class com.revature.p2_lfg.service.game.classes.GameService
+Method: getCurrentGameSessionList
+Arguments: []
+00:42 INFO  - Class: class com.revature.p2_lfg.service.game.classes.GameService
+Returning: GameSessionInfoResponse(gameSessionList=[GameSelectInfo(gameId=1, platformKey=1172470, name=Apex Legends, imgLink=https://media.contentapi.ea.com/content/dam/apex-legends/images/2019/01/apex-featured-image-16x9.jpg.adapt.crop16x9.1023w.jpg, sessions=2), GameSelectInfo(gameId=2, platformKey=404, name=League of Legends, imgLink=https://cdn1.epicgames.com/salesEvent/salesEvent/EGS_LeagueofLegends_RiotGames_S1_2560x1440-ee500721c06da3ec1e5535a88588c77f?h=270&resize=1&w=480, sessions=0), GameSelectInfo(gameId=3, platformKey=730, name=Counter Strike: Global Offensive, imgLink=https://cdn.akamai.steamstatic.com/steam/apps/730/capsule_616x353.jpg?t=1635269541, sessions=0)])
+00:42 INFO  - Class: class com.revature.p2_lfg.presentation.controllers.GameController
+Returning: GameSessionInfoResponse(gameSessionList=[GameSelectInfo(gameId=1, platformKey=1172470, name=Apex Legends, imgLink=https://media.contentapi.ea.com/content/dam/apex-legends/images/2019/01/apex-featured-image-16x9.jpg.adapt.crop16x9.1023w.jpg, sessions=2), GameSelectInfo(gameId=2, platformKey=404, name=League of Legends, imgLink=https://cdn1.epicgames.com/salesEvent/salesEvent/EGS_LeagueofLegends_RiotGames_S1_2560x1440-ee500721c06da3ec1e5535a88588c77f?h=270&resize=1&w=480, sessions=0), GameSelectInfo(gameId=3, platformKey=730, name=Counter Strike: Global Offensive, imgLink=https://cdn.akamai.steamstatic.com/steam/apps/730/capsule_616x353.jpg?t=1635269541, sessions=0)])
+00:42 DEBUG - Class: class com.revature.p2_lfg.presentation.controllers.GameController
+Method: getSelectedGameGroups
+00:42 DEBUG - Class: class com.revature.p2_lfg.service.game.classes.GameService
+Method: getSelectedGameGroups
+Arguments: [1]
+00:42 INFO  - Class: class com.revature.p2_lfg.service.game.classes.GameService
+Returning: SelectedGameAvailableGroupsResponse(gameId=1, selectedGameAvailableGroups=[SessionDetails(groupid=1, game=Games(gameid=1, platformkey=1172470, gametitle=Apex Legends, imglink=https://media.contentapi.ea.com/content/dam/apex-legends/images/2019/01/apex-featured-image-16x9.jpg.adapt.crop16x9.1023w.jpg), maxusers=44, currentusers=2, description=helo, tags=[]), SessionDetails(groupid=2, game=Games(gameid=1, platformkey=1172470, gametitle=Apex Legends, imglink=https://media.contentapi.ea.com/content/dam/apex-legends/images/2019/01/apex-featured-image-16x9.jpg.adapt.crop16x9.1023w.jpg), maxusers=41, currentusers=2, description=hahaha, tags=[])])
+00:42 INFO  - Class: class com.revature.p2_lfg.presentation.controllers.GameController
+Returning: SelectedGameAvailableGroupsResponse(gameId=1, selectedGameAvailableGroups=[SessionDetails(groupid=1, game=Games(gameid=1, platformkey=1172470, gametitle=Apex Legends, imglink=https://media.contentapi.ea.com/content/dam/apex-legends/images/2019/01/apex-featured-image-16x9.jpg.adapt.crop16x9.1023w.jpg), maxusers=44, currentusers=2, description=helo, tags=[]), SessionDetails(groupid=2, game=Games(gameid=1, platformkey=1172470, gametitle=Apex Legends, imglink=https://media.contentapi.ea.com/content/dam/apex-legends/images/2019/01/apex-featured-image-16x9.jpg.adapt.crop16x9.1023w.jpg), maxusers=41, currentusers=2, description=hahaha, tags=[])])
+00:43 DEBUG - Class: class com.revature.p2_lfg.presentation.controllers.GameController
+Method: getAvailableGames
+00:43 DEBUG - Class: class com.revature.p2_lfg.service.game.classes.GameService
+Method: getCurrentGameSessionList
+Arguments: []
+00:43 INFO  - Class: class com.revature.p2_lfg.service.game.classes.GameService
+Returning: GameSessionInfoResponse(gameSessionList=[GameSelectInfo(gameId=1, platformKey=1172470, name=Apex Legends, imgLink=https://media.contentapi.ea.com/content/dam/apex-legends/images/2019/01/apex-featured-image-16x9.jpg.adapt.crop16x9.1023w.jpg, sessions=2), GameSelectInfo(gameId=2, platformKey=404, name=League of Legends, imgLink=https://cdn1.epicgames.com/salesEvent/salesEvent/EGS_LeagueofLegends_RiotGames_S1_2560x1440-ee500721c06da3ec1e5535a88588c77f?h=270&resize=1&w=480, sessions=0), GameSelectInfo(gameId=3, platformKey=730, name=Counter Strike: Global Offensive, imgLink=https://cdn.akamai.steamstatic.com/steam/apps/730/capsule_616x353.jpg?t=1635269541, sessions=0)])
+00:43 INFO  - Class: class com.revature.p2_lfg.presentation.controllers.GameController
+Returning: GameSessionInfoResponse(gameSessionList=[GameSelectInfo(gameId=1, platformKey=1172470, name=Apex Legends, imgLink=https://media.contentapi.ea.com/content/dam/apex-legends/images/2019/01/apex-featured-image-16x9.jpg.adapt.crop16x9.1023w.jpg, sessions=2), GameSelectInfo(gameId=2, platformKey=404, name=League of Legends, imgLink=https://cdn1.epicgames.com/salesEvent/salesEvent/EGS_LeagueofLegends_RiotGames_S1_2560x1440-ee500721c06da3ec1e5535a88588c77f?h=270&resize=1&w=480, sessions=0), GameSelectInfo(gameId=3, platformKey=730, name=Counter Strike: Global Offensive, imgLink=https://cdn.akamai.steamstatic.com/steam/apps/730/capsule_616x353.jpg?t=1635269541, sessions=0)])
+00:43 DEBUG - Class: class com.revature.p2_lfg.presentation.controllers.GameController
+Method: getAvailableGames
+00:43 DEBUG - Class: class com.revature.p2_lfg.service.game.classes.GameService
+Method: getCurrentGameSessionList
+Arguments: []
+00:43 INFO  - Class: class com.revature.p2_lfg.service.game.classes.GameService
+Returning: GameSessionInfoResponse(gameSessionList=[GameSelectInfo(gameId=1, platformKey=1172470, name=Apex Legends, imgLink=https://media.contentapi.ea.com/content/dam/apex-legends/images/2019/01/apex-featured-image-16x9.jpg.adapt.crop16x9.1023w.jpg, sessions=2), GameSelectInfo(gameId=2, platformKey=404, name=League of Legends, imgLink=https://cdn1.epicgames.com/salesEvent/salesEvent/EGS_LeagueofLegends_RiotGames_S1_2560x1440-ee500721c06da3ec1e5535a88588c77f?h=270&resize=1&w=480, sessions=0), GameSelectInfo(gameId=3, platformKey=730, name=Counter Strike: Global Offensive, imgLink=https://cdn.akamai.steamstatic.com/steam/apps/730/capsule_616x353.jpg?t=1635269541, sessions=0)])
+00:43 INFO  - Class: class com.revature.p2_lfg.presentation.controllers.GameController
+Returning: GameSessionInfoResponse(gameSessionList=[GameSelectInfo(gameId=1, platformKey=1172470, name=Apex Legends, imgLink=https://media.contentapi.ea.com/content/dam/apex-legends/images/2019/01/apex-featured-image-16x9.jpg.adapt.crop16x9.1023w.jpg, sessions=2), GameSelectInfo(gameId=2, platformKey=404, name=League of Legends, imgLink=https://cdn1.epicgames.com/salesEvent/salesEvent/EGS_LeagueofLegends_RiotGames_S1_2560x1440-ee500721c06da3ec1e5535a88588c77f?h=270&resize=1&w=480, sessions=0), GameSelectInfo(gameId=3, platformKey=730, name=Counter Strike: Global Offensive, imgLink=https://cdn.akamai.steamstatic.com/steam/apps/730/capsule_616x353.jpg?t=1635269541, sessions=0)])
+00:43 DEBUG - Class: class com.revature.p2_lfg.presentation.controllers.GameController
+Method: getAvailableGames
+00:43 DEBUG - Class: class com.revature.p2_lfg.service.game.classes.GameService
+Method: getCurrentGameSessionList
+Arguments: []
+00:43 INFO  - Class: class com.revature.p2_lfg.service.game.classes.GameService
+Returning: GameSessionInfoResponse(gameSessionList=[GameSelectInfo(gameId=1, platformKey=1172470, name=Apex Legends, imgLink=https://media.contentapi.ea.com/content/dam/apex-legends/images/2019/01/apex-featured-image-16x9.jpg.adapt.crop16x9.1023w.jpg, sessions=2), GameSelectInfo(gameId=2, platformKey=404, name=League of Legends, imgLink=https://cdn1.epicgames.com/salesEvent/salesEvent/EGS_LeagueofLegends_RiotGames_S1_2560x1440-ee500721c06da3ec1e5535a88588c77f?h=270&resize=1&w=480, sessions=0), GameSelectInfo(gameId=3, platformKey=730, name=Counter Strike: Global Offensive, imgLink=https://cdn.akamai.steamstatic.com/steam/apps/730/capsule_616x353.jpg?t=1635269541, sessions=0)])
+00:43 INFO  - Class: class com.revature.p2_lfg.presentation.controllers.GameController
+Returning: GameSessionInfoResponse(gameSessionList=[GameSelectInfo(gameId=1, platformKey=1172470, name=Apex Legends, imgLink=https://media.contentapi.ea.com/content/dam/apex-legends/images/2019/01/apex-featured-image-16x9.jpg.adapt.crop16x9.1023w.jpg, sessions=2), GameSelectInfo(gameId=2, platformKey=404, name=League of Legends, imgLink=https://cdn1.epicgames.com/salesEvent/salesEvent/EGS_LeagueofLegends_RiotGames_S1_2560x1440-ee500721c06da3ec1e5535a88588c77f?h=270&resize=1&w=480, sessions=0), GameSelectInfo(gameId=3, platformKey=730, name=Counter Strike: Global Offensive, imgLink=https://cdn.akamai.steamstatic.com/steam/apps/730/capsule_616x353.jpg?t=1635269541, sessions=0)])
+00:43 DEBUG - Class: class com.revature.p2_lfg.presentation.controllers.GameController
+Method: getAvailableGames
+00:43 DEBUG - Class: class com.revature.p2_lfg.service.game.classes.GameService
+Method: getCurrentGameSessionList
+Arguments: []
+00:43 INFO  - Class: class com.revature.p2_lfg.service.game.classes.GameService
+Returning: GameSessionInfoResponse(gameSessionList=[GameSelectInfo(gameId=1, platformKey=1172470, name=Apex Legends, imgLink=https://media.contentapi.ea.com/content/dam/apex-legends/images/2019/01/apex-featured-image-16x9.jpg.adapt.crop16x9.1023w.jpg, sessions=2), GameSelectInfo(gameId=2, platformKey=404, name=League of Legends, imgLink=https://cdn1.epicgames.com/salesEvent/salesEvent/EGS_LeagueofLegends_RiotGames_S1_2560x1440-ee500721c06da3ec1e5535a88588c77f?h=270&resize=1&w=480, sessions=0), GameSelectInfo(gameId=3, platformKey=730, name=Counter Strike: Global Offensive, imgLink=https://cdn.akamai.steamstatic.com/steam/apps/730/capsule_616x353.jpg?t=1635269541, sessions=0)])
+00:43 INFO  - Class: class com.revature.p2_lfg.presentation.controllers.GameController
+Returning: GameSessionInfoResponse(gameSessionList=[GameSelectInfo(gameId=1, platformKey=1172470, name=Apex Legends, imgLink=https://media.contentapi.ea.com/content/dam/apex-legends/images/2019/01/apex-featured-image-16x9.jpg.adapt.crop16x9.1023w.jpg, sessions=2), GameSelectInfo(gameId=2, platformKey=404, name=League of Legends, imgLink=https://cdn1.epicgames.com/salesEvent/salesEvent/EGS_LeagueofLegends_RiotGames_S1_2560x1440-ee500721c06da3ec1e5535a88588c77f?h=270&resize=1&w=480, sessions=0), GameSelectInfo(gameId=3, platformKey=730, name=Counter Strike: Global Offensive, imgLink=https://cdn.akamai.steamstatic.com/steam/apps/730/capsule_616x353.jpg?t=1635269541, sessions=0)])
+00:43 DEBUG - Class: class com.revature.p2_lfg.presentation.controllers.GameController
+Method: getAvailableGames
+00:43 DEBUG - Class: class com.revature.p2_lfg.service.game.classes.GameService
+Method: getCurrentGameSessionList
+Arguments: []
+00:43 INFO  - Class: class com.revature.p2_lfg.service.game.classes.GameService
+Returning: GameSessionInfoResponse(gameSessionList=[GameSelectInfo(gameId=1, platformKey=1172470, name=Apex Legends, imgLink=https://media.contentapi.ea.com/content/dam/apex-legends/images/2019/01/apex-featured-image-16x9.jpg.adapt.crop16x9.1023w.jpg, sessions=2), GameSelectInfo(gameId=2, platformKey=404, name=League of Legends, imgLink=https://cdn1.epicgames.com/salesEvent/salesEvent/EGS_LeagueofLegends_RiotGames_S1_2560x1440-ee500721c06da3ec1e5535a88588c77f?h=270&resize=1&w=480, sessions=0), GameSelectInfo(gameId=3, platformKey=730, name=Counter Strike: Global Offensive, imgLink=https://cdn.akamai.steamstatic.com/steam/apps/730/capsule_616x353.jpg?t=1635269541, sessions=0)])
+00:43 INFO  - Class: class com.revature.p2_lfg.presentation.controllers.GameController
+Returning: GameSessionInfoResponse(gameSessionList=[GameSelectInfo(gameId=1, platformKey=1172470, name=Apex Legends, imgLink=https://media.contentapi.ea.com/content/dam/apex-legends/images/2019/01/apex-featured-image-16x9.jpg.adapt.crop16x9.1023w.jpg, sessions=2), GameSelectInfo(gameId=2, platformKey=404, name=League of Legends, imgLink=https://cdn1.epicgames.com/salesEvent/salesEvent/EGS_LeagueofLegends_RiotGames_S1_2560x1440-ee500721c06da3ec1e5535a88588c77f?h=270&resize=1&w=480, sessions=0), GameSelectInfo(gameId=3, platformKey=730, name=Counter Strike: Global Offensive, imgLink=https://cdn.akamai.steamstatic.com/steam/apps/730/capsule_616x353.jpg?t=1635269541, sessions=0)])
+00:43 DEBUG - Class: class com.revature.p2_lfg.presentation.controllers.GameController
+Method: getAvailableGames
+00:43 DEBUG - Class: class com.revature.p2_lfg.service.game.classes.GameService
+Method: getCurrentGameSessionList
+Arguments: []
+00:43 INFO  - Class: class com.revature.p2_lfg.service.game.classes.GameService
+Returning: GameSessionInfoResponse(gameSessionList=[GameSelectInfo(gameId=1, platformKey=1172470, name=Apex Legends, imgLink=https://media.contentapi.ea.com/content/dam/apex-legends/images/2019/01/apex-featured-image-16x9.jpg.adapt.crop16x9.1023w.jpg, sessions=2), GameSelectInfo(gameId=2, platformKey=404, name=League of Legends, imgLink=https://cdn1.epicgames.com/salesEvent/salesEvent/EGS_LeagueofLegends_RiotGames_S1_2560x1440-ee500721c06da3ec1e5535a88588c77f?h=270&resize=1&w=480, sessions=0), GameSelectInfo(gameId=3, platformKey=730, name=Counter Strike: Global Offensive, imgLink=https://cdn.akamai.steamstatic.com/steam/apps/730/capsule_616x353.jpg?t=1635269541, sessions=0)])
+00:43 INFO  - Class: class com.revature.p2_lfg.presentation.controllers.GameController
+Returning: GameSessionInfoResponse(gameSessionList=[GameSelectInfo(gameId=1, platformKey=1172470, name=Apex Legends, imgLink=https://media.contentapi.ea.com/content/dam/apex-legends/images/2019/01/apex-featured-image-16x9.jpg.adapt.crop16x9.1023w.jpg, sessions=2), GameSelectInfo(gameId=2, platformKey=404, name=League of Legends, imgLink=https://cdn1.epicgames.com/salesEvent/salesEvent/EGS_LeagueofLegends_RiotGames_S1_2560x1440-ee500721c06da3ec1e5535a88588c77f?h=270&resize=1&w=480, sessions=0), GameSelectInfo(gameId=3, platformKey=730, name=Counter Strike: Global Offensive, imgLink=https://cdn.akamai.steamstatic.com/steam/apps/730/capsule_616x353.jpg?t=1635269541, sessions=0)])
+00:44 DEBUG - Class: class com.revature.p2_lfg.presentation.controllers.GameController
+Method: getSelectedGameGroups
+00:44 DEBUG - Class: class com.revature.p2_lfg.service.game.classes.GameService
+Method: getSelectedGameGroups
+Arguments: [1]
+00:44 INFO  - Class: class com.revature.p2_lfg.service.game.classes.GameService
+Returning: SelectedGameAvailableGroupsResponse(gameId=1, selectedGameAvailableGroups=[SessionDetails(groupid=1, game=Games(gameid=1, platformkey=1172470, gametitle=Apex Legends, imglink=https://media.contentapi.ea.com/content/dam/apex-legends/images/2019/01/apex-featured-image-16x9.jpg.adapt.crop16x9.1023w.jpg), maxusers=44, currentusers=2, description=helo, tags=[]), SessionDetails(groupid=2, game=Games(gameid=1, platformkey=1172470, gametitle=Apex Legends, imglink=https://media.contentapi.ea.com/content/dam/apex-legends/images/2019/01/apex-featured-image-16x9.jpg.adapt.crop16x9.1023w.jpg), maxusers=41, currentusers=2, description=hahaha, tags=[])])
+00:44 INFO  - Class: class com.revature.p2_lfg.presentation.controllers.GameController
+Returning: SelectedGameAvailableGroupsResponse(gameId=1, selectedGameAvailableGroups=[SessionDetails(groupid=1, game=Games(gameid=1, platformkey=1172470, gametitle=Apex Legends, imglink=https://media.contentapi.ea.com/content/dam/apex-legends/images/2019/01/apex-featured-image-16x9.jpg.adapt.crop16x9.1023w.jpg), maxusers=44, currentusers=2, description=helo, tags=[]), SessionDetails(groupid=2, game=Games(gameid=1, platformkey=1172470, gametitle=Apex Legends, imglink=https://media.contentapi.ea.com/content/dam/apex-legends/images/2019/01/apex-featured-image-16x9.jpg.adapt.crop16x9.1023w.jpg), maxusers=41, currentusers=2, description=hahaha, tags=[])])
+00:45 DEBUG - Class: class com.revature.p2_lfg.presentation.controllers.GameController
+Method: getAvailableGames
+00:45 DEBUG - Class: class com.revature.p2_lfg.service.game.classes.GameService
+Method: getCurrentGameSessionList
+Arguments: []
+00:45 INFO  - Class: class com.revature.p2_lfg.service.game.classes.GameService
+Returning: GameSessionInfoResponse(gameSessionList=[GameSelectInfo(gameId=1, platformKey=1172470, name=Apex Legends, imgLink=https://media.contentapi.ea.com/content/dam/apex-legends/images/2019/01/apex-featured-image-16x9.jpg.adapt.crop16x9.1023w.jpg, sessions=2), GameSelectInfo(gameId=2, platformKey=404, name=League of Legends, imgLink=https://cdn1.epicgames.com/salesEvent/salesEvent/EGS_LeagueofLegends_RiotGames_S1_2560x1440-ee500721c06da3ec1e5535a88588c77f?h=270&resize=1&w=480, sessions=0), GameSelectInfo(gameId=3, platformKey=730, name=Counter Strike: Global Offensive, imgLink=https://cdn.akamai.steamstatic.com/steam/apps/730/capsule_616x353.jpg?t=1635269541, sessions=0)])
+00:45 INFO  - Class: class com.revature.p2_lfg.presentation.controllers.GameController
+Returning: GameSessionInfoResponse(gameSessionList=[GameSelectInfo(gameId=1, platformKey=1172470, name=Apex Legends, imgLink=https://media.contentapi.ea.com/content/dam/apex-legends/images/2019/01/apex-featured-image-16x9.jpg.adapt.crop16x9.1023w.jpg, sessions=2), GameSelectInfo(gameId=2, platformKey=404, name=League of Legends, imgLink=https://cdn1.epicgames.com/salesEvent/salesEvent/EGS_LeagueofLegends_RiotGames_S1_2560x1440-ee500721c06da3ec1e5535a88588c77f?h=270&resize=1&w=480, sessions=0), GameSelectInfo(gameId=3, platformKey=730, name=Counter Strike: Global Offensive, imgLink=https://cdn.akamai.steamstatic.com/steam/apps/730/capsule_616x353.jpg?t=1635269541, sessions=0)])
+00:45 DEBUG - Class: class com.revature.p2_lfg.presentation.controllers.GameController
+Method: getAvailableGames
+00:45 DEBUG - Class: class com.revature.p2_lfg.service.game.classes.GameService
+Method: getCurrentGameSessionList
+Arguments: []
+00:45 INFO  - Class: class com.revature.p2_lfg.service.game.classes.GameService
+Returning: GameSessionInfoResponse(gameSessionList=[GameSelectInfo(gameId=1, platformKey=1172470, name=Apex Legends, imgLink=https://media.contentapi.ea.com/content/dam/apex-legends/images/2019/01/apex-featured-image-16x9.jpg.adapt.crop16x9.1023w.jpg, sessions=2), GameSelectInfo(gameId=2, platformKey=404, name=League of Legends, imgLink=https://cdn1.epicgames.com/salesEvent/salesEvent/EGS_LeagueofLegends_RiotGames_S1_2560x1440-ee500721c06da3ec1e5535a88588c77f?h=270&resize=1&w=480, sessions=0), GameSelectInfo(gameId=3, platformKey=730, name=Counter Strike: Global Offensive, imgLink=https://cdn.akamai.steamstatic.com/steam/apps/730/capsule_616x353.jpg?t=1635269541, sessions=0)])
+00:45 INFO  - Class: class com.revature.p2_lfg.presentation.controllers.GameController
+Returning: GameSessionInfoResponse(gameSessionList=[GameSelectInfo(gameId=1, platformKey=1172470, name=Apex Legends, imgLink=https://media.contentapi.ea.com/content/dam/apex-legends/images/2019/01/apex-featured-image-16x9.jpg.adapt.crop16x9.1023w.jpg, sessions=2), GameSelectInfo(gameId=2, platformKey=404, name=League of Legends, imgLink=https://cdn1.epicgames.com/salesEvent/salesEvent/EGS_LeagueofLegends_RiotGames_S1_2560x1440-ee500721c06da3ec1e5535a88588c77f?h=270&resize=1&w=480, sessions=0), GameSelectInfo(gameId=3, platformKey=730, name=Counter Strike: Global Offensive, imgLink=https://cdn.akamai.steamstatic.com/steam/apps/730/capsule_616x353.jpg?t=1635269541, sessions=0)])
+00:45 DEBUG - Class: class com.revature.p2_lfg.presentation.controllers.GameController
+Method: getAvailableGames
+00:45 DEBUG - Class: class com.revature.p2_lfg.service.game.classes.GameService
+Method: getCurrentGameSessionList
+Arguments: []
+00:45 INFO  - Class: class com.revature.p2_lfg.service.game.classes.GameService
+Returning: GameSessionInfoResponse(gameSessionList=[GameSelectInfo(gameId=1, platformKey=1172470, name=Apex Legends, imgLink=https://media.contentapi.ea.com/content/dam/apex-legends/images/2019/01/apex-featured-image-16x9.jpg.adapt.crop16x9.1023w.jpg, sessions=2), GameSelectInfo(gameId=2, platformKey=404, name=League of Legends, imgLink=https://cdn1.epicgames.com/salesEvent/salesEvent/EGS_LeagueofLegends_RiotGames_S1_2560x1440-ee500721c06da3ec1e5535a88588c77f?h=270&resize=1&w=480, sessions=0), GameSelectInfo(gameId=3, platformKey=730, name=Counter Strike: Global Offensive, imgLink=https://cdn.akamai.steamstatic.com/steam/apps/730/capsule_616x353.jpg?t=1635269541, sessions=0)])
+00:45 INFO  - Class: class com.revature.p2_lfg.presentation.controllers.GameController
+Returning: GameSessionInfoResponse(gameSessionList=[GameSelectInfo(gameId=1, platformKey=1172470, name=Apex Legends, imgLink=https://media.contentapi.ea.com/content/dam/apex-legends/images/2019/01/apex-featured-image-16x9.jpg.adapt.crop16x9.1023w.jpg, sessions=2), GameSelectInfo(gameId=2, platformKey=404, name=League of Legends, imgLink=https://cdn1.epicgames.com/salesEvent/salesEvent/EGS_LeagueofLegends_RiotGames_S1_2560x1440-ee500721c06da3ec1e5535a88588c77f?h=270&resize=1&w=480, sessions=0), GameSelectInfo(gameId=3, platformKey=730, name=Counter Strike: Global Offensive, imgLink=https://cdn.akamai.steamstatic.com/steam/apps/730/capsule_616x353.jpg?t=1635269541, sessions=0)])
+00:45 DEBUG - Class: class com.revature.p2_lfg.presentation.controllers.GameController
+Method: getAvailableGames
+00:45 DEBUG - Class: class com.revature.p2_lfg.service.game.classes.GameService
+Method: getCurrentGameSessionList
+Arguments: []
+00:45 INFO  - Class: class com.revature.p2_lfg.service.game.classes.GameService
+Returning: GameSessionInfoResponse(gameSessionList=[GameSelectInfo(gameId=1, platformKey=1172470, name=Apex Legends, imgLink=https://media.contentapi.ea.com/content/dam/apex-legends/images/2019/01/apex-featured-image-16x9.jpg.adapt.crop16x9.1023w.jpg, sessions=2), GameSelectInfo(gameId=2, platformKey=404, name=League of Legends, imgLink=https://cdn1.epicgames.com/salesEvent/salesEvent/EGS_LeagueofLegends_RiotGames_S1_2560x1440-ee500721c06da3ec1e5535a88588c77f?h=270&resize=1&w=480, sessions=0), GameSelectInfo(gameId=3, platformKey=730, name=Counter Strike: Global Offensive, imgLink=https://cdn.akamai.steamstatic.com/steam/apps/730/capsule_616x353.jpg?t=1635269541, sessions=0)])
+00:45 INFO  - Class: class com.revature.p2_lfg.presentation.controllers.GameController
+Returning: GameSessionInfoResponse(gameSessionList=[GameSelectInfo(gameId=1, platformKey=1172470, name=Apex Legends, imgLink=https://media.contentapi.ea.com/content/dam/apex-legends/images/2019/01/apex-featured-image-16x9.jpg.adapt.crop16x9.1023w.jpg, sessions=2), GameSelectInfo(gameId=2, platformKey=404, name=League of Legends, imgLink=https://cdn1.epicgames.com/salesEvent/salesEvent/EGS_LeagueofLegends_RiotGames_S1_2560x1440-ee500721c06da3ec1e5535a88588c77f?h=270&resize=1&w=480, sessions=0), GameSelectInfo(gameId=3, platformKey=730, name=Counter Strike: Global Offensive, imgLink=https://cdn.akamai.steamstatic.com/steam/apps/730/capsule_616x353.jpg?t=1635269541, sessions=0)])
+00:45 DEBUG - Class: class com.revature.p2_lfg.presentation.controllers.GameController
+Method: getAvailableGames
+00:45 DEBUG - Class: class com.revature.p2_lfg.service.game.classes.GameService
+Method: getCurrentGameSessionList
+Arguments: []
+00:45 INFO  - Class: class com.revature.p2_lfg.service.game.classes.GameService
+Returning: GameSessionInfoResponse(gameSessionList=[GameSelectInfo(gameId=1, platformKey=1172470, name=Apex Legends, imgLink=https://media.contentapi.ea.com/content/dam/apex-legends/images/2019/01/apex-featured-image-16x9.jpg.adapt.crop16x9.1023w.jpg, sessions=2), GameSelectInfo(gameId=2, platformKey=404, name=League of Legends, imgLink=https://cdn1.epicgames.com/salesEvent/salesEvent/EGS_LeagueofLegends_RiotGames_S1_2560x1440-ee500721c06da3ec1e5535a88588c77f?h=270&resize=1&w=480, sessions=0), GameSelectInfo(gameId=3, platformKey=730, name=Counter Strike: Global Offensive, imgLink=https://cdn.akamai.steamstatic.com/steam/apps/730/capsule_616x353.jpg?t=1635269541, sessions=0)])
+00:45 INFO  - Class: class com.revature.p2_lfg.presentation.controllers.GameController
+Returning: GameSessionInfoResponse(gameSessionList=[GameSelectInfo(gameId=1, platformKey=1172470, name=Apex Legends, imgLink=https://media.contentapi.ea.com/content/dam/apex-legends/images/2019/01/apex-featured-image-16x9.jpg.adapt.crop16x9.1023w.jpg, sessions=2), GameSelectInfo(gameId=2, platformKey=404, name=League of Legends, imgLink=https://cdn1.epicgames.com/salesEvent/salesEvent/EGS_LeagueofLegends_RiotGames_S1_2560x1440-ee500721c06da3ec1e5535a88588c77f?h=270&resize=1&w=480, sessions=0), GameSelectInfo(gameId=3, platformKey=730, name=Counter Strike: Global Offensive, imgLink=https://cdn.akamai.steamstatic.com/steam/apps/730/capsule_616x353.jpg?t=1635269541, sessions=0)])
+00:45 DEBUG - Class: class com.revature.p2_lfg.presentation.controllers.GameController
+Method: getAvailableGames
+00:45 DEBUG - Class: class com.revature.p2_lfg.service.game.classes.GameService
+Method: getCurrentGameSessionList
+Arguments: []
+00:45 INFO  - Class: class com.revature.p2_lfg.service.game.classes.GameService
+Returning: GameSessionInfoResponse(gameSessionList=[GameSelectInfo(gameId=1, platformKey=1172470, name=Apex Legends, imgLink=https://media.contentapi.ea.com/content/dam/apex-legends/images/2019/01/apex-featured-image-16x9.jpg.adapt.crop16x9.1023w.jpg, sessions=2), GameSelectInfo(gameId=2, platformKey=404, name=League of Legends, imgLink=https://cdn1.epicgames.com/salesEvent/salesEvent/EGS_LeagueofLegends_RiotGames_S1_2560x1440-ee500721c06da3ec1e5535a88588c77f?h=270&resize=1&w=480, sessions=0), GameSelectInfo(gameId=3, platformKey=730, name=Counter Strike: Global Offensive, imgLink=https://cdn.akamai.steamstatic.com/steam/apps/730/capsule_616x353.jpg?t=1635269541, sessions=0)])
+00:45 INFO  - Class: class com.revature.p2_lfg.presentation.controllers.GameController
+Returning: GameSessionInfoResponse(gameSessionList=[GameSelectInfo(gameId=1, platformKey=1172470, name=Apex Legends, imgLink=https://media.contentapi.ea.com/content/dam/apex-legends/images/2019/01/apex-featured-image-16x9.jpg.adapt.crop16x9.1023w.jpg, sessions=2), GameSelectInfo(gameId=2, platformKey=404, name=League of Legends, imgLink=https://cdn1.epicgames.com/salesEvent/salesEvent/EGS_LeagueofLegends_RiotGames_S1_2560x1440-ee500721c06da3ec1e5535a88588c77f?h=270&resize=1&w=480, sessions=0), GameSelectInfo(gameId=3, platformKey=730, name=Counter Strike: Global Offensive, imgLink=https://cdn.akamai.steamstatic.com/steam/apps/730/capsule_616x353.jpg?t=1635269541, sessions=0)])
+00:45 DEBUG - Class: class com.revature.p2_lfg.presentation.controllers.GameController
+Method: getAvailableGames
+00:45 DEBUG - Class: class com.revature.p2_lfg.service.game.classes.GameService
+Method: getCurrentGameSessionList
+Arguments: []
+00:45 INFO  - Class: class com.revature.p2_lfg.service.game.classes.GameService
+Returning: GameSessionInfoResponse(gameSessionList=[GameSelectInfo(gameId=1, platformKey=1172470, name=Apex Legends, imgLink=https://media.contentapi.ea.com/content/dam/apex-legends/images/2019/01/apex-featured-image-16x9.jpg.adapt.crop16x9.1023w.jpg, sessions=2), GameSelectInfo(gameId=2, platformKey=404, name=League of Legends, imgLink=https://cdn1.epicgames.com/salesEvent/salesEvent/EGS_LeagueofLegends_RiotGames_S1_2560x1440-ee500721c06da3ec1e5535a88588c77f?h=270&resize=1&w=480, sessions=0), GameSelectInfo(gameId=3, platformKey=730, name=Counter Strike: Global Offensive, imgLink=https://cdn.akamai.steamstatic.com/steam/apps/730/capsule_616x353.jpg?t=1635269541, sessions=0)])
+00:45 INFO  - Class: class com.revature.p2_lfg.presentation.controllers.GameController
+Returning: GameSessionInfoResponse(gameSessionList=[GameSelectInfo(gameId=1, platformKey=1172470, name=Apex Legends, imgLink=https://media.contentapi.ea.com/content/dam/apex-legends/images/2019/01/apex-featured-image-16x9.jpg.adapt.crop16x9.1023w.jpg, sessions=2), GameSelectInfo(gameId=2, platformKey=404, name=League of Legends, imgLink=https://cdn1.epicgames.com/salesEvent/salesEvent/EGS_LeagueofLegends_RiotGames_S1_2560x1440-ee500721c06da3ec1e5535a88588c77f?h=270&resize=1&w=480, sessions=0), GameSelectInfo(gameId=3, platformKey=730, name=Counter Strike: Global Offensive, imgLink=https://cdn.akamai.steamstatic.com/steam/apps/730/capsule_616x353.jpg?t=1635269541, sessions=0)])
+00:45 DEBUG - Class: class com.revature.p2_lfg.presentation.controllers.GameController
+Method: getAvailableGames
+00:45 DEBUG - Class: class com.revature.p2_lfg.service.game.classes.GameService
+Method: getCurrentGameSessionList
+Arguments: []
+00:45 INFO  - Class: class com.revature.p2_lfg.service.game.classes.GameService
+Returning: GameSessionInfoResponse(gameSessionList=[GameSelectInfo(gameId=1, platformKey=1172470, name=Apex Legends, imgLink=https://media.contentapi.ea.com/content/dam/apex-legends/images/2019/01/apex-featured-image-16x9.jpg.adapt.crop16x9.1023w.jpg, sessions=2), GameSelectInfo(gameId=2, platformKey=404, name=League of Legends, imgLink=https://cdn1.epicgames.com/salesEvent/salesEvent/EGS_LeagueofLegends_RiotGames_S1_2560x1440-ee500721c06da3ec1e5535a88588c77f?h=270&resize=1&w=480, sessions=0), GameSelectInfo(gameId=3, platformKey=730, name=Counter Strike: Global Offensive, imgLink=https://cdn.akamai.steamstatic.com/steam/apps/730/capsule_616x353.jpg?t=1635269541, sessions=0)])
+00:45 INFO  - Class: class com.revature.p2_lfg.presentation.controllers.GameController
+Returning: GameSessionInfoResponse(gameSessionList=[GameSelectInfo(gameId=1, platformKey=1172470, name=Apex Legends, imgLink=https://media.contentapi.ea.com/content/dam/apex-legends/images/2019/01/apex-featured-image-16x9.jpg.adapt.crop16x9.1023w.jpg, sessions=2), GameSelectInfo(gameId=2, platformKey=404, name=League of Legends, imgLink=https://cdn1.epicgames.com/salesEvent/salesEvent/EGS_LeagueofLegends_RiotGames_S1_2560x1440-ee500721c06da3ec1e5535a88588c77f?h=270&resize=1&w=480, sessions=0), GameSelectInfo(gameId=3, platformKey=730, name=Counter Strike: Global Offensive, imgLink=https://cdn.akamai.steamstatic.com/steam/apps/730/capsule_616x353.jpg?t=1635269541, sessions=0)])
+00:45 DEBUG - Class: class com.revature.p2_lfg.presentation.controllers.GameController
+Method: getSelectedGameGroups
+00:45 DEBUG - Class: class com.revature.p2_lfg.service.game.classes.GameService
+Method: getSelectedGameGroups
+Arguments: [1]
+00:45 INFO  - Class: class com.revature.p2_lfg.service.game.classes.GameService
+Returning: SelectedGameAvailableGroupsResponse(gameId=1, selectedGameAvailableGroups=[SessionDetails(groupid=1, game=Games(gameid=1, platformkey=1172470, gametitle=Apex Legends, imglink=https://media.contentapi.ea.com/content/dam/apex-legends/images/2019/01/apex-featured-image-16x9.jpg.adapt.crop16x9.1023w.jpg), maxusers=44, currentusers=2, description=helo, tags=[]), SessionDetails(groupid=2, game=Games(gameid=1, platformkey=1172470, gametitle=Apex Legends, imglink=https://media.contentapi.ea.com/content/dam/apex-legends/images/2019/01/apex-featured-image-16x9.jpg.adapt.crop16x9.1023w.jpg), maxusers=41, currentusers=2, description=hahaha, tags=[])])
+00:45 INFO  - Class: class com.revature.p2_lfg.presentation.controllers.GameController
+Returning: SelectedGameAvailableGroupsResponse(gameId=1, selectedGameAvailableGroups=[SessionDetails(groupid=1, game=Games(gameid=1, platformkey=1172470, gametitle=Apex Legends, imglink=https://media.contentapi.ea.com/content/dam/apex-legends/images/2019/01/apex-featured-image-16x9.jpg.adapt.crop16x9.1023w.jpg), maxusers=44, currentusers=2, description=helo, tags=[]), SessionDetails(groupid=2, game=Games(gameid=1, platformkey=1172470, gametitle=Apex Legends, imglink=https://media.contentapi.ea.com/content/dam/apex-legends/images/2019/01/apex-featured-image-16x9.jpg.adapt.crop16x9.1023w.jpg), maxusers=41, currentusers=2, description=hahaha, tags=[])])
+00:45 DEBUG - Class: class com.revature.p2_lfg.presentation.controllers.GameController
+Method: getAvailableGames
+00:45 DEBUG - Class: class com.revature.p2_lfg.service.game.classes.GameService
+Method: getCurrentGameSessionList
+Arguments: []
+00:45 INFO  - Class: class com.revature.p2_lfg.service.game.classes.GameService
+Returning: GameSessionInfoResponse(gameSessionList=[GameSelectInfo(gameId=1, platformKey=1172470, name=Apex Legends, imgLink=https://media.contentapi.ea.com/content/dam/apex-legends/images/2019/01/apex-featured-image-16x9.jpg.adapt.crop16x9.1023w.jpg, sessions=2), GameSelectInfo(gameId=2, platformKey=404, name=League of Legends, imgLink=https://cdn1.epicgames.com/salesEvent/salesEvent/EGS_LeagueofLegends_RiotGames_S1_2560x1440-ee500721c06da3ec1e5535a88588c77f?h=270&resize=1&w=480, sessions=0), GameSelectInfo(gameId=3, platformKey=730, name=Counter Strike: Global Offensive, imgLink=https://cdn.akamai.steamstatic.com/steam/apps/730/capsule_616x353.jpg?t=1635269541, sessions=0)])
+00:45 INFO  - Class: class com.revature.p2_lfg.presentation.controllers.GameController
+Returning: GameSessionInfoResponse(gameSessionList=[GameSelectInfo(gameId=1, platformKey=1172470, name=Apex Legends, imgLink=https://media.contentapi.ea.com/content/dam/apex-legends/images/2019/01/apex-featured-image-16x9.jpg.adapt.crop16x9.1023w.jpg, sessions=2), GameSelectInfo(gameId=2, platformKey=404, name=League of Legends, imgLink=https://cdn1.epicgames.com/salesEvent/salesEvent/EGS_LeagueofLegends_RiotGames_S1_2560x1440-ee500721c06da3ec1e5535a88588c77f?h=270&resize=1&w=480, sessions=0), GameSelectInfo(gameId=3, platformKey=730, name=Counter Strike: Global Offensive, imgLink=https://cdn.akamai.steamstatic.com/steam/apps/730/capsule_616x353.jpg?t=1635269541, sessions=0)])
+00:45 DEBUG - Class: class com.revature.p2_lfg.presentation.controllers.GameController
+Method: getAvailableGames
+00:45 DEBUG - Class: class com.revature.p2_lfg.service.game.classes.GameService
+Method: getCurrentGameSessionList
+Arguments: []
+00:45 INFO  - Class: class com.revature.p2_lfg.service.game.classes.GameService
+Returning: GameSessionInfoResponse(gameSessionList=[GameSelectInfo(gameId=1, platformKey=1172470, name=Apex Legends, imgLink=https://media.contentapi.ea.com/content/dam/apex-legends/images/2019/01/apex-featured-image-16x9.jpg.adapt.crop16x9.1023w.jpg, sessions=2), GameSelectInfo(gameId=2, platformKey=404, name=League of Legends, imgLink=https://cdn1.epicgames.com/salesEvent/salesEvent/EGS_LeagueofLegends_RiotGames_S1_2560x1440-ee500721c06da3ec1e5535a88588c77f?h=270&resize=1&w=480, sessions=0), GameSelectInfo(gameId=3, platformKey=730, name=Counter Strike: Global Offensive, imgLink=https://cdn.akamai.steamstatic.com/steam/apps/730/capsule_616x353.jpg?t=1635269541, sessions=0)])
+00:45 INFO  - Class: class com.revature.p2_lfg.presentation.controllers.GameController
+Returning: GameSessionInfoResponse(gameSessionList=[GameSelectInfo(gameId=1, platformKey=1172470, name=Apex Legends, imgLink=https://media.contentapi.ea.com/content/dam/apex-legends/images/2019/01/apex-featured-image-16x9.jpg.adapt.crop16x9.1023w.jpg, sessions=2), GameSelectInfo(gameId=2, platformKey=404, name=League of Legends, imgLink=https://cdn1.epicgames.com/salesEvent/salesEvent/EGS_LeagueofLegends_RiotGames_S1_2560x1440-ee500721c06da3ec1e5535a88588c77f?h=270&resize=1&w=480, sessions=0), GameSelectInfo(gameId=3, platformKey=730, name=Counter Strike: Global Offensive, imgLink=https://cdn.akamai.steamstatic.com/steam/apps/730/capsule_616x353.jpg?t=1635269541, sessions=0)])
+00:45 DEBUG - Class: class com.revature.p2_lfg.presentation.controllers.GameController
+Method: getAvailableGames
+00:45 DEBUG - Class: class com.revature.p2_lfg.service.game.classes.GameService
+Method: getCurrentGameSessionList
+Arguments: []
+00:45 INFO  - Class: class com.revature.p2_lfg.service.game.classes.GameService
+Returning: GameSessionInfoResponse(gameSessionList=[GameSelectInfo(gameId=1, platformKey=1172470, name=Apex Legends, imgLink=https://media.contentapi.ea.com/content/dam/apex-legends/images/2019/01/apex-featured-image-16x9.jpg.adapt.crop16x9.1023w.jpg, sessions=2), GameSelectInfo(gameId=2, platformKey=404, name=League of Legends, imgLink=https://cdn1.epicgames.com/salesEvent/salesEvent/EGS_LeagueofLegends_RiotGames_S1_2560x1440-ee500721c06da3ec1e5535a88588c77f?h=270&resize=1&w=480, sessions=0), GameSelectInfo(gameId=3, platformKey=730, name=Counter Strike: Global Offensive, imgLink=https://cdn.akamai.steamstatic.com/steam/apps/730/capsule_616x353.jpg?t=1635269541, sessions=0)])
+00:45 INFO  - Class: class com.revature.p2_lfg.presentation.controllers.GameController
+Returning: GameSessionInfoResponse(gameSessionList=[GameSelectInfo(gameId=1, platformKey=1172470, name=Apex Legends, imgLink=https://media.contentapi.ea.com/content/dam/apex-legends/images/2019/01/apex-featured-image-16x9.jpg.adapt.crop16x9.1023w.jpg, sessions=2), GameSelectInfo(gameId=2, platformKey=404, name=League of Legends, imgLink=https://cdn1.epicgames.com/salesEvent/salesEvent/EGS_LeagueofLegends_RiotGames_S1_2560x1440-ee500721c06da3ec1e5535a88588c77f?h=270&resize=1&w=480, sessions=0), GameSelectInfo(gameId=3, platformKey=730, name=Counter Strike: Global Offensive, imgLink=https://cdn.akamai.steamstatic.com/steam/apps/730/capsule_616x353.jpg?t=1635269541, sessions=0)])
+00:45 DEBUG - Class: class com.revature.p2_lfg.presentation.controllers.GameController
+Method: getAvailableGames
+00:45 DEBUG - Class: class com.revature.p2_lfg.service.game.classes.GameService
+Method: getCurrentGameSessionList
+Arguments: []
+00:45 INFO  - Class: class com.revature.p2_lfg.service.game.classes.GameService
+Returning: GameSessionInfoResponse(gameSessionList=[GameSelectInfo(gameId=1, platformKey=1172470, name=Apex Legends, imgLink=https://media.contentapi.ea.com/content/dam/apex-legends/images/2019/01/apex-featured-image-16x9.jpg.adapt.crop16x9.1023w.jpg, sessions=2), GameSelectInfo(gameId=2, platformKey=404, name=League of Legends, imgLink=https://cdn1.epicgames.com/salesEvent/salesEvent/EGS_LeagueofLegends_RiotGames_S1_2560x1440-ee500721c06da3ec1e5535a88588c77f?h=270&resize=1&w=480, sessions=0), GameSelectInfo(gameId=3, platformKey=730, name=Counter Strike: Global Offensive, imgLink=https://cdn.akamai.steamstatic.com/steam/apps/730/capsule_616x353.jpg?t=1635269541, sessions=0)])
+00:45 INFO  - Class: class com.revature.p2_lfg.presentation.controllers.GameController
+Returning: GameSessionInfoResponse(gameSessionList=[GameSelectInfo(gameId=1, platformKey=1172470, name=Apex Legends, imgLink=https://media.contentapi.ea.com/content/dam/apex-legends/images/2019/01/apex-featured-image-16x9.jpg.adapt.crop16x9.1023w.jpg, sessions=2), GameSelectInfo(gameId=2, platformKey=404, name=League of Legends, imgLink=https://cdn1.epicgames.com/salesEvent/salesEvent/EGS_LeagueofLegends_RiotGames_S1_2560x1440-ee500721c06da3ec1e5535a88588c77f?h=270&resize=1&w=480, sessions=0), GameSelectInfo(gameId=3, platformKey=730, name=Counter Strike: Global Offensive, imgLink=https://cdn.akamai.steamstatic.com/steam/apps/730/capsule_616x353.jpg?t=1635269541, sessions=0)])
+00:45 DEBUG - Class: class com.revature.p2_lfg.presentation.controllers.GameController
+Method: getAvailableGames
+00:45 DEBUG - Class: class com.revature.p2_lfg.service.game.classes.GameService
+Method: getCurrentGameSessionList
+Arguments: []
+00:45 INFO  - Class: class com.revature.p2_lfg.service.game.classes.GameService
+Returning: GameSessionInfoResponse(gameSessionList=[GameSelectInfo(gameId=1, platformKey=1172470, name=Apex Legends, imgLink=https://media.contentapi.ea.com/content/dam/apex-legends/images/2019/01/apex-featured-image-16x9.jpg.adapt.crop16x9.1023w.jpg, sessions=2), GameSelectInfo(gameId=2, platformKey=404, name=League of Legends, imgLink=https://cdn1.epicgames.com/salesEvent/salesEvent/EGS_LeagueofLegends_RiotGames_S1_2560x1440-ee500721c06da3ec1e5535a88588c77f?h=270&resize=1&w=480, sessions=0), GameSelectInfo(gameId=3, platformKey=730, name=Counter Strike: Global Offensive, imgLink=https://cdn.akamai.steamstatic.com/steam/apps/730/capsule_616x353.jpg?t=1635269541, sessions=0)])
+00:45 INFO  - Class: class com.revature.p2_lfg.presentation.controllers.GameController
+Returning: GameSessionInfoResponse(gameSessionList=[GameSelectInfo(gameId=1, platformKey=1172470, name=Apex Legends, imgLink=https://media.contentapi.ea.com/content/dam/apex-legends/images/2019/01/apex-featured-image-16x9.jpg.adapt.crop16x9.1023w.jpg, sessions=2), GameSelectInfo(gameId=2, platformKey=404, name=League of Legends, imgLink=https://cdn1.epicgames.com/salesEvent/salesEvent/EGS_LeagueofLegends_RiotGames_S1_2560x1440-ee500721c06da3ec1e5535a88588c77f?h=270&resize=1&w=480, sessions=0), GameSelectInfo(gameId=3, platformKey=730, name=Counter Strike: Global Offensive, imgLink=https://cdn.akamai.steamstatic.com/steam/apps/730/capsule_616x353.jpg?t=1635269541, sessions=0)])
+00:45 DEBUG - Class: class com.revature.p2_lfg.presentation.controllers.GameController
+Method: getAvailableGames
+00:45 DEBUG - Class: class com.revature.p2_lfg.service.game.classes.GameService
+Method: getCurrentGameSessionList
+Arguments: []
+00:45 INFO  - Class: class com.revature.p2_lfg.service.game.classes.GameService
+Returning: GameSessionInfoResponse(gameSessionList=[GameSelectInfo(gameId=1, platformKey=1172470, name=Apex Legends, imgLink=https://media.contentapi.ea.com/content/dam/apex-legends/images/2019/01/apex-featured-image-16x9.jpg.adapt.crop16x9.1023w.jpg, sessions=2), GameSelectInfo(gameId=2, platformKey=404, name=League of Legends, imgLink=https://cdn1.epicgames.com/salesEvent/salesEvent/EGS_LeagueofLegends_RiotGames_S1_2560x1440-ee500721c06da3ec1e5535a88588c77f?h=270&resize=1&w=480, sessions=0), GameSelectInfo(gameId=3, platformKey=730, name=Counter Strike: Global Offensive, imgLink=https://cdn.akamai.steamstatic.com/steam/apps/730/capsule_616x353.jpg?t=1635269541, sessions=0)])
+00:45 INFO  - Class: class com.revature.p2_lfg.presentation.controllers.GameController
+Returning: GameSessionInfoResponse(gameSessionList=[GameSelectInfo(gameId=1, platformKey=1172470, name=Apex Legends, imgLink=https://media.contentapi.ea.com/content/dam/apex-legends/images/2019/01/apex-featured-image-16x9.jpg.adapt.crop16x9.1023w.jpg, sessions=2), GameSelectInfo(gameId=2, platformKey=404, name=League of Legends, imgLink=https://cdn1.epicgames.com/salesEvent/salesEvent/EGS_LeagueofLegends_RiotGames_S1_2560x1440-ee500721c06da3ec1e5535a88588c77f?h=270&resize=1&w=480, sessions=0), GameSelectInfo(gameId=3, platformKey=730, name=Counter Strike: Global Offensive, imgLink=https://cdn.akamai.steamstatic.com/steam/apps/730/capsule_616x353.jpg?t=1635269541, sessions=0)])
+00:45 DEBUG - Class: class com.revature.p2_lfg.presentation.controllers.GameController
+Method: getAvailableGames
+00:45 DEBUG - Class: class com.revature.p2_lfg.service.game.classes.GameService
+Method: getCurrentGameSessionList
+Arguments: []
+00:45 INFO  - Class: class com.revature.p2_lfg.service.game.classes.GameService
+Returning: GameSessionInfoResponse(gameSessionList=[GameSelectInfo(gameId=1, platformKey=1172470, name=Apex Legends, imgLink=https://media.contentapi.ea.com/content/dam/apex-legends/images/2019/01/apex-featured-image-16x9.jpg.adapt.crop16x9.1023w.jpg, sessions=2), GameSelectInfo(gameId=2, platformKey=404, name=League of Legends, imgLink=https://cdn1.epicgames.com/salesEvent/salesEvent/EGS_LeagueofLegends_RiotGames_S1_2560x1440-ee500721c06da3ec1e5535a88588c77f?h=270&resize=1&w=480, sessions=0), GameSelectInfo(gameId=3, platformKey=730, name=Counter Strike: Global Offensive, imgLink=https://cdn.akamai.steamstatic.com/steam/apps/730/capsule_616x353.jpg?t=1635269541, sessions=0)])
+00:45 INFO  - Class: class com.revature.p2_lfg.presentation.controllers.GameController
+Returning: GameSessionInfoResponse(gameSessionList=[GameSelectInfo(gameId=1, platformKey=1172470, name=Apex Legends, imgLink=https://media.contentapi.ea.com/content/dam/apex-legends/images/2019/01/apex-featured-image-16x9.jpg.adapt.crop16x9.1023w.jpg, sessions=2), GameSelectInfo(gameId=2, platformKey=404, name=League of Legends, imgLink=https://cdn1.epicgames.com/salesEvent/salesEvent/EGS_LeagueofLegends_RiotGames_S1_2560x1440-ee500721c06da3ec1e5535a88588c77f?h=270&resize=1&w=480, sessions=0), GameSelectInfo(gameId=3, platformKey=730, name=Counter Strike: Global Offensive, imgLink=https://cdn.akamai.steamstatic.com/steam/apps/730/capsule_616x353.jpg?t=1635269541, sessions=0)])
+00:45 DEBUG - Class: class com.revature.p2_lfg.presentation.controllers.GameController
+Method: getAvailableGames
+00:45 DEBUG - Class: class com.revature.p2_lfg.service.game.classes.GameService
+Method: getCurrentGameSessionList
+Arguments: []
+00:45 INFO  - Class: class com.revature.p2_lfg.service.game.classes.GameService
+Returning: GameSessionInfoResponse(gameSessionList=[GameSelectInfo(gameId=1, platformKey=1172470, name=Apex Legends, imgLink=https://media.contentapi.ea.com/content/dam/apex-legends/images/2019/01/apex-featured-image-16x9.jpg.adapt.crop16x9.1023w.jpg, sessions=2), GameSelectInfo(gameId=2, platformKey=404, name=League of Legends, imgLink=https://cdn1.epicgames.com/salesEvent/salesEvent/EGS_LeagueofLegends_RiotGames_S1_2560x1440-ee500721c06da3ec1e5535a88588c77f?h=270&resize=1&w=480, sessions=0), GameSelectInfo(gameId=3, platformKey=730, name=Counter Strike: Global Offensive, imgLink=https://cdn.akamai.steamstatic.com/steam/apps/730/capsule_616x353.jpg?t=1635269541, sessions=0)])
+00:45 INFO  - Class: class com.revature.p2_lfg.presentation.controllers.GameController
+Returning: GameSessionInfoResponse(gameSessionList=[GameSelectInfo(gameId=1, platformKey=1172470, name=Apex Legends, imgLink=https://media.contentapi.ea.com/content/dam/apex-legends/images/2019/01/apex-featured-image-16x9.jpg.adapt.crop16x9.1023w.jpg, sessions=2), GameSelectInfo(gameId=2, platformKey=404, name=League of Legends, imgLink=https://cdn1.epicgames.com/salesEvent/salesEvent/EGS_LeagueofLegends_RiotGames_S1_2560x1440-ee500721c06da3ec1e5535a88588c77f?h=270&resize=1&w=480, sessions=0), GameSelectInfo(gameId=3, platformKey=730, name=Counter Strike: Global Offensive, imgLink=https://cdn.akamai.steamstatic.com/steam/apps/730/capsule_616x353.jpg?t=1635269541, sessions=0)])
+00:45 DEBUG - Class: class com.revature.p2_lfg.presentation.controllers.GameController
+Method: getSelectedGameGroups
+00:45 DEBUG - Class: class com.revature.p2_lfg.service.game.classes.GameService
+Method: getSelectedGameGroups
+Arguments: [1]
+00:45 INFO  - Class: class com.revature.p2_lfg.service.game.classes.GameService
+Returning: SelectedGameAvailableGroupsResponse(gameId=1, selectedGameAvailableGroups=[SessionDetails(groupid=1, game=Games(gameid=1, platformkey=1172470, gametitle=Apex Legends, imglink=https://media.contentapi.ea.com/content/dam/apex-legends/images/2019/01/apex-featured-image-16x9.jpg.adapt.crop16x9.1023w.jpg), maxusers=44, currentusers=2, description=helo, tags=[]), SessionDetails(groupid=2, game=Games(gameid=1, platformkey=1172470, gametitle=Apex Legends, imglink=https://media.contentapi.ea.com/content/dam/apex-legends/images/2019/01/apex-featured-image-16x9.jpg.adapt.crop16x9.1023w.jpg), maxusers=41, currentusers=2, description=hahaha, tags=[])])
+00:45 INFO  - Class: class com.revature.p2_lfg.presentation.controllers.GameController
+Returning: SelectedGameAvailableGroupsResponse(gameId=1, selectedGameAvailableGroups=[SessionDetails(groupid=1, game=Games(gameid=1, platformkey=1172470, gametitle=Apex Legends, imglink=https://media.contentapi.ea.com/content/dam/apex-legends/images/2019/01/apex-featured-image-16x9.jpg.adapt.crop16x9.1023w.jpg), maxusers=44, currentusers=2, description=helo, tags=[]), SessionDetails(groupid=2, game=Games(gameid=1, platformkey=1172470, gametitle=Apex Legends, imglink=https://media.contentapi.ea.com/content/dam/apex-legends/images/2019/01/apex-featured-image-16x9.jpg.adapt.crop16x9.1023w.jpg), maxusers=41, currentusers=2, description=hahaha, tags=[])])
+00:45 DEBUG - Class: class com.revature.p2_lfg.presentation.controllers.GameController
+Method: getAvailableGames
+00:45 DEBUG - Class: class com.revature.p2_lfg.service.game.classes.GameService
+Method: getCurrentGameSessionList
+Arguments: []
+00:45 INFO  - Class: class com.revature.p2_lfg.service.game.classes.GameService
+Returning: GameSessionInfoResponse(gameSessionList=[GameSelectInfo(gameId=1, platformKey=1172470, name=Apex Legends, imgLink=https://media.contentapi.ea.com/content/dam/apex-legends/images/2019/01/apex-featured-image-16x9.jpg.adapt.crop16x9.1023w.jpg, sessions=2), GameSelectInfo(gameId=2, platformKey=404, name=League of Legends, imgLink=https://cdn1.epicgames.com/salesEvent/salesEvent/EGS_LeagueofLegends_RiotGames_S1_2560x1440-ee500721c06da3ec1e5535a88588c77f?h=270&resize=1&w=480, sessions=0), GameSelectInfo(gameId=3, platformKey=730, name=Counter Strike: Global Offensive, imgLink=https://cdn.akamai.steamstatic.com/steam/apps/730/capsule_616x353.jpg?t=1635269541, sessions=0)])
+00:45 INFO  - Class: class com.revature.p2_lfg.presentation.controllers.GameController
+Returning: GameSessionInfoResponse(gameSessionList=[GameSelectInfo(gameId=1, platformKey=1172470, name=Apex Legends, imgLink=https://media.contentapi.ea.com/content/dam/apex-legends/images/2019/01/apex-featured-image-16x9.jpg.adapt.crop16x9.1023w.jpg, sessions=2), GameSelectInfo(gameId=2, platformKey=404, name=League of Legends, imgLink=https://cdn1.epicgames.com/salesEvent/salesEvent/EGS_LeagueofLegends_RiotGames_S1_2560x1440-ee500721c06da3ec1e5535a88588c77f?h=270&resize=1&w=480, sessions=0), GameSelectInfo(gameId=3, platformKey=730, name=Counter Strike: Global Offensive, imgLink=https://cdn.akamai.steamstatic.com/steam/apps/730/capsule_616x353.jpg?t=1635269541, sessions=0)])
+00:45 DEBUG - Class: class com.revature.p2_lfg.presentation.controllers.GameController
+Method: getAvailableGames
+00:45 DEBUG - Class: class com.revature.p2_lfg.service.game.classes.GameService
+Method: getCurrentGameSessionList
+Arguments: []
+00:45 INFO  - Class: class com.revature.p2_lfg.service.game.classes.GameService
+Returning: GameSessionInfoResponse(gameSessionList=[GameSelectInfo(gameId=1, platformKey=1172470, name=Apex Legends, imgLink=https://media.contentapi.ea.com/content/dam/apex-legends/images/2019/01/apex-featured-image-16x9.jpg.adapt.crop16x9.1023w.jpg, sessions=2), GameSelectInfo(gameId=2, platformKey=404, name=League of Legends, imgLink=https://cdn1.epicgames.com/salesEvent/salesEvent/EGS_LeagueofLegends_RiotGames_S1_2560x1440-ee500721c06da3ec1e5535a88588c77f?h=270&resize=1&w=480, sessions=0), GameSelectInfo(gameId=3, platformKey=730, name=Counter Strike: Global Offensive, imgLink=https://cdn.akamai.steamstatic.com/steam/apps/730/capsule_616x353.jpg?t=1635269541, sessions=0)])
+00:45 INFO  - Class: class com.revature.p2_lfg.presentation.controllers.GameController
+Returning: GameSessionInfoResponse(gameSessionList=[GameSelectInfo(gameId=1, platformKey=1172470, name=Apex Legends, imgLink=https://media.contentapi.ea.com/content/dam/apex-legends/images/2019/01/apex-featured-image-16x9.jpg.adapt.crop16x9.1023w.jpg, sessions=2), GameSelectInfo(gameId=2, platformKey=404, name=League of Legends, imgLink=https://cdn1.epicgames.com/salesEvent/salesEvent/EGS_LeagueofLegends_RiotGames_S1_2560x1440-ee500721c06da3ec1e5535a88588c77f?h=270&resize=1&w=480, sessions=0), GameSelectInfo(gameId=3, platformKey=730, name=Counter Strike: Global Offensive, imgLink=https://cdn.akamai.steamstatic.com/steam/apps/730/capsule_616x353.jpg?t=1635269541, sessions=0)])
+00:46 DEBUG - Class: class com.revature.p2_lfg.presentation.controllers.GameController
+Method: getAvailableGames
+00:46 DEBUG - Class: class com.revature.p2_lfg.service.game.classes.GameService
+Method: getCurrentGameSessionList
+Arguments: []
+00:46 INFO  - Class: class com.revature.p2_lfg.service.game.classes.GameService
+Returning: GameSessionInfoResponse(gameSessionList=[GameSelectInfo(gameId=1, platformKey=1172470, name=Apex Legends, imgLink=https://media.contentapi.ea.com/content/dam/apex-legends/images/2019/01/apex-featured-image-16x9.jpg.adapt.crop16x9.1023w.jpg, sessions=2), GameSelectInfo(gameId=2, platformKey=404, name=League of Legends, imgLink=https://cdn1.epicgames.com/salesEvent/salesEvent/EGS_LeagueofLegends_RiotGames_S1_2560x1440-ee500721c06da3ec1e5535a88588c77f?h=270&resize=1&w=480, sessions=0), GameSelectInfo(gameId=3, platformKey=730, name=Counter Strike: Global Offensive, imgLink=https://cdn.akamai.steamstatic.com/steam/apps/730/capsule_616x353.jpg?t=1635269541, sessions=0)])
+00:46 INFO  - Class: class com.revature.p2_lfg.presentation.controllers.GameController
+Returning: GameSessionInfoResponse(gameSessionList=[GameSelectInfo(gameId=1, platformKey=1172470, name=Apex Legends, imgLink=https://media.contentapi.ea.com/content/dam/apex-legends/images/2019/01/apex-featured-image-16x9.jpg.adapt.crop16x9.1023w.jpg, sessions=2), GameSelectInfo(gameId=2, platformKey=404, name=League of Legends, imgLink=https://cdn1.epicgames.com/salesEvent/salesEvent/EGS_LeagueofLegends_RiotGames_S1_2560x1440-ee500721c06da3ec1e5535a88588c77f?h=270&resize=1&w=480, sessions=0), GameSelectInfo(gameId=3, platformKey=730, name=Counter Strike: Global Offensive, imgLink=https://cdn.akamai.steamstatic.com/steam/apps/730/capsule_616x353.jpg?t=1635269541, sessions=0)])
+00:46 DEBUG - Class: class com.revature.p2_lfg.presentation.controllers.GameController
+Method: getAvailableGames
+00:46 DEBUG - Class: class com.revature.p2_lfg.service.game.classes.GameService
+Method: getCurrentGameSessionList
+Arguments: []
+00:46 INFO  - Class: class com.revature.p2_lfg.service.game.classes.GameService
+Returning: GameSessionInfoResponse(gameSessionList=[GameSelectInfo(gameId=1, platformKey=1172470, name=Apex Legends, imgLink=https://media.contentapi.ea.com/content/dam/apex-legends/images/2019/01/apex-featured-image-16x9.jpg.adapt.crop16x9.1023w.jpg, sessions=2), GameSelectInfo(gameId=2, platformKey=404, name=League of Legends, imgLink=https://cdn1.epicgames.com/salesEvent/salesEvent/EGS_LeagueofLegends_RiotGames_S1_2560x1440-ee500721c06da3ec1e5535a88588c77f?h=270&resize=1&w=480, sessions=0), GameSelectInfo(gameId=3, platformKey=730, name=Counter Strike: Global Offensive, imgLink=https://cdn.akamai.steamstatic.com/steam/apps/730/capsule_616x353.jpg?t=1635269541, sessions=0)])
+00:46 INFO  - Class: class com.revature.p2_lfg.presentation.controllers.GameController
+Returning: GameSessionInfoResponse(gameSessionList=[GameSelectInfo(gameId=1, platformKey=1172470, name=Apex Legends, imgLink=https://media.contentapi.ea.com/content/dam/apex-legends/images/2019/01/apex-featured-image-16x9.jpg.adapt.crop16x9.1023w.jpg, sessions=2), GameSelectInfo(gameId=2, platformKey=404, name=League of Legends, imgLink=https://cdn1.epicgames.com/salesEvent/salesEvent/EGS_LeagueofLegends_RiotGames_S1_2560x1440-ee500721c06da3ec1e5535a88588c77f?h=270&resize=1&w=480, sessions=0), GameSelectInfo(gameId=3, platformKey=730, name=Counter Strike: Global Offensive, imgLink=https://cdn.akamai.steamstatic.com/steam/apps/730/capsule_616x353.jpg?t=1635269541, sessions=0)])
+00:46 DEBUG - Class: class com.revature.p2_lfg.presentation.controllers.GameController
+Method: getSelectedGameGroups
+00:46 DEBUG - Class: class com.revature.p2_lfg.service.game.classes.GameService
+Method: getSelectedGameGroups
+Arguments: [1]
+00:46 INFO  - Class: class com.revature.p2_lfg.service.game.classes.GameService
+Returning: SelectedGameAvailableGroupsResponse(gameId=1, selectedGameAvailableGroups=[SessionDetails(groupid=1, game=Games(gameid=1, platformkey=1172470, gametitle=Apex Legends, imglink=https://media.contentapi.ea.com/content/dam/apex-legends/images/2019/01/apex-featured-image-16x9.jpg.adapt.crop16x9.1023w.jpg), maxusers=44, currentusers=2, description=helo, tags=[]), SessionDetails(groupid=2, game=Games(gameid=1, platformkey=1172470, gametitle=Apex Legends, imglink=https://media.contentapi.ea.com/content/dam/apex-legends/images/2019/01/apex-featured-image-16x9.jpg.adapt.crop16x9.1023w.jpg), maxusers=41, currentusers=2, description=hahaha, tags=[])])
+00:46 INFO  - Class: class com.revature.p2_lfg.presentation.controllers.GameController
+Returning: SelectedGameAvailableGroupsResponse(gameId=1, selectedGameAvailableGroups=[SessionDetails(groupid=1, game=Games(gameid=1, platformkey=1172470, gametitle=Apex Legends, imglink=https://media.contentapi.ea.com/content/dam/apex-legends/images/2019/01/apex-featured-image-16x9.jpg.adapt.crop16x9.1023w.jpg), maxusers=44, currentusers=2, description=helo, tags=[]), SessionDetails(groupid=2, game=Games(gameid=1, platformkey=1172470, gametitle=Apex Legends, imglink=https://media.contentapi.ea.com/content/dam/apex-legends/images/2019/01/apex-featured-image-16x9.jpg.adapt.crop16x9.1023w.jpg), maxusers=41, currentusers=2, description=hahaha, tags=[])])
