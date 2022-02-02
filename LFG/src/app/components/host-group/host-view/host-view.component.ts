@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Group } from 'src/app/models/group.model';
 import { TokenStorageService } from 'src/app/_services/token-storage.service';
 
@@ -14,11 +15,13 @@ export class HostViewComponent implements OnInit {
   @Input()
   group!: Group;
 
-
-  constructor(private tokenStorage: TokenStorageService) { }
+  constructor(
+    private tokenStorage: TokenStorageService,
+    private router: Router) { }
 
   ngOnInit(): void {
     this.currentUser = this.tokenStorage.getUser();
+    console.log(this.group);
   }
 
   checkUsername(value: string) {
@@ -40,6 +43,11 @@ export class HostViewComponent implements OnInit {
 
   removingUserFromWaitingRoom(): void{
     console.log("removing user form waiting room");
+  }
+
+  goMainPage():void{
+    const navigationDetails: string[] = ['/main'];
+    this.router.navigate(navigationDetails);
   }
 
 

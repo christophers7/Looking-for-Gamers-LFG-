@@ -7,4 +7,18 @@
         <app-group-card [groupSessions] = "groupSessions" [gameId]="gameId"></app-group-card>
     </div>
     <button (click)="goToCreateGroup()">Create Group</button>
+                    
+    <div *ngFor="creating" >
+    <app-create-group 
+            [gameId]="gameId" 
+            (newGroupEvent)="newGroupCreated($event)">
+    </app-create-group>
+
+    <div *ngIf="hostingGroup">
+            <button id="hostViewButton" class="hostDisplayGroup" (click)="goToSession()">View Hosted Session</button>
+            <app-host-view [group]="group">
+            </app-host-view>
+    </div>
+
+    </div>
 </div>

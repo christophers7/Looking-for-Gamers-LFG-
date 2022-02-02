@@ -32,10 +32,7 @@ export class CreateGroupComponent implements OnInit {
   panelNumberChange = new EventEmitter<number>();
 
   @Output()
-  newGroupEvent = new EventEmitter<Group>();
-
-  @Output()
-  createdGroupEvent = new EventEmitter<boolean>();
+  newGroupEvent: EventEmitter<any> = new EventEmitter<any>();
 
   constructor(private router: Router, private formBuilder: FormBuilder, private userService: UserService,
     private tokenStorage: TokenStorageService) { }
@@ -74,18 +71,14 @@ export class CreateGroupComponent implements OnInit {
       return;
     }
 
-    console.log(JSON.stringify(this.form.value, null, 2));
-
     let gSize = this.form.get('maxGroupSize')?.value
     let description = this.form.get('description')?.value
-    console.log(gSize, description)
     if(gSize != null && description != null) {
       let g = JSON.stringify({
         gameId: this.game.gameId,
         maxUsers: gSize,
         description: description
       })
-      console.log(g)
       this.createGroup(g);
     }
 
@@ -94,11 +87,24 @@ export class CreateGroupComponent implements OnInit {
   createGroup(g:any){
       this.userService.createGroup(g).subscribe(
         (data) => {
+          console.log(data);
           let group:Group = BuildGroup.groupBuilder(data);
-          this.newGroupEvent.emit(group);
+          this.group = group;
           console.log(group);
-          this.createdGroupEvent.emit(true);
+          this.emitter(group);
         })
+  }
+
+  emitter(group:Group):void{
+        console.log(group);
+        this.newGroupEvent.emit(group);
+        this.goToSession();
+    }
+  
+
+  goToSession():void{
+    const navigationDetails: string[] = ['/game/group/host'];
+    this.router.navigate(navigationDetails);
   }
 
   onReset(): void {
@@ -107,13 +113,20 @@ export class CreateGroupComponent implements OnInit {
   }
 
   goToHostView() {
-    this.panelNumber = 4;
-    this.changePanel();
+    // this.panelNumber = 4;
+    // this.changePanel();
+    const navigationDetails: string[] = ['/game/group/host'];
+    this.router.navigate(navigationDetails);
   }
 
   goBackToGroupSelect(): void{
     this.panelNumber = 2;
     this.changePanel();
+  }
+
+  goBack():void{
+    const navigationDetails: string[] = ['/main'];
+    this.router.navigate(navigationDetails);
   }
 
   changePanel() {

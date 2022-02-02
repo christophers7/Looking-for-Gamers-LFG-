@@ -22,10 +22,10 @@ export class Group {
         this._groupMembers = _groupMembers;
     }
 
-    public get groupID(): number {
+    public get groupId(): number {
         return this._groupId;
     }
-    public set groupID(value: number) {
+    public set groupId(value: number) {
         this._groupId = value;
     }
 

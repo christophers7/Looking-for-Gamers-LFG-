@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Router } from '@angular/router';
 import { GameGroupHolders } from 'src/app/models/game-group-holders.model';
 import { GroupDetails } from 'src/app/models/group-details.model';
 import { Group } from 'src/app/models/group.model';
@@ -23,7 +24,8 @@ export class ViewGameGroupsComponent implements OnInit {
 
   constructor(
     private tokenStorage: TokenStorageService,
-    private userService: UserService
+    private userService: UserService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -31,6 +33,12 @@ export class ViewGameGroupsComponent implements OnInit {
     this.game = this.tokenStorage.getGame();
     this.getGroupSessions();
   }
+
+
+  hostingGroup: boolean = false;
+
+  @Input()
+  group!:Group;
 
   @Input()
   gameId!:number;
@@ -49,6 +57,20 @@ export class ViewGameGroupsComponent implements OnInit {
       )
   }
   
+
+  hostViewOpen(check:boolean){
+    this.hostingGroup = check;
+    console.log(check);
+  }
+
+  newGroupCreated(group:any){
+    console.log(group);
+    this.group = group;
+    console.log(group);
+    this.hostViewOpen(true);
+  }
+
+
   panelNumber!: number;
 
   @Output()
@@ -60,12 +82,19 @@ export class ViewGameGroupsComponent implements OnInit {
   }
 
   goToCreateGroup(): void {
-    this.panelNumber = 3;
-    this.changePanel();
+    // this.panelNumber = 3;
+    // this.changePanel();
+    const navigationDetails:string[] = ['/game/group/create'];
+    this.router.navigate(navigationDetails);
   }
 
   changePanel() {
     this.panelNumberChange.emit(this.panelNumber);
+  }
+
+  goToSession():void{
+    const navigationDetails: string[] = ['/game/group/host'];
+    this.router.navigate(navigationDetails);
   }
 
 }

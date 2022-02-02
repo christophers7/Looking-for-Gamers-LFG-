@@ -42,7 +42,7 @@ export class UserService {
   }
 
   getGroup(group: Group): Observable<any> {
-    return this.http.post(API_URL, JSON.stringify(group.groupID))
+    return this.http.post(API_URL, JSON.stringify(group.groupId))
   }
 
   requestToJoinGroup(group: GroupDetails): Observable<any> {
@@ -50,7 +50,7 @@ export class UserService {
   }
 
   leaveGroup(group: Group): Observable<any> {
-    return this.http.delete(API_URL + 'group/leave?groupId=' + group.groupID + '&gameId=' + group.gameId)
+    return this.http.delete(API_URL + 'group/leave?groupId=' + group.groupId + '&gameId=' + group.gameId)
   }
 
   leaveAllWaitingList(): Observable<any> {
@@ -62,7 +62,7 @@ export class UserService {
   }
 
   refreshGroupMemberList(group: Group): Observable<any> {
-    return this.http.get(API_URL + 'group/refresh?groupId=' + group.groupID + '&gameId=' + group.gameId)
+    return this.http.get(API_URL + 'group/refresh?groupId=' + group.groupId + '&gameId=' + group.gameId)
   }
 
   acceptApplicant(applicant: GroupUser): Observable<any> {

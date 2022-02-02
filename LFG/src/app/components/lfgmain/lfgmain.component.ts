@@ -10,31 +10,20 @@ import { TokenStorageService } from 'src/app/_services/token-storage.service';
 })
 export class LFGMainComponent implements OnInit {
 
-  @Input()
+
   panelNumber!: number;
 
   constructor(private router: Router, private tokenStorage: TokenStorageService) { }
 
   currentUser: any;
 
-  @Input()
-  hostingGroup: boolean = false;
 
-  @Input()
-  group!:Group;
 
   ngOnInit(): void {
     this.currentUser = this.tokenStorage.getUser();
-  }
 
-  hostViewOpen(check:boolean){
-    this.hostingGroup = check;
-  }
 
-  newGroupCreated(group:Group){
-    this.group = group;
   }
-
   gameId: number = 0;
   send(data:any){
     this.panelNumber = data.panelNumber;
@@ -43,12 +32,14 @@ export class LFGMainComponent implements OnInit {
 
   changePanel(data: any){
     this.panelNumber = data;
+    console.log(this.panelNumber);
   }
 
   goToProfile(): void {
     const navigationDetails: string[] = ['/main/profile'];
     this.router.navigate(navigationDetails);
   }
+
 
   logOut(): void {
     this.tokenStorage.signOut();

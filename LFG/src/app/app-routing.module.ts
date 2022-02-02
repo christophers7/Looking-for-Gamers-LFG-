@@ -3,6 +3,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { ApiViewComponent } from './components/api-view/api-view.component';
 import { GameDisplayComponent } from './components/game-select/game-display/game-display.component';
 import { ViewGameGroupsComponent } from './components/group/view-game-groups/view-game-groups.component';
+import { CreateGroupComponent } from './components/host-group/create-group/create-group.component';
+import { HostViewComponent } from './components/host-group/host-view/host-view.component';
 import { LFGMainComponent } from './components/lfgmain/lfgmain.component';
 import { LoginComponent } from './components/login/login.component';
 import { ModifyCredentialComponent } from './components/modify-credential/modify-credential.component';
@@ -43,6 +45,15 @@ const routes: Routes = [
     component: ViewGameGroupsComponent,
     path: 'game/:id'
   },
+  {
+    component: HostViewComponent,
+    path: 'game/group/host'
+  },
+  {
+    component: CreateGroupComponent,
+    path: 'game/group/create'
+  }
+  ,
   {
     component: ApiViewComponent,
     path: 'test/api'

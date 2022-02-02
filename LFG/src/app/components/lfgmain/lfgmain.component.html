@@ -14,18 +14,6 @@
                     </app-view-game-groups>
                 </div>
                 <div *ngSwitchCase="3">
-                    <app-create-group 
-                        [gameId]="gameId" 
-                        (createdGroupEvent)="hostViewOpen($event)" 
-                        (newGroupEvent)="newGroupCreated($event)">
-                    </app-create-group>
-                </div>
-                <div *ngIf="hostingGroup">
-                    <div *ngSwitchCase="4">
-                        <app-host-view>
-                            [group]="group"
-                        </app-host-view>
-                    </div>
                 </div>
                     <div *ngSwitchDefault>
                         <app-game-display 
@@ -35,11 +23,13 @@
                 </div>
             </div>
 
-        </div>
-    
-    <div id="infoDisplayBox" class="mainGroup">
 
-    </div>
+
+        </div>
+        <div id="infoDisplayBox" class="mainGroup">
+        </div>
+
+
 
     <div id="profileDisplayBox" class="mainGroup">
         <div id="iconHolder" class="profileDisplayGroup">
