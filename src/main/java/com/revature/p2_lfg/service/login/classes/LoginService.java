@@ -96,7 +96,7 @@ public class LoginService implements LoginServiceable {
         return profileService.getProfileResponse(updateProfile(
                 user,
                 newCredentials.getUsername(),
-                newCredentials.getUsername()
+                newCredentials.getPassword()
         ));
     }
 

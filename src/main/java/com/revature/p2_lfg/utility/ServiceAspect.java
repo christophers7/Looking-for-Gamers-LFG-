@@ -18,12 +18,12 @@ public class ServiceAspect {
     @Before("com.revature.p2_lfg.utility.SystemArchitect.businessService()")
     public void beforeServiceCheck(JoinPoint jp){
         dLog.debug("Class: " + jp.getSignature().getDeclaringType() + "\nMethod: " + jp.getSignature().getName() + "\nArguments: " + Arrays.toString(jp.getArgs()));
-    };
+    }
 
     @After("com.revature.p2_lfg.utility.SystemArchitect.businessService()")
     public void afterServiceCheck(JoinPoint jp){
-        dLog.debug(jp.getSignature().getName());
-    };
+       // dLog.debug(jp.getSignature().getName());
+    }
 
     @AfterReturning(value = "com.revature.p2_lfg.utility.SystemArchitect.businessService()", returning = "returnedValue")
     public void afterServiceCheck(JoinPoint jp, Object returnedValue){

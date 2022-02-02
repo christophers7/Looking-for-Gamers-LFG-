@@ -16,12 +16,12 @@ public class PresentationAspect {
     @Before("com.revature.p2_lfg.utility.SystemArchitect.controller()")
     public void beforeServiceCheck(JoinPoint jp){
         dLog.debug("Class: " + jp.getSignature().getDeclaringType() + "\nMethod: " + jp.getSignature().getName());
-    };
+    }
 
     @After("com.revature.p2_lfg.utility.SystemArchitect.controller()")
     public void afterServiceCheck(JoinPoint jp){
-        dLog.debug(jp.getSignature().getName());
-    };
+        //dLog.debug(jp.getSignature().getName());
+    }
 
     @AfterReturning(value = "com.revature.p2_lfg.utility.SystemArchitect.controller()", returning = "returnedValue")
     public void afterServiceCheck(JoinPoint jp, Object returnedValue){

@@ -1117,3 +1117,117 @@ Returning: ProfileResponse(success=true, username=user123, firstName=John1, last
 21:49:15.857 [http-nio-8080-exec-4] INFO  dLog - Class: class com.revature.p2_lfg.presentation.controllers.LoginController
 Returning: ProfileResponse(success=true, username=user123, firstName=John1, lastName=Doe1, email=email11@email.com, JWT=eyJhbGciOiJIUzI1NiJ9.eyJmaXJzdE5hbWUiOiJKb2huMSIsImxhc3ROYW1lIjoiRG9lMSIsInVzZXJuYW1lIjoidXNlcjEyMyIsInVzZXJJZCI6MSwiYWNjb3VudCI6dHJ1ZX0.5VWpltNsdGqEu2L9JJ3I9hn__JI1kEOUKm045E6YSQk)
 21:49:15.857 [http-nio-8080-exec-4] DEBUG dLog - updateCredentials
+22:00 DEBUG - Class: class com.revature.p2_lfg.presentation.controllers.LoginController
+Method: checkLogin
+22:00 DEBUG - Class: class com.revature.p2_lfg.service.login.classes.LoginService
+Method: getUserCredentialFromLogin
+Arguments: [LoginRequest(username=user1, password=pass1)]
+22:00 INFO  - Class: class com.revature.p2_lfg.service.login.classes.LoginService
+Returning: UserCredential(userid=1, username=user1, password=pass1)
+22:00 DEBUG - getUserCredentialFromLogin
+22:00 DEBUG - Class: class com.revature.p2_lfg.service.profile.classes.ProfileService
+Method: getProfileResponse
+Arguments: [UserCredential(userid=1, username=user1, password=pass1)]
+22:00 INFO  - Class: class com.revature.p2_lfg.service.profile.classes.ProfileService
+Returning: ProfileResponse(success=true, username=user1, firstName=John1, lastName=Doe1, email=email11@email.com, JWT=eyJhbGciOiJIUzI1NiJ9.eyJmaXJzdE5hbWUiOiJKb2huMSIsImxhc3ROYW1lIjoiRG9lMSIsInVzZXJuYW1lIjoidXNlcjEiLCJ1c2VySWQiOjEsImFjY291bnQiOnRydWV9.f-wF6gmdaFrCeXEhwXATXV63tI4tTvJRa_xP_wGPuOg)
+22:00 DEBUG - getProfileResponse
+22:00 INFO  - Class: class com.revature.p2_lfg.presentation.controllers.LoginController
+Returning: ProfileResponse(success=true, username=user1, firstName=John1, lastName=Doe1, email=email11@email.com, JWT=eyJhbGciOiJIUzI1NiJ9.eyJmaXJzdE5hbWUiOiJKb2huMSIsImxhc3ROYW1lIjoiRG9lMSIsInVzZXJuYW1lIjoidXNlcjEiLCJ1c2VySWQiOjEsImFjY291bnQiOnRydWV9.f-wF6gmdaFrCeXEhwXATXV63tI4tTvJRa_xP_wGPuOg)
+22:00 DEBUG - checkLogin
+22:00 DEBUG - Class: class com.revature.p2_lfg.presentation.controllers.GameController
+Method: getAvailableGames
+22:00 DEBUG - Class: class com.revature.p2_lfg.service.game.classes.GameService
+Method: getCurrentGameSessionList
+Arguments: []
+22:00 INFO  - Class: class com.revature.p2_lfg.service.game.classes.GameService
+Returning: GameSessionInfoResponse(gameSessionList=[GameSelectInfo(gameId=1, platformKey=1172470, name=Apex Legends, imgLink=https://media.contentapi.ea.com/content/dam/apex-legends/images/2019/01/apex-featured-image-16x9.jpg.adapt.crop16x9.1023w.jpg, sessions=0), GameSelectInfo(gameId=2, platformKey=404, name=League of Legends, imgLink=https://cdn1.epicgames.com/salesEvent/salesEvent/EGS_LeagueofLegends_RiotGames_S1_2560x1440-ee500721c06da3ec1e5535a88588c77f?h=270&resize=1&w=480, sessions=0), GameSelectInfo(gameId=3, platformKey=730, name=Counter Strike: Global Offensive, imgLink=https://cdn.akamai.steamstatic.com/steam/apps/730/capsule_616x353.jpg?t=1635269541, sessions=0)])
+22:00 DEBUG - getCurrentGameSessionList
+22:00 INFO  - Class: class com.revature.p2_lfg.presentation.controllers.GameController
+Returning: GameSessionInfoResponse(gameSessionList=[GameSelectInfo(gameId=1, platformKey=1172470, name=Apex Legends, imgLink=https://media.contentapi.ea.com/content/dam/apex-legends/images/2019/01/apex-featured-image-16x9.jpg.adapt.crop16x9.1023w.jpg, sessions=0), GameSelectInfo(gameId=2, platformKey=404, name=League of Legends, imgLink=https://cdn1.epicgames.com/salesEvent/salesEvent/EGS_LeagueofLegends_RiotGames_S1_2560x1440-ee500721c06da3ec1e5535a88588c77f?h=270&resize=1&w=480, sessions=0), GameSelectInfo(gameId=3, platformKey=730, name=Counter Strike: Global Offensive, imgLink=https://cdn.akamai.steamstatic.com/steam/apps/730/capsule_616x353.jpg?t=1635269541, sessions=0)])
+22:00 DEBUG - getAvailableGames
+22:00 DEBUG - Class: class com.revature.p2_lfg.presentation.controllers.GameController
+Method: getAvailableGames
+22:00 DEBUG - Class: class com.revature.p2_lfg.service.game.classes.GameService
+Method: getCurrentGameSessionList
+Arguments: []
+22:00 INFO  - Class: class com.revature.p2_lfg.service.game.classes.GameService
+Returning: GameSessionInfoResponse(gameSessionList=[GameSelectInfo(gameId=1, platformKey=1172470, name=Apex Legends, imgLink=https://media.contentapi.ea.com/content/dam/apex-legends/images/2019/01/apex-featured-image-16x9.jpg.adapt.crop16x9.1023w.jpg, sessions=0), GameSelectInfo(gameId=2, platformKey=404, name=League of Legends, imgLink=https://cdn1.epicgames.com/salesEvent/salesEvent/EGS_LeagueofLegends_RiotGames_S1_2560x1440-ee500721c06da3ec1e5535a88588c77f?h=270&resize=1&w=480, sessions=0), GameSelectInfo(gameId=3, platformKey=730, name=Counter Strike: Global Offensive, imgLink=https://cdn.akamai.steamstatic.com/steam/apps/730/capsule_616x353.jpg?t=1635269541, sessions=0)])
+22:00 DEBUG - getCurrentGameSessionList
+22:00 INFO  - Class: class com.revature.p2_lfg.presentation.controllers.GameController
+Returning: GameSessionInfoResponse(gameSessionList=[GameSelectInfo(gameId=1, platformKey=1172470, name=Apex Legends, imgLink=https://media.contentapi.ea.com/content/dam/apex-legends/images/2019/01/apex-featured-image-16x9.jpg.adapt.crop16x9.1023w.jpg, sessions=0), GameSelectInfo(gameId=2, platformKey=404, name=League of Legends, imgLink=https://cdn1.epicgames.com/salesEvent/salesEvent/EGS_LeagueofLegends_RiotGames_S1_2560x1440-ee500721c06da3ec1e5535a88588c77f?h=270&resize=1&w=480, sessions=0), GameSelectInfo(gameId=3, platformKey=730, name=Counter Strike: Global Offensive, imgLink=https://cdn.akamai.steamstatic.com/steam/apps/730/capsule_616x353.jpg?t=1635269541, sessions=0)])
+22:00 DEBUG - getAvailableGames
+22:00 DEBUG - Class: class com.revature.p2_lfg.presentation.controllers.GameController
+Method: getAvailableGames
+22:00 DEBUG - Class: class com.revature.p2_lfg.service.game.classes.GameService
+Method: getCurrentGameSessionList
+Arguments: []
+22:00 INFO  - Class: class com.revature.p2_lfg.service.game.classes.GameService
+Returning: GameSessionInfoResponse(gameSessionList=[GameSelectInfo(gameId=1, platformKey=1172470, name=Apex Legends, imgLink=https://media.contentapi.ea.com/content/dam/apex-legends/images/2019/01/apex-featured-image-16x9.jpg.adapt.crop16x9.1023w.jpg, sessions=0), GameSelectInfo(gameId=2, platformKey=404, name=League of Legends, imgLink=https://cdn1.epicgames.com/salesEvent/salesEvent/EGS_LeagueofLegends_RiotGames_S1_2560x1440-ee500721c06da3ec1e5535a88588c77f?h=270&resize=1&w=480, sessions=0), GameSelectInfo(gameId=3, platformKey=730, name=Counter Strike: Global Offensive, imgLink=https://cdn.akamai.steamstatic.com/steam/apps/730/capsule_616x353.jpg?t=1635269541, sessions=0)])
+22:00 DEBUG - getCurrentGameSessionList
+22:00 INFO  - Class: class com.revature.p2_lfg.presentation.controllers.GameController
+Returning: GameSessionInfoResponse(gameSessionList=[GameSelectInfo(gameId=1, platformKey=1172470, name=Apex Legends, imgLink=https://media.contentapi.ea.com/content/dam/apex-legends/images/2019/01/apex-featured-image-16x9.jpg.adapt.crop16x9.1023w.jpg, sessions=0), GameSelectInfo(gameId=2, platformKey=404, name=League of Legends, imgLink=https://cdn1.epicgames.com/salesEvent/salesEvent/EGS_LeagueofLegends_RiotGames_S1_2560x1440-ee500721c06da3ec1e5535a88588c77f?h=270&resize=1&w=480, sessions=0), GameSelectInfo(gameId=3, platformKey=730, name=Counter Strike: Global Offensive, imgLink=https://cdn.akamai.steamstatic.com/steam/apps/730/capsule_616x353.jpg?t=1635269541, sessions=0)])
+22:00 DEBUG - getAvailableGames
+22:01 DEBUG - Class: class com.revature.p2_lfg.presentation.controllers.UserController
+Method: updateProfile
+22:01 DEBUG - Attempting to update user profile: UpdateUserProfileRequest(firstName=John11123, lastName=Doe1sdf, email=email1123@email.com)
+22:01 DEBUG - Class: class com.revature.p2_lfg.service.profile.classes.ProfileService
+Method: getUserProfile
+Arguments: [1]
+22:01 INFO  - Class: class com.revature.p2_lfg.service.profile.classes.ProfileService
+Returning: UserProfile(columnID=1, usercredential=UserCredential(userid=1, username=user1, password=pass1), firstname=John1, lastname=Doe1, email=email11@email.com)
+22:01 DEBUG - getUserProfile
+22:01 DEBUG - Class: class com.revature.p2_lfg.service.profile.classes.ProfileService
+Method: updateProfileWithRequest
+Arguments: [UpdateUserProfileRequest(firstName=John11123, lastName=Doe1sdf, email=email1123@email.com), UserProfile(columnID=1, usercredential=UserCredential(userid=1, username=user1, password=pass1), firstname=John1, lastname=Doe1, email=email11@email.com)]
+22:01 INFO  - Class: class com.revature.p2_lfg.service.profile.classes.ProfileService
+Returning: ProfileResponse(success=true, username=user1, firstName=John11123, lastName=Doe1sdf, email=email1123@email.com, JWT=eyJhbGciOiJIUzI1NiJ9.eyJmaXJzdE5hbWUiOiJKb2huMTExMjMiLCJsYXN0TmFtZSI6IkRvZTFzZGYiLCJ1c2VybmFtZSI6InVzZXIxIiwidXNlcklkIjoxLCJhY2NvdW50Ijp0cnVlfQ.7nNmohxYB7q0lT_oWpoTSwIwwzc6gNtGAgR9Hy9ptjw)
+22:01 DEBUG - updateProfileWithRequest
+22:01 INFO  - Class: class com.revature.p2_lfg.presentation.controllers.UserController
+Returning: ProfileResponse(success=true, username=user1, firstName=John11123, lastName=Doe1sdf, email=email1123@email.com, JWT=eyJhbGciOiJIUzI1NiJ9.eyJmaXJzdE5hbWUiOiJKb2huMTExMjMiLCJsYXN0TmFtZSI6IkRvZTFzZGYiLCJ1c2VybmFtZSI6InVzZXIxIiwidXNlcklkIjoxLCJhY2NvdW50Ijp0cnVlfQ.7nNmohxYB7q0lT_oWpoTSwIwwzc6gNtGAgR9Hy9ptjw)
+22:01 DEBUG - updateProfile
+22:03 DEBUG - Class: class com.revature.p2_lfg.presentation.controllers.LoginController
+Method: checkLogin
+22:03 DEBUG - Class: class com.revature.p2_lfg.service.login.classes.LoginService
+Method: getUserCredentialFromLogin
+Arguments: [LoginRequest(username=user1, password=pass1)]
+22:03 INFO  - Class: class com.revature.p2_lfg.service.login.classes.LoginService
+Returning: UserCredential(userid=1, username=user1, password=pass1)
+22:03 DEBUG - Class: class com.revature.p2_lfg.service.profile.classes.ProfileService
+Method: getProfileResponse
+Arguments: [UserCredential(userid=1, username=user1, password=pass1)]
+22:03 INFO  - Class: class com.revature.p2_lfg.service.profile.classes.ProfileService
+Returning: ProfileResponse(success=true, username=user1, firstName=John1, lastName=Doe1, email=email11@email.com, JWT=eyJhbGciOiJIUzI1NiJ9.eyJmaXJzdE5hbWUiOiJKb2huMSIsImxhc3ROYW1lIjoiRG9lMSIsInVzZXJuYW1lIjoidXNlcjEiLCJ1c2VySWQiOjEsImFjY291bnQiOnRydWV9.f-wF6gmdaFrCeXEhwXATXV63tI4tTvJRa_xP_wGPuOg)
+22:03 INFO  - Class: class com.revature.p2_lfg.presentation.controllers.LoginController
+Returning: ProfileResponse(success=true, username=user1, firstName=John1, lastName=Doe1, email=email11@email.com, JWT=eyJhbGciOiJIUzI1NiJ9.eyJmaXJzdE5hbWUiOiJKb2huMSIsImxhc3ROYW1lIjoiRG9lMSIsInVzZXJuYW1lIjoidXNlcjEiLCJ1c2VySWQiOjEsImFjY291bnQiOnRydWV9.f-wF6gmdaFrCeXEhwXATXV63tI4tTvJRa_xP_wGPuOg)
+22:03 DEBUG - Class: class com.revature.p2_lfg.presentation.controllers.GameController
+Method: getAvailableGames
+22:03 DEBUG - Class: class com.revature.p2_lfg.service.game.classes.GameService
+Method: getCurrentGameSessionList
+Arguments: []
+22:03 INFO  - Class: class com.revature.p2_lfg.service.game.classes.GameService
+Returning: GameSessionInfoResponse(gameSessionList=[GameSelectInfo(gameId=1, platformKey=1172470, name=Apex Legends, imgLink=https://media.contentapi.ea.com/content/dam/apex-legends/images/2019/01/apex-featured-image-16x9.jpg.adapt.crop16x9.1023w.jpg, sessions=0), GameSelectInfo(gameId=2, platformKey=404, name=League of Legends, imgLink=https://cdn1.epicgames.com/salesEvent/salesEvent/EGS_LeagueofLegends_RiotGames_S1_2560x1440-ee500721c06da3ec1e5535a88588c77f?h=270&resize=1&w=480, sessions=0), GameSelectInfo(gameId=3, platformKey=730, name=Counter Strike: Global Offensive, imgLink=https://cdn.akamai.steamstatic.com/steam/apps/730/capsule_616x353.jpg?t=1635269541, sessions=0)])
+22:03 INFO  - Class: class com.revature.p2_lfg.presentation.controllers.GameController
+Returning: GameSessionInfoResponse(gameSessionList=[GameSelectInfo(gameId=1, platformKey=1172470, name=Apex Legends, imgLink=https://media.contentapi.ea.com/content/dam/apex-legends/images/2019/01/apex-featured-image-16x9.jpg.adapt.crop16x9.1023w.jpg, sessions=0), GameSelectInfo(gameId=2, platformKey=404, name=League of Legends, imgLink=https://cdn1.epicgames.com/salesEvent/salesEvent/EGS_LeagueofLegends_RiotGames_S1_2560x1440-ee500721c06da3ec1e5535a88588c77f?h=270&resize=1&w=480, sessions=0), GameSelectInfo(gameId=3, platformKey=730, name=Counter Strike: Global Offensive, imgLink=https://cdn.akamai.steamstatic.com/steam/apps/730/capsule_616x353.jpg?t=1635269541, sessions=0)])
+22:05 DEBUG - Class: class com.revature.p2_lfg.presentation.controllers.LoginController
+Method: updateCredentials
+22:05 DEBUG - Class: class com.revature.p2_lfg.service.login.classes.LoginService
+Method: updateCredentials
+Arguments: [UpdateCredentialRequest(username=user12, password=pass1), JWTInfo(firstName=John1, lastName=Doe1, username=user1, userId=1)]
+22:05 DEBUG - Class: class com.revature.p2_lfg.service.profile.classes.ProfileService
+Method: getProfileResponse
+Arguments: [UserCredential(userid=1, username=user12, password=user12)]
+22:05 INFO  - Class: class com.revature.p2_lfg.service.profile.classes.ProfileService
+Returning: ProfileResponse(success=true, username=user12, firstName=John1, lastName=Doe1, email=email11@email.com, JWT=eyJhbGciOiJIUzI1NiJ9.eyJmaXJzdE5hbWUiOiJKb2huMSIsImxhc3ROYW1lIjoiRG9lMSIsInVzZXJuYW1lIjoidXNlcjEyIiwidXNlcklkIjoxLCJhY2NvdW50Ijp0cnVlfQ.qbrFJpWlolx4Bd31RjrpOmSDZKW2zojpKjK2loy2qcY)
+22:05 INFO  - Class: class com.revature.p2_lfg.service.login.classes.LoginService
+Returning: ProfileResponse(success=true, username=user12, firstName=John1, lastName=Doe1, email=email11@email.com, JWT=eyJhbGciOiJIUzI1NiJ9.eyJmaXJzdE5hbWUiOiJKb2huMSIsImxhc3ROYW1lIjoiRG9lMSIsInVzZXJuYW1lIjoidXNlcjEyIiwidXNlcklkIjoxLCJhY2NvdW50Ijp0cnVlfQ.qbrFJpWlolx4Bd31RjrpOmSDZKW2zojpKjK2loy2qcY)
+22:05 INFO  - Class: class com.revature.p2_lfg.presentation.controllers.LoginController
+Returning: ProfileResponse(success=true, username=user12, firstName=John1, lastName=Doe1, email=email11@email.com, JWT=eyJhbGciOiJIUzI1NiJ9.eyJmaXJzdE5hbWUiOiJKb2huMSIsImxhc3ROYW1lIjoiRG9lMSIsInVzZXJuYW1lIjoidXNlcjEyIiwidXNlcklkIjoxLCJhY2NvdW50Ijp0cnVlfQ.qbrFJpWlolx4Bd31RjrpOmSDZKW2zojpKjK2loy2qcY)
+22:07 DEBUG - Class: class com.revature.p2_lfg.presentation.controllers.GameController
+Method: getAvailableGames
+22:07 DEBUG - Class: class com.revature.p2_lfg.service.game.classes.GameService
+Method: getCurrentGameSessionList
+Arguments: []
+22:07 INFO  - Class: class com.revature.p2_lfg.service.game.classes.GameService
+Returning: GameSessionInfoResponse(gameSessionList=[GameSelectInfo(gameId=1, platformKey=1172470, name=Apex Legends, imgLink=https://media.contentapi.ea.com/content/dam/apex-legends/images/2019/01/apex-featured-image-16x9.jpg.adapt.crop16x9.1023w.jpg, sessions=0), GameSelectInfo(gameId=2, platformKey=404, name=League of Legends, imgLink=https://cdn1.epicgames.com/salesEvent/salesEvent/EGS_LeagueofLegends_RiotGames_S1_2560x1440-ee500721c06da3ec1e5535a88588c77f?h=270&resize=1&w=480, sessions=0), GameSelectInfo(gameId=3, platformKey=730, name=Counter Strike: Global Offensive, imgLink=https://cdn.akamai.steamstatic.com/steam/apps/730/capsule_616x353.jpg?t=1635269541, sessions=0)])
+22:07 INFO  - Class: class com.revature.p2_lfg.presentation.controllers.GameController
+Returning: GameSessionInfoResponse(gameSessionList=[GameSelectInfo(gameId=1, platformKey=1172470, name=Apex Legends, imgLink=https://media.contentapi.ea.com/content/dam/apex-legends/images/2019/01/apex-featured-image-16x9.jpg.adapt.crop16x9.1023w.jpg, sessions=0), GameSelectInfo(gameId=2, platformKey=404, name=League of Legends, imgLink=https://cdn1.epicgames.com/salesEvent/salesEvent/EGS_LeagueofLegends_RiotGames_S1_2560x1440-ee500721c06da3ec1e5535a88588c77f?h=270&resize=1&w=480, sessions=0), GameSelectInfo(gameId=3, platformKey=730, name=Counter Strike: Global Offensive, imgLink=https://cdn.akamai.steamstatic.com/steam/apps/730/capsule_616x353.jpg?t=1635269541, sessions=0)])
