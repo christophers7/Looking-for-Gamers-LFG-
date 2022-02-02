@@ -2,7 +2,7 @@
     <form [formGroup]="form" (ngSubmit)="onSubmit()">
       
         <div class="form-group">
-            <label>Enter desired group size: </label>
+            <label>Max Group Size:</label>
             <input
                 type="number"
                 formControlName="maxGroupSize"
@@ -21,7 +21,7 @@
       </div>
 
       <div class="form-group">
-        <label>Description of group's purpose</label>
+        <label>Description:</label>
         <input
           type="text"
           formControlName="description"
@@ -37,7 +37,7 @@
       </div>
   
       <div class="form-group">
-        <button type="submit" class="btn btn-primary">Register</button>
+        <button type="submit" class="btn btn-primary">Create</button>
         <button
           type="button"
           (click)="onReset()"

@@ -1,12 +1,6 @@
 export class GroupUser {
 
-    //username
-    //groupId
-    //social object
-    //stats
-    //insideSession
-
-    private _stats: string = "";
+    private _groupId: number = 0;
     private _inGroup: boolean = false;
     
     constructor (
@@ -22,11 +16,11 @@ export class GroupUser {
         this._username = value;
     }
 
-    public get stats(): string {
-        return this._stats;
+    public get groupId(): number {
+        return this._groupId;
     }
-    public set stats(value: string) {
-        this._stats = value;
+    public set groupId(value: number) {
+        this._groupId = value;
     }
 
     public get inGroup(): boolean {

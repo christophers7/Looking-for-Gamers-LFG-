@@ -14,6 +14,7 @@ export class HostViewComponent implements OnInit {
   @Input()
   group!: Group;
 
+
   constructor(private tokenStorage: TokenStorageService) { }
 
   ngOnInit(): void {
@@ -28,4 +29,19 @@ export class HostViewComponent implements OnInit {
       return true;
     }
   }
+
+  removing():void{
+    console.log("removing member");
+  }
+
+  addingUserFromWaitingRoom(): void{
+    console.log("adding suer from waiting room");
+  }
+
+  removingUserFromWaitingRoom(): void{
+    console.log("removing user form waiting room");
+  }
+
+
+
 }

@@ -3,8 +3,10 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { AvailableGames } from '../models/available-games.model';
 import { Game } from '../models/game.model';
+import { GroupDetails } from '../models/group-details.model';
 import { GroupUser } from '../models/group-user.model';
 import { Group } from '../models/group.model';
+import { UserViewGroup } from '../models/user-view-group.model';
 
 const API_URL = 'http://localhost:8080/';
 
@@ -43,8 +45,8 @@ export class UserService {
     return this.http.post(API_URL, JSON.stringify(group.groupID))
   }
 
-  requestToJoinGroup(group: Group): Observable<any> {
-    return this.http.post(API_URL + 'group/join?groupId=' + group.groupID + '&gameId=' + group.gameId, JSON.stringify(group))
+  requestToJoinGroup(group: GroupDetails): Observable<any> {
+    return this.http.post(API_URL + 'group/join?groupId=' + group.groupId + '&gameId=' + group.game.gameId, JSON.stringify(group))
   }
 
   leaveGroup(group: Group): Observable<any> {

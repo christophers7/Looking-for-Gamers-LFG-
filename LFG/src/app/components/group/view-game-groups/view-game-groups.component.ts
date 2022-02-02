@@ -1,4 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { GameGroupHolders } from 'src/app/models/game-group-holders.model';
+import { GroupDetails } from 'src/app/models/group-details.model';
 import { Group } from 'src/app/models/group.model';
 import { UserViewGroup } from 'src/app/models/user-view-group.model';
 import { GameGroupService } from 'src/app/_services/game-group.service';
@@ -13,7 +15,9 @@ import { UserService } from 'src/app/_services/user.service';
 })
 export class ViewGameGroupsComponent implements OnInit {
 
-  groupSessions: Group[] = [];
+
+  groupSessions!: GroupDetails[];
+  
   currentUser: any;
   game: any;
 

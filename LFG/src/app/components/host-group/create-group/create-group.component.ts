@@ -2,6 +2,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Group } from 'src/app/models/group.model';
+import BuildGroup from 'src/app/utils/build-group';
 import { TokenStorageService } from 'src/app/_services/token-storage.service';
 import { UserService } from 'src/app/_services/user.service';
 
@@ -13,12 +14,8 @@ import { UserService } from 'src/app/_services/user.service';
 export class CreateGroupComponent implements OnInit {
 
   form: FormGroup = new FormGroup({
-    username: new FormControl(''),
-    firstname: new FormControl(''),
-    lastname: new FormControl(''),
-    email: new FormControl(''),
-    password: new FormControl(''),
-    confirmPassword: new FormControl('')
+    maxGroupSize: new FormControl(''),
+    description: new FormControl('')
   });
   submitted = false;
   posts : any;
@@ -33,6 +30,12 @@ export class CreateGroupComponent implements OnInit {
 
   @Output()
   panelNumberChange = new EventEmitter<number>();
+
+  @Output()
+  newGroupEvent = new EventEmitter<Group>();
+
+  @Output()
+  createdGroupEvent = new EventEmitter<boolean>();
 
   constructor(private router: Router, private formBuilder: FormBuilder, private userService: UserService,
     private tokenStorage: TokenStorageService) { }
@@ -83,11 +86,21 @@ export class CreateGroupComponent implements OnInit {
         description: description
       })
       console.log(g)
+      this.createGroup(g);
+    }
+
+  }
+
+  createGroup(g:any){
       this.userService.createGroup(g).subscribe(
         (data) => {
-          //this.game = data;
+          let group:Group = BuildGroup.groupBuilder(data);
+          this.newGroupEvent.emit(group);
+          console.log(group);
+          if(data!= null || data != undefined){
+            this.createdGroupEvent.emit(true);
+          }
         })
-    }
   }
 
   onReset(): void {

@@ -1,8 +1,8 @@
 
 <div *ngFor="let group of groupSessions">
-    <h2>Group ID: {{group.groupID}}</h2>
-    <h4>Current Users: {{group.currentSize}}</h4>
-    <h4>Max Users: {{group.maxUsers}}</h4>
+    <h2>Group Id: {{group.groupid}}</h2>
+    <h4>Current Users: {{group.currentusers}}</h4>
+    <h4>Max Users: {{group.maxusers}}</h4>
     <p>{{group.description}}</p>
     <button (click)="groupRequest(group)">Request to Join</button>
 </div>
