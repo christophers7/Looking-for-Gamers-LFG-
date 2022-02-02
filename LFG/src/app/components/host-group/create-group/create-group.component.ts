@@ -97,9 +97,7 @@ export class CreateGroupComponent implements OnInit {
           let group:Group = BuildGroup.groupBuilder(data);
           this.newGroupEvent.emit(group);
           console.log(group);
-          if(data!= null || data != undefined){
-            this.createdGroupEvent.emit(true);
-          }
+          this.createdGroupEvent.emit(true);
         })
   }
 

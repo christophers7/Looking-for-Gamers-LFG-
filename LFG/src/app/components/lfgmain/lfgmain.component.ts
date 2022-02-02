@@ -10,6 +10,7 @@ import { TokenStorageService } from 'src/app/_services/token-storage.service';
 })
 export class LFGMainComponent implements OnInit {
 
+  @Input()
   panelNumber!: number;
 
   constructor(private router: Router, private tokenStorage: TokenStorageService) { }
