@@ -41,7 +41,11 @@ describe('LoginComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('some login test', () => {
-    expect(component.submitted)
+  it('should submit user login info when onSubmit is called', () => {
+    expect(component.submitted).toBeTruthy();
+  })
+
+  it('should reset form when onReset is called', () => {
+    expect(component.onReset()).toHaveBeenCalled();
   })
 });

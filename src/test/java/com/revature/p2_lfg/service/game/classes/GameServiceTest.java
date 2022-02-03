@@ -2,11 +2,11 @@ package com.revature.p2_lfg.service.game.classes;
 
 import com.revature.p2_lfg.presentation.models.games.GameSessionInfoResponse;
 import com.revature.p2_lfg.presentation.models.games.SelectedGameAvailableGroupsResponse;
-import com.revature.p2_lfg.repository.interfaces.GamesRepository;
-import com.revature.p2_lfg.repository.interfaces.SessionDetailsRepository;
 import com.revature.p2_lfg.repository.entities.session.Games;
 import com.revature.p2_lfg.repository.entities.session.SessionDetails;
 import com.revature.p2_lfg.repository.entities.session.Tag;
+import com.revature.p2_lfg.repository.interfaces.GamesRepository;
+import com.revature.p2_lfg.repository.interfaces.SessionDetailsRepository;
 import com.revature.p2_lfg.service.game.dto.GameSelectInfo;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

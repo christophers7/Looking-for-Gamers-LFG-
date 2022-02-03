@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Group } from 'src/app/models/group.model';
 import { TokenStorageService } from 'src/app/_services/token-storage.service';
+import { UserService } from 'src/app/_services/user.service';
 
 @Component({
   selector: 'app-lfgmain',
@@ -13,19 +14,29 @@ export class LFGMainComponent implements OnInit {
 
   panelNumber!: number;
 
-  constructor(private router: Router, private tokenStorage: TokenStorageService) { }
+  constructor(
+    private router: Router, 
+    private tokenStorage: TokenStorageService,
+    private userService: UserService) { }
 
   currentUser: any;
 
   hostGroupPanel:boolean = false;
 
+  joinGroupPanel: boolean = false;
+
   ngOnInit(): void {
     this.currentUser = this.tokenStorage.getUser();
-    this.viewHostedGroup();
+    this.viewGroups();
   }
 
-  viewHostedGroup():void{
+  viewGroups():void{
     if(this.tokenStorage.getCreatedGroup()) this.hostGroupPanel = true;
+    else this.viewJoinedGroups();
+  }
+
+  viewJoinedGroups():void{
+    if(this.tokenStorage.getJoinedGroups()) this.joinGroupPanel = true;
   }
 
   gameId: number = 0;
@@ -50,7 +61,13 @@ export class LFGMainComponent implements OnInit {
     this.router.navigate(navigationDetails);
   }
 
+  goToUserGroup():void{
+    const navigationDetails: string[] = ['/game/group/view'];
+    this.router.navigate(navigationDetails);
+  }
+
   logOut(): void {
+    if(this.tokenStorage.getCreatedGroup()) this.userService.endSession();
     this.tokenStorage.signOut();
     this.router.navigate([''])
   }

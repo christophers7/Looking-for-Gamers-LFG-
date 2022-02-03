@@ -32,4 +32,12 @@ describe('CreateGroupComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should reset form when onReset is called', () => {
+    expect(component.onReset()).toHaveBeenCalled();
+  })
+
+  it('should change panels when changePanel is called', () => {
+    expect(component.changePanel()).toHaveBeenCalled();
+  })
 });

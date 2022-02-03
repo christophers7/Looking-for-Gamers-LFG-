@@ -18,4 +18,14 @@ describe('GameService', () => {
   it('should be created', () => {
     expect(service).toBeTruthy();
   });
+
+  it('should return game 1 when 1 is passed into findGame', () => {
+    expect(service.findGame(1)).toEqual(game1);
+  })
+
+  it('should return game 2 when 2 is passed into findGame', () => {
+    expect(service.findGame(2)).toEqual(game2);
+  })
+
+  
 });

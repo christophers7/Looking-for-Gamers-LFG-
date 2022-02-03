@@ -25,4 +25,10 @@ describe('GameDisplayComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should return all games when findAllGames is called', () => {
+    expect(component.games.length).toBe(0);
+    component.findAllGames();
+    expect(component.games.length).toBeGreaterThan(0);
+  });
 });

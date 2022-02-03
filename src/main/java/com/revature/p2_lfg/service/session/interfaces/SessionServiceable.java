@@ -26,4 +26,6 @@ public interface SessionServiceable {
     SessionResponse getGroupSession(int groupId, int gameId, JWTInfo parsedJWT);
 
     SessionResponse getGroupMembersResponse(JWTInfo parsedJWT, int groupId);
+
+    boolean leaveAllSession(JWTInfo parsedJWT);
 }

@@ -16,8 +16,6 @@ import com.revature.p2_lfg.service.session.MaxUsersException;
 import com.revature.p2_lfg.service.session.exception.InvalidHostUserException;
 import com.revature.p2_lfg.service.session.exception.InvalidUserException;
 import com.revature.p2_lfg.service.session.interfaces.SessionServiceable;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import com.revature.p2_lfg.utility.JWTInfo;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -72,14 +70,14 @@ import java.util.*;
             sessionDetails = getSessionDetailsByGroupId(groupId);
             createUserSession(sessionDetails, parsedJWT, findByHostId(groupId),  false);
             return new SessionResponse.SessionResponseBuilder(getHostUserWithGroupId(groupId), sessionDetails)
-                    .success(true)
+                    .success(false)
                     .groupId(groupId)
                     .gameId(sessionDetails.getGame().getGameid())
                     .groupMembers(getGroupMembersOfSession(groupId))
                     .waitingMembers(new ArrayList<GroupUser>())
                     .build();
         } catch (Exception e){
-            return failSessionResponse();
+            return null;
         }
     }
 
@@ -124,7 +122,7 @@ import java.util.*;
 
     private GroupSessionId createUserSession(SessionDetails sessionDetails, JWTInfo parsedJWT, int hostId, boolean status) throws MaxUsersException {
         if(sessionDetails.getCurrentusers() < sessionDetails.getMaxusers()) {
-            sessionDetails.setCurrentusers(sessionDetails.getCurrentusers() + 1);
+            sessionDetails.setCurrentusers(sessionDetails.getCurrentusers());
             if(sessionRepository.save(new Session(parsedJWT.getUserId(), hostId, sessionDetails, status)) != null)
                 return new GroupSessionId(parsedJWT.getUserId(), hostId);
         } else throw new MaxUsersException();
@@ -173,18 +171,18 @@ import java.util.*;
     @Override
     public SessionResponse respondToUserSession(JWTInfo parsedJWT, WaitingRoomRequest roomRequest) {
         int groupId = roomRequest.getGroupId();
-        int userRespondingId = loginRepository.findByUsername(roomRequest.getWaitingUsername()).getUserid();
+        int userRespondingId = loginRepository.findByUsername(roomRequest.getUsername()).getUserid();
         Session session = sessionRepository.findByUserIdAndGroupId(userRespondingId, groupId);
-        if(roomRequest.isSuccess()) {
+        if(roomRequest.isInsideSession()) {
             session.setInsession(true);
             sessionRepository.save(session);
         }else{
             sessionRepository.delete(session);
         }
         return new SessionResponse.SessionResponseBuilder(getHostUserWithGroupId(groupId), getSessionDetailsByGroupId(groupId))
-                .success(roomRequest.isSuccess())
+                .success(roomRequest.isInsideSession())
                 .groupId(groupId)
-                .gameId(roomRequest.getGameId())
+                .gameId(session.getGroupsession().getGame().getGameid())
                 .groupMembers(getGroupMembersOfSession(groupId))
                 .waitingMembers(getWaitingMembersOfSession(groupId))
                 .build();
@@ -240,6 +238,17 @@ import java.util.*;
                     .build();
         } catch (Exception e){
             return failSessionResponse();
+        }
+    }
+
+    @Override
+    public boolean leaveAllSession(JWTInfo parsedJWT) {
+        try{
+            List<Session> allSessions = sessionRepository.findByUserid(parsedJWT.getUserId());
+            allSessions.forEach(session -> leaveSession(parsedJWT, session.getGroupsession().getGroupid(), session.getGroupsession().getGame().getGameid()));
+            return true;
+        }catch(Exception e){
+            return false;
         }
     }
 }
