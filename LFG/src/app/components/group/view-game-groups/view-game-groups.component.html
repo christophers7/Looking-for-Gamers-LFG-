@@ -1,13 +1,10 @@
 <div>
     <p>{{game.name}}</p>
-    <a (click)="goBackToGameSelect()"><img [src]="game.imgLink"></a>
+    <a><img [src]="game.imgLink"></a>
 </div>
 <div *ngIf="groupSessions">
     <div>    
         <app-group-card [groupSessions] = "groupSessions" [gameId]="gameId"></app-group-card>
-    </div>
-    <div *ngIf="hostingGroup">
-        <button id="hostViewButton" class="hostDisplayGroup" (click)="goToSession()">View Hosted Session</button>
     </div>
     <div>
         <button type="button" id="goMainPageButton" class="mainPageButton" (click)="goToMain()">Main Page</button>

@@ -11,6 +11,7 @@ import { LoginComponent } from './components/login/login.component';
 import { ModifyCredentialComponent } from './components/modify-credential/modify-credential.component';
 import { ModifyProfileComponent } from './components/modify-profile/modify-profile.component';
 import { NewUserComponent } from './components/new-user/new-user.component';
+import { PollingComponent } from './components/polling/polling.component';
 import { ProfileComponent } from './components/profile/profile.component';
 
 const routes: Routes = [
@@ -62,6 +63,9 @@ const routes: Routes = [
   {
     component: ApiViewComponent,
     path: 'test/api'
+  },{
+    component: PollingComponent,
+    path: 'test/polling'
   }
 ];
 
