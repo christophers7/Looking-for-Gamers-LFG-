@@ -163,13 +163,11 @@ class SessionServiceTest {
 
         roomRequestSuccess = new WaitingRoomRequest(
                 createdSessionDetails.getGroupid(),
-                createdSessionDetails.getGame().getGameid(),
                 parsedJWT2.getUsername(),
                 true
         );
         roomRequestReject = new WaitingRoomRequest(
                 createdSessionDetails.getGroupid(),
-                createdSessionDetails.getGame().getGameid(),
                 parsedJWT2.getUsername(),
                 false
         );
@@ -184,7 +182,7 @@ class SessionServiceTest {
                 createdSessionDetails
                 ).build();
 
-        cancelGroupRequest = new CancelGroupRequest(createdSessionDetails.getGroupid(), createdSessionDetails.getGame().getGameid(), Collections.singletonList(user2));
+        cancelGroupRequest = new CancelGroupRequest();
 
         cancelGroupResponse = true;
 

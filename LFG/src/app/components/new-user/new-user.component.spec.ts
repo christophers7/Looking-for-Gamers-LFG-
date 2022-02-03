@@ -1,6 +1,9 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { RouterTestingModule } from '@angular/router/testing';
 import { NewUserComponent } from './new-user.component';
+import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {BrowserModule} from '@angular/platform-browser'
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 describe('NewUserComponent', () => {
   let component: NewUserComponent;
@@ -8,7 +11,12 @@ describe('NewUserComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ NewUserComponent ]
+      declarations: [ NewUserComponent ],
+      imports: [RouterTestingModule,
+      FormBuilder,
+      FormsModule,
+      ReactiveFormsModule,
+      HttpClientTestingModule]
     })
     .compileComponents();
   });
@@ -22,4 +30,16 @@ describe('NewUserComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should navigate to Login when goToLogin is called', () => {
+    expect(component.goToLogin()).toHaveBeenCalled();
+  })
+
+  it('should submit new user data when form is submitted', () => {
+    expect(component.onSubmit()).toHaveBeenCalled();
+  })
+
+  it('should reset form when onReset is called', () => {
+    expect(component.onReset()).toHaveBeenCalled();
+  })
 });

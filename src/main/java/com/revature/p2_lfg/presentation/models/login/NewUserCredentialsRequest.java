@@ -11,8 +11,7 @@ import java.util.Objects;
 @AllArgsConstructor
 public class NewUserCredentialsRequest {
 
-    private String username;
-    private String password;
-    private String email;
-
+    String username;
+    String password;
+    String email;
 }

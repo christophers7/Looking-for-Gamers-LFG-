@@ -1,16 +1,18 @@
+import { Game } from "./game.model";
+
 export class UserViewGroup {
 
     constructor(
-        private _groupId: number,
-        private _gameId: number,
-        private _maxUsers: number,
-        private _currentUsers: number,
+        private _groupid: number,
+        private _game: Game,
+        private _maxusers: number,
+        private _currentusers: number,
         private _description: string
     ){
-        this.groupId = _groupId;
-        this.gameId = _gameId;
-        this.maxUsers = _maxUsers;
-        this.currentUsers = _currentUsers;
+        this.groupid = _groupid;
+        this.game = _game;
+        this.maxusers = _maxusers;
+        this.currentusers = _currentusers;
         this.description = _description;
     }
 
@@ -20,28 +22,29 @@ export class UserViewGroup {
     public set description(value: string) {
         this._description = value;
     }
-    public get currentUsers(): number {
-        return this._currentUsers;
+    public get currentusers(): number {
+        return this._currentusers;
     }
-    public set currentUsers(value: number) {
-        this._currentUsers = value;
+    public set currentusers(value: number) {
+        this._currentusers = value;
     }
-    public get maxUsers(): number {
-        return this._maxUsers;
+    public get maxusers(): number {
+        return this._maxusers;
     }
-    public set maxUsers(value: number) {
-        this._maxUsers = value;
+    public set maxusers(value: number) {
+        this._maxusers = value;
     }
-    public get gameId(): number {
-        return this._gameId;
+    public get game(): Game {
+        return this._game;
     }
-    public set gameId(value: number) {
-        this._gameId = value;
+    public set game(value: Game) {
+        this._game = value;
     }
-    public get groupId(): number {
-        return this._groupId;
+    public get groupid(): number {
+        return this._groupid;
     }
-    public set groupId(value: number) {
-        this._groupId = value;
+    public set groupid(value: number) {
+        this._groupid = value;
     }
+
 }

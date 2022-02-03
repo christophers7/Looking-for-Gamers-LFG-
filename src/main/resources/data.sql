@@ -116,7 +116,7 @@ insert into project_two.lfg_games
 --	(3, 3, 2, FALSE),
 --	(4, 3, 2, TRUE),
 --	(5, 1, 1, FALSE);
---
+
 --insert into lfg_socials
 --values
 --	(1, 1, 'apexGamer1'),

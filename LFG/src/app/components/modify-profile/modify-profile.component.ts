@@ -14,12 +14,9 @@ import BuildUser from 'src/app/utils/build-user';
 export class ModifyProfileComponent implements OnInit {
 
   form: FormGroup = new FormGroup({
-    username: new FormControl(''),
     firstname: new FormControl(''),
     lastname: new FormControl(''),
-    email: new FormControl(''),
-    password: new FormControl(''),
-    confirmPassword: new FormControl('')
+    email: new FormControl('')
   });
   submitted = false;
   currentUser: any;
@@ -27,24 +24,22 @@ export class ModifyProfileComponent implements OnInit {
   constructor(private router: Router, private formBuilder: FormBuilder, private tokenStorage: TokenStorageService, private userService: UserService) { }
 
   ngOnInit(): void {
+    this.setUpForm();
+  }
+
+
+  setUpForm() {
     this.currentUser = this.tokenStorage.getUser();
     this.form = this.formBuilder.group(
-      {   
-        username: [
-          '',
-          [
-            Validators.minLength(6),
-            Validators.maxLength(20)
-          ]
-        ],
+      {
         firstname: [
-          '', 
+          '',
           [
             Validators.maxLength(30)
           ]
         ],
         lastname: [
-          '', 
+          '',
           [
             Validators.maxLength(30)
           ]
@@ -55,34 +50,21 @@ export class ModifyProfileComponent implements OnInit {
             Validators.email,
             Validators.maxLength(50)
           ]
-        ],
-        password: [
-          '',
-          [
-            Validators.minLength(6),
-            Validators.maxLength(30)
-          ]
-        ],
-        confirmPassword: [
-          '', 
-          [
-            Validators.minLength(6),
-            Validators.maxLength(30)
-          ]
-        ],
+        ]
       },
       {
         validators: [Validation.match('password', 'confirmPassword')]
       }
     );
-    this.form.controls["username"].patchValue(this.currentUser.username);
-    if(this.currentUser.firstName){
-    this.form.controls["firstname"].patchValue(this.currentUser.firstName);
+    if (this.currentUser.firstName) {
+      this.form.controls["firstname"].patchValue(this.currentUser.firstName);
     }
-    if(this.currentUser.lastName) {
+    if (this.currentUser.lastName) {
       this.form.controls["lastname"].patchValue(this.currentUser.lastName);
     }
-    this.form.controls["email"].patchValue(this.currentUser.email);
+    if(this.currentUser.email){
+      this.form.controls["email"].patchValue(this.currentUser.email);
+    }
   }
 
   goToProfile(): void {
@@ -101,34 +83,31 @@ export class ModifyProfileComponent implements OnInit {
       return;
     }
 
-    let tempUser = BuildUser.userBuilder(this.currentUser)
+    let change:boolean = false;
 
-    let userN = this.form.get('username')?.value
-    if(userN){
-      tempUser._username = userN;
-    }
+    let tempUser = BuildUser.userBuilder(this.currentUser)
 
     let firstN = this.form.get('firstname')?.value
     if(firstN) {
       tempUser._firstName = firstN;
+      if(this.currentUser._firstName != tempUser._firstName) change = true; 
     }
 
     let lastN = this.form.get('lastname')?.value
     if(lastN) {
       tempUser._lastName = lastN;
+      if(this.currentUser._lastName != tempUser._lastName) change = true; 
     }
 
     let eMail = this.form.get('email')?.value
     if(eMail) {
       tempUser._email = eMail;
+      if(this.currentUser._email != tempUser._email) change = true; 
     }
+    
 
-    let passW = this.form.get('password')?.value
-    if(passW) {
-      tempUser._password = passW;
-    }
     console.log(tempUser)
-    if(eMail) {
+    if(change) {
       this.userService.updateUser(tempUser).subscribe(
         (data) => {
           this.tokenStorage.saveToken(data.jwt);
@@ -144,3 +123,4 @@ export class ModifyProfileComponent implements OnInit {
     this.form.reset();
   }
 }
+

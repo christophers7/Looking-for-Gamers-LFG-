@@ -1,0 +1,32 @@
+<ng-container
+    *ngIf="insideSession; then sessionView; else waitingRoom">
+</ng-container>
+
+<ng-template #sessionView>
+    <h1>Viewing Session</h1>
+    <h4>Host: {{insideGroup.hostUser.username}}</h4>
+    <h4>Game: {{insideGroup.sessionDetails.game.gametitle}}</h4>
+    <img [src]="insideGroup.sessionDetails.game.imglink">
+    <div *ngFor="let members of insideGroup.groupMembers">
+        <div *ngIf="members.username != insideGroup.hostUser.username">
+        <p>username: {{members.username}}</p>
+        </div>
+    </div>
+    <button type="button" (click)="leaveSession()">Leave Group</button>
+    <button type="button" (click)="goMainPage()">Main Page</button>
+</ng-template> 
+
+<ng-template #waitingRoom>
+    <h1>Waiting Room</h1>
+    <div *ngIf="joinedSession">
+    <div *ngFor="let group of joinedSession">
+        <h2>Group Id: {{group.groupId}}</h2>
+        <h3>Game: {{group.sessionDetails.game.gametitle}}</h3>
+        <h4>Current Users: {{group.sessionDetails.currentusers}}</h4>
+        <h4>Max Users: {{group.sessionDetails.maxusers}}</h4>
+        <p>{{group.sessionDetails.description}}</p>
+    </div>
+    </div>
+
+    <button type="button" (click)="goMainPage()">Main Page</button>
+</ng-template>

@@ -1,6 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { AvailableGames } from 'src/app/models/available-games.model';
+import { GameGroupHolders } from 'src/app/models/game-group-holders.model';
 import { Game } from 'src/app/models/game.model';
+import { GroupDetails } from 'src/app/models/group-details.model';
 import { Group } from 'src/app/models/group.model';
 import { UserViewGroup } from 'src/app/models/user-view-group.model';
 import { GameService } from 'src/app/_services/game.service';
@@ -15,7 +17,7 @@ import { UserService } from 'src/app/_services/user.service';
 export class GroupCardComponent implements OnInit {
 
   @Input()
-  groupSessions!: Group[];
+  groupSessions!: GroupDetails[];
 
   @Input()
   gameId!:number;
@@ -26,26 +28,25 @@ export class GroupCardComponent implements OnInit {
 
   ngOnInit(): void {
     this.getGameInfo();
-    this.game = this.tokenStorage.getGame()
+    this.game = this.tokenStorage.getGame();
   }
 
   getGameInfo(){
-    this.userService.getSelectedGame(this.game.gameId).subscribe(
-      (data) => {
-        
-        this.groupSessions = data.selectedGameAvailableGroups
-      },
-      (error) => {
-        console.log(error);
-      }
-    );
   }
 
-  groupRequest(group: Group) {
+  groupRequest(group:any) {
+    this.tokenStorage.checkIfDuplicate(group);
     this.userService.requestToJoinGroup(group).subscribe(
       (data) => {
-        // increase app counter
+        this.joinGroup(data)
+        console.log(data);
       }
     )
+  }
+
+  joinGroup(data:any):void{
+    console.log(data);
+    this.tokenStorage.addToJoinedGroup(data);
+
   }
 }

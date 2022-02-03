@@ -4,6 +4,7 @@ import { GameService } from 'src/app/_services/game.service';
 import { Location } from '@angular/common';
 import { UserService } from 'src/app/_services/user.service';
 import { Game } from 'src/app/models/game.model';
+import { TokenStorageService } from 'src/app/_services/token-storage.service';
 
 
 @Component({
@@ -15,9 +16,12 @@ export class GameDisplayComponent implements OnInit {
   
   games!: Game[];
 
+  gId!: number;
+
   constructor(
     private gameService:GameService,
-    private userService: UserService
+    private userService: UserService,
+    private tokenStorage: TokenStorageService
     ) { }
 
   ngOnInit(): void {
@@ -30,22 +34,14 @@ export class GameDisplayComponent implements OnInit {
         console.log(data)
         this.games = data.gameSessionList;
       },
-     // (error) => {
-      //  console.log(error);
-     // }
     )
   }
-
-  
 
   @Output()
   emitter = new EventEmitter<{gId: number, panelNumber: number}>()
 
   send(data:any) {
-    this.emitter.emit(data)
+    this.emitter.emit(data);
+    console.log(data);
   }
-//  goBack(): void{
-//    this.location.back();
-//  }
-
 }
