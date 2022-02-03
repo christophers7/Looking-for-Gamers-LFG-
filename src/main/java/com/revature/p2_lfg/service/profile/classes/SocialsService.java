@@ -4,22 +4,19 @@ import com.revature.p2_lfg.presentation.models.profile.requests.CreateSocialRequ
 import com.revature.p2_lfg.presentation.models.profile.requests.DeleteSocialRequest;
 import com.revature.p2_lfg.presentation.models.profile.requests.UpdateSocialRequest;
 import com.revature.p2_lfg.presentation.models.profile.responses.SocialResponse;
+import com.revature.p2_lfg.repository.entities.compositeKeys.SocialId;
+import com.revature.p2_lfg.repository.entities.session.Session;
+import com.revature.p2_lfg.repository.entities.user.Socials;
+import com.revature.p2_lfg.repository.entities.user.UserCredential;
 import com.revature.p2_lfg.repository.interfaces.LoginRepository;
 import com.revature.p2_lfg.repository.interfaces.SessionRepository;
 import com.revature.p2_lfg.repository.interfaces.SocialsRepository;
-import com.revature.p2_lfg.repository.entities.session.Session;
-import com.revature.p2_lfg.repository.entities.user.Socials;
-import com.revature.p2_lfg.repository.entities.compositeKeys.SocialId;
-import com.revature.p2_lfg.repository.entities.user.UserCredential;
 import com.revature.p2_lfg.service.profile.exception.InvalidRequestException;
 import com.revature.p2_lfg.service.profile.exception.InvalidUserIdException;
 import com.revature.p2_lfg.service.profile.interfaces.SocialsServiceable;
 import com.revature.p2_lfg.service.session.dto.GroupUser;
 import com.revature.p2_lfg.service.social.SteamService;
 import com.revature.p2_lfg.utility.JWTInfo;
-import lombok.experimental.StandardException;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

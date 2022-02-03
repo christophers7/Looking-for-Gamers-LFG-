@@ -22,4 +22,8 @@ describe('HostViewComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should check username when checkUsername is called', () => {
+    expect(component.checkUsername('username')).toHaveBeenCalled();
+  })
 });

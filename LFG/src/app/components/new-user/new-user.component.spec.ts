@@ -30,4 +30,16 @@ describe('NewUserComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should navigate to Login when goToLogin is called', () => {
+    expect(component.goToLogin()).toHaveBeenCalled();
+  })
+
+  it('should submit new user data when form is submitted', () => {
+    expect(component.onSubmit()).toHaveBeenCalled();
+  })
+
+  it('should reset form when onReset is called', () => {
+    expect(component.onReset()).toHaveBeenCalled();
+  })
 });

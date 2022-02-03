@@ -24,4 +24,8 @@ describe('ApiViewComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should return data when getData is called', () => {
+    expect(component.getData()).toHaveBeenCalled();
+  })
 });
