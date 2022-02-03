@@ -25,4 +25,12 @@ describe('ViewGameGroupsComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should change panels when changePanel is called', () => {
+    expect(component.changePanel()).toHaveBeenCalled();
+  })
+
+  it('should show available sessions when getGroupSessions is called', () => {
+    expect(component.getGroupSessions()).toHaveBeenCalled();
+  })
 });

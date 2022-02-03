@@ -30,4 +30,16 @@ describe('ModifyProfileComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should reset form when onReset is called', () => {
+    expect(component.onReset()).toHaveBeenCalled();
+  })
+
+  it('should navigate to user profile when goToProfile is called', () => {
+    expect(component.goToProfile()).toHaveBeenCalled();
+  })
+
+  it('should change user data when submitted', () => {
+    expect(component.onSubmit()).toHaveBeenCalled();
+  })
 });

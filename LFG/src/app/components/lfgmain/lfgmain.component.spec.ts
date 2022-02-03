@@ -23,4 +23,8 @@ describe('LFGMainComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should navigate to user profile when goToProfile is called', () => {
+    expect(component.goToProfile()).toHaveBeenCalled();
+  })
 });

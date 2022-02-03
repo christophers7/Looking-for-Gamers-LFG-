@@ -23,4 +23,12 @@ describe('ProfileComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should navigate to Modify Profile when modifyProfile is called', () => {
+    expect(component.modifyProfile()).toHaveBeenCalled();
+  });
+
+  it('should navigate to main when goToMain is called', () => {
+    expect(component.goToMain()).toHaveBeenCalled();
+  })
 });
