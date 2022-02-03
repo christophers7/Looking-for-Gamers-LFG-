@@ -21,5 +21,6 @@ export class ProfileComponent implements OnInit {
 
   modifyProfile(): void { this.routingAllocater.modifyProfile(); }
   modifyCredential(): void { this.routingAllocater.modifyCredentials(); }
+  modifySocials(): void { this.routingAllocater.modifySocials(); }
   goToMain(): void { this.routingAllocater.main(); }
 }

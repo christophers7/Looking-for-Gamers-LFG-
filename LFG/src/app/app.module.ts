@@ -22,6 +22,7 @@ import { CreateGroupComponent } from './components/host-group/create-group/creat
 import { ModifyCredentialComponent } from './components/modify-credential/modify-credential.component';
 import { UserViewComponent } from './components/group/user-view/user-view.component';
 import { PollingComponent } from './components/polling/polling.component';
+import { AddSocialsComponent } from './components/add-socials/add-socials.component';
 
 
 
@@ -41,7 +42,8 @@ import { PollingComponent } from './components/polling/polling.component';
     CreateGroupComponent,
     ModifyCredentialComponent,
     UserViewComponent,
-    PollingComponent
+    PollingComponent,
+    AddSocialsComponent
   ],
   imports: [
     BrowserModule,
