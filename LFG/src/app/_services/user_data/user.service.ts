@@ -24,7 +24,8 @@ const ENDPOINTS = {
   HOST_GROUP: `${API_URL}group/host`,
   HOST_CANCEL_GROUP: `${API_URL}group/cancel`,
   HOST_REFRESH_MEMBERS: `${API_URL}group/refresh?groupId=`,
-  HOST_RESPOND: `${API_URL}group/respond`
+  HOST_RESPOND: `${API_URL}group/respond`,
+  LINK_SOCIALS: `${API_URL}social/create`
 }
 
 const httpOptions = {
@@ -44,6 +45,8 @@ export class UserService {
   updateUser(data: any): Observable<any> {return this.http.post(ENDPOINTS.UPDATE_PROFILE, JSON.stringify(data), httpOptions); }
 
   updateCredential(data: any): Observable<any> {return this.http.put(ENDPOINTS.UPDATE_CREDENTIALS, JSON.stringify(data), httpOptions); }
+
+  updateSocials(data:any): Observable<any> {return this.http.post(ENDPOINTS.LINK_SOCIALS, JSON.stringify(data), httpOptions)}
 
   generateGames(): Observable<any> {return this.http.get(ENDPOINTS.AVAILABLE_GAMES, httpOptions)}
 

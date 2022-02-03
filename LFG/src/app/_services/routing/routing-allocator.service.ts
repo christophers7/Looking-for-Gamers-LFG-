@@ -6,6 +6,7 @@ const  ROUTES = {
     profile: ['/main/profile'],
     modifyProfile: ['/main/profile/modify'],
     modifyCredentials: ['/main/credential/modify'],
+    modifySocials: ['/main/socials/modify'],
     sessionHost: ['/game/group/host'],
     sessionUser: ['/game/group/view'],
     createGroup: ['/game/group/create'],
@@ -38,7 +39,9 @@ export class RoutingAllocatorService {
  
   modifyProfile():void{this.router.navigate(ROUTES.modifyProfile);}
 
-  modifyCredentials():void{this.router.navigate(ROUTES.modifyCredentials);
-  }
+  modifyCredentials():void{this.router.navigate(ROUTES.modifyCredentials);}
+
+  modifySocials():void{this.router.navigate(ROUTES.modifySocials)};
+  
   
 }

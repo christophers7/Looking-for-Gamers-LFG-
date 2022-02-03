@@ -59,18 +59,18 @@ const routes: Routes = [
   {
     component: CreateGroupComponent,
     path: 'game/group/create'
-  }
-  ,
+  },
   {
     component: ApiViewComponent,
     path: 'test/api'
-  },{
+  },
+  {
     component: PollingComponent,
     path: 'test/polling'
   }, 
   {
     component: AddSocialsComponent,
-    path: 'main/socials/modify'
+    path: '/main/socials/modify'
   }
 ];
 

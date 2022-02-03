@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { SocialsBuilder } from 'src/app/utils/socials-builder';
+import { RoutingAllocatorService } from 'src/app/_services/routing/routing-allocator.service';
 import { TokenStorageService } from 'src/app/_services/user_data/token-storage.service';
 import { UserService } from 'src/app/_services/user_data/user.service';
 
@@ -20,7 +22,7 @@ export class AddSocialsComponent implements OnInit {
   posts : any;
 
   constructor(private router: Router, private formBuilder: FormBuilder, private userService: UserService, 
-    private tokenStorage: TokenStorageService) { }
+    private tokenStorage: TokenStorageService, private routingAllocator: RoutingAllocatorService) { }
 
   ngOnInit(): void {
     this.form = this.formBuilder.group(
@@ -46,18 +48,16 @@ export class AddSocialsComponent implements OnInit {
       return;
     }
 
-    let userN = this.form.get('username')?.value
-    let passW = this.form.get('password')?.value
-    if(userN != null && passW != null) {
-      this.authService.login(userN, passW).subscribe({
+    let sID = this.form.get('steamId')?.value
+    if(sID != null) {
+      this.userService.updateSocials({gameId: 3, social: sID}).subscribe({
         next: data => {         
           console.log(data);
           this.isLinkFailed = false;
-          let builtUser = BuildUser.userBuilder(data);
-          console.log(builtUser);
-          this.tokenStorage.saveUser(builtUser)
-          // this.tokenStorage.saveUser(data)
-          this.router.navigate(['main'])   
+          let builtSocial = SocialsBuilder.buildSocials(data)
+          console.log(builtSocial);
+          this.tokenStorage.saveSocials(builtSocial);
+          this.routingAllocator.profile();   
         },
         error: err => {
           this.errorMessage = err.error.message;
@@ -74,4 +74,4 @@ export class AddSocialsComponent implements OnInit {
   }
 }
 
-}
+
