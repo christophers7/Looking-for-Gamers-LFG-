@@ -1,0 +1,17 @@
+<div>
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">     
+        <div class="login-form-group">
+            <label>Enter your Steam ID</label>
+            <input
+                type="text"
+                id="steamId"
+                name="steamId"
+                formControlName="steamId"
+                class="form-control"
+                [ngClass]="{ 'is-invalid': submitted && f['steamId'].errors }"
+            />
+        <div *ngIf="submitted && f['steamId'].errors" class="invalid-feedback">
+          <div *ngIf="f['steamId'].errors['required']">Username is required</div>         
+        </div>
+      </div>
+</div> 

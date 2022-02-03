@@ -28,6 +28,11 @@ export class ProfileComponent implements OnInit {
     this.router.navigate(navigationDetails);
   }
 
+  modifySocials(): void {
+    const navigationDetails: string[] = ['/main/socials/modify'];
+    this.router.navigate(navigationDetails);
+  }
+
   goToMain(): void {
     const navigationDetails: string[] = ['/main'];
     this.router.navigate(navigationDetails);

@@ -21,6 +21,7 @@ import { HostViewComponent } from './components/host-group/host-view/host-view.c
 import { CreateGroupComponent } from './components/host-group/create-group/create-group.component';
 import { ModifyCredentialComponent } from './components/modify-credential/modify-credential.component';
 import { UserViewComponent } from './components/group/user-view/user-view.component';
+import { AddSocialsComponent } from './components/add-socials/add-socials.component';
 
 
 
@@ -39,7 +40,8 @@ import { UserViewComponent } from './components/group/user-view/user-view.compon
     HostViewComponent,
     CreateGroupComponent,
     ModifyCredentialComponent,
-    UserViewComponent
+    UserViewComponent,
+    AddSocialsComponent
   ],
   imports: [
     BrowserModule,
