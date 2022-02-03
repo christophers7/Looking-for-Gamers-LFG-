@@ -1,3 +1,4 @@
+import { prepareEventListenerParameters } from '@angular/compiler/src/render3/view/template';
 import { Injectable, ɵɵsetComponentScope } from '@angular/core';
 import { Game } from '../models/game.model';
 import { User } from '../models/user.model';
@@ -66,6 +67,32 @@ export class TokenStorageService {
     }else{
       console.log("fail");
     };
+  }
+
+  public leaveAllGroups():void{
+    let joinedGroups = JSON.parse(this.getJoinedGroups());
+    if(joinedGroups){
+      for(let i:number = 0; i < joinedGroups.length; i++){
+        console.log(joinedGroups[i]);
+        this.leaveGroup(joinedGroups[i].groupId);
+
+      }
+    }
+  }
+
+  public leaveGroup(groupId:number):void{
+    console.log(`${groupId}`)      
+    let joinedGroups = JSON.parse(this.getJoinedGroups());
+
+    for(let i:number = 0; i < joinedGroups.length; i++){
+      console.log(joinedGroups[i])
+      if(groupId == joinedGroups[i].groupId) {
+        console.log("found it");
+        joinedGroups.splice(i, 1);
+        window.sessionStorage.setItem(JOINED_GROUPS, JSON.stringify(joinedGroups));
+        return;
+      }
+    } 
   }
 
   checkIfMax():boolean{

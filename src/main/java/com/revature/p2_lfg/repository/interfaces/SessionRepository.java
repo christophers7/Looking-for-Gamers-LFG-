@@ -40,4 +40,6 @@ public interface SessionRepository extends JpaRepository<Session, GroupSessionId
     List<Session> findByGroupIdAndInsession(int groupId, boolean insession);
 
     Session findFirst1ByHostid(int hostid);
+
+    List<Session> findByUserid(int userid);
 }

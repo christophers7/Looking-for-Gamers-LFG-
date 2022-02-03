@@ -33,6 +33,10 @@
             <button id="hostViewButton" class="hostDisplayGroup" (click)="goToSession()">View Hosted Session</button>
     </div>
 
+    <div *ngIf="joinGroupPanel">
+        <button id="joinedGroupsButton" class="joinDisplay" (click)="goToUserGroup()">View Sessions</button>
+    </div>
+
     <div id="profileDisplayBox" class="mainGroup">
         <div id="iconHolder" class="profileDisplayGroup">
             <h2>{{currentUser.username}}</h2>

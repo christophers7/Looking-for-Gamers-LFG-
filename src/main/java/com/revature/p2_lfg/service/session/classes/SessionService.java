@@ -70,14 +70,14 @@ import java.util.*;
             sessionDetails = getSessionDetailsByGroupId(groupId);
             createUserSession(sessionDetails, parsedJWT, findByHostId(groupId),  false);
             return new SessionResponse.SessionResponseBuilder(getHostUserWithGroupId(groupId), sessionDetails)
-                    .success(true)
+                    .success(false)
                     .groupId(groupId)
                     .gameId(sessionDetails.getGame().getGameid())
                     .groupMembers(getGroupMembersOfSession(groupId))
                     .waitingMembers(new ArrayList<GroupUser>())
                     .build();
         } catch (Exception e){
-            return failSessionResponse();
+            return null;
         }
     }
 
@@ -238,6 +238,17 @@ import java.util.*;
                     .build();
         } catch (Exception e){
             return failSessionResponse();
+        }
+    }
+
+    @Override
+    public boolean leaveAllSession(JWTInfo parsedJWT) {
+        try{
+            List<Session> allSessions = sessionRepository.findByUserid(parsedJWT.getUserId());
+            allSessions.forEach(session -> leaveSession(parsedJWT, session.getGroupsession().getGroupid(), session.getGroupsession().getGame().getGameid()));
+            return true;
+        }catch(Exception e){
+            return false;
         }
     }
 }

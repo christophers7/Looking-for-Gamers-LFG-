@@ -55,7 +55,10 @@ export class UserService {
   }
 
   leaveAllWaitingList(): Observable<any> {
-    return this.http.get(API_URL)
+    return this.http.delete(API_URL + 'group/leave-all',httpOptions);
+  }
+  leaveCurrentGorup(group:any): Observable<any>{
+    return this.http.delete(API_URL + `group/leave?groupId=${group.groupId}&gameId=${group.gameId}`)
   }
 
   createGroup(group: any): Observable<any> {
@@ -106,6 +109,12 @@ export class UserService {
     return this.respondToUser(request);
   }
 
+
+  refreshWaitingList(groupId:any):Observable<any>{
+    console.log(groupId)
+    return this.http.get(API_URL + `group/check?groupId=${groupId}`);
+
+  }
 
 }
 function data(data: any): void {

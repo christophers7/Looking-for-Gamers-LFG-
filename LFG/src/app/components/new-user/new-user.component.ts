@@ -33,8 +33,8 @@ export class NewUserComponent implements OnInit {
           '',
           [
             Validators.required,
-            Validators.minLength(6),
-            Validators.maxLength(20)
+            Validators.minLength(4),
+            Validators.maxLength(25)
           ]
         ],
         email: [
@@ -49,16 +49,16 @@ export class NewUserComponent implements OnInit {
           '',
           [
             Validators.required,
-            Validators.minLength(6),
-            Validators.maxLength(30)
+            Validators.minLength(4),
+            Validators.maxLength(25)
           ]
         ],
         confirmPassword: [
           '', 
           [
             Validators.required,
-            Validators.minLength(6),
-            Validators.maxLength(30)
+            Validators.minLength(4),
+            Validators.maxLength(25)
           ]
         ],
       },

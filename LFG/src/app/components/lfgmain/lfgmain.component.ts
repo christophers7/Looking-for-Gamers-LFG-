@@ -23,13 +23,20 @@ export class LFGMainComponent implements OnInit {
 
   hostGroupPanel:boolean = false;
 
+  joinGroupPanel: boolean = false;
+
   ngOnInit(): void {
     this.currentUser = this.tokenStorage.getUser();
-    this.viewHostedGroup();
+    this.viewGroups();
   }
 
-  viewHostedGroup():void{
+  viewGroups():void{
     if(this.tokenStorage.getCreatedGroup()) this.hostGroupPanel = true;
+    else this.viewJoinedGroups();
+  }
+
+  viewJoinedGroups():void{
+    if(this.tokenStorage.getJoinedGroups()) this.joinGroupPanel = true;
   }
 
   gameId: number = 0;
@@ -51,6 +58,11 @@ export class LFGMainComponent implements OnInit {
 
   goToSession():void{
     const navigationDetails: string[] = ['/game/group/host'];
+    this.router.navigate(navigationDetails);
+  }
+
+  goToUserGroup():void{
+    const navigationDetails: string[] = ['/game/group/view'];
     this.router.navigate(navigationDetails);
   }
 

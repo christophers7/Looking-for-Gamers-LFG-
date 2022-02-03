@@ -88,6 +88,7 @@ export class CreateGroupComponent implements OnInit {
   }
 
   createGroup(g:any){
+    console.log(this.userService.leaveAllWaitingList());
       this.userService.createGroup(g).subscribe(
         (data) => {
           console.log(data);
