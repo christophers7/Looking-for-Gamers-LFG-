@@ -1,23 +1,25 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import BuildUser from 'src/app/utils/build-user';
 import Validation from 'src/app/utils/validation';
 import { TokenStorageService } from 'src/app/_services/token-storage.service';
 import { UserService } from 'src/app/_services/user.service';
-import BuildUser from 'src/app/utils/build-user';
 
 @Component({
-  selector: 'app-modify-profile',
-  templateUrl: './modify-profile.component.html',
-  styleUrls: ['./modify-profile.component.css']
+  selector: 'app-modify-credential',
+  templateUrl: './modify-credential.component.html',
+  styleUrls: ['./modify-credential.component.css']
 })
-export class ModifyProfileComponent implements OnInit {
+export class ModifyCredentialComponent implements OnInit {
 
   form: FormGroup = new FormGroup({
-    firstname: new FormControl(''),
-    lastname: new FormControl(''),
+    username: new FormControl(''),
+    password: new FormControl(''),
+    confirmPassword: new FormControl(''),
     email: new FormControl('')
   });
+
   submitted = false;
   currentUser: any;
 
@@ -27,44 +29,36 @@ export class ModifyProfileComponent implements OnInit {
     this.setUpForm();
   }
 
-
-  setUpForm() {
+  setUpForm(){
     this.currentUser = this.tokenStorage.getUser();
     this.form = this.formBuilder.group(
-      {
-        firstname: [
+      {   
+        username: [
           '',
           [
-            Validators.maxLength(30)
+            Validators.minLength(4),
+            Validators.maxLength(25)
           ]
         ],
-        lastname: [
+        password: [
           '',
           [
-            Validators.maxLength(30)
+            Validators.minLength(4),
+            Validators.maxLength(25)
           ]
         ],
-        email: [
+        confirmPassword: [
           '', 
-          [ 
-            Validators.email,
-            Validators.maxLength(50)
+          [
+            Validators.minLength(4),
+            Validators.maxLength(25)
           ]
-        ]
-      },
+        ]},
       {
         validators: [Validation.match('password', 'confirmPassword')]
       }
     );
-    if (this.currentUser.firstName) {
-      this.form.controls["firstname"].patchValue(this.currentUser.firstName);
-    }
-    if (this.currentUser.lastName) {
-      this.form.controls["lastname"].patchValue(this.currentUser.lastName);
-    }
-    if(this.currentUser.email){
-      this.form.controls["email"].patchValue(this.currentUser.email);
-    }
+    this.form.controls["username"].patchValue(this.currentUser.username);
   }
 
   goToProfile(): void {
@@ -72,10 +66,12 @@ export class ModifyProfileComponent implements OnInit {
     this.router.navigate(navigationDetails);
   }
 
+  passwordChanged: boolean = false;
+
   get f(): { [key: string]: AbstractControl } {
     return this.form.controls;
   }
-
+  
   onSubmit(): void {
     this.submitted = true;
 
@@ -84,37 +80,33 @@ export class ModifyProfileComponent implements OnInit {
     }
 
     let change:boolean = false;
-
-    let tempUser = BuildUser.userBuilder(this.currentUser)
-
-    let firstN = this.form.get('firstname')?.value
-    if(firstN) {
-      tempUser._firstName = firstN;
-      if(this.currentUser._firstName != tempUser._firstName) change = true; 
-    }
-
-    let lastN = this.form.get('lastname')?.value
-    if(lastN) {
-      tempUser._lastName = lastN;
-      if(this.currentUser._lastName != tempUser._lastName) change = true; 
-    }
-
-    let eMail = this.form.get('email')?.value
-    if(eMail) {
-      tempUser._email = eMail;
-      if(this.currentUser._email != tempUser._email) change = true; 
-    }
     
+    let tempUser = BuildUser.credentialBuilder(this.currentUser)
 
+    let userN = this.form.get('username')?.value
+    if(userN){
+      tempUser._username = userN;
+      if(this.currentUser._username != tempUser._username) change = true; 
+    }
+
+    let passW = this.form.get('password')?.value
+    if(passW) {
+      tempUser._password = passW;
+      if(this.currentUser._password != tempUser._password) {
+        change = true;
+      }
+    }
     console.log(tempUser)
     if(change) {
-      this.userService.updateUser(tempUser).subscribe(
+      this.userService.updateCredential(tempUser).subscribe(
         (data) => {
           this.tokenStorage.saveToken(data.jwt);
           let builtUser = BuildUser.userBuilder(data);
           this.tokenStorage.saveUser(builtUser);
           this.goToProfile();
       })
+    }else{
+      this.passwordChanged = false;
     }    
   }
 
@@ -122,5 +114,7 @@ export class ModifyProfileComponent implements OnInit {
     this.submitted = false;
     this.form.reset();
   }
-}
 
+
+
+}

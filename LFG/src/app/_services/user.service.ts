@@ -3,8 +3,10 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { AvailableGames } from '../models/available-games.model';
 import { Game } from '../models/game.model';
+import { GroupDetails } from '../models/group-details.model';
 import { GroupUser } from '../models/group-user.model';
 import { Group } from '../models/group.model';
+import { UserViewGroup } from '../models/user-view-group.model';
 
 const API_URL = 'http://localhost:8080/';
 
@@ -23,12 +25,16 @@ export class UserService {
     return this.http.post(API_URL + 'user/update', JSON.stringify(data), httpOptions); 
   }
 
+  updateCredential(data: any): Observable<any> {
+    return this.http.put(API_URL + 'login/update', JSON.stringify(data), httpOptions); 
+  }
+
   generateGames(): Observable<any> {
-    return this.http.get(API_URL + "game/available")
+    return this.http.get(API_URL + "game/available", httpOptions)
   }
 
   getSelectedGame(gameId: number): Observable<any> {
-    return this.http.get(API_URL + 'game/select?gameId=' + gameId)
+    return this.http.get(API_URL + 'game/select?gameId=' + gameId, httpOptions)
   }
 
   generateGroupsForGame(gameId: number): Observable<any> {
@@ -36,15 +42,15 @@ export class UserService {
   }
 
   getGroup(group: Group): Observable<any> {
-    return this.http.post(API_URL, JSON.stringify(group.groupID))
+    return this.http.post(API_URL, JSON.stringify(group.groupId))
   }
 
-  requestToJoinGroup(group: Group): Observable<any> {
-    return this.http.post(API_URL + 'group/join?groupId=' + group.groupID + '&gameId=' + group.gameId, JSON.stringify(group))
+  requestToJoinGroup(group: GroupDetails): Observable<any> {
+    return this.http.post(API_URL + 'group/join?groupId=' + group.groupId + '&gameId=' + group.game.gameId, JSON.stringify(group))
   }
 
   leaveGroup(group: Group): Observable<any> {
-    return this.http.delete(API_URL + 'group/leave?groupId=' + group.groupID + '&gameId=' + group.gameId)
+    return this.http.delete(API_URL + 'group/leave?groupId=' + group.groupId + '&gameId=' + group.gameId)
   }
 
   leaveAllWaitingList(): Observable<any> {
@@ -56,7 +62,7 @@ export class UserService {
   }
 
   refreshGroupMemberList(group: Group): Observable<any> {
-    return this.http.get(API_URL + 'group/refresh?groupId=' + group.groupID + '&gameId=' + group.gameId)
+    return this.http.get(API_URL + 'group/refresh?groupId=' + group.groupId + '&gameId=' + group.gameId)
   }
 
   acceptApplicant(applicant: GroupUser): Observable<any> {

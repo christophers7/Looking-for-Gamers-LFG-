@@ -17,23 +17,23 @@ public class ServiceAspect {
 
     @Before("com.revature.p2_lfg.utility.SystemArchitect.businessService()")
     public void beforeServiceCheck(JoinPoint jp){
-        dLog.debug("Class: " + jp.getSignature().getDeclaringType() + " - Method: " + jp.getSignature().getName() + " - Arguments: " + Arrays.toString(jp.getArgs()));
-    };
+        dLog.debug("Class: " + jp.getSignature().getDeclaringType() + "\nMethod: " + jp.getSignature().getName() + "\nArguments: " + Arrays.toString(jp.getArgs()));
+    }
 
     @After("com.revature.p2_lfg.utility.SystemArchitect.businessService()")
     public void afterServiceCheck(JoinPoint jp){
-        dLog.debug(jp.getSignature().getName());
-    };
+       // dLog.debug(jp.getSignature().getName());
+    }
 
     @AfterReturning(value = "com.revature.p2_lfg.utility.SystemArchitect.businessService()", returning = "returnedValue")
     public void afterServiceCheck(JoinPoint jp, Object returnedValue){
-        dLog.info("Class: " + jp.getSignature().getDeclaringType() + " - Returning: " + returnedValue.toString());
-        iLog.info("Class: " + jp.getSignature().getDeclaringType() + " - Returning: " + returnedValue.toString());
+        dLog.info("Class: " + jp.getSignature().getDeclaringType() + "\nReturning: " + returnedValue.toString());
+        iLog.info("Class: " + jp.getSignature().getDeclaringType() + "\nReturning: " + returnedValue.toString());
     }
 
     @AfterThrowing(value = "com.revature.p2_lfg.utility.SystemArchitect.businessService()", throwing = "thrownException")
     public void afterThrowingCheck(JoinPoint jp, Object thrownException){
-        dLog.error("Class: " + jp.getSignature().getDeclaringType() + " - Throwing: " + thrownException.toString());
+        dLog.error("Class: " + jp.getSignature().getDeclaringType() + "\nThrowing: " + thrownException.toString());
     }
 
 }

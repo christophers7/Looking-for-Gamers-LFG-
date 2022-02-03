@@ -1,4 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Group } from 'src/app/models/group.model';
 import { TokenStorageService } from 'src/app/_services/token-storage.service';
 
@@ -11,21 +12,43 @@ export class HostViewComponent implements OnInit {
 
   currentUser: any;
 
-  @Input()
-  group!: Group;
+  group!: any;
 
-  constructor(private tokenStorage: TokenStorageService) { }
+  constructor(
+    private tokenStorage: TokenStorageService,
+    private router: Router) { }
 
   ngOnInit(): void {
     this.currentUser = this.tokenStorage.getUser();
+    this.group = JSON.parse(this.tokenStorage.getCreatedGroup());
   }
 
   checkUsername(value: string) {
-    if(value === this.group.groupLead.username) {
+    if(value === this.group._groupLead._username) {
       return false;
     }
     else {
       return true;
     }
   }
+
+  removing():void{
+    console.log("removing member");
+  }
+
+  addingUserFromWaitingRoom(): void{
+    console.log("adding suer from waiting room");
+  }
+
+  removingUserFromWaitingRoom(): void{
+    console.log("removing user form waiting room");
+  }
+
+  goMainPage():void{
+    const navigationDetails: string[] = ['/main'];
+    this.router.navigate(navigationDetails);
+  }
+
+
+
 }

@@ -1,9 +1,11 @@
 import { Injectable } from '@angular/core';
 import { Game } from '../models/game.model';
+import { User } from '../models/user.model';
 
 const TOKEN_KEY = 'auth-token';
 const USER_KEY = 'auth-user';
 const SELECTED_GAME = 'sel-game';
+const CREATED_GROUP = 'host-group';
 
 @Injectable({
   providedIn: 'root'
@@ -36,6 +38,15 @@ export class TokenStorageService {
     }
 
     return {};
+  }
+
+  public saveCreatedGroup(group: any): void{
+    window.sessionStorage.removeItem(CREATED_GROUP);
+    window.sessionStorage.setItem(CREATED_GROUP, JSON.stringify(group))
+  }
+
+  public getCreatedGroup():any{
+    return window.sessionStorage.getItem(CREATED_GROUP);
   }
 
   public saveGame(game: any): void {

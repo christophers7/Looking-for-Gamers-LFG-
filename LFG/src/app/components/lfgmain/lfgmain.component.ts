@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Group } from 'src/app/models/group.model';
 import { TokenStorageService } from 'src/app/_services/token-storage.service';
 
 @Component({
@@ -9,29 +10,43 @@ import { TokenStorageService } from 'src/app/_services/token-storage.service';
 })
 export class LFGMainComponent implements OnInit {
 
+
   panelNumber!: number;
 
   constructor(private router: Router, private tokenStorage: TokenStorageService) { }
 
   currentUser: any;
 
+  hostGroupPanel:boolean = false;
+
   ngOnInit(): void {
     this.currentUser = this.tokenStorage.getUser();
+    this.viewHostedGroup();
+  }
+
+  viewHostedGroup():void{
+    if(this.tokenStorage.getCreatedGroup()) this.hostGroupPanel = true;
   }
 
   gameId: number = 0;
   send(data:any){
     this.panelNumber = data.panelNumber;
     this.gameId = data.gId;
-
   }
 
   changePanel(data: any){
     this.panelNumber = data;
+    console.log(this.panelNumber);
   }
 
   goToProfile(): void {
     const navigationDetails: string[] = ['/main/profile'];
+    this.router.navigate(navigationDetails);
+  }
+
+
+  goToSession():void{
+    const navigationDetails: string[] = ['/game/group/host'];
     this.router.navigate(navigationDetails);
   }
 

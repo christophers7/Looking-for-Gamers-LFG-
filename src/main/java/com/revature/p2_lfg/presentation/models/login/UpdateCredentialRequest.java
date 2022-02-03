@@ -9,7 +9,7 @@ import java.util.Objects;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class UpdatePasswordRequest {
+public class UpdateCredentialRequest {
 
     private String username;
     private String password;

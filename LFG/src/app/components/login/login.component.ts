@@ -63,9 +63,11 @@ export class LoginComponent implements OnInit {
     if(userN != null && passW != null) {
       this.authService.login(userN, passW).subscribe({
         next: data => {         
+          console.log(data);
           this.isLoginFailed = false;
           this.tokenStorage.saveToken(data.jwt);
           let builtUser = BuildUser.userBuilder(data);
+          console.log(builtUser);
           this.tokenStorage.saveUser(builtUser)
           // this.tokenStorage.saveUser(data)
           this.router.navigate(['main'])   

@@ -6,5 +6,12 @@
     <div>    
         <app-group-card [groupSessions] = "groupSessions" [gameId]="gameId"></app-group-card>
     </div>
+    <div *ngIf="hostingGroup">
+        <button id="hostViewButton" class="hostDisplayGroup" (click)="goToSession()">View Hosted Session</button>
+    </div>
+    <div>
+        <button type="button" id="goMainPageButton" class="mainPageButton" (click)="goToMain()">Main Page</button>
+    </div>
+
     <button (click)="goToCreateGroup()">Create Group</button>
 </div>
