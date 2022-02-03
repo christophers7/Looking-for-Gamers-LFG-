@@ -70,21 +70,25 @@ export class CreateGroupComponent implements OnInit {
     if (this.form.invalid) {
       return;
     }
-
+    
     let gSize = this.form.get('maxGroupSize')?.value
     let description = this.form.get('description')?.value
-    if(gSize != null && description != null) {
+      
+    if(gSize != 1 && description != null) {
       let g = JSON.stringify({
-        gameId: this.game.gameId,
-        maxUsers: gSize,
-        description: description
-      })
-      this.createGroup(g);
-    }
-
+      gameId: this.game.gameId,
+      maxUsers: gSize,
+      description: description
+        })
+           this.createGroup(g);
+          }else{
+            this.submitted = false;
+            this.form.reset();
+          }
   }
 
   createGroup(g:any){
+    console.log(this.userService.leaveAllWaitingList());
       this.userService.createGroup(g).subscribe(
         (data) => {
           console.log(data);

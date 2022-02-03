@@ -34,11 +34,19 @@ export class GroupCardComponent implements OnInit {
   getGameInfo(){
   }
 
-  groupRequest(group: GroupDetails) {
+  groupRequest(group:any) {
+    this.tokenStorage.checkIfDuplicate(group);
     this.userService.requestToJoinGroup(group).subscribe(
       (data) => {
-        // increase app counter
+        this.joinGroup(data)
+        console.log(data);
       }
     )
+  }
+
+  joinGroup(data:any):void{
+    console.log(data);
+    this.tokenStorage.addToJoinedGroup(data);
+
   }
 }
