@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { TokenStorageService } from 'src/app/_services/token-storage.service';
-import { UserService } from 'src/app/_services/user.service';
+import { RoutingAllocatorService } from 'src/app/_services/routing/routing-allocator.service';
+import { SessionStorageService } from 'src/app/_services/sessions/session-storage.service';
+import { UserService } from 'src/app/_services/user_data/user.service';
 
 @Component({
   selector: 'app-user-view',
@@ -18,8 +18,8 @@ export class UserViewComponent implements OnInit {
 
   constructor(
     private userService: UserService,
-    private tokenStorage: TokenStorageService,
-    private router: Router
+    private sessionStorage: SessionStorageService,
+    private routingAllocation: RoutingAllocatorService
   ) { }
 
   ngOnInit(): void {
@@ -27,34 +27,36 @@ export class UserViewComponent implements OnInit {
     this.isInsideSession();
   }
 
-  isInsideSession():void{
-    this.joinedSession = JSON.parse(this.tokenStorage.getJoinedGroups());
-    for(let i:number = 0; i < this.joinedSession.length; i++){
+  isInsideSession(): void {
+    let thing = this.sessionStorage.getWaitingGroups();
+    if(!thing){
+    this.joinedSession = JSON.parse(this.sessionStorage.getWaitingGroups());
+    for (let i: number = 0; i < this.joinedSession.length; i++) {
       this.userService.refreshWaitingList(this.joinedSession[i].groupId).subscribe(
         (data) => {
-          if(data.success){
-          this.insideSession = true;
-          this.insideGroup = data;
+          if (data.success) {
+            this.insideSession = true;
+            this.insideGroup = data;
           }
-          }
-        );
+        }
+      );
+    }
     }
   }
 
-  goMainPage():void{
-    const navigationDetails: string[] = ['/main'];
-    this.router.navigate(navigationDetails);
+  goMainPage(): void {
+    this.routingAllocation.main();
   }
 
-  leaveSession():void{
+  leaveSession(): void {
     console.log(this.insideGroup);
     this.userService.leaveAllWaitingList().subscribe(
       (data) => {
         console.log(data)
-        this.tokenStorage.leaveAllGroups();
+        this.sessionStorage.leaveAllGroups();
       }
     );
-        
+
     this.goMainPage();
   }
 

@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
 import Validation from 'src/app/utils/validation';
-import { AuthService } from 'src/app/_services/auth.service';
-import { TokenStorageService } from 'src/app/_services/token-storage.service';
+import { AuthService } from 'src/app/_services/user_data/auth.service';
+import { RoutingAllocatorService } from 'src/app/_services/routing/routing-allocator.service';
+import { TokenStorageService } from 'src/app/_services/user_data/token-storage.service';
 
 @Component({
   selector: 'app-new-user',
@@ -21,14 +21,21 @@ export class NewUserComponent implements OnInit {
     confirmPassword: new FormControl('')
   });
   submitted = false;
-  posts : any;
+  posts: any;
 
-  constructor(private router: Router, private formBuilder: FormBuilder, private authService: AuthService,
+  constructor(
+    private routingAllocator: RoutingAllocatorService,
+    private formBuilder: FormBuilder,
+    private authService: AuthService,
     private tokenStorage: TokenStorageService) { }
 
   ngOnInit(): void {
+    this.initializeForm();
+  }
+
+  initializeForm():void{
     this.form = this.formBuilder.group(
-      {   
+      {
         username: [
           '',
           [
@@ -38,9 +45,9 @@ export class NewUserComponent implements OnInit {
           ]
         ],
         email: [
-          '', 
+          '',
           [
-            Validators.required, 
+            Validators.required,
             Validators.email,
             Validators.maxLength(50)
           ]
@@ -54,7 +61,7 @@ export class NewUserComponent implements OnInit {
           ]
         ],
         confirmPassword: [
-          '', 
+          '',
           [
             Validators.required,
             Validators.minLength(4),
@@ -66,11 +73,11 @@ export class NewUserComponent implements OnInit {
         validators: [Validation.match('password', 'confirmPassword')]
       }
     );
+
   }
 
   goToLogin(): void {
-    const navigationDetails: string[] = [''];
-    this.router.navigate(navigationDetails);
+    this.routingAllocator.login();
   }
 
   get f(): { [key: string]: AbstractControl } {
@@ -83,17 +90,16 @@ export class NewUserComponent implements OnInit {
     if (this.form.invalid) {
       return;
     }
-
     let userN = this.form.get('username')?.value
     let email = this.form.get('email')?.value
     let passW = this.form.get('password')?.value
     console.log(userN, email, passW)
-    if(userN != null && email != null && passW != null) {
+    if (userN != null && email != null && passW != null) {
       this.authService.register(userN, email, passW).subscribe(
         (data) => {
           console.log("Profile successfully created!");
           this.goToLogin();
-        }) 
+        })
     }
   }
 

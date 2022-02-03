@@ -1,8 +1,8 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { Group } from 'src/app/models/group.model';
-import { TokenStorageService } from 'src/app/_services/token-storage.service';
-import { UserService } from 'src/app/_services/user.service';
+import { Component, OnInit } from '@angular/core';
+import { RoutingAllocatorService } from 'src/app/_services/routing/routing-allocator.service';
+import { SessionStorageService } from 'src/app/_services/sessions/session-storage.service';
+import { TokenStorageService } from 'src/app/_services/user_data/token-storage.service';
+import { UserService } from 'src/app/_services/user_data/user.service';
 
 @Component({
   selector: 'app-lfgmain',
@@ -11,19 +11,16 @@ import { UserService } from 'src/app/_services/user.service';
 })
 export class LFGMainComponent implements OnInit {
 
-
-  panelNumber!: number;
+  gameId: number = 0;
+  currentUser: any;
+  hostGroupPanel:boolean = false;
+  joinGroupPanel: boolean = false;
 
   constructor(
-    private router: Router, 
+    private sessionStorage: SessionStorageService,
     private tokenStorage: TokenStorageService,
-    private userService: UserService) { }
-
-  currentUser: any;
-
-  hostGroupPanel:boolean = false;
-
-  joinGroupPanel: boolean = false;
+    private userService: UserService,
+    private routingAllocator: RoutingAllocatorService) { }
 
   ngOnInit(): void {
     this.currentUser = this.tokenStorage.getUser();
@@ -31,44 +28,23 @@ export class LFGMainComponent implements OnInit {
   }
 
   viewGroups():void{
-    if(this.tokenStorage.getCreatedGroup()) this.hostGroupPanel = true;
+    if(this.sessionStorage.getCreatedGroup()) this.hostGroupPanel = true;
     else this.viewJoinedGroups();
   }
 
-  viewJoinedGroups():void{
-    if(this.tokenStorage.getJoinedGroups()) this.joinGroupPanel = true;
-  }
+  viewJoinedGroups():void{if(this.sessionStorage.getWaitingGroups()) this.joinGroupPanel = true;}
 
-  gameId: number = 0;
-  send(data:any){
-    this.panelNumber = data.panelNumber;
-    this.gameId = data.gId;
-  }
+  send(data:any){this.gameId = data.gId;}
 
-  changePanel(data: any){
-    this.panelNumber = data;
-    console.log(this.panelNumber);
-  }
+  goToProfile(): void {this.routingAllocator.profile();}
 
-  goToProfile(): void {
-    const navigationDetails: string[] = ['/main/profile'];
-    this.router.navigate(navigationDetails);
-  }
+  goToSession():void{this.routingAllocator.hostSession();}
 
-
-  goToSession():void{
-    const navigationDetails: string[] = ['/game/group/host'];
-    this.router.navigate(navigationDetails);
-  }
-
-  goToUserGroup():void{
-    const navigationDetails: string[] = ['/game/group/view'];
-    this.router.navigate(navigationDetails);
-  }
+  goToUserGroup():void{this.routingAllocator.userSession();}
 
   logOut(): void {
-    if(this.tokenStorage.getCreatedGroup()) this.userService.endSession();
+    if(this.sessionStorage.getCreatedGroup()) this.userService.endSession();
     this.tokenStorage.signOut();
-    this.router.navigate([''])
+    this.routingAllocator.login();
   }
 }

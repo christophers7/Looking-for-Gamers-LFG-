@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
-import { AuthService } from 'src/app/_services/auth.service';
-import { TokenStorageService} from 'src/app/_services/token-storage.service';
+import { AuthService } from 'src/app/_services/user_data/auth.service'; 
+import { TokenStorageService } from 'src/app/_services/user_data/token-storage.service'; 
 import BuildUser from 'src/app/utils/build-user';
+import { RoutingAllocatorService } from 'src/app/_services/routing/routing-allocator.service'; 
 
 @Component({
   selector: 'app-login',
@@ -11,20 +11,28 @@ import BuildUser from 'src/app/utils/build-user';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-
-  form: FormGroup = new FormGroup({
-    username: new FormControl(''),   
-    password: new FormControl(''),
-  });
+  
   submitted = false;
   errorMessage = '';
   isLoginFailed = false;
   posts : any;
+  
+  form: FormGroup = new FormGroup({
+    username: new FormControl(''),   
+    password: new FormControl(''),
+  });
 
-  constructor(private router: Router, private formBuilder: FormBuilder, private authService: AuthService, 
+  constructor(
+    private routingAllocator: RoutingAllocatorService, 
+    private formBuilder: FormBuilder, 
+    private authService: AuthService, 
     private tokenStorage: TokenStorageService) { }
 
   ngOnInit(): void {
+    this.initializeForm();
+  }
+
+  initializeForm():void{
     this.form = this.formBuilder.group(
       {   
         username: [
@@ -63,18 +71,14 @@ export class LoginComponent implements OnInit {
     if(userN != null && passW != null) {
       this.authService.login(userN, passW).subscribe({
         next: data => {         
-          console.log(data);
           this.isLoginFailed = false;
           this.tokenStorage.saveToken(data.jwt);
           let builtUser = BuildUser.userBuilder(data);
-          console.log(builtUser);
           this.tokenStorage.saveUser(builtUser)
-          // this.tokenStorage.saveUser(data)
-          this.router.navigate(['main'])   
+          this.routingAllocator.main();   
         },
         error: err => {
           this.errorMessage = err.error.message;
-          console.log("Login failed")
           this.isLoginFailed = true;
         }
       });        

@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { Group } from 'src/app/models/group.model';
-import { TokenStorageService } from 'src/app/_services/token-storage.service';
-import { UserService } from 'src/app/_services/user.service';
+import { RoutingAllocatorService } from 'src/app/_services/routing/routing-allocator.service';
+import { PollingRequestsService } from 'src/app/_services/sessions/polling-requests.service';
+import { SessionStorageService } from 'src/app/_services/sessions/session-storage.service';
+import { TokenStorageService } from 'src/app/_services/user_data/token-storage.service';
+import { UserService } from 'src/app/_services/user_data/user.service';
 
 @Component({
   selector: 'app-host-view',
@@ -15,25 +16,27 @@ export class HostViewComponent implements OnInit {
 
   group!: any;
 
-  // waitingRoom!: any;
-
   constructor(
+    private sessionStorage: SessionStorageService,
     private tokenStorage: TokenStorageService,
-    private router: Router,
-    private userService: UserService) { }
+    private routingAllocator: RoutingAllocatorService,
+    private userService: UserService,
+    private pollingService: PollingRequestsService) { }
 
   ngOnInit(): void {
+    this.initializeView();
+  }
+
+  initializeView():void{
     this.currentUser = this.tokenStorage.getUser();
-    this.group = JSON.parse(this.tokenStorage.getCreatedGroup());
+    this.group = JSON.parse(this.sessionStorage.getCreatedGroup());
+    if(this.group.groupId != 0) {
+      this.pollingService.updateMembers(this.group);
+    }
   }
 
   checkUsername(value: string) {
-    if(value === this.group._groupLead.username) {
-      return false;
-    }
-    else {
-      return true;
-    }
+    return value !== this.group._groupLead.username; 
   }
 
   removing():void{
@@ -59,8 +62,7 @@ export class HostViewComponent implements OnInit {
   }
 
   goMainPage():void{
-    const navigationDetails: string[] = ['/main'];
-    this.router.navigate(navigationDetails);
+    this.routingAllocator.main();
   }
 
   goToWaitingRoom(): void{
@@ -72,19 +74,20 @@ export class HostViewComponent implements OnInit {
   }
 
   convertToGroupFromWaitingListResponse(data:any):void{
-    console.log(data);
     this.group._groupDetails = data.sessionDetails;
     this.group._groupMembers = data.groupMembers;    
     this.group._waitingUsers = data.waitingMembers;
-    this.tokenStorage.saveCreatedGroup(this.group);
-    console.log(this.group);
+    this.sessionStorage.saveCreatedGroup(this.group);
   }
 
   disbandGroup():void{
     this.userService.endSession();
-    this.tokenStorage.removeCreatedGroup();
+    this.sessionStorage.removeCreatedGroup();
+    this.pollingService.ngOnDestroy();
     this.goMainPage();
   }
+
+  
 
 
 }
