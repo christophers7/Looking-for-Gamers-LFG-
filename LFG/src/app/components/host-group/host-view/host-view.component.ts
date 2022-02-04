@@ -42,10 +42,7 @@ export class HostViewComponent implements OnInit, OnDestroy {
   initializeView():void{
     this.currentUser = this.tokenStorage.getUser();
     this.group = this.sessionStorage.getCreatedGroup();
-    // this.waitingUsers = this.group._waitingUsers;
-    // this.groupMembers = this.group._groupMembers;
     this.updateMembers(this.group);
-    
   }
 
   addMember(newMember:any):void{
