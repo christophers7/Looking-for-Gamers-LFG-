@@ -77,9 +77,8 @@ export class LoginComponent implements OnInit {
           this.isLoginFailed = false;
           this.tokenStorage.saveToken(data.jwt);
           let builtUser = BuildUser.userBuilder(data);
-          this.tokenStorage.saveUser(builtUser)
-          this.getSocials()
-             
+          this.tokenStorage.saveUser(builtUser);
+          this.getSocials();          
         },
         error: err => {
           this.errorMessage = err.error.message;

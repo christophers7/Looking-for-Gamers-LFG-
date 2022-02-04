@@ -26,7 +26,8 @@ const ENDPOINTS = {
   HOST_REFRESH_MEMBERS: `${API_URL}group/refresh?groupId=`,
   HOST_RESPOND: `${API_URL}group/respond`,
   LINK_SOCIALS: `${API_URL}social/create`,
-  GET_SOCIALS: `${API_URL}social/user?gameId=3`
+  GET_SOCIALS: `${API_URL}social/user?gameId=3`,
+  GET_ACHIEVEMENTS: `${API_URL}steam/achievements?gameId=`
 }
 
 const httpOptions = {
@@ -50,6 +51,8 @@ export class UserService {
   updateSocials(data:any): Observable<any> {return this.http.post(ENDPOINTS.LINK_SOCIALS, JSON.stringify(data), httpOptions)}
 
   getSocials(): Observable<any> {return this.http.get(ENDPOINTS.GET_SOCIALS, httpOptions)}
+
+  getAchievements(data: any): Observable<any> {return this.http.get(ENDPOINTS.GET_ACHIEVEMENTS + data.gameId, httpOptions)}
 
   generateGames(): Observable<any> {return this.http.get(ENDPOINTS.AVAILABLE_GAMES, httpOptions)}
 

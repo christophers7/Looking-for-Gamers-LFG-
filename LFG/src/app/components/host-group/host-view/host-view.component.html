@@ -8,7 +8,8 @@
 
 <div *ngFor="let member of group._groupMembers;">
     <div *ngIf="checkUsername(member.username)">
-       <p> {{ member.username }} <p></p><button (click)="removingUserFromWaitingRoom(member)">Remove Member</button>
+        <button (click)="viewAchievements(member)">View Achievements</button>
+        <p> {{ member.username }} <p></p><button (click)="removingUserFromWaitingRoom(member)">Remove Member</button>
     </div>
 </div>
 
@@ -22,7 +23,7 @@
 
 <div *ngFor="let applicant of group._waitingUsers;">
     <div>
-        <!-- Might add a view stats or something button here or mayber their user rating -->
+        <button (click)="viewAchievements(applicant)">View Achievements</button>
         {{ applicant.username }} 
         <button (click)="addingUserFromWaitingRoom(applicant)">Acccept</button>
         <button (click)="removingUserFromWaitingRoom(applicant)">Decline</button>

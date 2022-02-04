@@ -13,7 +13,7 @@ import { UserService } from 'src/app/_services/user_data/user.service';
 export class HostViewComponent implements OnInit {
 
   currentUser: any;
-
+  stats: any;
   group!: any;
 
   constructor(
@@ -29,6 +29,7 @@ export class HostViewComponent implements OnInit {
 
   initializeView():void{
     this.currentUser = this.tokenStorage.getUser();
+    this.stats = this.tokenStorage.getSocials();
     this.group = JSON.parse(this.sessionStorage.getCreatedGroup());
     if(this.group.groupId != 0) {
       this.pollingService.updateMembers(this.group);
@@ -87,7 +88,9 @@ export class HostViewComponent implements OnInit {
     this.goMainPage();
   }
 
-  
+  viewAchievements(groupUser: any) {
+    window.open(groupUser.achievements);
+  }
 
 
 }
