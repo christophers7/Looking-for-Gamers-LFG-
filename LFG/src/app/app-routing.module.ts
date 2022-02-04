@@ -70,7 +70,7 @@ const routes: Routes = [
   }, 
   {
     component: AddSocialsComponent,
-    path: '/main/socials/modify'
+    path: 'main/socials/modify'
   }
 ];
 

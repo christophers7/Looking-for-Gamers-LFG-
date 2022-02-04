@@ -21,7 +21,7 @@ export class AddSocialsComponent implements OnInit {
   isLinkFailed = false;
   posts : any;
 
-  constructor(private router: Router, private formBuilder: FormBuilder, private userService: UserService, 
+  constructor(private formBuilder: FormBuilder, private userService: UserService, 
     private tokenStorage: TokenStorageService, private routingAllocator: RoutingAllocatorService) { }
 
   ngOnInit(): void {
@@ -52,12 +52,16 @@ export class AddSocialsComponent implements OnInit {
     if(sID != null) {
       this.userService.updateSocials({gameId: 3, social: sID}).subscribe({
         next: data => {         
-          console.log(data);
+          if (SocialsBuilder.checkSocials(data)) {
           this.isLinkFailed = false;
           let builtSocial = SocialsBuilder.buildSocials(data)
-          console.log(builtSocial);
           this.tokenStorage.saveSocials(builtSocial);
-          this.routingAllocator.profile();   
+          this.routingAllocator.profile();  
+          } else {
+            this.errorMessage = "Link unsuccessful.";        
+            this.isLinkFailed = true;
+          }
+           
         },
         error: err => {
           this.errorMessage = err.error.message;
@@ -71,6 +75,10 @@ export class AddSocialsComponent implements OnInit {
   onReset(): void {
     this.submitted = false;
     this.form.reset();
+  }
+
+  goToProfile(): void {
+    this.routingAllocator.profile();
   }
 }
 
