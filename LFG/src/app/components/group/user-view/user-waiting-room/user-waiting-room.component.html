@@ -4,7 +4,8 @@
         <h3>Game: {{group.sessionDetails.game.gametitle}}</h3>
         <h4>Current Users: {{group.sessionDetails.currentusers}}</h4>
         <h4>Max Users: {{group.sessionDetails.maxusers}}</h4>
-        <p>{{group.sessionDetails.description}}</p>
+        <p>{{group.sessionDetails.description}}</p>        
+        <button type="button" (click)="leaveSession(group.groupId, group.sessionDetails.game.gameid)">Leave Group</button>
     </div>
 
 

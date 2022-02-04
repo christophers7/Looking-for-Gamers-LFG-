@@ -41,6 +41,11 @@ export class GroupCardComponent implements OnInit {
   }
 
   joinGroup(data:any):void{
-    this.sessionStorage.addToGroups(data);
+    if(!this.checkMaxJoin()) this.sessionStorage.addToGroups(data);
+    else alert("MAX GROUPS JOINED");
+  }
+
+  checkMaxJoin():boolean{
+    return this.sessionStorage.getWaitingGroups().length == 3;
   }
 }

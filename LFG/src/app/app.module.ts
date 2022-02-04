@@ -30,6 +30,7 @@ import { AddSocialsComponent } from './components/add-socials/add-socials.compon
 import { SocialViewComponent } from './components/social/social-view/social-view.component';
 import { SocialProfileComponent } from './components/social/social-profile/social-profile.component';
 import { StatsComponent } from './components/social/stats/stats.component';
+import { UserStatsComponent } from './components/host-group/user-stats/user-stats.component';
 
 
 
@@ -58,7 +59,8 @@ import { StatsComponent } from './components/social/stats/stats.component';
     AddSocialsComponent,
     SocialViewComponent,
     SocialProfileComponent,
-    StatsComponent
+    StatsComponent,
+    UserStatsComponent
   ],
   imports: [
     BrowserModule,

@@ -1,5 +1,13 @@
 <div *ngFor="let member of groupMembers;">
     <div *ngIf="checkUsername(member.username)">
-       <p> {{ member.username }} <p></p><button (click)="removingUser(member)">Remove Member</button>
+        <p> {{ member.username }} <p></p>
+        <div *ngIf="viewStats">
+            <app-user-stats
+                [applicant]="member"   
+            >
+            </app-user-stats>
+        </div>
+        <button (click)="viewAchievements(member)">View Achievements</button>
+        <button (click)="removingUser(member)">Remove Member</button>
     </div>
 </div>
