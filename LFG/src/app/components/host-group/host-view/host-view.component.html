@@ -6,10 +6,16 @@
 </div>
 <br>
 
-<div *ngFor="let member of group._groupMembers;">
-    <div *ngIf="checkUsername(member.username)">
-       <p> {{ member.username }} <p></p><button (click)="removingUserFromWaitingRoom(member)">Remove Member</button>
-    </div>
+<app-group-members 
+    [groupMembers]="group._groupMembers"
+    [hostUsername]="group._groupLead.username"
+    (removeUser)="removeMember($event)"></app-group-members>
+
+<div>
+    <app-waiting-room 
+        [waitingUsers]="group._waitingUsers" 
+        (newMember)="addMember($event)"
+        (removeMember)="removeMember($event)"></app-waiting-room>
 </div>
 
 <br>
@@ -18,13 +24,4 @@
 <button type="button" (click)="goMainPage()">Main Page</button>
 <br>
 
-<button type="button" (click)="goToWaitingRoom()">View Waiting Room</button>
-
-<div *ngFor="let applicant of group._waitingUsers;">
-    <div>
-        <!-- Might add a view stats or something button here or mayber their user rating -->
-        {{ applicant.username }} 
-        <button (click)="addingUserFromWaitingRoom(applicant)">Acccept</button>
-        <button (click)="removingUserFromWaitingRoom(applicant)">Decline</button>
-    </div>
-</div>
+<!-- <button type="button" (click)="goToWaitingRoom()">View Waiting Room</button> -->

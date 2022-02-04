@@ -30,7 +30,6 @@ export class PollingRequestsService implements OnDestroy{
     private sessionStorage: SessionStorageService) { }
 
   ngOnDestroy(): void {
-    this.timeInterval.unsubscribe();
   }
 
   pollGroupsForGame(gameId: number): Observable<any>{
@@ -44,6 +43,8 @@ export class PollingRequestsService implements OnDestroy{
         switchMap(() => this.userService.refreshGroupMemberList(group))
       ).subscribe(
         res => {
+          console.log(res)
+          if(group) 
           if(res.groupMembers.length == group._groupMembers.length) this.sessionStorage.updateGroup(res);
         },
         err => console.log("lol"))

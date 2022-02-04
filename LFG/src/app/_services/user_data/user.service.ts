@@ -85,7 +85,7 @@ export class UserService {
   respondToUser(applicant: any): Observable<any> {return this.http.post(ENDPOINTS.HOST_RESPOND, JSON.stringify(applicant), httpOptions);}
 
   endSession():void{
-    let group: Group = JSON.parse(this.sessionStorage.getCreatedGroup());
+    let group: any = this.sessionStorage.getCreatedGroup();
     this.cancelGroup(group).subscribe(
       (date) => console.log(data)
       )

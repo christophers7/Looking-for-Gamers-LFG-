@@ -23,6 +23,10 @@ import { ModifyCredentialComponent } from './components/modify-credential/modify
 import { UserViewComponent } from './components/group/user-view/user-view.component';
 import { PollingComponent } from './components/polling/polling.component';
 import { AddSocialsComponent } from './components/add-socials/add-socials.component';
+import { WaitingRoomComponent } from './components/host-group/waiting-room/waiting-room.component';
+import { GroupMembersComponent } from './components/host-group/group-members/group-members.component';
+import { GroupSessionComponent } from './components/group/user-view/group-session/group-session.component';
+import { UserWaitingRoomComponent } from './components/group/user-view/user-waiting-room/user-waiting-room.component';
 
 
 
@@ -43,7 +47,11 @@ import { AddSocialsComponent } from './components/add-socials/add-socials.compon
     ModifyCredentialComponent,
     UserViewComponent,
     PollingComponent,
-    AddSocialsComponent
+    AddSocialsComponent,
+    WaitingRoomComponent,
+    GroupMembersComponent,
+    GroupSessionComponent,
+    UserWaitingRoomComponent
   ],
   imports: [
     BrowserModule,
