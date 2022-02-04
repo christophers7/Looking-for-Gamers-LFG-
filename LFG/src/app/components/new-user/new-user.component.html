@@ -1,4 +1,4 @@
-<div class="register-form">
+<div id="register-form">
     <form [formGroup]="form" (ngSubmit)="onSubmit()">
       
         <div class="form-group">
@@ -94,6 +94,6 @@
         </button>
       </div>
     </form>
+    <br>
+    <button (click)="goToLogin()" id='backButton'>Go Back</button> 
   </div>
-<br>
-<button (click)="goToLogin()" id='backButton'>Go Back</button> 

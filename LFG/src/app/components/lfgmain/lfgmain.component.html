@@ -1,3 +1,20 @@
+<div id="profileDisplayBox" class="mainGroup">
+    <div id="iconHolder" class="profileDisplayGroup">
+      <br><a *ngIf="stats"><img [src]="stats._avatarMedium"></a><br>
+      <h2>{{currentUser.username}}</h2>
+    </div>
+    <button id="profileDisplayButton" class="profileDisplayButtons" (click)="goToProfile()">View Profile</button>
+    <button id="logOutButton" class="profileDisplayButtons" (click)="logOut()">Log Out</button>
+    
+    <div *ngIf="hostGroupPanel">
+      <button id="hostViewButton" class="hostDisplayGroup" (click)="goToSession()">View Hosted Session</button>
+    </div>
+  
+    <div *ngIf="joinGroupPanel">
+      <button id="joinedGroupsButton" class="joinDisplay" (click)="goToUserGroup()">View Group</button>
+    </div>
+  </div>
+
 <div id="mainBox" class="mainGroup">
   <div id="mainDisplayBox" class='mainGroup'>
     <div>
@@ -9,23 +26,8 @@
     </div>
       <div id="infoDisplayBox" class="mainGroup">
     </div>
+
   
-  <div *ngIf="hostGroupPanel">
-    <button id="hostViewButton" class="hostDisplayGroup" (click)="goToSession()">View Hosted Session</button>
-  </div>
-
-  <div *ngIf="joinGroupPanel">
-    <button id="joinedGroupsButton" class="joinDisplay" (click)="goToUserGroup()">View Group</button>
-  </div>
-
-  <div id="profileDisplayBox" class="mainGroup">
-    <div id="iconHolder" class="profileDisplayGroup">
-      <br><a *ngIf="stats"><img [src]="stats._avaterMedium"></a><br>
-      <h2>{{currentUser.username}}</h2>
-    </div>
-    <button id="profileDisplayButton" class="profileDisplayGroup" (click)="goToProfile()">View Profile</button>
-    <button id="logOutButton" class="profileDisplayGroup" (click)="logOut()">Log Out</button>
-  </div>
 
   <div id="groupAppCounterBox" class="mainGroup">
 

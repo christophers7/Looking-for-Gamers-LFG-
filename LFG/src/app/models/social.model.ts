@@ -6,9 +6,9 @@ export class Social {
         private _gamertag: number,
         private _profileURL: string,
         private _avatar: string,
-        private _avaterMedium: string,
-        private _avaterFull: string,
-        private _avaterHash: string,
+        private _avatarMedium: string,
+        private _avatarFull: string,
+        private _avatarHash: string,
         ) 
         {
             this._userId = _userId,
@@ -16,9 +16,9 @@ export class Social {
             this._gamertag = _gamertag,
             this._profileURL = _profileURL,
             this._avatar = _avatar,
-            this._avaterMedium = _avaterMedium,
-            this._avaterFull = _avaterFull,
-            this._avaterHash = _avaterHash
+            this._avatarMedium = _avatarMedium,
+            this._avatarFull = _avatarFull,
+            this._avatarHash = _avatarHash
         }
 
     public get userId(): number {
@@ -57,24 +57,24 @@ export class Social {
     }
 
     public get avaterMedium(): string {
-        return this._avaterMedium;
+        return this._avatarMedium;
     }
     public set avaterMedium(value: string) {
-        this._avaterMedium = value;
+        this._avatarMedium = value;
     }
 
     public get avaterFull(): string {
-        return this._avaterFull;
+        return this._avatarFull;
     }
     public set avaterFull(value: string) {
-        this._avaterFull = value;
+        this._avatarFull = value;
     }
 
     public get avaterHash(): string {
-        return this._avaterHash;
+        return this._avatarHash;
     }
     public set avaterHash(value: string) {
-        this._avaterHash = value;
+        this._avatarHash = value;
     }
 
 }
