@@ -1,0 +1,10 @@
+<p>waiting-room works!</p>
+
+<div *ngFor="let applicant of waitingUsers;">
+    <div>
+        <!-- Might add a view stats or something button here or mayber their user rating -->
+        {{ applicant.username }} 
+        <button (click)="addingUserFromWaitingRoom(applicant)">Acccept</button>
+        <button (click)="removingUserFromWaitingRoom(applicant)">Decline</button>
+    </div>
+</div>

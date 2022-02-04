@@ -13,35 +13,32 @@ const KEYS = {
 })
 export class SessionStorageService {
 
-  constructor(
-) { }
+  constructor() { }
+
+  joinedGroups:any[] = [];
+
+  createdGroup:any;
 
   updateGroup(group:any):void{
-    console.log(group)
     let storing = {
+      _groupId: group.groupId,
+      _gameId: group.gameId,
       _groupLead : group.hostUser,
       _groupDetails: group.sessionDetails,
       _groupMembers: group.groupMembers,
       _waitingUsers: group.waitingMembers
     }
-    window.sessionStorage.removeItem(KEYS.CREATED_GROUP);
-    window.sessionStorage.setItem(KEYS.CREATED_GROUP, JSON.stringify(storing))
+    this.joinedGroups.push(storing);
   }
 
   addToWaitingRoom(group:any):void{
-    let joinedGroups = this.getWaitingGroups();
-    if(joinedGroups){
-      joinedGroups.push(group);
-      window.sessionStorage.setItem(KEYS.JOINED_GROUPS, JSON.stringify(joinedGroups));
-    }else{
-      let newGroup:any[] = [group];
-      window.sessionStorage.setItem(KEYS.JOINED_GROUPS, JSON.stringify(newGroup));
-    }
+    if(this.joinedGroups){
+      this.joinedGroups.push(group);
+     }
   }
 
-  public getWaitingGroups(): any{
-    const joinedGroups =  window.sessionStorage.getItem(KEYS.JOINED_GROUPS);
-    if(joinedGroups) return JSON.parse(joinedGroups);
+   getWaitingGroups(): any{
+    if(this.joinedGroups) return this.joinedGroups;
   }
 
   public addToGroups(group:any):void{
@@ -54,44 +51,36 @@ export class SessionStorageService {
   }
 
   public leaveAllGroups():void{
-    let joinedGroups = this.getWaitingGroups();
-    if(joinedGroups){
-      for(let i:number = 0; i < joinedGroups.length; i++){
-        console.log(joinedGroups[i]);
-        this.leaveGroup(joinedGroups[i].groupId);
-
+    if(this.joinedGroups){
+      for(let i:number = 0; i < this.joinedGroups.length; i++){
+        console.log(this.joinedGroups[i]);
+        this.leaveGroup(this.joinedGroups[i].groupId);
       }
     }
   }
 
   public leaveGroup(groupId:number):void{
     console.log(`${groupId}`)      
-    let joinedGroups = this.getWaitingGroups();
 
-    for(let i:number = 0; i < joinedGroups.length; i++){
-      console.log(joinedGroups[i])
-      if(groupId == joinedGroups[i].groupId) {
+    for(let i:number = 0; i < this.joinedGroups.length; i++){
+      console.log(this.joinedGroups[i])
+      if(groupId == this.joinedGroups[i].groupId) {
         console.log("found it");
-        joinedGroups.splice(i, 1);
-        window.sessionStorage.setItem(KEYS.JOINED_GROUPS, JSON.stringify(joinedGroups));
+        this.joinedGroups.splice(i, 1);
+        window.sessionStorage.setItem(KEYS.JOINED_GROUPS, JSON.stringify(this.joinedGroups));
         return;
       }
     } 
   }
 
   checkIfMax():boolean{
-    let joinedGroups = this.getWaitingGroups();
-    if(joinedGroups) return !(joinedGroups.length >= 3)
+    if(this.joinedGroups) return !(this.joinedGroups.length >= 3)
     return true;
   }
 
   checkIfDuplicate(group:any):boolean{
-    let joinedGroups = this.getWaitingGroups();
-    
-    for(let i:number = 0; i < joinedGroups.length; i++){
-      console.log(joinedGroups[i])
-      if(group.groupId == joinedGroups[i].groupId || group.groupid == joinedGroups[i].groupId) {
-        console.log("duplicate");
+    for(let i:number = 0; i < this.joinedGroups.length; i++){
+      if(group.groupId == this.joinedGroups[i].groupId || group.groupid == this.joinedGroups[i].groupId) {
         return false;
       }
     } 
@@ -99,16 +88,17 @@ export class SessionStorageService {
   }
 
   public saveCreatedGroup(group: any): void{
-    window.sessionStorage.removeItem(KEYS.CREATED_GROUP);
-    window.sessionStorage.setItem(KEYS.CREATED_GROUP, JSON.stringify(group))
+    this.createdGroup = group;
+    // window.sessionStorage.removeItem(KEYS.CREATED_GROUP);
+    // window.sessionStorage.setItem(KEYS.CREATED_GROUP, JSON.stringify(group))
   }
 
   public getCreatedGroup():any{
-    return window.sessionStorage.getItem(KEYS.CREATED_GROUP);
+    if(this.createdGroup) return this.createdGroup;
   }
 
   public removeCreatedGroup():any{
-    window.sessionStorage.removeItem(KEYS.CREATED_GROUP);
+    this.createdGroup = undefined;
   }
 
   public saveGame(game: any): void {

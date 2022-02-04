@@ -1,0 +1,11 @@
+<h1>Waiting Room</h1>
+    <div *ngFor="let group of joinedSession">
+        <h2>Group Id: {{group.groupId}}</h2>
+        <h3>Game: {{group.sessionDetails.game.gametitle}}</h3>
+        <h4>Current Users: {{group.sessionDetails.currentusers}}</h4>
+        <h4>Max Users: {{group.sessionDetails.maxusers}}</h4>
+        <p>{{group.sessionDetails.description}}</p>
+    </div>
+
+
+    <button type="button" (click)="goMainPage()">Main Page</button>
