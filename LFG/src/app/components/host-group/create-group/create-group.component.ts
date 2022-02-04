@@ -3,8 +3,10 @@ import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from
 import { Router } from '@angular/router';
 import { Group } from 'src/app/models/group.model';
 import BuildGroup from 'src/app/utils/build-group';
-import { TokenStorageService } from 'src/app/_services/token-storage.service';
-import { UserService } from 'src/app/_services/user.service';
+import { RoutingAllocatorService } from 'src/app/_services/routing/routing-allocator.service';
+import { SessionStorageService } from 'src/app/_services/sessions/session-storage.service';
+import { TokenStorageService } from 'src/app/_services/user_data/token-storage.service';
+import { UserService } from 'src/app/_services/user_data/user.service';
 
 @Component({
   selector: 'app-create-group',
@@ -29,24 +31,29 @@ export class CreateGroupComponent implements OnInit {
   game: any;
 
   @Output()
-  panelNumberChange = new EventEmitter<number>();
-
-  @Output()
   newGroupEvent: EventEmitter<any> = new EventEmitter<any>();
 
-  constructor(private router: Router, private formBuilder: FormBuilder, private userService: UserService,
-    private tokenStorage: TokenStorageService) { }
+  constructor(
+    private routingAllocation: RoutingAllocatorService,
+    private formBuilder: FormBuilder, 
+    private userService: UserService,
+    private tokenStorage: TokenStorageService,
+    private sessionStorage: SessionStorageService) { }
 
   ngOnInit(): void {
+    this.initializeForm();
+  }
+
+  initializeForm():void{
     this.currentUser = this.tokenStorage.getUser();
-    this.game = this.tokenStorage.getGame();
+    this.game = this.sessionStorage.getGame();
     this.form = this.formBuilder.group(
       {   
         maxGroupSize: [
           '',
           [
             Validators.required,
-            Validators.maxLength(2)
+            Validators.max(5)
           ]
         ],
         description: [
@@ -66,14 +73,13 @@ export class CreateGroupComponent implements OnInit {
 
   onSubmit(): void {
     this.submitted = true;
-
     if (this.form.invalid) {
       return;
     }
     
     let gSize = this.form.get('maxGroupSize')?.value
     let description = this.form.get('description')?.value
-      
+    
     if(gSize != 1 && description != null) {
       let g = JSON.stringify({
       gameId: this.game.gameId,
@@ -91,44 +97,26 @@ export class CreateGroupComponent implements OnInit {
     console.log(this.userService.leaveAllWaitingList());
       this.userService.createGroup(g).subscribe(
         (data) => {
-          console.log(data);
           let group:Group = BuildGroup.groupBuilder(data);
-          this.tokenStorage.saveCreatedGroup(group);
+          this.sessionStorage.removeCreatedGroup();
+          this.sessionStorage.saveCreatedGroup(group);
           this.goToHostView()
         })
   }
-
-
-  goToSession():void{
-    const navigationDetails: string[] = ['/game/group/host'];
-    this.router.navigate(navigationDetails);
-  }
-
+  
   onReset(): void {
     this.submitted = false;
     this.form.reset();
   }
 
   goToHostView() {
-    // this.panelNumber = 4;
-    // this.changePanel();
-    const navigationDetails: string[] = ['/game/group/host'];
-    this.router.navigate(navigationDetails);
-  }
-
-  goBackToGroupSelect(): void{
-    this.panelNumber = 2;
-    this.changePanel();
+    this.routingAllocation.hostSession();
   }
 
   goBack():void{
-    const navigationDetails: string[] = ['/main'];
-    this.router.navigate(navigationDetails);
+    this.routingAllocation.main();
   }
 
-  changePanel() {
-    this.panelNumberChange.emit(this.panelNumber);
-  }
 }
 
 

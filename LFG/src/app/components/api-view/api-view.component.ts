@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { SteamApiService } from 'src/app/_services/steam-api.service';
+import { SteamApiService } from 'src/app/_services/sessions/steam-api.service';
 
 @Component({
   selector: 'app-api-view',

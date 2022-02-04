@@ -21,6 +21,11 @@ import { HostViewComponent } from './components/host-group/host-view/host-view.c
 import { CreateGroupComponent } from './components/host-group/create-group/create-group.component';
 import { ModifyCredentialComponent } from './components/modify-credential/modify-credential.component';
 import { UserViewComponent } from './components/group/user-view/user-view.component';
+import { PollingComponent } from './components/polling/polling.component';
+import { WaitingRoomComponent } from './components/host-group/waiting-room/waiting-room.component';
+import { GroupMembersComponent } from './components/host-group/group-members/group-members.component';
+import { GroupSessionComponent } from './components/group/user-view/group-session/group-session.component';
+import { UserWaitingRoomComponent } from './components/group/user-view/user-waiting-room/user-waiting-room.component';
 
 
 
@@ -39,7 +44,12 @@ import { UserViewComponent } from './components/group/user-view/user-view.compon
     HostViewComponent,
     CreateGroupComponent,
     ModifyCredentialComponent,
-    UserViewComponent
+    UserViewComponent,
+    PollingComponent,
+    WaitingRoomComponent,
+    GroupMembersComponent,
+    GroupSessionComponent,
+    UserWaitingRoomComponent
   ],
   imports: [
     BrowserModule,

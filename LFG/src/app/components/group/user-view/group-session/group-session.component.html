@@ -1,0 +1,11 @@
+<h1>Viewing Session</h1>
+<h4>Host: {{insideGroup._hostUser.username}}</h4>
+<h4>Game: {{insideGroup._groupDetails.game.gametitle}}</h4>
+<img [src]="insideGroup._groupDetails.game.imglink">
+<div *ngFor="let members of insideGroup._groupMembers">
+    <div *ngIf="members.username != insideGroup._hostUser.username">
+    <p>username: {{members.username}}</p>
+    </div>
+</div>
+<button type="button" (click)="leaveSession()">Leave Group</button>
+<button type="button" (click)="goMainPage()">Main Page</button>

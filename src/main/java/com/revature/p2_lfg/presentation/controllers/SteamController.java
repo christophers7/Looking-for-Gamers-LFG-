@@ -32,9 +32,10 @@ public class SteamController {
 
 
     @GetMapping("/achievements")
-    private Object getSteamAchievement(@RequestParam int gameId, @RequestHeader("Authorization") String token) {
+    public Object getSteamAchievement(@RequestParam int gameId, @RequestHeader("Authorization") String token) {
         JWTInfo parsedJWT = JWTUtility.verifyUser(token);
         if (parsedJWT != null) {
+            System.out.println(parsedJWT);
             return steamService.getSteamAchievements(socialsService.getUserSocial(parsedJWT.getUserId(), gameId));
         }
         return null;

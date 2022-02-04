@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { TokenStorageService } from 'src/app/_services/token-storage.service';
+import { RoutingAllocatorService } from 'src/app/_services/routing/routing-allocator.service';
+import { TokenStorageService } from 'src/app/_services/user_data/token-storage.service';
 
 @Component({
   selector: 'app-profile',
@@ -9,27 +9,17 @@ import { TokenStorageService } from 'src/app/_services/token-storage.service';
 })
 export class ProfileComponent implements OnInit {
 
-  constructor(private router: Router, private tokenStorage: TokenStorageService) { }
+  constructor(
+    private routingAllocater: RoutingAllocatorService,
+    private tokenStorage: TokenStorageService) { }
 
   currentUser: any;
 
   ngOnInit(): void {
     this.currentUser = this.tokenStorage.getUser();
-    console.log(this.currentUser);
   }
 
-  modifyProfile(): void {
-    const navigationDetails: string[] = ['/main/profile/modify'];
-    this.router.navigate(navigationDetails);
-  }
-
-  modifyCredential(): void {
-    const navigationDetails: string[] = ['/main/credential/modify'];
-    this.router.navigate(navigationDetails);
-  }
-
-  goToMain(): void {
-    const navigationDetails: string[] = ['/main'];
-    this.router.navigate(navigationDetails);
-  }
+  modifyProfile(): void { this.routingAllocater.modifyProfile(); }
+  modifyCredential(): void { this.routingAllocater.modifyCredentials(); }
+  goToMain(): void { this.routingAllocater.main(); }
 }

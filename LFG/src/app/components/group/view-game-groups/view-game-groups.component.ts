@@ -1,12 +1,12 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
-import { GameGroupHolders } from 'src/app/models/game-group-holders.model';
+import { group } from '@angular/animations';
+import { Component, HostListener, Input, OnDestroy, OnInit } from '@angular/core';
+import { interval, startWith, Subscription, switchMap } from 'rxjs';
 import { GroupDetails } from 'src/app/models/group-details.model';
 import { Group } from 'src/app/models/group.model';
-import { UserViewGroup } from 'src/app/models/user-view-group.model';
-import { GameGroupService } from 'src/app/_services/game-group.service';
-import { TokenStorageService } from 'src/app/_services/token-storage.service';
-import { UserService } from 'src/app/_services/user.service';
+import { RoutingAllocatorService } from 'src/app/_services/routing/routing-allocator.service';
+import { SessionStorageService } from 'src/app/_services/sessions/session-storage.service';
+import { TokenStorageService } from 'src/app/_services/user_data/token-storage.service';
+import { UserService } from 'src/app/_services/user_data/user.service';
 
 
 @Component({
@@ -14,7 +14,9 @@ import { UserService } from 'src/app/_services/user.service';
   templateUrl: './view-game-groups.component.html',
   styleUrls: ['./view-game-groups.component.css']
 })
-export class ViewGameGroupsComponent implements OnInit {
+export class ViewGameGroupsComponent implements OnInit, OnDestroy {
+
+  timeInterval!: Subscription;
 
   groupSessions!: GroupDetails[];
   
@@ -22,29 +24,23 @@ export class ViewGameGroupsComponent implements OnInit {
   game: any;
 
   constructor(
+    private sessionStorage: SessionStorageService,
     private tokenStorage: TokenStorageService,
     private userService: UserService,
-    private router: Router,
-    private route: ActivatedRoute
-  ) { }
-
-  ngOnInit(): void {
-    this.currentUser = this.tokenStorage.getUser();
-    this.game = this.tokenStorage.getGame();
-    // this.getGameGroups();
-    this.getGroupSessions();
+    private routingAllocation: RoutingAllocatorService
+    ) { }
+  
+  @HostListener('unloaded')
+  ngOnDestroy(): void {
+    this.timeInterval.unsubscribe();
   }
 
-
-  // getGameGroups():void{
-  //   console.log(this.game.gameId);
-  //   this.userService.generateGroupsForGame(this.game.gameId).subscribe(
-  //     (data) => {
-  //       this.groupSessions = data.selectedGameAvailableGroups
-  //     }
-  //       );
-  // }
-
+  ngOnInit(): void {
+    console.log("hello")
+    this.currentUser = this.tokenStorage.getUser();
+    this.game = this.sessionStorage.getGame();
+    this.getGroupSessions();
+  }
 
   hostingGroup: boolean = false;
 
@@ -55,63 +51,46 @@ export class ViewGameGroupsComponent implements OnInit {
   gameId!:number;
 
   getGroupSessions(){
-    
     this.userService.getSelectedGame(this.game.gameId)
       .subscribe(
         (data) => {
           console.log(data)
           this.groupSessions = data.selectedGameAvailableGroups;
+          this.getPollingGroupSessions();
         },
         (error) => {
           console.log(error);
         }
       )
   }
-  
 
-  hostViewOpen(check:boolean){
-    this.hostingGroup = check;
-    console.log(check);
+  getPollingGroupSessions(){
+    this.timeInterval = interval(5000)
+      .pipe(
+        startWith(0),
+        switchMap(() => this.userService.getSelectedGame(this.game.gameId))
+      ).subscribe(
+        res => {
+          if(res.selectedGameAvailableGroups.length != this.groupSessions.length) this.groupSessions = res.selectedGameAvailableGroups;
+        },
+        err => console.log("lol"))
   }
 
   newGroupCreated(group:any){
-    console.log(group);
     this.group = group;
-    console.log(group);
-    this.hostViewOpen(true);
-  }
-
-
-  panelNumber!: number;
-
-  @Output()
-  panelNumberChange = new EventEmitter<number>();
-
-  goBackToGameSelect(): void{
-    this.panelNumber = 1;
-    this.changePanel();
   }
 
   goToCreateGroup(): void {
-    // this.panelNumber = 3;
-    // this.changePanel();
-    const navigationDetails:string[] = ['/game/group/create'];
-    this.router.navigate(navigationDetails);
-  }
-
-  changePanel() {
-    this.panelNumberChange.emit(this.panelNumber);
+    this.routingAllocation.createGroup();
   }
 
   goToMain():void{
-    const navigationDetails: string[] = ['/main'];
-    this.router.navigate(navigationDetails);
+    this.routingAllocation.main();
   }
 
 
   goToSession():void{
-    const navigationDetails: string[] = ['/game/group/host'];
-    this.router.navigate(navigationDetails);
+    this.routingAllocation.hostSession();
   }
 
 }

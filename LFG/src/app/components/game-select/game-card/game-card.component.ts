@@ -1,9 +1,9 @@
-import { EventEmitter, Component, Input, OnInit, Output } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, Input, OnInit } from '@angular/core';
 import { AvailableGames } from 'src/app/models/available-games.model';
 import { Game } from 'src/app/models/game.model';
-import { TokenStorageService } from 'src/app/_services/token-storage.service';
-import { GameDisplayComponent } from '../game-display/game-display.component';
+import { RoutingAllocatorService } from 'src/app/_services/routing/routing-allocator.service';
+import { SessionStorageService } from 'src/app/_services/sessions/session-storage.service';
+import { TokenStorageService } from 'src/app/_services/user_data/token-storage.service';
 
 @Component({
   selector: 'app-game-card',
@@ -12,34 +12,29 @@ import { GameDisplayComponent } from '../game-display/game-display.component';
 })
 export class GameCardComponent implements OnInit {
 
-  constructor(private tokenStorage: TokenStorageService,
-    private router: Router) { }
+  constructor(
+    private sessionStorage: SessionStorageService,
+    private routingAllocator: RoutingAllocatorService) { }
 
   ngOnInit(): void {
   }
 
   @Input()
   game!: Game;
-  
-  @Output() 
-  emitter = new EventEmitter<{gId: number, panelNumber: number}>()
-
-  emit(gameId: number) {
-    let tempGame: AvailableGames = new AvailableGames(this.game.gameId, this.game.name, this.game.imgLink, this.game.sessions)
-    this.tokenStorage.saveGame(tempGame);
-    this.emitter.emit({gId: this.game.gameId, panelNumber: 2});
-  }
 
   goToGroups():void{
-    let tempGame: AvailableGames = new AvailableGames(this.game.gameId, this.game.name, this.game.imgLink, this.game.sessions)
-    this.tokenStorage.saveGame(tempGame);
+    this.sessionStorage.saveGame(
+      new AvailableGames(
+        this.game.gameId, 
+        this.game.name, 
+        this.game.imgLink, 
+        this.game.sessions)
+    );
     this.goToGameGroups();
   }
 
   goToGameGroups(): void{
-    const navigationDetails: string[] = ['game/group'];
-    console.log(navigationDetails);
-    this.router.navigate(navigationDetails);
+    this.routingAllocator.gameGroups();
   }
 
 }

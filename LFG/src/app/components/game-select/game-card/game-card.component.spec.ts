@@ -24,7 +24,6 @@ describe('GameCardComponent', () => {
   });
 
   it('should return a game when an Id is passed in', () => {
-    component.emit(1)
     
   })
 });

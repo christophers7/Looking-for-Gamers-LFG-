@@ -1,10 +1,7 @@
-import { EventEmitter, Component, OnInit, Output } from '@angular/core';
-import { AvailableGames } from 'src/app/models/available-games.model';
-import { GameService } from 'src/app/_services/game.service';
-import { Location } from '@angular/common';
-import { UserService } from 'src/app/_services/user.service';
+import { Component, HostListener, OnDestroy, OnInit } from '@angular/core';
+import { UserService } from 'src/app/_services/user_data/user.service';
 import { Game } from 'src/app/models/game.model';
-import { TokenStorageService } from 'src/app/_services/token-storage.service';
+import { interval, startWith, Subscription, switchMap } from 'rxjs';
 
 
 @Component({
@@ -12,36 +9,54 @@ import { TokenStorageService } from 'src/app/_services/token-storage.service';
   templateUrl: './game-display.component.html',
   styleUrls: ['./game-display.component.css']
 })
-export class GameDisplayComponent implements OnInit {
-  
+export class GameDisplayComponent implements OnInit , OnDestroy{
   games!: Game[];
 
   gId!: number;
 
+  timeInterval!: Subscription;
+
   constructor(
-    private gameService:GameService,
-    private userService: UserService,
-    private tokenStorage: TokenStorageService
-    ) { }
+    private userService: UserService  ) { }
+
+  @HostListener('unloaded')
+  ngOnDestroy(): void {
+    this.timeInterval.unsubscribe();
+  }
 
   ngOnInit(): void {
     this.findAllGames();
   }
 
-  public findAllGames(){
+  public findAllGames() {
     this.userService.generateGames().subscribe(
       (data) => {
-        console.log(data)
         this.games = data.gameSessionList;
-      },
+        this.getPollingGames();
+      }
     )
   }
 
-  @Output()
-  emitter = new EventEmitter<{gId: number, panelNumber: number}>()
 
-  send(data:any) {
-    this.emitter.emit(data);
-    console.log(data);
+  getPollingGames(){
+    this.timeInterval = interval(3000)
+      .pipe(
+        startWith(0),
+        switchMap(() => this.userService.generateGames())
+      ).subscribe(
+        res => {
+          if(this.checkUpdatedGames(res)) this.games = res.gameSessionList;
+        },
+        err => console.log("lol"))
   }
+
+  checkUpdatedGames(data:any): boolean {
+    let updatedGame: boolean = false;
+    for(let i = 0; i < data.gameSessionList.length; i++){
+      if(data.gameSessionList[i].sessions == this.games[i].sessions) updatedGame = true;
+    }
+    return updatedGame;
+  }
+
+
 }

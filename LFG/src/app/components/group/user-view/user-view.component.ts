@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { TokenStorageService } from 'src/app/_services/token-storage.service';
-import { UserService } from 'src/app/_services/user.service';
+import { Component, HostListener, OnDestroy, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { RoutingAllocatorService } from 'src/app/_services/routing/routing-allocator.service';
+import { SessionStorageService } from 'src/app/_services/sessions/session-storage.service';
+import { UserService } from 'src/app/_services/user_data/user.service';
 
 @Component({
   selector: 'app-user-view',
@@ -12,51 +13,51 @@ export class UserViewComponent implements OnInit {
 
   joinedSession!: any;
 
-  insideSession: boolean = false
+  insideSession: boolean = false;
+
+  leftSession: boolean = false;
 
   insideGroup!: any;
 
   constructor(
     private userService: UserService,
-    private tokenStorage: TokenStorageService,
-    private router: Router
+    private sessionStorage: SessionStorageService,
+    private routingAllocation: RoutingAllocatorService
   ) { }
 
   ngOnInit(): void {
+    console.log(this.joinedSession);
+    console.log(this.sessionStorage.joinedGroups);
+    this.joinedSession = this.sessionStorage.joinedGroups;
     this.insideSession = false;
-    this.isInsideSession();
   }
 
-  isInsideSession():void{
-    this.joinedSession = JSON.parse(this.tokenStorage.getJoinedGroups());
-    for(let i:number = 0; i < this.joinedSession.length; i++){
-      this.userService.refreshWaitingList(this.joinedSession[i].groupId).subscribe(
-        (data) => {
-          if(data.success){
-          this.insideSession = true;
-          this.insideGroup = data;
-          }
-          }
-        );
-    }
+  insideSessionCheck(check:boolean):void{
+    this.insideSession = check;
   }
 
-  goMainPage():void{
-    const navigationDetails: string[] = ['/main'];
-    this.router.navigate(navigationDetails);
+  joinedGroup(group:any):void{
+    this.sessionStorage.addToWaitingRoom(group);
+    this.insideGroup = group;
   }
 
-  leaveSession():void{
-    console.log(this.insideGroup);
-    this.userService.leaveAllWaitingList().subscribe(
-      (data) => {
-        console.log(data)
-        this.tokenStorage.leaveAllGroups();
-      }
-    );
-        
-    this.goMainPage();
-  }
+  // isInsideSession(): void {
+  //   this.joinedSession = this.sessionStorage.getWaitingGroups();
+  //   console.log(this.joinedSession);
+  //   for (let i: number = 0; i < this.joinedSession.length; i++) {
+  //     this.userService.refreshWaitingList(this.joinedSession[i].groupId).subscribe(
+  //       (data) => {
+  //         if (data.success) {
+  //           this.insideSession = true;
+  //           this.insideGroup = data;
+  //         }
+  //       }
+  //     );
+  //   }
+  // }
 
+  goMainPage(): void {
+    this.routingAllocation.main();
+  }
 
 }

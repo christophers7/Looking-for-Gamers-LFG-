@@ -1,0 +1,5 @@
+<div *ngFor="let member of groupMembers;">
+    <div *ngIf="checkUsername(member.username)">
+       <p> {{ member.username }} <p></p><button (click)="removingUser(member)">Remove Member</button>
+    </div>
+</div>
