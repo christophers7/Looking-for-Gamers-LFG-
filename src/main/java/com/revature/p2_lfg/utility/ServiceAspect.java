@@ -26,11 +26,16 @@ public class ServiceAspect {
     }
 
     @AfterReturning(value = "com.revature.p2_lfg.utility.SystemArchitect.businessService()", returning = "returnedValue")
-    public void afterServiceCheck(JoinPoint jp, Object returnedValue){
-        dLog.info("Class: " + jp.getSignature().getDeclaringType() + "\nReturning: " + returnedValue.toString());
-        iLog.info("Class: " + jp.getSignature().getDeclaringType() + "\nReturning: " + returnedValue.toString());
-    }
+    public void afterServiceCheck(JoinPoint jp, Object returnedValue) {
+        if (returnedValue != null) {
+            dLog.info("Class: " + jp.getSignature().getDeclaringType() + "\nReturning: " + returnedValue.toString());
+            iLog.info("Class: " + jp.getSignature().getDeclaringType() + "\nReturning: " + returnedValue.toString());
 
+        }else{
+            dLog.info("Class: " + jp.getSignature().getDeclaringType() + "\nReturning: " + "null");
+            iLog.info("Class: " + jp.getSignature().getDeclaringType() + "\nReturning: " + "null");
+        }
+    }
     @AfterThrowing(value = "com.revature.p2_lfg.utility.SystemArchitect.businessService()", throwing = "thrownException")
     public void afterThrowingCheck(JoinPoint jp, Object thrownException){
         dLog.error("Class: " + jp.getSignature().getDeclaringType() + "\nThrowing: " + thrownException.toString());

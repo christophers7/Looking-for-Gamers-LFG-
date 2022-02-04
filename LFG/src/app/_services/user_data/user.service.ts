@@ -61,6 +61,8 @@ export class UserService {
   }
 
   getSocialAsGroup(gameId:any, groupId:any): Observable<any>{
+    console.log(gameId);
+    console.log(groupId)
     return this.http.get(`${ENDPOINTS.GET_SOCIALS_AS_GROUP + groupId + ENDPOINTS.AND_GAME_ID + gameId}`)
   }
 
@@ -84,10 +86,10 @@ export class UserService {
 
   refreshWaitingList(groupId:any):Observable<any>{return this.http.get(`${ENDPOINTS.CHECK_GROUP_RESPONSE + groupId}`)}
 
-  leaveGroup(group: Group): Observable<any> {
+  leaveGroup(groupId: any, gameId:any): Observable<any> {
     return this.http.delete(
-      ENDPOINTS.LEAVE_GROUP_GROUP_ID + group.groupId +
-      ENDPOINTS.AND_GAME_ID + group.gameId)
+      ENDPOINTS.LEAVE_GROUP_GROUP_ID + groupId +
+      ENDPOINTS.AND_GAME_ID + gameId)
   }
 
   refreshOtherMembers(groupId: any): Observable<any>{return this.http.get(`${ENDPOINTS.CHECK_GROUP_MEMBERS + groupId}`)}

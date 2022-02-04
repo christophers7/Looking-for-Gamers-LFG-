@@ -16,6 +16,8 @@ export class GroupMembersComponent implements OnInit {
   @Output()
   removeUser = new EventEmitter<any>(); 
 
+  viewStats:boolean = false;
+
   constructor() { }
 
   ngOnInit(): void {
@@ -25,6 +27,10 @@ export class GroupMembersComponent implements OnInit {
 
   removingUser(applicant:any){
     this.removeUser.emit(applicant);
+  }
+
+  viewAchievements(groupUser: any) {
+    this.viewStats=!this.viewStats;
   }
 
 }

@@ -44,7 +44,7 @@ export class HostViewComponent implements OnInit, OnDestroy {
     this.group = this.sessionStorage.getCreatedGroup();
     this.updateMembers(this.group);
     this.stats = this.tokenStorage.getSocials();
-    this.group = JSON.parse(this.sessionStorage.getCreatedGroup());
+    this.group = this.sessionStorage.getCreatedGroup();
   }
 
   addMember(newMember:any):void{
@@ -54,6 +54,7 @@ export class HostViewComponent implements OnInit, OnDestroy {
         this.ngOnInit();
       }
     );
+
   }
 
   removeMember(member:any):void{
@@ -63,6 +64,35 @@ export class HostViewComponent implements OnInit, OnDestroy {
         this.ngOnInit();
       }
     );
+  }
+
+  checkMaxGroup():void{
+    if(this.group._groupDetails.maxusers == this.group._groupMembers.length){
+      this.getMemberSocials();
+    }
+  }
+
+  getMemberSocials():void{
+    this.userService.getSocialAsGroup(this.group._gameId, this.group._groupId).subscribe({
+      next: res =>{
+        console.log(res)
+        this.openSocialLinks(res);
+      },
+      error: err =>{
+        console.log(err)
+      }
+    }
+    );
+  }
+
+  openSocialLinks(data:any):void{
+    if(data){
+      for(let i =0 ; i < data.length; i++){
+        window.open(data[i].steamProfile.response.players.player[0].profileurl, "_blank");
+      }
+      this.disbandGroup();
+      window.close();
+    }
   }
 
   checkUsername(value: string) {
@@ -93,10 +123,12 @@ export class HostViewComponent implements OnInit, OnDestroy {
 
 
   convertToGroupFromWaitingListResponse(data:any):void{
+    console.log(data);
     this.group._groupDetails = data.sessionDetails;
     this.group._groupMembers = data.groupMembers;
     this.group._waitingUsers = data.waitingMembers;
     this.sessionStorage.saveCreatedGroup(this.group);
+    this.checkMaxGroup()
   }
 
   disbandGroup():void{
@@ -120,9 +152,6 @@ export class HostViewComponent implements OnInit, OnDestroy {
             res.waitingMembers.length != group._waitingUsers.length) this.convertToGroupFromWaitingListResponse(res);
         },
         err => console.log("lol"))
-  }
-  viewAchievements(groupUser: any) {
-    window.open(groupUser.achievements);
   }
 
 
