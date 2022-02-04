@@ -66,5 +66,5 @@ $ git push origin devBranch
 - Whenever there is an update to the main, pull and resolve conflicts on local machines
   - Pull from origin main, merge with dev branch, and continue to work with devBranch
   - This will reduce overall merge conflicts
-  - Ravioli Ravioli give me the formuoli!!!!!!!!!!!!!!!
+  - Ravioli Ravioli give me the formuoli!!!!!!!!!!!!!!!!!
 
