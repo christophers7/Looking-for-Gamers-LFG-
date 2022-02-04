@@ -14,7 +14,7 @@ import { UserService } from 'src/app/_services/user_data/user.service';
 export class HostViewComponent implements OnInit, OnDestroy {
 
   currentUser: any;
-
+  stats: any;
   group!: any;
 
   timeInterval!: Subscription;
@@ -43,6 +43,8 @@ export class HostViewComponent implements OnInit, OnDestroy {
     this.currentUser = this.tokenStorage.getUser();
     this.group = this.sessionStorage.getCreatedGroup();
     this.updateMembers(this.group);
+    this.stats = this.tokenStorage.getSocials();
+    this.group = JSON.parse(this.sessionStorage.getCreatedGroup());
   }
 
   addMember(newMember:any):void{
@@ -64,7 +66,7 @@ export class HostViewComponent implements OnInit, OnDestroy {
   }
 
   checkUsername(value: string) {
-    return value !== this.group._groupLead.username; 
+    return value !== this.group._groupLead.username;
   }
 
   removing():void{
@@ -92,7 +94,7 @@ export class HostViewComponent implements OnInit, OnDestroy {
 
   convertToGroupFromWaitingListResponse(data:any):void{
     this.group._groupDetails = data.sessionDetails;
-    this.group._groupMembers = data.groupMembers;    
+    this.group._groupMembers = data.groupMembers;
     this.group._waitingUsers = data.waitingMembers;
     this.sessionStorage.saveCreatedGroup(this.group);
   }
@@ -113,11 +115,15 @@ export class HostViewComponent implements OnInit, OnDestroy {
         switchMap(() => this.userService.refreshGroupMemberList(group))
       ).subscribe(
         res => {
-          if(this.sessionStorage.getCreatedGroup()) 
-          if(res.groupMembers.length != group._groupMembers.length || 
+          if(this.sessionStorage.getCreatedGroup())
+          if(res.groupMembers.length != group._groupMembers.length ||
             res.waitingMembers.length != group._waitingUsers.length) this.convertToGroupFromWaitingListResponse(res);
         },
         err => console.log("lol"))
   }
+  viewAchievements(groupUser: any) {
+    window.open(groupUser.achievements);
+  }
+
 
 }

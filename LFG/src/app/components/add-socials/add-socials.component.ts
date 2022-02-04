@@ -21,7 +21,7 @@ export class AddSocialsComponent implements OnInit {
   isLinkFailed = false;
   posts : any;
 
-  constructor(private router: Router, private formBuilder: FormBuilder, private userService: UserService, 
+  constructor(private formBuilder: FormBuilder, private userService: UserService, 
     private tokenStorage: TokenStorageService, private routingAllocator: RoutingAllocatorService) { }
 
   ngOnInit(): void {
@@ -50,14 +50,14 @@ export class AddSocialsComponent implements OnInit {
 
     let sID = this.form.get('steamId')?.value
     if(sID != null) {
-      this.userService.updateSocials({gameId: 3, social: sID}).subscribe({
-        next: data => {         
-          console.log(data);
+      console.log(sID);
+      this.userService.createSocials({gameId: 3, social: sID}).subscribe({
+        next: data => {     
+          console.log(data);    
           this.isLinkFailed = false;
           let builtSocial = SocialsBuilder.buildSocials(data)
-          console.log(builtSocial);
           this.tokenStorage.saveSocials(builtSocial);
-          this.routingAllocator.profile();   
+          this.routingAllocator.socialPage();  
         },
         error: err => {
           this.errorMessage = err.error.message;
@@ -71,6 +71,10 @@ export class AddSocialsComponent implements OnInit {
   onReset(): void {
     this.submitted = false;
     this.form.reset();
+  }
+
+  goToProfile(): void {
+    this.routingAllocator.profile();
   }
 }
 

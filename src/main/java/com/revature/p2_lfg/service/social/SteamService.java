@@ -33,4 +33,12 @@ public class SteamService {
         return restTemplate.getForObject(url, Object.class);
     }
 
+    public Object getSteamStats(Socials userSocial){
+        int platformKey = gameService.getGamePlatformKey(userSocial.getGameid());
+        String userId = userSocial.getGamertag();
+        RestTemplate restTemplate = new RestTemplate();
+        String url = "http://api.steampowered.com/ISteamUserStats/GetUserStatsForGame/v0002/" + "?appid=" + platformKey + "&" + steamKey + "&steamid=" + userId ;
+        return restTemplate.getForObject(url, Object.class);
+    }
+
 }

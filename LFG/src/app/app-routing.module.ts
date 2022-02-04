@@ -14,6 +14,7 @@ import { ModifyProfileComponent } from './components/modify-profile/modify-profi
 import { NewUserComponent } from './components/new-user/new-user.component';
 import { PollingComponent } from './components/polling/polling.component';
 import { ProfileComponent } from './components/profile/profile.component';
+import { SocialViewComponent } from './components/social/social-view/social-view.component';
 
 const routes: Routes = [
   {
@@ -69,8 +70,16 @@ const routes: Routes = [
     path: 'test/polling'
   }, 
   {
+    component: SocialViewComponent,
+    path: 'main/socials'
+  },
+  {
     component: AddSocialsComponent,
-    path: '/main/socials/modify'
+    path: 'main/socials/modify'
+  },
+  {
+    component: SocialViewComponent,
+    path: 'test/social'
   }
 ];
 

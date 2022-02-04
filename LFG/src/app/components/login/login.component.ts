@@ -4,6 +4,8 @@ import { AuthService } from 'src/app/_services/user_data/auth.service';
 import { TokenStorageService } from 'src/app/_services/user_data/token-storage.service'; 
 import BuildUser from 'src/app/utils/build-user';
 import { RoutingAllocatorService } from 'src/app/_services/routing/routing-allocator.service'; 
+import { SocialsBuilder } from 'src/app/utils/socials-builder';
+import { UserService } from 'src/app/_services/user_data/user.service';
 
 @Component({
   selector: 'app-login',
@@ -25,7 +27,8 @@ export class LoginComponent implements OnInit {
   constructor(
     private routingAllocator: RoutingAllocatorService, 
     private formBuilder: FormBuilder, 
-    private authService: AuthService, 
+    private authService: AuthService,
+    private userService: UserService, 
     private tokenStorage: TokenStorageService) { }
 
   ngOnInit(): void {
@@ -74,8 +77,8 @@ export class LoginComponent implements OnInit {
           this.isLoginFailed = false;
           this.tokenStorage.saveToken(data.jwt);
           let builtUser = BuildUser.userBuilder(data);
-          this.tokenStorage.saveUser(builtUser)
-          this.routingAllocator.main();   
+          this.tokenStorage.saveUser(builtUser);
+          this.routingAllocator.main();
         },
         error: err => {
           this.errorMessage = err.error.message;
@@ -84,6 +87,7 @@ export class LoginComponent implements OnInit {
       });        
     }
   }
+
 
   onReset(): void {
     this.submitted = false;

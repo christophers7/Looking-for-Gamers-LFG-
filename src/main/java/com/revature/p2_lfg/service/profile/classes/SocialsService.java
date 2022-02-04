@@ -5,9 +5,11 @@ import com.revature.p2_lfg.presentation.models.profile.requests.DeleteSocialRequ
 import com.revature.p2_lfg.presentation.models.profile.requests.UpdateSocialRequest;
 import com.revature.p2_lfg.presentation.models.profile.responses.SocialResponse;
 import com.revature.p2_lfg.repository.entities.compositeKeys.SocialId;
+import com.revature.p2_lfg.repository.entities.session.Games;
 import com.revature.p2_lfg.repository.entities.session.Session;
 import com.revature.p2_lfg.repository.entities.user.Socials;
 import com.revature.p2_lfg.repository.entities.user.UserCredential;
+import com.revature.p2_lfg.repository.interfaces.GamesRepository;
 import com.revature.p2_lfg.repository.interfaces.LoginRepository;
 import com.revature.p2_lfg.repository.interfaces.SessionRepository;
 import com.revature.p2_lfg.repository.interfaces.SocialsRepository;
@@ -38,6 +40,9 @@ public class SocialsService implements SocialsServiceable {
 
     @Autowired
     private LoginRepository loginRepository;
+
+    @Autowired
+    private GamesRepository gameRepository;
 
     @Override
     public SocialResponse getUserSocialResponse(JWTInfo parsedJWT, int gameId) {
@@ -98,7 +103,11 @@ public class SocialsService implements SocialsServiceable {
 
     @Override
     public SocialResponse createUserSocial(CreateSocialRequest socialRequest, JWTInfo parsedJWT) {
-        return convertSocialToSocialResponse(socialsRepository.save(new Socials(parsedJWT.getUserId(), socialRequest.getGameId(), socialRequest.getSocial())));
+        List<Games> games = gameRepository.findAll();
+        for (Games game : games) {
+            socialsRepository.save(new Socials(parsedJWT.getUserId(), game.getGameid(), socialRequest.getSocial()));
+        }
+        return convertSocialToSocialResponse(socialsRepository.findById(new SocialId(parsedJWT.getUserId(), socialRequest.getGameId())).get());
     }
 
     @Override
@@ -120,5 +129,11 @@ public class SocialsService implements SocialsServiceable {
     @Override
     public boolean deleteSocial(DeleteSocialRequest deleteSocial, JWTInfo parsedJWT) {
         return false;
+    }
+
+    @Override
+    public SocialResponse getUserSocialResponseWithUsername(String memberUsername, int gameId, JWTInfo parsedJWT) {
+        int userId = loginRepository.findIdByUsername(memberUsername);
+        return convertSocialToSocialResponse(getUserSocial(userId, gameId));
     }
 }

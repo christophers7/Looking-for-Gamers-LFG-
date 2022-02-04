@@ -20,6 +20,7 @@
 
   <div id="profileDisplayBox" class="mainGroup">
     <div id="iconHolder" class="profileDisplayGroup">
+      <br><a *ngIf="stats"><img [src]="stats._avaterMedium"></a><br>
       <h2>{{currentUser.username}}</h2>
     </div>
     <button id="profileDisplayButton" class="profileDisplayGroup" (click)="goToProfile()">View Profile</button>

@@ -12,6 +12,7 @@ const  ROUTES = {
     createGroup: ['/game/group/create'],
     gameGroups: ['/game/group'],
     mainPage: ['/main'],
+    socialPage: ['/main/socials'],
     login: ['']
   }
 
@@ -42,6 +43,8 @@ export class RoutingAllocatorService {
   modifyCredentials():void{this.router.navigate(ROUTES.modifyCredentials);}
 
   modifySocials():void{this.router.navigate(ROUTES.modifySocials)};
+
+  socialPage():void{this.router.navigate(ROUTES.socialPage)};
   
   
 }

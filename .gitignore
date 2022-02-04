@@ -31,3 +31,9 @@ build/
 
 ### VS Code ###
 .vscode/
+
+
+###LOG FILES ###
+!/LFG_debug.log
+!/LFG_info.log
+!/logFile.2022-02-03.log
