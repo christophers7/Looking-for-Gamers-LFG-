@@ -25,8 +25,13 @@ public class PresentationAspect {
 
     @AfterReturning(value = "com.revature.p2_lfg.utility.SystemArchitect.controller()", returning = "returnedValue")
     public void afterServiceCheck(JoinPoint jp, Object returnedValue){
-        dLog.info("Class: " + jp.getSignature().getDeclaringType() + "\nReturning: " + returnedValue.toString());
-        iLog.info("Class: " + jp.getSignature().getDeclaringType() + "\nReturning: " + returnedValue.toString());
+        if(returnedValue != null){
+            dLog.info("Class: " + jp.getSignature().getDeclaringType() + "\nReturning: " + returnedValue.toString());
+            iLog.info("Class: " + jp.getSignature().getDeclaringType() + "\nReturning: " + returnedValue.toString());
+        }else{
+            dLog.info("Class: " + jp.getSignature().getDeclaringType() + "\nReturning: null");
+            iLog.info("Class: " + jp.getSignature().getDeclaringType() + "\nReturning: null");
+        }
     }
 
     @AfterThrowing(value = "com.revature.p2_lfg.utility.SystemArchitect.controller()", throwing = "thrownException")

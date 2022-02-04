@@ -52,6 +52,15 @@ export class UserWaitingRoomComponent implements OnInit, OnDestroy {
     }
   }
 
+  leaveSession(groupId:any, gameId: any): void {
+    this.userService.leaveGroup(groupId, gameId).subscribe(
+      (data) => {
+        console.log(data)
+      }
+    );
+    this.ngOnInit();
+  }
+
   convertToGroupFromWaitingListResponse(data:any):any{
     let group = {
       _groupId: data.groupId,

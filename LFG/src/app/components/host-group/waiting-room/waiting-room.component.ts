@@ -1,4 +1,5 @@
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
+import { SessionStorageService } from 'src/app/_services/sessions/session-storage.service';
 import { UserService } from 'src/app/_services/user_data/user.service';
 
 @Component({
@@ -9,7 +10,7 @@ import { UserService } from 'src/app/_services/user_data/user.service';
 export class WaitingRoomComponent implements OnInit {
 
   @Input()
-  waitingUsers: any[] = []
+  waitingUsers: any[] = [];
 
   @Output()
   newMember = new EventEmitter<any>();
@@ -17,8 +18,11 @@ export class WaitingRoomComponent implements OnInit {
   @Output()
   removeMember = new EventEmitter<any>();
 
+  viewStats:boolean = false;
+
   constructor(
-    private userService: UserService
+    private userService: UserService,
+    private sessionStorage: SessionStorageService
   ) { }
 
   ngOnInit(): void {
@@ -30,5 +34,10 @@ export class WaitingRoomComponent implements OnInit {
 
   removingUserFromWaitingRoom(applicant:any){
     this.removeMember.emit(applicant);
+  }
+
+
+  viewAchievements(groupUser: any) {
+    this.viewStats = !this.viewStats;
   }
 }

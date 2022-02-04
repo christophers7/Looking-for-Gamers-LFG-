@@ -10,31 +10,19 @@
     [groupMembers]="group._groupMembers"
     [hostUsername]="group._groupLead.username"
     (removeUser)="removeMember($event)"></app-group-members>
-
 <div>
-    <app-waiting-room
-        [waitingUsers]="group._waitingUsers"
-        (newMember)="addMember($event)"
-        (removeMember)="removeMember($event)"></app-waiting-room>
-<div *ngFor="let member of group._groupMembers;">
-    <div *ngIf="checkUsername(member.username)">
-        <button (click)="viewAchievements(member)">View Achievements</button>
-        <p> {{ member.username }} <p></p><button (click)="removingUserFromWaitingRoom(member)">Remove Member</button>
+
+    <div>
+        <app-waiting-room
+            [waitingUsers]="group._waitingUsers"
+            (newMember)="addMember($event)"
+            (removeMember)="removeMember($event)">
+        </app-waiting-room>
     </div>
-</div>
 
 <br>
-<!-- Add functionality to go back to Group Select View and tell the server to delete Group -->
 <button type="button" (click)="disbandGroup()">Disband Group</button>
 <button type="button" (click)="goMainPage()">Main Page</button>
 <br>
 
-<!-- <button type="button" (click)="goToWaitingRoom()">View Waiting Room</button> -->
 
-<div *ngFor="let applicant of group._waitingUsers;">
-    <div>
-        <button (click)="viewAchievements(applicant)">View Achievements</button>
-        {{ applicant.username }}
-        <button (click)="removingUserFromWaitingRoom(applicant)">Decline</button>
-    </div>
-</div>

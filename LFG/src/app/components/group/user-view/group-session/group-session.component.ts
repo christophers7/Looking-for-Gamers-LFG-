@@ -40,10 +40,37 @@ export class GroupSessionComponent implements OnInit, OnDestroy {
     this.updateGroup();
   }
 
-
   goMainPage(): void {
     this.routingAllocation.main();
   }
+
+  // checkMaxGroup():void{
+  //   if(this.insideGroup._groupDetails.maxusers == this.insideGroup._groupMembers.length){
+  //     this.getMemberSocials();
+  //   }
+  // }
+
+  // getMemberSocials():void{
+  //   this.userService.getSocialAsGroup(this.insideGroup._gameId, this.insideGroup._groupId).subscribe({
+  //     next: res =>{
+  //       console.log(res)
+  //       this.openSocialLinks(res);
+  //     },
+  //     error: err =>{
+  //       console.log(err)
+  //     }
+  //   }
+  //   );
+  // }
+
+  // openSocialLinks(data:any):void{
+  //   if(data){
+  //     for(let i =0 ; i < data.length; i++){
+  //       window.open(data[i].steamProfile.response.players.player[0].profileurl, "_blank");
+  //     }
+  //     window.close();
+  //   }
+  // }
 
   leaveSession(): void {
     this.userService.leaveAllWaitingList().subscribe(
@@ -52,7 +79,6 @@ export class GroupSessionComponent implements OnInit, OnDestroy {
         this.sessionStorage.leaveAllGroups();
       }
     );
-
     this.goMainPage();
   }
 

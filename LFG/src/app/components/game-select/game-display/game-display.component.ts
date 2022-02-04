@@ -31,49 +31,60 @@ export class GameDisplayComponent implements OnInit , OnDestroy{
   }
 
   ngOnInit(): void {
-    this.findAllGamesPlayable();
-    this.getPollingGames();
+    this.findAllGames();
   }
 
-  // public findAllGames() {
-  //   this.userService.generateGames().subscribe(
-  //     (data) => {
-  //       this.games = data.gameSessionList;
-  //       this.getPollingGames();
-  //     }
-  //   )
-  // }
-
-  public findAllGamesPlayable() {
+  public findAllGames() {
     this.userService.generateGames().subscribe(
       (data) => {
         this.games = data.gameSessionList;
-        this.findAllStats();
+        this.getPollingGames();
       }
     )
   }
 
+  // public findAllGamesPlayable() {
+  //   this.userService.generateGames().subscribe(
+  //     (data) => {
+  //       this.games = data.gameSessionList;
+  //       this.findAllStats();
+  //     }
+  //   )
+  // }
+
   public findAllStats():void{
-    for(let i = 0; this.games.length; i++){
-    this.userService.getAchievements(this.games[i].gameId).subscribe(
-      (data) => {
-        if(data.playerstats.achievements){
-          let validGame = {
-            game: this.games[i],
-            achievements: data.playerstats.achievements.length,
-            stats: data.playerstats.stats
-          };
-          this.stats.push(validGame);
-        }}
-      )
-    } 
-    this.sessionStorage.addToStats(this.stats);
+    if(this.games && this.sessionStorage.getStats().length == 0){
+      for(let i = 0; this.games.length; i++){
+        if(this.userService.getAchievements(this.games[i].gameId)){
+        this.userService.getAchievements(this.games[i].gameId).subscribe(
+          (data) => {
+            try{
+              if(data.playerstats.achievements){
+              let validGame = {
+                game: this.games[i],
+                achievements: data.playerstats.achievements.length,
+                stats: data.playerstats.stats
+              };
+              this.stats.push(validGame);
+            }
+            }catch(e){
+              console.log("lol");
+              console.log(e);
+            }
+          },
+            (error) => {
+              console.log("lol")
+              console.log(error);
+            }
+          )
+        } 
+      this.sessionStorage.addToStats(this.stats);
+      console.log(this.sessionStorage.getStats());
+    }
+    }
   }
 
-
-
   public getPollingGames(){
-    console.log("hello");
     this.timeInterval = interval(3000)
       .pipe(
         startWith(0),
@@ -82,8 +93,9 @@ export class GameDisplayComponent implements OnInit , OnDestroy{
         res => {
             this.games = res.gameSessionList;
             console.log(res);
+            if(this.sessionStorage.getStats().length == 0) this.findAllStats();
             if(this.checkUpdatedGames(res)) {
-              this.findAllStats();
+              this.games = res;
             }
           },
         err => console.log("lol"))
@@ -92,7 +104,7 @@ export class GameDisplayComponent implements OnInit , OnDestroy{
   checkUpdatedGames(data:any): boolean {
     let updatedGame: boolean = false;
     for(let i = 0; i < data.gameSessionList.length; i++){
-      if(data.gameSessionList[i].sessions != this.stats[i].game.sessions) {
+      if(data.gameSessionList[i].sessions != this.games[i].sessions) {
         updatedGame = true;
         console.log(this.stats[i].game.sessions)
       }
