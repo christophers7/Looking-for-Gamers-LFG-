@@ -16,9 +16,6 @@ const KEYS = {
 @Injectable({
   providedIn: 'root'
 })
-  getSocials(): any {
-    throw new Error('Method not implemented.');
-  }
 export class TokenStorageService {
   constructor(
     private joinSessionManagement: SessionStorageService
@@ -26,8 +23,13 @@ export class TokenStorageService {
 
   joinedGroups: any[] = [];
 
+  socials: any;
+
+
   signOut(): void {
     window.sessionStorage.clear();    
+    this.joinedGroups = [];
+    this.socials = [];
   }
 
   public saveToken(token: string): void {
@@ -54,14 +56,12 @@ export class TokenStorageService {
   }
 
   public saveSocials(socials: any): void {
-    window.sessionStorage.removeItem(KEYS.USER_SOCIALS);
-    window.sessionStorage.setItem(KEYS.USER_SOCIALS, JSON.stringify(socials));
+    this.socials = socials;
   }
 
   public getSocials(): any {
-    const socials = window.sessionStorage.getItem(KEYS.USER_SOCIALS);
-    if (socials) {
-      return JSON.parse(socials);
+    if (this.socials) {
+      return this.socials;
     }
     return {};
   }

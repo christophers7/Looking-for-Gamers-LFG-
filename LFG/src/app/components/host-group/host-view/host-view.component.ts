@@ -45,9 +45,6 @@ export class HostViewComponent implements OnInit, OnDestroy {
     this.updateMembers(this.group);
     this.stats = this.tokenStorage.getSocials();
     this.group = JSON.parse(this.sessionStorage.getCreatedGroup());
-    if(this.group.groupId != 0) {
-      this.pollingService.updateMembers(this.group);
-    }
   }
 
   addMember(newMember:any):void{

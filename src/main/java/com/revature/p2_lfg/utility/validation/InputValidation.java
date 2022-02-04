@@ -57,7 +57,8 @@ public class InputValidation {
         if(!Pattern.compile("^(?=.{1,64}@)[A-Za-z0-9_-]+(\\.[A-Za-z0-9_-]+)*@"
                         + "[^-][A-Za-z0-9-]+(\\.[A-Za-z0-9-]+)*(\\.[A-Za-z]{2,})$")
                 .matcher(email)
-                .matches()) throw new InvalidInputException("Invalid Email format");
+                .matches()) System.out.println(email);
+            //throw new InvalidInputException("Invalid Email format");
     }
 
 

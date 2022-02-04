@@ -27,6 +27,9 @@ import { GroupMembersComponent } from './components/host-group/group-members/gro
 import { GroupSessionComponent } from './components/group/user-view/group-session/group-session.component';
 import { UserWaitingRoomComponent } from './components/group/user-view/user-waiting-room/user-waiting-room.component';
 import { AddSocialsComponent } from './components/add-socials/add-socials.component';
+import { SocialViewComponent } from './components/social/social-view/social-view.component';
+import { SocialProfileComponent } from './components/social/social-profile/social-profile.component';
+import { StatsComponent } from './components/social/stats/stats.component';
 
 
 
@@ -50,9 +53,12 @@ import { AddSocialsComponent } from './components/add-socials/add-socials.compon
     WaitingRoomComponent,
     GroupMembersComponent,
     GroupSessionComponent,
-    UserWaitingRoomComponent
+    UserWaitingRoomComponent,
     PollingComponent,
-    AddSocialsComponent
+    AddSocialsComponent,
+    SocialViewComponent,
+    SocialProfileComponent,
+    StatsComponent
   ],
   imports: [
     BrowserModule,

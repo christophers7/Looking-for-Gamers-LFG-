@@ -18,4 +18,6 @@ public interface SocialsServiceable {
     SocialResponse updateUserSocial(UpdateSocialRequest updateSocial, JWTInfo parsedJWT);
 
     boolean deleteSocial(DeleteSocialRequest deleteSocial, JWTInfo parsedJWT);
+
+    SocialResponse getUserSocialResponseWithUsername(String memberUsername, int gameId, JWTInfo parsedJWT);
 }

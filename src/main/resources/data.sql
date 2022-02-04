@@ -98,8 +98,11 @@ values
 	(default, 1172470 ,'Apex Legends', 'https://media.contentapi.ea.com/content/dam/apex-legends/images/2019/01/apex-featured-image-16x9.jpg.adapt.crop16x9.1023w.jpg');
 insert into project_two.lfg_games
     values
-	(default, 404, 'League of Legends', 'https://cdn1.epicgames.com/salesEvent/salesEvent/EGS_LeagueofLegends_RiotGames_S1_2560x1440-ee500721c06da3ec1e5535a88588c77f?h=270&resize=1&w=480');
+	(default, 570, 'Dota 2', 'https://cdn.akamai.steamstatic.com/steam/apps/570/capsule_616x353.jpg?t=1639608963');
 
+insert into project_two.lfg_games
+    values
+    (default, 440, 'Team Fortress 2', 'https://cdn.akamai.steamstatic.com/steam/apps/440/header.jpg?t=1592263852');
 insert into project_two.lfg_games
     values
 	(default, 730, 'Counter Strike: Global Offensive', 'https://cdn.akamai.steamstatic.com/steam/apps/730/capsule_616x353.jpg?t=1635269541');

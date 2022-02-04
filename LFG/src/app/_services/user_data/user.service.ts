@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { EMPTY, Observable } from 'rxjs';
+import { GameDisplayComponent } from 'src/app/components/game-select/game-display/game-display.component';
 import { Group } from 'src/app/models/group.model';
 import { SessionStorageService } from '../sessions/session-storage.service';
 import { TokenStorageService } from './token-storage.service';
@@ -26,8 +27,11 @@ const ENDPOINTS = {
   HOST_REFRESH_MEMBERS: `${API_URL}group/refresh?groupId=`,
   HOST_RESPOND: `${API_URL}group/respond`,
   LINK_SOCIALS: `${API_URL}social/create`,
-  GET_SOCIALS: `${API_URL}social/user?gameId=3`,
-  GET_ACHIEVEMENTS: `${API_URL}steam/achievements?gameId=`
+  GET_SOCIALS: `${API_URL}social/user?gameId=`,
+  GET_SOCIALS_WITH_USERNAME: `${API_URL}social/member?memberUsername=`,
+  GET_SOCIALS_AS_GROUP: `${API_URL}/social/group-users?groupId=`,
+  GET_ACHIEVEMENTS: `${API_URL}steam/achievements?gameId=`,
+  GET_ACHIEVEMENTS_WITH_USERNAME: `${API_URL}steam/user?username=`
 }
 
 const httpOptions = {
@@ -48,11 +52,23 @@ export class UserService {
 
   updateCredential(data: any): Observable<any> {return this.http.put(ENDPOINTS.UPDATE_CREDENTIALS, JSON.stringify(data), httpOptions); }
 
-  updateSocials(data:any): Observable<any> {return this.http.post(ENDPOINTS.LINK_SOCIALS, JSON.stringify(data), httpOptions)}
+  createSocials(data:any): Observable<any> {return this.http.post(ENDPOINTS.LINK_SOCIALS, JSON.stringify(data), httpOptions)}
 
-  getSocials(): Observable<any> {return this.http.get(ENDPOINTS.GET_SOCIALS, httpOptions)}
+  getSocialsAsUser(gameId:any): Observable<any> {return this.http.get(`${ENDPOINTS.GET_SOCIALS + gameId}`, httpOptions)}
 
-  getAchievements(data: any): Observable<any> {return this.http.get(ENDPOINTS.GET_ACHIEVEMENTS + data.gameId, httpOptions)}
+  getSocialsWithUsername(username:any, gameId:any): Observable<any> {
+    return this.http.get(`${ENDPOINTS.GET_SOCIALS_WITH_USERNAME + username + ENDPOINTS.AND_GAME_ID + gameId}`)
+  }
+
+  getSocialAsGroup(gameId:any, groupId:any): Observable<any>{
+    return this.http.get(`${ENDPOINTS.GET_SOCIALS_AS_GROUP + groupId + ENDPOINTS.AND_GAME_ID + gameId}`)
+  }
+
+  getAchievements(data: any): Observable<any> {return this.http.get(ENDPOINTS.GET_ACHIEVEMENTS + data, httpOptions)}
+
+  getAchievementsWithUsername(username: any, gameId: any): Observable<any>{
+    return this.http.get(`${ENDPOINTS.GET_ACHIEVEMENTS_WITH_USERNAME + username + ENDPOINTS.AND_GAME_ID + gameId}`)
+  }
 
   generateGames(): Observable<any> {return this.http.get(ENDPOINTS.AVAILABLE_GAMES, httpOptions)}
 

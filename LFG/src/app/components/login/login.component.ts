@@ -78,7 +78,7 @@ export class LoginComponent implements OnInit {
           this.tokenStorage.saveToken(data.jwt);
           let builtUser = BuildUser.userBuilder(data);
           this.tokenStorage.saveUser(builtUser);
-          this.getSocials();          
+          this.routingAllocator.main();
         },
         error: err => {
           this.errorMessage = err.error.message;
@@ -88,18 +88,6 @@ export class LoginComponent implements OnInit {
     }
   }
 
-  getSocials() {
-    this.userService.getSocials().subscribe({
-      next: data => {
-        if (SocialsBuilder.checkSocials(data)) {
-          let builtSocial = SocialsBuilder.buildSocials(data);
-          this.tokenStorage.saveSocials(builtSocial);
-        }
-        this.routingAllocator.main();
-      }
-    })
-    
-  }
 
   onReset(): void {
     this.submitted = false;

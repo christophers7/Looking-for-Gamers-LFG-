@@ -1,0 +1,11 @@
+
+<button type="button" id="goMainPageButton" (click)="goMainPage()">Go Main Page</button>
+
+<div *ngFor="let game of stats">
+    <span>
+        <h1>{{game.game.name}}</h1>
+        <img [src]="game.game.imgLink">
+        <h1>{{game.game.gameId}}</h1>
+        <app-stats [stats]="game.stats" [achievements]="game.achievements"></app-stats>
+    </span>
+</div>

@@ -19,6 +19,16 @@ export class SessionStorageService {
 
   createdGroup:any;
 
+  stats:any[] = [];
+
+  addToStats(stats:any[]):void{
+    this.stats = stats;
+  }
+
+  getStats():any[]{
+    return this.stats;
+  }
+
   updateGroup(group:any):void{
     let storing = {
       _groupId: group.groupId,

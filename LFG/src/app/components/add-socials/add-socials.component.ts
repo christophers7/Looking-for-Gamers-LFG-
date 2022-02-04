@@ -50,18 +50,14 @@ export class AddSocialsComponent implements OnInit {
 
     let sID = this.form.get('steamId')?.value
     if(sID != null) {
-      this.userService.updateSocials({gameId: 3, social: sID}).subscribe({
-        next: data => {         
-          if (SocialsBuilder.checkSocials(data)) {
+      console.log(sID);
+      this.userService.createSocials({gameId: 3, social: sID}).subscribe({
+        next: data => {     
+          console.log(data);    
           this.isLinkFailed = false;
           let builtSocial = SocialsBuilder.buildSocials(data)
           this.tokenStorage.saveSocials(builtSocial);
-          this.routingAllocator.profile();  
-          } else {
-            this.errorMessage = "Link unsuccessful.";        
-            this.isLinkFailed = true;
-          }
-           
+          this.routingAllocator.socialPage();  
         },
         error: err => {
           this.errorMessage = err.error.message;
