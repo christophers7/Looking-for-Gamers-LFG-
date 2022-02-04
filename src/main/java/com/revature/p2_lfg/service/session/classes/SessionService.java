@@ -55,6 +55,7 @@ import java.util.*;
     private SessionResponse failSessionResponse(){
         return new SessionResponse.SessionResponseBuilder(new GroupUser(), new SessionDetails())
                 .success(false)
+                .groupId(0)
                 .build();
     }
 
@@ -147,7 +148,7 @@ import java.util.*;
     }
 
     private SessionResponse createWaitingRoomResponse(Session session) {
-        if(session.isInsession()) return new SessionResponse.SessionResponseBuilder( getHostUserWithGroupId(session.getGroupsession().getGroupid()), session.getGroupsession())
+        try{if(session.isInsession()) return new SessionResponse.SessionResponseBuilder( getHostUserWithGroupId(session.getGroupsession().getGroupid()), session.getGroupsession())
                 .success(session.isInsession())
                 .groupId(session.getGroupsession().getGroupid())
                 .gameId(session.getGroupsession().getGame().getGameid())
@@ -158,6 +159,9 @@ import java.util.*;
                 .groupId(session.getGroupsession().getGroupid())
                 .gameId(session.getGroupsession().getGame().getGameid())
                 .build();
+        }catch(Exception e){
+            return failSessionResponse();
+        }
     }
 
     private SessionDetails getSessionDetailsByHostId(int hostid) {

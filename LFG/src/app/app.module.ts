@@ -22,6 +22,10 @@ import { CreateGroupComponent } from './components/host-group/create-group/creat
 import { ModifyCredentialComponent } from './components/modify-credential/modify-credential.component';
 import { UserViewComponent } from './components/group/user-view/user-view.component';
 import { PollingComponent } from './components/polling/polling.component';
+import { WaitingRoomComponent } from './components/host-group/waiting-room/waiting-room.component';
+import { GroupMembersComponent } from './components/host-group/group-members/group-members.component';
+import { GroupSessionComponent } from './components/group/user-view/group-session/group-session.component';
+import { UserWaitingRoomComponent } from './components/group/user-view/user-waiting-room/user-waiting-room.component';
 
 
 
@@ -41,7 +45,11 @@ import { PollingComponent } from './components/polling/polling.component';
     CreateGroupComponent,
     ModifyCredentialComponent,
     UserViewComponent,
-    PollingComponent
+    PollingComponent,
+    WaitingRoomComponent,
+    GroupMembersComponent,
+    GroupSessionComponent,
+    UserWaitingRoomComponent
   ],
   imports: [
     BrowserModule,

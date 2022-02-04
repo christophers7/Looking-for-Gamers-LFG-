@@ -98,6 +98,7 @@ export class CreateGroupComponent implements OnInit {
       this.userService.createGroup(g).subscribe(
         (data) => {
           let group:Group = BuildGroup.groupBuilder(data);
+          this.sessionStorage.removeCreatedGroup();
           this.sessionStorage.saveCreatedGroup(group);
           this.goToHostView()
         })
