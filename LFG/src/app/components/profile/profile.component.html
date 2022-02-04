@@ -1,5 +1,7 @@
 <div id="profileInfoBox">
   <div id="profileInfo" class="displayProfile">
+    
+    <a *ngIf="stats"><img [src]="stats._avaterFull"></a><br><br>
     <label>Username: </label><br />
     <h2>{{currentUser.username}}</h2><br><br>
 
@@ -11,10 +13,17 @@
 
     <label>Email Address: </label><br />
     <h2>{{currentUser.email}}</h2><br><br>
+
+    <label>Steam Profile URL: </label><br />
+    <a *ngIf="stats" href="{{stats._profileURL}}" target="_blank" rel="noreferrer noopener">
+      {{stats._profileURL}}
+   </a><br><br>
   </div>
 </div>
 <button id="profileModifyButton" (click)="modifyProfile()">Edit your Information</button>
 <br><br>
 <button id="credentialModifyButton" (click)="modifyCredential()">Edit Login Credentials</button>
+<br><br>
+<button id="socialsModifyButton" (click)="modifySocials()">Link your Steam Profile</button>
 <br><br>
 <button id="backToMainButton" (click)="goToMain()">Go Back</button>

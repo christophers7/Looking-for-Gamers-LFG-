@@ -9,12 +9,16 @@ const KEYS = {
   USER_KEY:'auth-user',
   SELECTED_GAME: 'sel-game',
   CREATED_GROUP: 'host-group',
-  JOINED_GROUPS: 'joined-groups'
+  JOINED_GROUPS: 'joined-groups',
+  USER_SOCIALS: 'user-socials'
 }
 
 @Injectable({
   providedIn: 'root'
 })
+  getSocials(): any {
+    throw new Error('Method not implemented.');
+  }
 export class TokenStorageService {
   constructor(
     private joinSessionManagement: SessionStorageService
@@ -49,4 +53,16 @@ export class TokenStorageService {
     return {};
   }
 
+  public saveSocials(socials: any): void {
+    window.sessionStorage.removeItem(KEYS.USER_SOCIALS);
+    window.sessionStorage.setItem(KEYS.USER_SOCIALS, JSON.stringify(socials));
+  }
+
+  public getSocials(): any {
+    const socials = window.sessionStorage.getItem(KEYS.USER_SOCIALS);
+    if (socials) {
+      return JSON.parse(socials);
+    }
+    return {};
+  }
 }

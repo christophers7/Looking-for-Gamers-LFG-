@@ -14,12 +14,15 @@ export class ProfileComponent implements OnInit {
     private tokenStorage: TokenStorageService) { }
 
   currentUser: any;
+  stats: any;
 
   ngOnInit(): void {
     this.currentUser = this.tokenStorage.getUser();
+    this.stats = this.tokenStorage.getSocials();
   }
 
   modifyProfile(): void { this.routingAllocater.modifyProfile(); }
   modifyCredential(): void { this.routingAllocater.modifyCredentials(); }
+  modifySocials(): void { this.routingAllocater.modifySocials(); }
   goToMain(): void { this.routingAllocater.main(); }
 }

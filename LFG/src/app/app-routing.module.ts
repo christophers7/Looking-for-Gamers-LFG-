@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AddSocialsComponent } from './components/add-socials/add-socials.component';
 import { ApiViewComponent } from './components/api-view/api-view.component';
 import { GameDisplayComponent } from './components/game-select/game-display/game-display.component';
 import { UserViewComponent } from './components/group/user-view/user-view.component';
@@ -58,14 +59,18 @@ const routes: Routes = [
   {
     component: CreateGroupComponent,
     path: 'game/group/create'
-  }
-  ,
+  },
   {
     component: ApiViewComponent,
     path: 'test/api'
-  },{
+  },
+  {
     component: PollingComponent,
     path: 'test/polling'
+  }, 
+  {
+    component: AddSocialsComponent,
+    path: 'main/socials/modify'
   }
 ];
 

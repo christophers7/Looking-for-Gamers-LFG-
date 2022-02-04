@@ -13,6 +13,7 @@ export class LFGMainComponent implements OnInit {
 
   gameId: number = 0;
   currentUser: any;
+  stats: any;
   hostGroupPanel:boolean = false;
   joinGroupPanel: boolean = false;
 
@@ -24,6 +25,7 @@ export class LFGMainComponent implements OnInit {
 
   ngOnInit(): void {
     this.currentUser = this.tokenStorage.getUser();
+    this.stats = this.tokenStorage.getSocials();
     this.viewGroups();
   }
 

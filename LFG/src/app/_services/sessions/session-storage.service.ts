@@ -5,7 +5,7 @@ const KEYS = {
   USER_KEY:'auth-user',
   SELECTED_GAME: 'sel-game',
   CREATED_GROUP: 'host-group',
-  JOINED_GROUPS: 'joined-groups'
+  JOINED_GROUPS: 'joined-groups',
 }
 
 @Injectable({
