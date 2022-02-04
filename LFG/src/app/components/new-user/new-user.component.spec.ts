@@ -32,14 +32,17 @@ describe('NewUserComponent', () => {
   });
 
   it('should navigate to Login when goToLogin is called', () => {
+    component.goToLogin()
     expect(component.goToLogin()).toHaveBeenCalled();
   })
 
   it('should submit new user data when form is submitted', () => {
+    component.onSubmit()
     expect(component.onSubmit()).toHaveBeenCalled();
   })
 
   it('should reset form when onReset is called', () => {
+    component.onReset()
     expect(component.onReset()).toHaveBeenCalled();
   })
 });
