@@ -25,6 +25,8 @@ describe('AddSocialsComponent', () => {
   });
 
   it('should create', () => {
+    let fixture = TestBed.createComponent(AddSocialsComponent);
+    let component = fixture.componentInstance;
     expect(component).toBeTruthy();
   });
 });

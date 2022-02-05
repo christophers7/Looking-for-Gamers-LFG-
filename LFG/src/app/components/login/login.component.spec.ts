@@ -39,6 +39,8 @@ describe('LoginComponent', () => {
   });
 
   it('should create', () => {
+    let fixture = TestBed.createComponent(LoginComponent);
+    let component = fixture.componentInstance;
     expect(component).toBeTruthy();
   });
 
