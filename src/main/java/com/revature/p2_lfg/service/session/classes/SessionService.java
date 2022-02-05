@@ -12,6 +12,7 @@ import com.revature.p2_lfg.repository.entities.session.Session;
 import com.revature.p2_lfg.repository.entities.session.SessionDetails;
 import com.revature.p2_lfg.repository.entities.session.Tag;
 import com.revature.p2_lfg.repository.entities.user.UserCredential;
+import com.revature.p2_lfg.service.login.exceptions.InvalidInputException;
 import com.revature.p2_lfg.service.session.MaxUsersException;
 import com.revature.p2_lfg.service.session.exception.InvalidHostUserException;
 import com.revature.p2_lfg.service.session.exception.InvalidUserException;
@@ -36,7 +37,7 @@ import java.util.*;
 
     public SessionResponse createGroupSession(CreateGroupSessionRequest createGroup, JWTInfo parsedJWT) {
         SessionDetails sessionDetails;
-        try {
+            if(checkIfHostAlreadyHosting(parsedJWT.getUserId())) throw new InvalidHostUserException("Host already has an active session");
             sessionDetails = createGroupSessionInDatabase(createGroup.getGameId(), createGroup.getMaxUsers(), createGroup.getDescription());
             createUserSession(sessionDetails, parsedJWT, parsedJWT.getUserId(), true);
             GroupUser host = getHostUserWithGroupId(sessionDetails.getGroupid());
@@ -45,11 +46,12 @@ import java.util.*;
                     .groupId(sessionDetails.getGroupid())
                     .gameId(sessionDetails.getGame().getGameid())
                     .groupMembers(Collections.singletonList(host))
-                    .waitingMembers(new ArrayList<GroupUser>())
+                    .waitingMembers(new ArrayList<>())
                     .build();
-        } catch (Exception e){
-            return failSessionResponse();
-        }
+    }
+
+    private boolean checkIfHostAlreadyHosting(int userId) {
+        return sessionRepository.findByUserid(userId).size() != 0;
     }
 
     private SessionResponse failSessionResponse(){
@@ -67,7 +69,6 @@ import java.util.*;
 
     private SessionResponse enterWaitingRoom(int groupId, JWTInfo parsedJWT) {
         SessionDetails sessionDetails;
-        try{
             sessionDetails = getSessionDetailsByGroupId(groupId);
             createUserSession(sessionDetails, parsedJWT, findByHostId(groupId),  false);
             return new SessionResponse.SessionResponseBuilder(getHostUserWithGroupId(groupId), sessionDetails)
@@ -75,11 +76,8 @@ import java.util.*;
                     .groupId(groupId)
                     .gameId(sessionDetails.getGame().getGameid())
                     .groupMembers(getGroupMembersOfSession(groupId))
-                    .waitingMembers(new ArrayList<GroupUser>())
+                    .waitingMembers(new ArrayList<>())
                     .build();
-        } catch (Exception e){
-            return null;
-        }
     }
 
     private GroupUser getHostUserWithGroupId(int groupId) {
@@ -90,7 +88,7 @@ import java.util.*;
     }
 
     private UserCredential getHostUserWithId(int hostId) {
-        return loginRepository.findById(hostId).orElseThrow(InvalidHostUserException::new);
+        return loginRepository.findById(hostId).orElse(null);
     }
 
     private SessionDetails sessionDetailsForId(int groupId){
@@ -126,8 +124,8 @@ import java.util.*;
             sessionDetails.setCurrentusers(sessionDetails.getCurrentusers());
             if(sessionRepository.save(new Session(parsedJWT.getUserId(), hostId, sessionDetails, status)) != null)
                 return new GroupSessionId(parsedJWT.getUserId(), hostId);
-        } else throw new MaxUsersException();
-        return null;
+        }
+        throw new MaxUsersException();
     }
 
     private SessionDetails getSessionDetailsByGroupId(int groupId) {
@@ -148,7 +146,7 @@ import java.util.*;
     }
 
     private SessionResponse createWaitingRoomResponse(Session session) {
-        try{if(session.isInsession()) return new SessionResponse.SessionResponseBuilder( getHostUserWithGroupId(session.getGroupsession().getGroupid()), session.getGroupsession())
+        if(session.isInsession()) return new SessionResponse.SessionResponseBuilder( getHostUserWithGroupId(session.getGroupsession().getGroupid()), session.getGroupsession())
                 .success(session.isInsession())
                 .groupId(session.getGroupsession().getGroupid())
                 .gameId(session.getGroupsession().getGame().getGameid())
@@ -159,9 +157,6 @@ import java.util.*;
                 .groupId(session.getGroupsession().getGroupid())
                 .gameId(session.getGroupsession().getGame().getGameid())
                 .build();
-        }catch(Exception e){
-            return failSessionResponse();
-        }
     }
 
     private SessionDetails getSessionDetailsByHostId(int hostid) {
@@ -194,7 +189,7 @@ import java.util.*;
 
     @Override
     public boolean cancelSession(JWTInfo parsedJWT, CancelGroupRequest cancelGroup) {
-        try{
+        try {
             sessionRepository.deleteAllByGroupId(cancelGroup.getGroupId());
             sessionDetailsRepository.delete(new SessionDetails(cancelGroup.getGroupId(), new Games(), 0, 0, "", new HashSet<>()));
             return true;
@@ -209,7 +204,7 @@ import java.util.*;
             sessionRepository.deleteByUserIdAndGroupId(parsedJWT.getUserId(), groupId);
             return true;
         }catch(Exception e){
-            return false;
+            throw new InvalidInputException("Was not able to leave the session");
         }
     }
 

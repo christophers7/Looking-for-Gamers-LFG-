@@ -80,11 +80,11 @@ class LoginServiceTest {
     Mockito.when(loginRepository.findByUsername(userCredRequest.getUsername())).thenReturn(storedUserCredential);
     Mockito.when(loginRepository.findById(newUserCredential.getUserid())).thenReturn(java.util.Optional.ofNullable(newUserCredential));
     Mockito.when(loginRepository.save(requestedUserCredential)).thenReturn(newUserCredential);
-
+    Mockito.when(loginRepository.findByUsernameAndPassword(userCredRequest.getUsername(), userCredRequest.getPassword())).thenReturn(storedUserCredential);
    }
 
-
-    void getUserCredentialSuccessTest(String input) {
+    @Test
+    void getUserCredentialSuccessTest() {
        assertEquals(storedUserCredential, loginService.getUserCredentialFromLogin(loginRequest));
     }
 

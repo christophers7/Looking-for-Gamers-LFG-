@@ -9,6 +9,7 @@ import com.revature.p2_lfg.utility.JWTUtility;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
@@ -25,6 +26,7 @@ public class UserController {
     @Autowired
     private LoginService loginService;
 
+    @ResponseStatus(HttpStatus.OK)
     @PostMapping(value ="/update", consumes = MediaType.APPLICATION_JSON_VALUE)
     public ProfileResponse updateProfile(@RequestHeader("Authorization") String token, @RequestBody UpdateUserProfileRequest profile){
         dLog.debug("Attempting to update user profile: "  + profile);
@@ -33,6 +35,7 @@ public class UserController {
         else return null;
     }
 
+    @ResponseStatus(HttpStatus.OK)
     @GetMapping("/profile")
     public ProfileResponse getUserProfile(@RequestHeader("Authorization") String token){
         dLog.debug("Attempting to get user profile");

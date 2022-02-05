@@ -8,6 +8,7 @@ import com.revature.p2_lfg.service.social.SteamService;
 import com.revature.p2_lfg.utility.JWTInfo;
 import com.revature.p2_lfg.utility.JWTUtility;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 @CrossOrigin(origins = "http://localhost:4200/")
@@ -27,6 +28,7 @@ public class SteamController {
     @Autowired
     private LoginRepository loginRepository;
 
+    @ResponseStatus(HttpStatus.OK)
     @GetMapping("/profile")
     public Object getSteamProfile(@RequestParam int gameId, @RequestHeader("Authorization") String token){
         JWTInfo parsedJWT = JWTUtility.verifyUser(token);
@@ -36,7 +38,7 @@ public class SteamController {
         return null;
     }
 
-
+    @ResponseStatus(HttpStatus.OK)
     @GetMapping("/achievements")
     public Object getSteamAchievement(@RequestParam int gameId, @RequestHeader("Authorization") String token) {
         JWTInfo parsedJWT = JWTUtility.verifyUser(token);
@@ -46,6 +48,7 @@ public class SteamController {
         return null;
     }
 
+    @ResponseStatus(HttpStatus.OK)
     @GetMapping("/user")
     public Object getUserSteamAchievement(@RequestParam String username , @RequestParam int gameId,  @RequestHeader("Authorization") String token){
         JWTInfo parsedJWT = JWTUtility.verifyUser(token);

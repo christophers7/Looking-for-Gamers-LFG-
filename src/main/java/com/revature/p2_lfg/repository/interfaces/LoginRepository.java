@@ -20,7 +20,7 @@ public interface LoginRepository extends JpaRepository<UserCredential, Integer> 
    UserCredential findByUsername(String username);
 
    @Query("select u.userid from UserCredential u where u.username = ?1")
-   int findIdByUsername(String username);
+   int findIdByUsername(String memberUsername);
 
    @Query("select u from UserCredential u where u.username = ?1 and u.password = ?2")
    UserCredential findByUsernameAndPassword(String username, String password);

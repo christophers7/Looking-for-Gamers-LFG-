@@ -38,7 +38,7 @@ public class ServiceAspect {
     }
     @AfterThrowing(value = "com.revature.p2_lfg.utility.SystemArchitect.businessService()", throwing = "thrownException")
     public void afterThrowingCheck(JoinPoint jp, Object thrownException){
-        dLog.error("Class: " + jp.getSignature().getDeclaringType() + "\nThrowing: " + thrownException.toString());
+        dLog.error("Class: " + jp.getSignature().getDeclaringType() + "\nThrowing: " + thrownException);
     }
 
 }
