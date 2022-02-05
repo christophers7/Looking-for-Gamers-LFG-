@@ -22,6 +22,8 @@ describe('PollingComponent', () => {
   });
 
   it('should create', () => {
+    let fixture = TestBed.createComponent(PollingComponent);
+    let component = fixture.componentInstance;
     expect(component).toBeTruthy();
   });
 });

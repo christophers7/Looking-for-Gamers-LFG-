@@ -10,10 +10,11 @@ describe('RoutingAllocatorService', () => {
     TestBed.configureTestingModule({
       imports: [RouterTestingModule]
     });
-    service = TestBed.inject(RoutingAllocatorService);
+    
   });
 
   it('should be created', () => {
+    service = TestBed.inject(RoutingAllocatorService);
     expect(service).toBeTruthy();
   });
 });

@@ -13,7 +13,7 @@ describe('CreateGroupComponent', () => {
     await TestBed.configureTestingModule({
       declarations: [ CreateGroupComponent ],
       imports: [RouterTestingModule,
-      FormBuilder, 
+      
       FormsModule,
       ReactiveFormsModule,
       BrowserModule,
@@ -35,9 +35,5 @@ describe('CreateGroupComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  // it('should reset form when onReset is called', () => {
-  //   expect(component.onReset()).toHaveBeenCalled();
-  // })
-
-  
+    
 });

@@ -24,12 +24,7 @@ describe('HostViewComponent', () => {
   });
 
   it('should create', () => {
-    let fixture = TestBed.createComponent(HostViewComponent);
-    let component = fixture.componentInstance;
-    expect(component).toBeTruthy();
+   expect(component).toBeTruthy();
   });
-
-  // it('should check username when checkUsername is called', () => {
-  //   //expect(component.checkUsername('username')).toHaveBeenCalled();
-  // })
+ 
 });

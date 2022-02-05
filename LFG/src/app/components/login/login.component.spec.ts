@@ -22,7 +22,7 @@ describe('LoginComponent', () => {
       declarations: [ LoginComponent ],
       imports: [HttpClientTestingModule,
       RouterTestingModule,
-      FormBuilder,
+      
       FormsModule,
       ReactiveFormsModule,
       BrowserModule],

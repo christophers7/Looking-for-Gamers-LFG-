@@ -13,7 +13,7 @@ describe('NewUserComponent', () => {
     await TestBed.configureTestingModule({
       declarations: [ NewUserComponent ],
       imports: [RouterTestingModule,
-      FormBuilder,
+      
       FormsModule,
       ReactiveFormsModule,
       HttpClientTestingModule]

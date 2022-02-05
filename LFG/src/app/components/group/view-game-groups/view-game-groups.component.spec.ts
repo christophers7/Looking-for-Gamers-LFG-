@@ -26,7 +26,5 @@ describe('ViewGameGroupsComponent', () => {
     expect(component).toBeTruthy();
   });
 
-   it('should show available sessions when getGroupSessions is called', () => {
-    //expect(component.getGroupSessions()).toHaveBeenCalled();
-  })
+  
 });

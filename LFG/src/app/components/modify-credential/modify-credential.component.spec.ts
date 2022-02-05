@@ -15,7 +15,7 @@ describe('ModifyCredentialComponent', () => {
       declarations: [ ModifyCredentialComponent ],
       imports: [RouterTestingModule,
       HttpClientTestingModule,
-    FormBuilder,
+    
     ReactiveFormsModule,
     BrowserModule]
     })
