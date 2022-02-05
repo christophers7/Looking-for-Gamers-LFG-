@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { RouterTestingModule } from '@angular/router/testing';
 
 import { ModifyCredentialComponent } from './modify-credential.component';
 
@@ -8,7 +9,8 @@ describe('ModifyCredentialComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ModifyCredentialComponent ]
+      declarations: [ ModifyCredentialComponent ],
+      imports: [RouterTestingModule]
     })
     .compileComponents();
   });

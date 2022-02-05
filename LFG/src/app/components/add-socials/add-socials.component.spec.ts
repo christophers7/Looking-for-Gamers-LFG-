@@ -1,4 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { FormBuilder,ReactiveFormsModule } from '@angular/forms';
+import { BrowserModule } from '@angular/platform-browser';
 
 import { AddSocialsComponent } from './add-socials.component';
 
@@ -8,7 +10,10 @@ describe('AddSocialsComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AddSocialsComponent ]
+      declarations: [ AddSocialsComponent ],
+      imports: [FormBuilder,
+        ReactiveFormsModule,
+      BrowserModule]
     })
     .compileComponents();
   });

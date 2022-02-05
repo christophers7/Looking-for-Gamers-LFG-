@@ -1,3 +1,4 @@
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { UserViewComponent } from './user-view.component';
@@ -8,7 +9,8 @@ describe('UserViewComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ UserViewComponent ]
+      declarations: [ UserViewComponent ],
+      imports: [HttpClientTestingModule]
     })
     .compileComponents();
   });
