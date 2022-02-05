@@ -37,7 +37,5 @@ describe('CreateGroupComponent', () => {
     expect(component.onReset()).toHaveBeenCalled();
   })
 
-  it('should change panels when changePanel is called', () => {
-    expect(component.changePanel()).toHaveBeenCalled();
-  })
+  
 });
