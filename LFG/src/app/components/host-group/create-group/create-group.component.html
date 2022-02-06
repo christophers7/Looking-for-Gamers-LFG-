@@ -1,4 +1,4 @@
-<div>
+<div id="modifyProfileBox">
     <form [formGroup]="form" (ngSubmit)="onSubmit()">
       
         <div class="form-group">
@@ -42,8 +42,7 @@
           type="button"
           (click)="onReset()"
           class="btn btn-warning float-right">Reset</button>
-        <button type="button" (click)="goBack()">Back</button>
-        </div>
-
+      </div>
     </form>
+    <button id="bButton" type="button" (click)="goBack()">Back</button>
 </div>

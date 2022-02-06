@@ -6,7 +6,7 @@ import { UserService } from '../user_data/user.service';
 import { SessionStorageService } from './session-storage.service';
 
 
-const API_URL = 'http://localhost:8080/';
+const API_URL = 'http://44.201.255.22:8080/';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })

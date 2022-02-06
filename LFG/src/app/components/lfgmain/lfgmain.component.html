@@ -1,7 +1,7 @@
 <div id="profileDisplayBox" class="mainGroup">
     <div id="iconHolder" class="profileDisplayGroup">
       <br><a *ngIf="stats"><img [src]="stats._avatarMedium"></a><br>
-      <h2>{{currentUser.username}}</h2>
+      <h2 id="name">{{currentUser.username}}</h2>
     </div>
     <button id="profileDisplayButton" class="profileDisplayButtons" (click)="goToProfile()">View Profile</button>
     <button id="logOutButton" class="profileDisplayButtons" (click)="logOut()">Log Out</button>
@@ -24,15 +24,5 @@
     </div>
   
     </div>
-      <div id="infoDisplayBox" class="mainGroup">
-    </div>
-
-  
-
-  <div id="groupAppCounterBox" class="mainGroup">
-
-  </div>
-  <div id="modeSelectBox" class="mainGroup">
-  </div>
 
 </div>

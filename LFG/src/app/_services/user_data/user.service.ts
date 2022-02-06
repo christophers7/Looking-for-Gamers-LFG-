@@ -6,7 +6,7 @@ import { Group } from 'src/app/models/group.model';
 import { SessionStorageService } from '../sessions/session-storage.service';
 import { TokenStorageService } from './token-storage.service';
 
-const API_URL = 'http://localhost:8080/';
+const API_URL = 'http://44.201.255.22:8080/';
 
 const ENDPOINTS = {
   LOGIN_CHECK: `${API_URL}login/check`,
