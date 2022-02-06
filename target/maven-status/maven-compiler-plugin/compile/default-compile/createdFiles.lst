@@ -11,7 +11,6 @@ com\revature\p2_lfg\service\session\dto\GroupUser.class
 com\revature\p2_lfg\repository\entities\user\UserProfile.class
 com\revature\p2_lfg\repository\entities\session\SessionDetails.class
 com\revature\p2_lfg\utility\JWTInfo.class
-com\revature\p2_lfg\driver\Application.class
 com\revature\p2_lfg\presentation\models\profile\responses\ProfileResponse.class
 com\revature\p2_lfg\service\game\interfaces\GameServiceable.class
 com\revature\p2_lfg\repository\entities\user\UserCredential.class
@@ -56,7 +55,6 @@ com\revature\p2_lfg\presentation\models\profile\responses\ProfileResponse$Profil
 com\revature\p2_lfg\service\profile\exception\InvalidRequestException.class
 com\revature\p2_lfg\presentation\models\session\requests\CancelGroupRequest.class
 com\revature\p2_lfg\presentation\models\session\response\SessionResponse$1.class
-com\revature\p2_lfg\driver\Application$1.class
 com\revature\p2_lfg\service\social\SteamService.class
 com\revature\p2_lfg\presentation\controllers\GameController.class
 com\revature\p2_lfg\presentation\models\session\requests\CreateGroupSessionRequest.class
