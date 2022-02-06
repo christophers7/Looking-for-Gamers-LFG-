@@ -12,6 +12,7 @@ import lombok.experimental.FieldDefaults;
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class WaitingRoomRequest {
     int groupId;
-    String username;
-    boolean insideSession;
+    int gameId;
+    String waitingUsername;
+    boolean success;
 }
