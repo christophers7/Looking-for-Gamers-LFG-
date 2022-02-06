@@ -54,12 +54,12 @@ public class InputValidation {
     }
 
     public void validateEmail(String email) throws InvalidInputException {
-        if(Pattern.compile("^(?=.{1,64}@)[A-Za-z0-9_-]+(\\.[A-Za-z0-9_-]+)*@"
-                        + "[^-][A-Za-z0-9-]+(\\.[A-Za-z0-9-]+)*(\\.[A-Za-z]{2,})$")
-                .matcher(email)
-                .matches()) {
-        }
-//            else throw new InvalidInputException("Invalid Email format");
+//        if(!email.contains("@") && !email.contains(".")) return;
+
+//        if(Pattern.compile("^(?=.{1,64}@)[A-Za-z0-9_-]+(\\.[A-Za-z0-9_-]+)*@"
+//                        + "[^-][A-Za-z0-9-]+(\\.[A-Za-z0-9-]+)*(\\.[A-Za-z]{2,})$")
+//                .matcher(email)
+//                .matches()) throw new InvalidInputException("Invalid Email format");
     }
 
 

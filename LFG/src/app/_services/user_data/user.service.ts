@@ -119,8 +119,9 @@ export class UserService {
   respondToApplicant(applicant:any, check:boolean): Observable<any>{
     let request = {
       groupId: applicant.groupId,
-      username: applicant.username,
-      insideSession: check
+      gameId: 0,
+      waitingUsername: applicant.username,
+      success: check
     }; 
     return this.respondToUser(request);
   }

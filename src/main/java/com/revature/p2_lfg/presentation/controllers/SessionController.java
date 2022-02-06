@@ -67,6 +67,7 @@ public class SessionController {
     @PostMapping(value = "/respond", consumes = MediaType.APPLICATION_JSON_VALUE)
     public SessionResponse respondToUser(@RequestHeader("Authorization") String token, @RequestBody WaitingRoomRequest roomRequest){
         JWTInfo parsedJWT = JWTUtility.verifyUser(token);
+        System.out.println(roomRequest);
         if(parsedJWT != null) return sessionService.respondToUserSession(parsedJWT, roomRequest);
         return null;
     }

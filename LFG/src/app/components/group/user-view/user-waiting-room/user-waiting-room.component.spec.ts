@@ -1,4 +1,6 @@
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { RouterTestingModule } from '@angular/router/testing';
 
 import { UserWaitingRoomComponent } from './user-waiting-room.component';
 
@@ -8,7 +10,8 @@ describe('UserWaitingRoomComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ UserWaitingRoomComponent ]
+      declarations: [ UserWaitingRoomComponent ],
+      imports: [ RouterTestingModule, HttpClientTestingModule]
     })
     .compileComponents();
   });

@@ -16,6 +16,10 @@ button:hover {
     background: darkgreen;
 }
 
+label {
+    color: yellow;
+}
+
 form {
     width: 5.8in;
     border-style: ridge;
@@ -42,3 +46,11 @@ form {
 .invalid-feedback {
     color: black;
 }
+
+#modifyProfileBox {
+    margin: auto;
+    width: 6in;
+    height: 7in;
+    transform: translate(0%, 20%);
+}
+
