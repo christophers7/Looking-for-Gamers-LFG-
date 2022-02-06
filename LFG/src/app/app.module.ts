@@ -50,7 +50,6 @@ import { UserStatsComponent } from './components/host-group/user-stats/user-stat
     CreateGroupComponent,
     ModifyCredentialComponent,
     UserViewComponent,
-    PollingComponent,
     WaitingRoomComponent,
     GroupMembersComponent,
     GroupSessionComponent,
