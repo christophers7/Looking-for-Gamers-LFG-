@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@CrossOrigin(origins = "http://localhost:4200/")
+@CrossOrigin(origins = "http://44.201.255.22:8080")
 @RestController("socialController")
 @RequestMapping("/social")
 public class SocialsController {

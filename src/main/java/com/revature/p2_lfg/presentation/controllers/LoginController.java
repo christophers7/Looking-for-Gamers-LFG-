@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.Objects;
 
-@CrossOrigin(origins = "http://localhost:4200/")
+@CrossOrigin(origins = "http://44.201.255.22:8080")
 @RestController("loginController")
 @RequestMapping("/login")
 public class LoginController {
