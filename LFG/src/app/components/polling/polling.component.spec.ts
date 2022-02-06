@@ -1,3 +1,4 @@
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { PollingComponent } from './polling.component';
@@ -8,7 +9,8 @@ describe('PollingComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ PollingComponent ]
+      declarations: [ PollingComponent ],
+      imports: [HttpClientTestingModule]
     })
     .compileComponents();
   });
@@ -20,6 +22,7 @@ describe('PollingComponent', () => {
   });
 
   it('should create', () => {
+    
     expect(component).toBeTruthy();
   });
 });

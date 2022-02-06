@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { HttpClientModule } from '@angular/common/http';
 
@@ -50,7 +50,6 @@ import { UserStatsComponent } from './components/host-group/user-stats/user-stat
     CreateGroupComponent,
     ModifyCredentialComponent,
     UserViewComponent,
-    PollingComponent,
     WaitingRoomComponent,
     GroupMembersComponent,
     GroupSessionComponent,
@@ -67,7 +66,8 @@ import { UserStatsComponent } from './components/host-group/user-stats/user-stat
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    FormBuilder
   ],
   providers: [authInterceptorProviders],
   bootstrap: [AppComponent]
