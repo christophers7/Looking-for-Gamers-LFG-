@@ -165,11 +165,13 @@ class SessionServiceTest {
 
         roomRequestSuccess = new WaitingRoomRequest(
                 createdSessionDetails.getGroupid(),
+                createdSessionDetails.getGame().getGameid(),
                 parsedJWT2.getUsername(),
                 true
         );
         roomRequestReject = new WaitingRoomRequest(
                 createdSessionDetails.getGroupid(),
+                createdSessionDetails.getGame().getGameid(),
                 parsedJWT2.getUsername(),
                 false
         );
