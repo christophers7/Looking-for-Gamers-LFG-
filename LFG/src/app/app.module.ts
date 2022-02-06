@@ -66,8 +66,7 @@ import { UserStatsComponent } from './components/host-group/user-stats/user-stat
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule,
-    FormBuilder
+    HttpClientModule
   ],
   providers: [authInterceptorProviders],
   bootstrap: [AppComponent]

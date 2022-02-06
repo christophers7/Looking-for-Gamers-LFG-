@@ -6,7 +6,7 @@ import { Group } from 'src/app/models/group.model';
 import { SessionStorageService } from '../sessions/session-storage.service';
 import { TokenStorageService } from './token-storage.service';
 
-const API_URL = 'http://44.201.255.22:8080/';
+const API_URL = 'http://localhost:8080/';
 
 const ENDPOINTS = {
   LOGIN_CHECK: `${API_URL}login/check`,
@@ -119,8 +119,9 @@ export class UserService {
   respondToApplicant(applicant:any, check:boolean): Observable<any>{
     let request = {
       groupId: applicant.groupId,
-      username: applicant.username,
-      insideSession: check
+      gameId: 0,
+      waitingUsername: applicant.username,
+      success: check
     }; 
     return this.respondToUser(request);
   }
