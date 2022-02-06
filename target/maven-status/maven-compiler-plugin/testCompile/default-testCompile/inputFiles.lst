@@ -1,6 +1,9 @@
-C:\Users\Kymon\Code Base\Maven\ProjectTwo\src\test\java\service\profile\classes\ProfileServiceTest.java
-C:\Users\Kymon\Code Base\Maven\ProjectTwo\src\test\java\service\login\classes\LoginServiceTest.java
-C:\Users\Kymon\Code Base\Maven\ProjectTwo\src\test\java\repository\entities\UserCredentialTest.java
-C:\Users\Kymon\Code Base\Maven\ProjectTwo\src\test\java\utility\JWTUtilityTest.java
-C:\Users\Kymon\Code Base\Maven\ProjectTwo\src\test\java\service\profile\validation\ProfileValidationTest.java
-C:\Users\Kymon\Code Base\Maven\ProjectTwo\src\test\java\service\login\validation\LoginValidationTest.java
+C:\Users\Kymon\CodeBase\Git Repos\P2\src\test\java\com\revature\p2_lfg\service\game\classes\GameServiceTest.java
+C:\Users\Kymon\CodeBase\Git Repos\P2\src\test\java\com\revature\p2_lfg\h2\H2DbTest.java
+C:\Users\Kymon\CodeBase\Git Repos\P2\src\test\java\com\revature\p2_lfg\service\profile\classes\ProfileServiceTest.java
+C:\Users\Kymon\CodeBase\Git Repos\P2\src\test\java\com\revature\p2_lfg\utility\validation\LoginValidationTest.java
+C:\Users\Kymon\CodeBase\Git Repos\P2\src\test\java\com\revature\p2_lfg\ApplicationTests.java
+C:\Users\Kymon\CodeBase\Git Repos\P2\src\test\java\com\revature\p2_lfg\service\profile\classes\SocialsServiceTest.java
+C:\Users\Kymon\CodeBase\Git Repos\P2\src\test\java\com\revature\p2_lfg\service\login\classes\LoginServiceTest.java
+C:\Users\Kymon\CodeBase\Git Repos\P2\src\test\java\com\revature\p2_lfg\service\session\classes\SessionServiceTest.java
+C:\Users\Kymon\CodeBase\Git Repos\P2\src\test\java\com\revature\p2_lfg\utility\JWTUtilityTest.java
