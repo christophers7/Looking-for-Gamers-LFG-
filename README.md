@@ -1,7 +1,7 @@
 # P2_LFGG
 Project 2 - Looking for Good Gamers
 
-###Conventions
+##Conventions
 ___
 
 - Camel Case for names 
