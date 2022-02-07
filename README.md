@@ -1,10 +1,10 @@
-# P2_LFGG
+# P2_LFG
 ### Project 2 - Looking for Good Gamers
 
 ## Project Descriptions
 
 
-Looking for Gamers (lfg) is a service that users find and join other gamers for short-term collaborative gaming. Users connect their steam profiles to their account and are able to view and join various game groups currently looking for gamers. Players can also choose to host their own groups, allowing them to reject or deny the users based on their stats with the respective game. 
+Looking for Gamers (LFG) is a service that users find and join other gamers for short-term collaborative gaming. Users connect their steam profiles to their account and are able to view and join various game groups currently looking for gamers. Players can also choose to host their own groups, allowing them to reject or deny the users based on their stats with the respective game. 
 
 ---
 
