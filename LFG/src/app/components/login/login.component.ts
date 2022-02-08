@@ -75,10 +75,15 @@ export class LoginComponent implements OnInit {
       this.authService.login(userN, passW).subscribe({
         next: data => {         
           this.isLoginFailed = false;
-          this.tokenStorage.saveToken(data.jwt);
-          let builtUser = BuildUser.userBuilder(data);
-          this.tokenStorage.saveUser(builtUser);
-          this.routingAllocator.main();
+          if(data.success){
+            this.tokenStorage.saveToken(data.jwt);
+            let builtUser = BuildUser.userBuilder(data);
+            this.tokenStorage.saveUser(builtUser);
+            this.routingAllocator.main();
+          }else{
+            this.form.reset();
+            return;
+          }
         },
         error: err => {
           this.errorMessage = err.error.message;

@@ -24,6 +24,8 @@ export class HostViewComponent implements OnInit, OnDestroy {
 
   waitingRoomCheck:boolean = false;
 
+  currentUsers:number = 1;
+
   constructor(
     private sessionStorage: SessionStorageService,
     private tokenStorage: TokenStorageService,
@@ -40,7 +42,6 @@ export class HostViewComponent implements OnInit, OnDestroy {
   }
 
   initializeView():void{
-    this.currentUser = this.tokenStorage.getUser();
     this.group = this.sessionStorage.getCreatedGroup();
     this.updateMembers(this.group);
     this.stats = this.tokenStorage.getSocials();
@@ -51,6 +52,7 @@ export class HostViewComponent implements OnInit, OnDestroy {
     this.userService.respondToApplicant(newMember, true).subscribe(
       (data) => {
         this.convertToGroupFromWaitingListResponse(data);
+        this.currentUsers++;
         this.ngOnInit();
       }
     );
@@ -61,6 +63,7 @@ export class HostViewComponent implements OnInit, OnDestroy {
     this.userService.respondToApplicant(member, false).subscribe(
       (data) => {
         this.convertToGroupFromWaitingListResponse(data);
+        this.currentUsers--;
         this.ngOnInit();
       }
     );
@@ -86,12 +89,14 @@ export class HostViewComponent implements OnInit, OnDestroy {
   }
 
   openSocialLinks(data:any):void{
+    console.log(data);
+    let userGroups: any = data;
     if(data){
-      for(let i =0 ; i < data.length; i++){
-        window.open(data[i].steamProfile.response.players.player[0].profileurl, "_blank");
+      for(let i = 0 ; i < userGroups.length; i++){
+        window.open(userGroups[i].steamProfile.response.players.player[0].profileurl, userGroups[i].steamProfile.response.players.player[0].personaname);
       }
       this.disbandGroup();
-      window.close();
+      // window.close();
     }
   }
 
