@@ -1,18 +1,8 @@
-# P2_LFGG
-<<<<<<< HEAD
-<<<<<<< HEAD
-Project 2 - Looking for Good Gamers
-=======
-Project 2 - Looking for Gamers
->>>>>>> cc5c8facd07f16c1d434cbbd5a8765fce26e24f3
-=======
-Project 2 - Looking for Gamers
-=======
-Project 2 - Looking for Good Gamers
->>>>>>> 7d3661bbff632599c56bc0b42a728d909a034108
->>>>>>> dev_branch
+# P2_LFG
 
-###Conventions
+Project 2 - Looking for Gamers
+
+### Conventions
 ___
 
 - Camel Case for names 
