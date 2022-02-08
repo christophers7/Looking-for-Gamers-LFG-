@@ -26,6 +26,21 @@ values
 	(default, 'Apex Legends', 'https://media.contentapi.ea.com/content/dam/apex-legends/images/2019/01/apex-featured-image-16x9.jpg.adapt.crop16x9.1023w.jpg'),
 	(default, 'League of Legends', 'https://cdn1.epicgames.com/salesEvent/salesEvent/EGS_LeagueofLegends_RiotGames_S1_2560x1440-ee500721c06da3ec1e5535a88588c77f?h=270&resize=1&w=480');
 
+insert into lfg_games 
+values
+	(default, 582660, 'Black Desert', 'https://cdn.akamai.steamstatic.com/steam/apps/582660/header.jpg?t=1640291026'),
+	(default, 76737, 'Borderlands 3', 'https://thetalonohs.com/wp-content/uploads/2019/10/borderlands-3-pre-order-release-diamond-loot-chest-deluxe-collectors-edition-box-art-900x675.jpg'),
+	(default, 427520, 'Factorio', 'https://cdn.akamai.steamstatic.com/steam/apps/427520/header.jpg?t=1620730652');
+
+insert into lfg_games 
+values
+	(default, 108600, 'Project Zomboid', 'https://cdn.akamai.steamstatic.com/steam/apps/108600/capsule_616x353.jpg?t=1634736159'),
+	(default, 105600, 'Terraria', 'https://hb.imgix.net/b7c65e77a5f126a1024a8459ec0fd08f879860f1.jpeg?auto=compress,format&fit=crop&h=353&w=616&s=993b7e1d9df1e22a531675612b644e59');
+
+insert into lfg_games
+values
+	(default, 346110, 'ARK: Survival Evolved', 'https://cdn.akamai.steamstatic.com/steam/apps/346110/header.jpg?t=1641580910');
+
 insert into lfg_group_information 
 values
 	(default, 1, 4, 1, 'This is a testing group for Apex Legends'),
