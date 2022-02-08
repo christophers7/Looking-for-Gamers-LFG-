@@ -4,6 +4,7 @@ com\revature\p2_lfg\presentation\models\profile\responses\SocialResponse.class
 com\revature\p2_lfg\service\profile\interfaces\SocialsServiceable.class
 com\revature\p2_lfg\presentation\controllers\UserController.class
 com\revature\p2_lfg\presentation\models\profile\requests\UpdateUserProfileRequest.class
+com\revature\p2_lfg\Application.class
 com\revature\p2_lfg\repository\entities\session\Session.class
 com\revature\p2_lfg\utility\ServiceAspect.class
 com\revature\p2_lfg\presentation\models\session\response\SessionResponse$SessionResponseBuilder.class
@@ -63,6 +64,7 @@ com\revature\p2_lfg\service\session\classes\SessionService.class
 com\revature\p2_lfg\service\session\MaxUsersException.class
 com\revature\p2_lfg\presentation\controllers\LoginController.class
 com\revature\p2_lfg\presentation\models\profile\responses\SocialResponse$SocialResponseBuilder.class
+com\revature\p2_lfg\Application$1.class
 com\revature\p2_lfg\service\game\classes\GameService.class
 com\revature\p2_lfg\utility\SystemArchitect.class
 com\revature\p2_lfg\presentation\models\login\ResetPasswordRequest.class

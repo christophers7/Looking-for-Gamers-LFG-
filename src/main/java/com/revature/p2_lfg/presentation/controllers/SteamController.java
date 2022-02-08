@@ -11,7 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
-@CrossOrigin(origins = "http://44.201.255.22:8080")
+@CrossOrigin(origins = "*")
 @RestController("steamController")
 @RequestMapping("/steam")
 public class SteamController {

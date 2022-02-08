@@ -170,13 +170,15 @@ import java.util.*;
     @Override
     public SessionResponse respondToUserSession(JWTInfo parsedJWT, WaitingRoomRequest roomRequest) {
         int groupId = roomRequest.getGroupId();
-        System.out.println(roomRequest);
         int userRespondingId = loginRepository.findByUsername(roomRequest.getWaitingUsername()).getUserid();
         Session session = sessionRepository.findByUserIdAndGroupId(userRespondingId, groupId);
+        SessionDetails sessionDetails = sessionDetailsRepository.findById(session.getGroupsession().getGroupid()).get();
         if(roomRequest.isSuccess()) {
             session.setInsession(true);
+            sessionDetails.setCurrentusers(sessionDetails.getCurrentusers() + 1);
             sessionRepository.save(session);
         }else{
+            sessionDetails.setCurrentusers(sessionDetails.getCurrentusers() - 1);
             sessionRepository.delete(session);
         }
         return new SessionResponse.SessionResponseBuilder(getHostUserWithGroupId(groupId), getSessionDetailsByGroupId(groupId))

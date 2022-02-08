@@ -162,14 +162,6 @@ class ProfileServiceTest {
         assertThrows(InvalidInputException.class,() -> profileService.updateProfileWithRequest(invalidUpdateProfile, userProfileToBeUpdated));
     }
 
-    @ParameterizedTest
-    @NullAndEmptySource
-    @ValueSource(strings = {"", "username.@domain.com", ".user.name@domain.com", "user-name@domain.com.", "username@.com", "  ", "\t", "\n", "asdklfhjasodhfjoasenf;aiosnefionas;eifnao;wisefoiansefonas;dlkfasdfjaskldfhaskljdfaklshdaklshjdfasdf"})
-    void updateProfileWithRequestInvalidRequestEmailNullTest(String input) {
-        UpdateUserProfileRequest invalidUpdateProfile = new UpdateUserProfileRequest(validFirstName, validLastName, input);
-        assertThrows(InvalidInputException.class,() -> profileService.updateProfileWithRequest(invalidUpdateProfile, userProfileToBeUpdated));
-    }
-
 
 
 }
