@@ -53,8 +53,6 @@ Looking for Gamers (LFG) is a service that users find and join other gamers for 
 
 ### Working on the Project
 
->>>>>>> dd9ff643d5b6f45dc6b53d2bf5a80d0908d355fd
-
 - Camel Case for names 
   - `variableName`
 
