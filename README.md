@@ -1,11 +1,11 @@
 # P2_LFG
-<<<<<<< HEAD
+
 
 Project 2 - Looking for Gamers
 
 ### Conventions
 ___
-=======
+
 ### Project 2 - Looking for Good Gamers
 
 ## Project Descriptions
