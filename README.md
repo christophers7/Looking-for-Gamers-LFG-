@@ -1,9 +1,6 @@
 # Looking for Gamers
 
-### Conventions
 ___
-
-### Project 2 - Looking for Good Gamers
 
 ## Project Descriptions
 
@@ -48,15 +45,27 @@ Looking for Gamers (LFG) is a service that users find and join other gamers for 
 
 ---
 
+## Getting Started
 
-//If you wish to use the app
-$ https://github.com/christophers7/Looking-for-Gamers-LFG-.git
 
+Git Back clone command:
+* git clone https://github.com/christophers7/Looking-for-Gamers-LFG-.git
+
+Environment setup:
+* JDK 8 or higher
+
+---
+
+## Usage
+
+
+
+---
 
 ## Contributors
 
 
-- Brian Arayathel - https://github.com/dementedtiger
 - Christopher Scullin - https://github.com/christophers7 
+- Brian Arayathel - https://github.com/dementedtiger
 - Kymon Williams - https://github.com/Meezy98 
 - Mike Maschmeir - https://github.com/mekha454 
